@@ -9,7 +9,7 @@
                 <span class="k">Welcome to Trender Platform!</span>
             </div>
             <div class="o">
-                <a class="p r" href="/upgrade_to_paid/write/?continue_uri=%2Fzero%2Ftoggle%2Fswitch%2F%3Fref_source%3Dhttps%253A%252F%252Ffree.facebook.com%252Fhome.php%253Fref_component%253Dmfreebasic_home_header%2526ref_page%253DMMessagingEntBasedReadController%2526refid%253D12%2526hrc%253D1%2526refsrc%253Dhttp%25253A%25252F%25252Ffree.facebook.com%25252F%26location%3Dtoggle_banner%26ext%3D1492200591%26hash%3DAeSjwdvLZAylGo2v&amp;ext=1492200591&amp;hash=AeR91FB46jktWJUk&amp;refid=7">
+                <a class="p r" href="javascript:void(0)">
                 </a>
             </div>
         </div>
