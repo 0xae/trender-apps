@@ -1,15 +1,23 @@
 var TIMMING = 7000; // 7 seconds
 var PAGINATION_DEEP = 20;
 
+function getApiHost() {
+    var idx = location.href.indexOf('trender');
+    var host = location.href.substr(0, idx-1);
+    var API = host + ':5000/';
+    return 'http://127.0.0.1:5000/';
+}
+
 // XXX: remove later
 function getProfileService() {
+    var API = getApiHost();
     var obj = {
         getProfilesWithoutPictures: function() {
-            return promisify($.get('http://127.0.0.1:5000/profile/nopicture'));
+            return promisify($.get(API + 'profile/nopicture'));
         },
 
         updatePicture: function(id, picture) {
-            return promisify($.put('http://127.0.0.1:5000/profile/'+id+'/picture', picture));
+            return promisify($.put(API + 'profile/'+id+'/picture', picture));
         }
     };
 
@@ -160,8 +168,9 @@ function toPromise(prms) {
 }
 
 function createPost(p) {
+    var API = getApiHost();
     var q = $.ajax({
-            url: "http://127.0.0.1:5000/api/add_post", 
+            url: API + "api/add_post", 
             method: "post", 
             data: JSON.stringify(p), 
             headers: {'Content-Type':'application/json'}
@@ -391,16 +400,17 @@ setTimeout(function(){
 
 // XXX
 function getProfileService() {
+    var API = getApiHost();
     var obj = {
         getProfilesWithoutPictures: function() {
-            return promisify($.get('http://127.0.0.1:5000/profile/nopicture'));
+            return promisify($.get(API + 'profile/nopicture'));
         },
 
         updatePicture: function(id, picture) {
             return promisify(
                     $.ajax({
                         type:'post', 
-                        url:'http://127.0.0.1:5000/profile/'+id+'/picture', 
+                        url: API + 'profile/'+id+'/picture', 
                         data:picture,
                         headers: {'Content-Type':'application/json'}
                     })

@@ -13,3 +13,11 @@ function _logE(i) { console.error(i); }
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
 };
+
+function getApiHost() {
+    var idx = location.href.indexOf('trender');
+    var host = location.href.substr(0, idx-1);
+    var API = host + ':5000/';
+    return API;
+}
+
