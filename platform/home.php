@@ -48,7 +48,6 @@
 <!-- Feed Area -->
 <div class="f">
     <div id="viewport">
-
         <div id="objects_container" style="">
             <div class="bq e" id="root" role="main">
                 <div id="m_home_notice"></div>
