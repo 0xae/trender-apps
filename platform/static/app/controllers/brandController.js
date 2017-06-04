@@ -17,8 +17,7 @@ function makeConfig(p) {
     };
     return config;
 }
-function updateOrLinkBran(p){
-}
+
 BrandController.prototype.showSyrene = function (id, stay) {
     setTimeout(function() {
         $("#"+id+"_not").hide();
