@@ -1,5 +1,5 @@
 <?php require_once 'header.php'; ?>
-<body tabindex="0" class="b c d e">
+<body tabindex="0" class="b c d e" ng-app="trender">
 
 <!-- Menu Area -->
 <div class="g" id="toggleHeader">
@@ -29,13 +29,14 @@
                             <input class="bg bh bi" name="query" placeholder="Search Posts, Listings, Profiles, Trends, ..." autocomplete="off" autocorrect="off" spellcheck="false" type="text">
                         </td>
                         <td class="z">
-                            <input value="Search" type="submit" class="p bj bk bl">
+                            <input style="display: block" value="Search" type="submit" class="p bj bk bl">
                         </td>
                     </tr>
                 </tbody>
             </table>
         </form>
-        <div role="navigation" class="bm">
+
+        <div role="navigation" class="bm" style="clear:both">
             <a class="bn bo bp" href="javascript:void(0)" aria-current="page">Trending Now <sup> <span class="alarm-syrene"></span></sup></a>
             <a class="bn bp" href="javascript:void(0)">Profiles</a>
             <a class="bn bp" href="javascript:void(0)">Recent</a>
@@ -43,12 +44,24 @@
             <a class="bn bp" href="javascript:void(0)">Settings</a>
         </div>
     </div>
+
+    <div class="col-md-12" 
+         style="display:none;position:absolute;margin-left:13px;padding:0px;z-index:400;box-shadow:0px 0px 2px rgba(0,0,0,.3);height:400px;;margin-bottom:4px;width:90%;background-color: #fff"
+         id="search_results">
+        <div style="width:50%;float:left;display:block;padding: 10px;height:100%;">
+            <h1>Hello, world</h1>
+            <?php require_once "_view1.php"; ?>
+         </div>
+        <div style="width:40%;float:left;display:block;padding: 10px;" >
+            <h1>Hello, world 2</h1>
+         </div>
+    </div>
 </div>
 
 <!-- Feed Area -->
 <div class="f">
     <div id="viewport">
-        <div id="objects_container" style="">
+        <div id="objects_container" style="" ng-controller="HomeController">
             <div class="bq e" id="root" role="main">
                 <div id="m_home_notice"></div>
                 <div id="m_newsfeed_stream" style="background-color: #fff;">
@@ -71,21 +84,19 @@
     </div> <!-- .viewport -->
 </div> <!-- .f -->
 
-<!-- jquery -->
+<!-- lib -->
 <script src="static/lib/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
 <script src="static/lib/moment/min/moment.min.js" type="text/javascript"></script>
 <script src="static/lib/lodash/lodash.js" type="text/javascript"></script>
+<script src="static/lib/angularjs/angular.min.js" type="text/javascript"></script>
+
+<!-- trender angular app -->
 <script src="static/app/app.js" type="text/javascript"></script>
 <script src="static/app/services/PostService.js" type="text/javascript"></script>
 <script src="static/app/services/ProfileService.js" type="text/javascript"></script>
-<script src="static/app/controllers/brandController.js" type="text/javascript"></script>
 <script src="static/app/controllers/homeController.js" type="text/javascript"></script>
-<script src="static/app/controllers/profilesController.js" type="text/javascript"></script>
-<script src="static/app/crawlers/picture_update.js" type="text/javascript"></script>
+<script src="static/app/controllers/brandController.js" type="text/javascript"></script>
+<script src="static/app/controllers/searchController.js" type="text/javascript"></script>
 
-<!--
-<script src="static/js/" type="text/javascript"></script>
-<script src="static/js/app" type="text/javascript"></script>
--->
 </body>
 </html>

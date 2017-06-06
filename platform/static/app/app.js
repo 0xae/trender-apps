@@ -21,3 +21,4 @@ function getApiHost() {
     return API;
 }
 
+angular.module("trender", []);

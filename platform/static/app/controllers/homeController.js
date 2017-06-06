@@ -1,10 +1,10 @@
-var workerId;
-
-function HomeController(env) {
+angular.module("trender")
+.controller("HomeController", ['$scope', function ($scope) {
     var postService = getPostService();
     var postTemplate = null;
     var last = null;
     var bc = new BrandController();
+    var workerId;
 
     function fetchTemplate() {
         if (postTemplate) {
@@ -93,13 +93,10 @@ function HomeController(env) {
         });
     }
 
-    // controller logic
-    
     fetchTemplate()
     .then(function () {
         loadRecentPosts(true);
          workerId = setInterval(loadRecentPosts, 5000);
     });
-}
+}]);
 
-HomeController({});
