@@ -17,19 +17,32 @@
 </div>
 
 <!-- Menu Area -->
-<div class="t">
-    <div class="u v" role="banner" id="header">
-        <form method="get" action="/search/" class="w x">
+<div class="t" ng-controller="SearchController">
+    <div class="u v" role="banner" id="header" >
+        <form method="get" action="#" class="w" ng-submit="doSearch(query)" novalidate>
             <table class="y" role="presentation">
                 <tbody>
                     <tr>
                         <td class="z">
                         </td>
                         <td class="be bf">
-                            <input class="bg bh bi" name="query" placeholder="Search Posts, Listings, Profiles, Trends, ..." autocomplete="off" autocorrect="off" spellcheck="false" type="text">
+                            <input class="bg bh bi" 
+                                   name="query" 
+                                   ng-model="query"
+                                   placeholder="Search Posts, Listings, Profiles, Trends, ..." 
+                                   autocomplete="off" 
+                                   autocorrect="off" 
+                                   spellcheck="false" 
+                                   ng-focus="startedSearch()"
+                                   type="text" 
+                            />
                         </td>
                         <td class="z">
-                            <input style="display: block" value="Search" type="submit" class="p bj bk bl">
+                            <input style="display: block" 
+                                   value="Search" 
+                                   type="submit" 
+                                   class="p bj bk bl"
+                             />
                         </td>
                     </tr>
                 </tbody>
@@ -44,18 +57,8 @@
             <a class="bn bp" href="javascript:void(0)">Settings</a>
         </div>
     </div>
-
-    <div class="col-md-12" 
-         style="display:none;position:absolute;margin-left:13px;padding:0px;z-index:400;box-shadow:0px 0px 2px rgba(0,0,0,.3);height:400px;;margin-bottom:4px;width:90%;background-color: #fff"
-         id="search_results">
-        <div style="width:50%;float:left;display:block;padding: 10px;height:100%;">
-            <h1>Hello, world</h1>
-            <?php require_once "_view1.php"; ?>
-         </div>
-        <div style="width:40%;float:left;display:block;padding: 10px;" >
-            <h1>Hello, world 2</h1>
-         </div>
-    </div>
+        
+    <?php require_once "search.php"; ?>
 </div>
 
 <!-- Feed Area -->
