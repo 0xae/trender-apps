@@ -1,5 +1,5 @@
 # trender-apps
-apps,crawlers,indexers,stuff built for the [https://github.com/0xae/trender](Trender API).
+apps,crawlers,indexers,stuff built for the (https://github.com/0xae/trender)[Trender API].
 
 ### platform 
     extensive data analysis, realtime search, profile views,trending activity/topics, ...
