@@ -20,3 +20,4 @@ for now platform code only.
 - [ ] profile view
 - [ ] posts filter
 - [ ] posts browser (by date range, profiles, listings, topics)
+- [ ] rich multimedia design  (music, videos, images, links, etc)
