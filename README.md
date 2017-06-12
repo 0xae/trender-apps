@@ -1,6 +1,6 @@
 # trender-apps
 apps,crawlers,indexers,stuff built for the [Trender API](https://github.com/0xae/trender).
-right now, for now platform code only.
+for now platform code only.
 
 ### platform 
     extensive data analysis, realtime search, profile views,trending activity/topics, ...
