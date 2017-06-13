@@ -4,7 +4,8 @@ for now platform code only.
 
 ## Prologue 
 ### platform 
-    extensive data analysis, realtime search, profile views,trending activity/topics, ...
+    extensive data analysis, realtime search, profile views,trending activity/topics,
+    glitch.com ideas ?
     
 ### now 
     realtime timeline, search, trending topics
