@@ -9,6 +9,7 @@ for now platform code only.
     
 ### now 
     realtime timeline, search, trending topics
+    ...we need more ideas for this...
     
 ### tv 
     smart/exquisite youtube video browsing (bring old cinema to my laptop)
