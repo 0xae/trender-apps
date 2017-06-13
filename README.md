@@ -11,6 +11,9 @@ for now platform code only.
     
 ### tv 
     smart/exquisite youtube video browsing (bring old cinema to my laptop)
+    youtube live watching
+    youtube live events video agg (like #UBIE3)
+    youtube home cinema ?
 
 ## Tasks
 
@@ -28,3 +31,7 @@ for now platform code only.
 [#SkullandBones](https://twitter.com/hashtag/SkullandBones?src=hash)
 
 [Announcement of SkullandBones](https://www.polygon.com/e3/2017/6/12/15785604/skull-and-bones-ubisofts-new-multiplayer-pirate-game-announced)
+
+[Skull and Bones Video](https://www.youtube.com/watch?v=u-YsFiil8yY)
+
+[Mario + Rabbids Kingdom Battle announcement](https://twitter.com/search?q=%22Rabbids%20Kingdom%20Battle%22&src=tren)
