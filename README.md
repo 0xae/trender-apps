@@ -25,6 +25,8 @@ for now platform code only.
 - [ ] posts filter
 - [ ] posts browser (by date range, profiles, listings, topics)
 - [ ] rich multimedia design  (music, videos, images, links, etc)
+- [ ] jquery/javascript modularized architecture
+- [ ] adopt a framework for php ?
 
 ## Ideas for timeline/searching/design
 [#UbiE3 pirate](https://twitter.com/search?q=%23UbiE3%20pirate&src=typd)
