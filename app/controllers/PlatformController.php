@@ -32,5 +32,9 @@ class PlatformController extends Controller {
         return $this->render('index', [
         ]);
     }
+
+    public function actionPost() {
+        return $this->renderPartial('post', []);
+    }
 }
 

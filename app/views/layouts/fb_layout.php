@@ -75,17 +75,26 @@ AppAsset::register($this);
     </style>
     <?php $this->head() ?>
 </head>
-<body>
-<?php $this->beginBody() ?>
 
-<div class="wrap">
-    <div class="container">
+<body tabindex="0" class="b c d e" ng-app="trender">
+    <?php $this->beginBody() ?>
         <?= $content ?>
-    </div>
-</div>
+    <?php $this->endBody() ?>
+    <!-- lib -->
+    <script src="static/lib/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="static/lib/moment/min/moment.min.js" type="text/javascript"></script>
+    <script src="static/lib/lodash/lodash.js" type="text/javascript"></script>
+    <script src="static/lib/angularjs/angular.min.js" type="text/javascript"></script>
 
-<?php $this->endBody() ?>
+    <!-- trender angular app -->
+    <script src="static/app/app.js" type="text/javascript"></script>
+    <script src="static/app/services/PostService.js" type="text/javascript"></script>
+    <script src="static/app/services/ProfileService.js" type="text/javascript"></script>
+    <script src="static/app/controllers/homeController.js" type="text/javascript"></script>
+    <script src="static/app/controllers/brandController.js" type="text/javascript"></script>
+    <script src="static/app/controllers/searchController.js" type="text/javascript"></script>
 </body>
+
 </html>
 <?php $this->endPage() ?>
 

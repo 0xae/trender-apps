@@ -1,53 +1,90 @@
 <?php
-
-/* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
+$this->title = 'Trender Platform';
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+<!-- Menu Area -->
+<div class="g" id="toggleHeader">
+    <div id="toggleHeaderContent" class="h">
+        <div class="i">
+            <div class="j">
+                <span class="k">Welcome to Trender Platform!</span>
+            </div>
+            <div class="o">
+                <a class="p r" href="javascript:void(0)">
+                </a>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="body-content">
+<!-- Menu Area -->
+<div class="t" ng-controller="SearchController">
+    <div class="u v" role="banner" id="header" >
+        <form method="get" action="#" class="w" ng-submit="doSearch(query)" novalidate>
+            <table class="y" role="presentation">
+                <tbody>
+                    <tr>
+                        <td class="z">
+                        </td>
+                        <td class="be bf">
+                            <input class="bg bh bi" 
+                                   name="query" 
+                                   ng-model="query"
+                                   placeholder="Search Posts, Listings, Profiles, Trends, ..." 
+                                   autocomplete="off" 
+                                   autocorrect="off" 
+                                   spellcheck="false" 
+                                   ng-focus="startedSearch()"
+                                   type="text" 
+                            />
+                        </td>
+                        <td class="z">
+                            <input style="display: block" 
+                                   value="Search" 
+                                   type="submit" 
+                                   class="p bj bk bl"
+                             />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+        <div role="navigation" class="bm" style="clear:both">
+            <a class="bn bo bp" href="javascript:void(0)" aria-current="page">Trending Now <sup> <span class="alarm-syrene"></span></sup></a>
+            <a class="bn bp" href="javascript:void(0)">Profiles</a>
+            <a class="bn bp" href="javascript:void(0)">Recent</a>
+            <a class="bn bp" href="javascript:void(0)">Profiles</a>
+            <a class="bn bp" href="javascript:void(0)">Settings</a>
+        </div>
+    </div>
+        
+    <?php require_once "search.php"; ?>
+</div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+<!-- Feed Area -->
+<div class="f">
+    <div id="viewport">
+        <div id="objects_container" style="" ng-controller="HomeController">
+            <div class="bq e" id="root" role="main">
+                <div id="m_home_notice"></div>
+                <div id="m_newsfeed_stream" style="background-color: #fff;">
+                    <div id="m-top-of-feed"></div>
+                    <div id="posts_container" class="dp dq dr" style="padding:0px;">
+                        <div class="ds di" id="posts_loader" style="display:none">
+                            <a href="javascript:void(0)" id="load_more_posts">
+                                <p style="text-align: center"> <span id="post_count">0</span> new posts comming... </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-    </div>
-</div>
+        <div id="sidebar" style="">
+            <?php require_once 'brands.php'; ?>
+        </div>
+
+    </div> <!-- .viewport -->
+</div> <!-- .f -->
+
