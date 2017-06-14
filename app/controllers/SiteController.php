@@ -1,6 +1,5 @@
 <?php
 namespace app\controllers;
-
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -22,13 +21,7 @@ class SiteController extends Controller {
                         'roles' => ['@'],
                     ],
                 ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+            ]
         ];
     }
 
@@ -37,15 +30,12 @@ class SiteController extends Controller {
      */
     public function actions() {
         return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ]
+            'error' => ['class' => 'yii\web\ErrorAction']
         ];
     }
 
     /**
      * Displays homepage.
-     *
      * @return string
      */
     public function actionIndex() {
@@ -54,7 +44,6 @@ class SiteController extends Controller {
 
     /**
      * Login action.
-     *
      * @return string
      */
     public function actionLogin() {
@@ -66,14 +55,12 @@ class SiteController extends Controller {
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+
+        return $this->render('login', ['model' => $model]);
     }
 
     /**
      * Logout action.
-     *
      * @return string
      */
     public function actionLogout() {

@@ -30,8 +30,7 @@ class NewsController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        return $this->render('index', [
-        ]);
+        return $this->render('index', []);
     }
 }
 
