@@ -28,7 +28,12 @@ for now platform code only.
 - [ ] rich multimedia design  (music, videos, images, links, etc)
 - [ ] jquery/javascript modularized architecture
 - [X] adopt a framework for php ? (yii 2)
-- [ ] work on the crawler/indexer, it's really a mess
+
+### Crawler
+- [ ] enhance the code, it's very messy
+- [ ] find a way to fetch pics
+- [ ] batch posts
+- [ ] recognize share & multiple posts
 
 ## Ideas for timeline/searching/design
 [#UbiE3 pirate](https://twitter.com/search?q=%23UbiE3%20pirate&src=typd)
