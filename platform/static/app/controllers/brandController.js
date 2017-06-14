@@ -18,7 +18,7 @@ function makeConfig(p) {
     return config;
 }
 
-BrandController.prototype.showSyrene = function (id, stay) {
+BrandController.prototype.showSyrene = function (id) {
     setTimeout(function() {
         $("#"+id+"_not").hide();
         setTimeout(function () {
