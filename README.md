@@ -7,7 +7,7 @@ for now platform code only.
     extensive data analysis, realtime search, profile views,trending activity/topics,
     glitch.com ideas ?
     
-### now 
+### news 
     realtime timeline, search, trending topics
     ...we need more ideas for this...
     
