@@ -34,6 +34,8 @@ for now platform code only.
 - [ ] find a way to fetch pics
 - [ ] batch posts
 - [ ] recognize share & multiple posts
+- [ ] modularize the code
+- [ ] design the API to be implemented on the server
 
 ## Ideas for timeline/searching/design
 [#UbiE3 pirate](https://twitter.com/search?q=%23UbiE3%20pirate&src=typd)
