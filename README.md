@@ -47,3 +47,5 @@ for now platform code only.
 [Skull and Bones Video](https://www.youtube.com/watch?v=u-YsFiil8yY)
 
 [Mario + Rabbids Kingdom Battle announcement](https://twitter.com/search?q=%22Rabbids%20Kingdom%20Battle%22&src=tren)
+
+[Adopt Vue.js](https://vuejs.org/v2/guide/)
