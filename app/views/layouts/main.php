@@ -1,1 +1,1 @@
-<?php require_once "fb_layout.php"; ?>
+<?php require_once "bootstrap_layout.php"; ?>

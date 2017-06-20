@@ -113,3 +113,8 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.trender-color {
+    background-color: rgb(75, 54, 124);
+    color: #fff;
+}
