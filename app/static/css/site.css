@@ -118,3 +118,12 @@ a.desc:after {
     background-color: rgb(75, 54, 124);
     color: #fff;
 }
+
+h5.title {
+    color: #cbc8d0;
+    box-shadow: 0 -1px 0 #392e5c inset;
+    padding-bottom: 13px;
+    padding-left: 10px;
+}
+
+
