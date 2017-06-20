@@ -49,6 +49,8 @@
 <!-- components 2 -->
 <div id="app-8">
     <ul>
+        <todo-item v-bind:todo="current">
+        </todo-item>
         <todo-item 
             v-for="item in list"
             v-bind:key="item.id"

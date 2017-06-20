@@ -89,10 +89,11 @@ new Vue({
 new Vue({
     el: '#app-8',
     data: {
+        current: {text: "This is the main task", id:100},
         list: [
             {text: "Task 1", id:1},
             {text: "Task 2", id:2},
             {text: "Task 3", id:3}
-        ]
+        ],
     }
 })
