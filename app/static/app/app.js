@@ -21,6 +21,7 @@ function getApiHost() {
     return API;
 }
 
+
 new Vue({
     el: '#app',
     data: {
@@ -70,3 +71,10 @@ new Vue({
         message: "hey there " + new Date()
     }
 });
+
+// data
+Vue.component('todo-item', {
+    template: '<li>This is a todo</li>'
+});
+
+
