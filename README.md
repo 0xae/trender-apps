@@ -49,3 +49,5 @@ for now platform code only.
 [Mario + Rabbids Kingdom Battle announcement](https://twitter.com/search?q=%22Rabbids%20Kingdom%20Battle%22&src=tren)
 
 [Adopt Vue.js](https://vuejs.org/v2/guide/)
+
+[Awesome Vue.js links](https://github.com/vuejs/awesome-vue)
