@@ -34,32 +34,39 @@ AppAsset::register($this);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/trender/app/index.php">
-                         <img alt="Brand" src="static/img/tv-yellow2.png" style="width: 90px"> </a>
+                <a class="navbar-brand" href="/trender/app/index.php" style="color: #d7cceb;">
+                         <!-- <img alt="Brand" src="static/img/tv-yellow2.png" style="width: 90px"> -->
+                    Trender
+                 </a>
             </div>
             <div id="w0-collapse" class="collapse navbar-collapse">
                 <ul id="w1-ul-li-ul" class="navbar-nav navbar-right nav">
                     <li>
-                        <a href="/trender/app/index.php?r=platform%2Findex">Platform</a>
+                        <a href="/trender/app/index.php?r=platform%2Findex" style="color: #d7cceb;">Platform</a>
                     </li>
                     <li>
-                        <a href="/trender/app/index.php?r=tv%2Findex">Tv</a>
+                        <a href="/trender/app/index.php?r=tv%2Findex" style="color: #d7cceb;">Tv</a>
                     </li>
                     <li>
-                        <a href="/trender/app/index.php?r=tv%2Findex">System Stats</a>
+                        <a href="/trender/app/index.php?r=tv%2Findex" style="color: #d7cceb;">System Stats</a>
                     </li>
                     <li>
-                        <a href="/trender/app/index.php?r=settings%2Findex">Settings</a>
+                        <a href="/trender/app/index.php?r=settings%2Findex" style="color: #d7cceb;">Settings</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container">
-        <?= $content ?>
+    <div class="row" style="padding:0px;">
+        <div class="col-md-2" style="padding:0px;height:100%;position:absolute; box-shadow: -1px 0 0 #392e5c inset;   background-color: #2c2541;">
+        </div>
+        <div class="col-md-8">
+                <?= $content ?>
+        </div>
     </div>
 </div>
 
+<!--
 <footer class="footer">
     <div class="container">
         <p class="pull-left"><i>ayrton@thinkpad</i></p>
@@ -67,6 +74,7 @@ AppAsset::register($this);
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
+-->
 
 <?php $this->endBody() ?>
 </body>
