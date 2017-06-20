@@ -21,11 +21,52 @@ function getApiHost() {
     return API;
 }
 
-var app = new Vue({
+new Vue({
     el: '#app',
     data: {
         message: "hey there"
     }
-})
+});
+
+new Vue({
+    el: '#app-2', 
+    data:{
+        message: "hey there " + new Date()
+    }
+});
 
 
+new Vue({
+    el: '#app-3', 
+    data: {
+        seen: true
+    }
+});
+
+var app4 = new Vue({
+    el: '#app-4', 
+    data: {
+        todos: [
+            {text: "Todo 1"}
+        ]
+    }
+});
+
+var app5 = new Vue({
+    el: '#app-5',
+    data: {
+        message: "Vue component"
+    },
+    methods: {
+        updateData: function () {
+            this.message = 'Vue component at ' + new Date();
+        }
+    }
+});
+
+new Vue({
+    el: '#app-6', 
+    data:{
+        message: "hey there " + new Date()
+    }
+});
