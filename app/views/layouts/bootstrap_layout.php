@@ -45,13 +45,13 @@ AppAsset::register($this);
                         <a href="/trender/app/index.php?r=platform%2Findex" style="color: #d7cceb;">Platform</a>
                     </li>
                     <li>
-                        <a href="/trender/app/index.php?r=tv%2Findex" style="color: #d7cceb;">Tv</a>
+                        <a href="/trender/app/index.php?r=tv/index" style="color: #d7cceb;">Tv</a>
                     </li>
                     <li>
-                        <a href="/trender/app/index.php?r=tv%2Findex" style="color: #d7cceb;">System Stats</a>
+                        <a href="/trender/app/index.php?r=system/index" style="color: #d7cceb;">System Stats</a>
                     </li>
                     <li>
-                        <a href="/trender/app/index.php?r=settings%2Findex" style="color: #d7cceb;">Settings</a>
+                        <a href="/trender/app/index.php?r=settings/index" style="color: #d7cceb;">Settings</a>
                     </li>
                 </ul>
             </div>
