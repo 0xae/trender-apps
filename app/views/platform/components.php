@@ -39,12 +39,14 @@
 </div>
 
 
+<!-- components -->
 <div id="app-7">
     <ul>
         <todo-item v-bind:todo="item"></todo-item>
     </ul>
 </div>
 
+<!-- components 2 -->
 <div id="app-8">
     <ul>
         <todo-item 
