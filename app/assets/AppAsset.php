@@ -21,7 +21,9 @@ class AppAsset extends AssetBundle {
     ];
 
     public $js = [
-        "static/lib/vuejs/vue-2.3.4.js"
+        "static/lib/lodash/lodash.js",
+        "static/lib/vuejs/vue-2.3.4.js",
+        "static/app/app.js"
     ];
 
     public $depends = [

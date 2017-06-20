@@ -21,7 +21,11 @@ function getApiHost() {
     return API;
 }
 
-angular.module("trender", []);
-
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: "hey there"
+    }
+})
 
 
