@@ -35,6 +35,7 @@ AppAsset::register($this);
             </button>
             <a class="navbar-brand" href="/trender/app/index.php" style="color: #d7cceb;">
                      <!-- <img alt="Brand" src="static/img/tv-yellow2.png" style="width: 90px"> -->
+                <span style="color: #ccc" class="fa fa-google-wallet"></span>
                 Trender
              </a>
         </div>
