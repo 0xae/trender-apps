@@ -127,3 +127,19 @@ h5.title {
 }
 
 
+
+.live-indicator {
+    height: .8rem;
+    width: .8rem;
+    border-radius: .4rem;
+    display: inline-block;
+    background: #fc3636;
+}
+
+.live-indicator-away {
+    height: .8rem;
+    width: .8rem;
+    border-radius: .4rem;
+    display: inline-block;
+    background: #ffb300;
+}
