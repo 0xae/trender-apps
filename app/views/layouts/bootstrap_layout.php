@@ -61,7 +61,7 @@ AppAsset::register($this);
         <div class="col-md-2" style="padding:0px;height:100%;position:absolute; box-shadow: -1px 0 0 #392e5c inset;   background-color: #2c2541;">
         </div>
         <div class="col-md-8" style="margin-left:250px;">
-                <?= $content ?>
+            <?= $content ?>
         </div>
     </div>
 </div>
