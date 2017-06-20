@@ -74,7 +74,25 @@ new Vue({
 
 // data
 Vue.component('todo-item', {
-    template: '<li>This is a todo</li>'
+    template: '<li>{{ todo.text }}</li>',
+    props: ['todo']
 });
 
+new Vue({
+    el: '#app-7',
+    data: {
+        item: {text: "Task 1"}
+    }
+})
 
+
+new Vue({
+    el: '#app-8',
+    data: {
+        list: [
+            {text: "Task 1", id:1},
+            {text: "Task 2", id:2},
+            {text: "Task 3", id:3}
+        ]
+    }
+})

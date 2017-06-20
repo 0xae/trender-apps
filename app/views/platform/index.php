@@ -41,3 +41,20 @@ $this->title = 'Trender Platform';
   <p>{{ message }}</p>
   <input v-model="message">
 </div>
+
+
+<div id="app-7">
+    <ul>
+        <todo-item v-bind:todo="item"></todo-item>
+    </ul>
+</div>
+
+<div id="app-8">
+    <ul>
+        <todo-item 
+            v-for="item in list"
+            v-bind:key="item.id"
+            v-bind:todo="item">
+        </todo-item>
+    </ul>
+</div>
