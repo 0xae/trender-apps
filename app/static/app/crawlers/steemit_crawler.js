@@ -1,16 +1,53 @@
 (function main() {
-    var posts = $('#posts_list ul').children;
-    _foreach(posts, function (p){
-        var req = getPostRequest(p);
-        createPost(req)
-        .then(function (data) {
-            console.info(data);
-        });
-    });
+    var tries = 3;
+    var jobId = setInterval(Crawl, 4000);
 
-    function _reloadView() {
+    window.StopCrawler = function () {
+        clearInterval(jobId);
+    }
+
+    window.StartCrawler = function () {
+        jobId = setInterval(Crawl, 4000);
+    }
+
+    function Crawl() {
+        var queue = [];
+        var posts=document.getElementById("posts_list").firstChild.children;
+        _foreach(posts, function (p){
+            var req = getPostRequest(p);
+            queue.push(createPost(req));
+        });
+
+        Promise.all(queue)        
+        .then(function () {
+           tries = 3;
+           console.log("[INFO] Done crawling ");
+           _go();
+        }, function () {
+            console.warn("[WARN] Humm, something went wrong");
+            tries += 1;
+            if (tries == 3) { _go(); }
+        });
+    }
+
+    function _go() {
+       var topic = GetRandomTopic();
+       console.log("[LOG] " + 
+                     new Date() + 
+                     " going for #" + 
+                     topic.innerText);
+        if (topic) {
+           topic.click();            
+        }
+    }
+
+    function GetRandomTopic() {
         var topics = document.getElementsByClassName('PostsIndex__topics')[0];
-        console.log(topics);
+        var links = topics.getElementsByTagName("a");
+        var index = parseInt(Math.random() * links.length);
+        var topic = links[index];
+        if (topic && topic.href && topic.innerText!='Show more topics..')
+            return topic;
     }
 
     function getPostRequest(_rawPost) {
@@ -80,11 +117,5 @@
             var el = ary[i];
             callback(el);
         }
-    }
-
-    function _toPromise(prms) {
-        return new Promise(function (resolve, reject){
-            prms.then(resolve, reject);
-        });
     }
 })()
