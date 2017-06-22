@@ -112,6 +112,13 @@
         });
     }
 
+    function getNoPictureProfiles() {
+        return fetch('http://127.0.0.1:5000/profile/nopicture')
+        .then(function (response) {
+          return response.json();
+        });
+    }
+
     function _foreach(ary, callback) {
         for (var i=0; i<ary.length; i++) {
             var el = ary[i];
