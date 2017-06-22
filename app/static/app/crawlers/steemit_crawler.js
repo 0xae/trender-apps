@@ -8,6 +8,11 @@
         });
     });
 
+    function _reloadView() {
+        var topics = document.getElementsByClassName('PostsIndex__topics')[0];
+        console.log(topics);
+    }
+
     function getPostRequest(_rawPost) {
         var footer = _rawPost.firstChild.getElementsByClassName('PostSummary__footer')[0];
         var footerDetails = footer.getElementsByClassName('show-for-medium')[0].firstChild;
@@ -30,14 +35,14 @@
         // TODO: countShares, countComments
         var postReaction = {
             countLikes: parseInt(footer.children[1].firstChild.innerText.trim())
-        }
+        };
 
         // post-links code
         var postLink = {
             viewLink: postInfo.firstChild.getElementsByTagName("a")[0].href,
             commentLink: postInfo.firstChild.getElementsByTagName("a")[0].href,
             shareLink: postInfo.firstChild.getElementsByTagName("a")[0].href
-        }
+        };
 
         // post code
         // TODO: timming
@@ -48,13 +53,13 @@
             timming: 'Just now',
             type: "post",
             facebookId: postLink.viewLink,
-        }
+        };
 
         // TODO: get listing on which this post was created
         return {
             profile: profile,
             post: post        
-        }
+        };
     }
 
     function createPost(post) {

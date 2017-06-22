@@ -81,6 +81,16 @@
         </div>
 
         <div id="sidebar" style="">
+            <div style="width:300px">
+            <iframe
+                src="http://player.twitch.tv/?channel=yoda&muted=true"
+                height="300"
+                width="300"
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen="true">
+            </iframe>
+            </div>
             <?php require_once 'brands.php'; ?>
         </div>
 
