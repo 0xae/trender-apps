@@ -10,6 +10,9 @@
         jobId = setInterval(Crawl, 4000);
     }
 
+    /**
+     * TODO: topic page scrolling
+    */
     function Crawl() {
         var queue = [];
         var posts=document.getElementById("posts_list").firstChild.children;
@@ -46,6 +49,7 @@
         var links = topics.getElementsByTagName("a");
         var index = parseInt(Math.random() * links.length);
         var topic = links[index];
+
         if (topic && topic.href && topic.innerText!='Show more topics..')
             return topic;
     }
@@ -75,10 +79,11 @@
         };
 
         // post-links code
+        var viewLink=postInfo.firstChild.getElementsByTagName("a")[0].href;
         var postLink = {
-            viewLink: postInfo.firstChild.getElementsByTagName("a")[0].href,
-            commentLink: postInfo.firstChild.getElementsByTagName("a")[0].href,
-            shareLink: postInfo.firstChild.getElementsByTagName("a")[0].href
+            viewLink: viewLink,
+            commentLink: viewLink,
+            shareLink: viewLink
         };
 
         // post code
@@ -126,14 +131,14 @@
                 headers: {'Content-Type':'application/json'}
             }).then(function () {
                 console.log("Update done...");
-            });       
+            });
         } else {
             fetch('http://127.0.0.1:5000/profile/nopicture', {method:'GET', header:{'Content-Type':'application/json'}})
             .then(function (response) {
                 response.json()
                 .then(function (data){
                 if (!data.length) return;
-                    profile = data.pop();                    
+                    profile = data.pop();
                 });
             });
         }
