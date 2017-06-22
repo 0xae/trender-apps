@@ -1,6 +1,12 @@
 (function main() {
     var posts = $('#posts_list ul').children;
-    _foreach(posts, getPostRequest);
+    _foreach(posts, function (p){
+        var req = getPostRequest(p);
+        createPost(req)
+        .then(function (data) {
+            console.info(data);
+        });
+    });
 
     function getPostRequest(_rawPost) {
         var footer = _rawPost.firstChild.getElementsByClassName('PostSummary__footer')[0];
@@ -22,25 +28,26 @@
 
         // post-reaction code
         // TODO: countShares, countComments
-        var likes = parseInt(footer.children[1].firstChild.innerText.trim());
         var postReaction = {
-            countLikes: likes
+            countLikes: parseInt(footer.children[1].firstChild.innerText.trim())
         }
 
         // post-links code
         var postLink = {
             viewLink: postInfo.firstChild.getElementsByTagName("a")[0].href,
+            commentLink: postInfo.firstChild.getElementsByTagName("a")[0].href,
+            shareLink: postInfo.firstChild.getElementsByTagName("a")[0].href
         }
 
         // post code
+        // TODO: timming
         var post = {
             description: postInfo.firstChild.getElementsByTagName("a")[0].innerText,
             postLink: postLink,
             postReaction: postReaction,
-            timming: postInfo.firstChild.getElementsByTagName("a")[0].innerText,
+            timming: 'Just now',
             type: "post",
             facebookId: postLink.viewLink,
-            profile: profile,
         }
 
         // TODO: get listing on which this post was created
@@ -50,6 +57,19 @@
         }
     }
 
+    function createPost(post) {
+        var opts = {
+            method: 'POST',
+            body: JSON.stringify(post),
+            headers: {'Content-Type' : 'application/json'},
+        };
+     
+        return fetch('http://127.0.0.1:5000/api/add_post', opts)
+        .then(function (response) {
+          return response.json();
+        });
+    }
+
     function _foreach(ary, callback) {
         for (var i=0; i<ary.length; i++) {
             var el = ary[i];
@@ -57,7 +77,7 @@
         }
     }
 
-    function toPromise(prms) {
+    function _toPromise(prms) {
         return new Promise(function (resolve, reject){
             prms.then(resolve, reject);
         });
