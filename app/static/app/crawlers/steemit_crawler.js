@@ -14,8 +14,6 @@
     var tries = 3;
     var jobId;
 
-    Crawl();
-
     exports.StopCrawler = function () {
         clearInterval(jobId);
     }
