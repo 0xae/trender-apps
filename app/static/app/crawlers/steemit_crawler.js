@@ -88,6 +88,18 @@
         var footer = _rawPost.firstChild.getElementsByClassName('PostSummary__footer')[0];
         var footerDetails = footer.getElementsByClassName('show-for-medium')[0].firstChild;
         var postInfo = _rawPost.firstChild.lastChild;
+        var img=_rawPost.getElementsByClassName('PostSummary__image');
+        var picture = 'nopicture';
+
+        if (img.length) {
+            var postImage = _rawPost.getElementsByClassName('PostSummary__image')[0].style.backgroundImage.valueOf();
+            var m = /url\((.*)\)/.exec(postImage);
+            if (m) {
+                picture = m[1].replace(/"/g,'');                                
+            } else {
+                WARN(postImage);
+            }
+        }
 
         var profile = {
             username: footerDetails.children[1].firstChild.innerText,
@@ -122,6 +134,7 @@
             timestamp: Date.now(),
             timming: postDate,
             type: "post",
+            picture: picture,
             facebookId: postLink.viewLink,
         };
 

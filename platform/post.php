@@ -6,11 +6,11 @@
                href="/techinsider/photos/a.398898576975171.1073741827.352751268256569/699090756955950/?type=3&amp;source=45&amp;refid=17" 
                style="width:50px; height: 50px;"
                title="Profile picture of Tech Insider">
-                <img src="{{post.author.picture}}" 
+                <img src="{{post.picture}}" 
                      width="50" 
                      height="50" 
                      class="" 
-                     alt="{{post.author.title}} Picture">
+                     alt="Post Picture">
             </a>
         </div>
         <div style="">
