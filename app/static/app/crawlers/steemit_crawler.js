@@ -13,7 +13,7 @@
 */
 (function (exports, document) {
     var tries = 3;
-    var MIN_POSTS_PER_PAGE=100;
+    var MIN_POSTS_PER_PAGE=170;
     var jobId;
 
     exports.StopCrawler = function () {
