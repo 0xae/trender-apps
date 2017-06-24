@@ -2,7 +2,6 @@
  * Steemit Crawler
  * TODO:
  *  [X] get timming / send timestamp instead of timming ? 
- *  [ ] refresh page once for while to get brand new posts
  *  [ ] scroll page on crawling
  *  [ ] send post listing (which may be multiple)
  *  [ ] fix `Saga fetchState error ~~>' errors
@@ -14,6 +13,7 @@
 */
 (function (exports, document) {
     var tries = 3;
+    var MIN_POSTS_PER_PAGE=100;
     var jobId;
 
     exports.StopCrawler = function () {
@@ -31,9 +31,7 @@
     function Crawl() {
         var queue = [];
         var posts=document.getElementById("posts_list").firstChild.children;
-
-        if (!posts || !posts.length) {
-            INFO("too early!");
+        if (!isPageReady()) {
             return;
         }
 
@@ -157,6 +155,24 @@
         for (var i=0; i<ary.length; i++) {
             var el = ary[i];
             callback(el);
+        }
+    }
+
+    // XXX: counting posts may throw an error
+    function isPageReady() {
+        var hasLoading = document.getElementsByClassName('LoadingIndicator').length > 0;
+        if (hasLoading) {
+            return false;
+        }
+
+        var totalPosts = document.getElementById("posts_list").firstChild.children.length;
+        if (totalPosts < MIN_POSTS_PER_PAGE) {
+            INFO("loading more posts...")
+            window.scrollTo(0,document.body.scrollHeight);
+            return false;
+        } else {
+            INFO("ready to crawl");
+            return true;
         }
     }
 
