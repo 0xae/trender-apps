@@ -2,10 +2,10 @@
  * Steemit Crawler
  * TODO:
  *  [X] get timming / send timestamp instead of timming ? 
- *  [ ] scroll page on crawling
+ *  [X] scroll page on crawling
  *  [ ] send post listing (which may be multiple)
- *  [ ] fix `Saga fetchState error ~~>' errors
- *  [ ] fix `'Access-Control-Allow-Origin' errors
+ *  [X] fix `Saga fetchState error ~~>' errors
+ *  [X] fix `'Access-Control-Allow-Origin' errors
 
  * NOTES:
  *  % steemit posts can have many tags (how do we adapt that to listings)
