@@ -5,6 +5,8 @@
  *  [ ] refresh page once for while to get brand new posts
  *  [ ] scroll page on crawling
  *  [ ] send post listing (which may be multiple)
+ *  [ ] fix `Saga fetchState error ~~>' errors
+ *  [ ] fix `'Access-Control-Allow-Origin' errors
 
  * NOTES:
  *  % steemit posts can have many tags (how do we adapt that to listings)
@@ -30,6 +32,11 @@
         var queue = [];
         var posts=document.getElementById("posts_list").firstChild.children;
 
+        if (!posts || !posts.length) {
+            INFO("too early!");
+            return;
+        }
+
         // as a dom node, p is
         _foreach(posts, function (p){
             var req = getPostRequest(p);
@@ -39,7 +46,7 @@
         Promise.all(queue)        
         .then(function () {
            tries = 3;
-           INFO("Done crawling ");
+           INFO("Done crawling " + queue.length + " posts");
            _go();
         }, function () {
             WARN("Humm, something went wrong");
@@ -50,14 +57,6 @@
         });
     }
 
-    function _go() {
-        var topic = GetRandomTopic();
-        LOG("going for #" +  topic.innerText)
-        if (topic) {
-           topic.click();            
-        }
-    }
-
     function GetRandomTopic() {
         var topics = document.getElementsByClassName('PostsIndex__topics')[0];
         var links = topics.getElementsByTagName("a");
@@ -66,6 +65,14 @@
 
         if (topic && topic.href && topic.innerText!='Show more topics..')
             return topic;
+    }
+
+    function _go() {
+        var topic = GetRandomTopic();
+        LOG("going for #" +  topic.innerText)
+        if (topic) {
+           topic.click();            
+        }
     }
 
     function getPostRequest(_rawPost) {
@@ -97,12 +104,13 @@
             shareLink: viewLink
         };
 
+        // XXX: change timestamp back to postDate
         var postDate = footerDetails.children[0].firstChild.title;
         var post = {
             description: postInfo.firstChild.getElementsByTagName("a")[0].innerText,
             postLink: postLink,
             postReaction: postReaction,
-            timestamp: new Date(postDate).getTime(),
+            timestamp: Date.now(),
             timming: postDate,
             type: "post",
             facebookId: postLink.viewLink,
@@ -119,7 +127,7 @@
         var opts = {
             method: 'POST',
             body: JSON.stringify(post),
-            headers: {'Content-Type' : 'application/json'},
+            headers: {'Content-Type' : 'application/json'}
         };
      
         return fetch('http://127.0.0.1:5000/api/add_post', opts)
@@ -138,13 +146,6 @@
 
     function INFO(msg) {
        console.info("[INFO] " + new Date(), msg);  
-    }
-
-    function ASSERT(cond, msg) {
-        if (!cond) {
-            msg = msg || "Assertion error";
-            throw new Error(msg);
-        }
     }
 
     function _foreach(ary, callback) {
