@@ -5,7 +5,7 @@
  *  [ ] refresh page once for while to get brand new posts
  *  [ ] scroll page on crawling
  *  [ ] send post listing (which may be multiple)
- *  [ ] fix `Saga fetchState error ~~>' errors
+ *  [X] fix `Saga fetchState error ~~>' errors
  *  [ ] fix `'Access-Control-Allow-Origin' errors
 
  * NOTES:
@@ -60,7 +60,8 @@
     function GetRandomTopic() {
         var topics = document.getElementsByClassName('PostsIndex__topics')[0];
         var links = topics.getElementsByTagName("a");
-        var index = parseInt(Math.random() * links.length);
+        var len=links.length;
+        var index = parseInt(Math.random() * len) % len;
         var topic = links[index];
 
         if (topic && topic.href && topic.innerText!='Show more topics..')
