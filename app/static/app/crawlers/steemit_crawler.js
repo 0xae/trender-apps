@@ -3,9 +3,8 @@
  * TODO:
  *  [ ] get timming / send timestamp instead of timming ? 
  *  [ ] refresh page once for while to get brand new posts
- *  [ ] scroll page
+ *  [ ] scroll page on crawling
  *  [ ] send post listing (which may be multiple)
- *  [ ]
 */
 
 (function (exports, document) {
@@ -20,27 +19,29 @@
         jobId = setInterval(Crawl, 4000);
     }
 
-    /**
-     * TODO: topic page scrolling
-    */
+    exports.Crawl = function () {
+        return Crawl();
+    }
+
     function Crawl() {
         var queue = [];
         var posts=document.getElementById("posts_list").firstChild.children;
         _foreach(posts, function (p){
             var req = getPostRequest(p);
-            queue.push(createPost(req));
+            console.info(req);
+            // queue.push(createPost(req));
         });
 
-        Promise.all(queue)        
-        .then(function () {
-           tries = 3;
-           console.log("[INFO] Done crawling ");
-           _go();
-        }, function () {
-            console.warn("[WARN] Humm, something went wrong");
-            tries += 1;
-            if (tries == 3) { _go(); }
-        });
+//         Promise.all(queue)        
+//         .then(function () {
+//            tries = 3;
+//            console.log("[INFO] Done crawling ");
+//            _go();
+//         }, function () {
+//             console.warn("[WARN] Humm, something went wrong");
+//             tries += 1;
+//             if (tries == 3) { _go(); }
+//         });
     }
 
     function _go() {
