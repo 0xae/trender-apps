@@ -28,28 +28,25 @@
         var posts=document.getElementById("posts_list").firstChild.children;
         _foreach(posts, function (p){
             var req = getPostRequest(p);
-            console.info(req);
+            INFO(req);
             // queue.push(createPost(req));
         });
 
 //         Promise.all(queue)        
 //         .then(function () {
 //            tries = 3;
-//            console.log("[INFO] Done crawling ");
+//            INFO("Done crawling ");
 //            _go();
 //         }, function () {
-//             console.warn("[WARN] Humm, something went wrong");
+//             WARN("Humm, something went wrong");
 //             tries += 1;
 //             if (tries == 3) { _go(); }
 //         });
     }
 
     function _go() {
-       var topic = GetRandomTopic();
-       console.log("[LOG] " + 
-                     new Date() + 
-                     " going for #" + 
-                     topic.innerText);
+        var topic = GetRandomTopic();
+        LOG("going for #" +  topic.innerText)
         if (topic) {
            topic.click();            
         }
@@ -74,7 +71,7 @@
         var profile = {
             username: footerDetails.children[1].firstChild.innerText,
             title: footerDetails.children[1].firstChild.innerText,
-            link: footerDetails.children[1].firstChild.href,
+            link: footerDetails.children[1].firstChild.href
         };
 
         // listing code
@@ -126,6 +123,18 @@
         .then(function (response) {
           return response.json();
         });
+    }
+
+    function LOG(msg) {
+       console.log("[LOG] " + new Date() + " " + msg);  
+    }
+
+    function WARN(msg) {
+       console.warn("[INFO] " + new Date() + " " + msg);  
+    }
+
+    function INFO(msg) {
+       console.info("[INFO] " + new Date() + " " + msg);  
     }
 
     function _foreach(ary, callback) {
