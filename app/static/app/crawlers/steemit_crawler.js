@@ -25,13 +25,19 @@
     }
 
     exports.Crawl = function () {
-        return Crawl();
+        // just crawl
+        return Crawl(true);
     }
 
-    function Crawl() {
+    function Crawl(skipLoading) {
         var queue = [];
         var posts=document.getElementById("posts_list").firstChild.children;
-        if (!isPageReady()) {
+        if (!skipLoading && !isPageReady()) {
+            return;
+        }
+
+        if (!posts || !posts.length) {
+            WARN("no posts to crawl.");
             return;
         }
 
