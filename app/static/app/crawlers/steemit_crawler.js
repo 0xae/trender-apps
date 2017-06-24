@@ -5,7 +5,7 @@
  *  [ ] refresh page once for while to get brand new posts
  *  [ ] scroll page on crawling
  *  [ ] send post listing (which may be multiple)
- *  [X] fix `Saga fetchState error ~~>' errors
+ *  [ ] fix `Saga fetchState error ~~>' errors
  *  [ ] fix `'Access-Control-Allow-Origin' errors
 
  * NOTES:
