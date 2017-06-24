@@ -64,15 +64,19 @@
         var index = parseInt(Math.random() * len) % len;
         var topic = links[index];
 
+        if (!topic) {
+            console.info("invalid topic ["+index+", "+len+"]");
+        }
+
         if (topic && topic.href && topic.innerText!='Show more topics..')
             return topic;
     }
 
     function _go() {
         var topic = GetRandomTopic();
-        LOG("going for #" +  topic.innerText)
         if (topic) {
-           topic.click();            
+            LOG("going for #" +  topic.innerText)
+            topic.click();            
         }
     }
 
