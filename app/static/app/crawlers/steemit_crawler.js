@@ -1,3 +1,13 @@
+/**
+ * Steemit Crawler
+ * TODO:
+ *  [ ] get timming / send timestamp instead of timming ? 
+ *  [ ] refresh page once for while to get brand new posts
+ *  [ ] scroll page
+ *  [ ] send post listing (which may be multiple)
+ *  [ ]
+*/
+
 (function (exports, document) {
     var tries = 3;
     var jobId;

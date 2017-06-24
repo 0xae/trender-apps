@@ -1,3 +1,7 @@
+/**
+ * Free Facebook Crawler
+ * This is the very first version of the crawler
+*/
 var TIMMING = 7000; // 7 seconds
 var PAGINATION_DEEP = 20;
 
