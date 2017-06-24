@@ -2,7 +2,6 @@
 apps,crawlers,indexers,stuff built for the [Trender Platform](https://github.com/0xae/trender).
 for now platform code only.
 
-
 ## Prologue 
 ### platform 
     extensive data analysis, realtime search, profile views,trending activity/topics,
