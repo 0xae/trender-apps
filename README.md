@@ -2,6 +2,7 @@
 apps,crawlers,indexers,stuff built for the [Trender Platform](https://github.com/0xae/trender).
 for now platform code only.
 
+
 ## Prologue 
 ### platform 
     extensive data analysis, realtime search, profile views,trending activity/topics,
@@ -28,6 +29,7 @@ for now platform code only.
 - [ ] rich multimedia design  (music, videos, images, links, etc)
 - [ ] jquery/javascript modularized architecture
 - [X] adopt a framework for php ? (yii 2)
+- [ ] get rid of the platform folder
 
 ### Crawler
 - [ ] enhance the code, it's very messy
@@ -51,3 +53,4 @@ for now platform code only.
 [Adopt Vue.js](https://vuejs.org/v2/guide/)
 
 [Awesome Vue.js links](https://github.com/vuejs/awesome-vue)
+
