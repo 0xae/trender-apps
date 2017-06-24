@@ -1,15 +1,20 @@
 /**
  * Steemit Crawler
  * TODO:
- *  [ ] get timming / send timestamp instead of timming ? 
+ *  [X] get timming / send timestamp instead of timming ? 
  *  [ ] refresh page once for while to get brand new posts
  *  [ ] scroll page on crawling
  *  [ ] send post listing (which may be multiple)
-*/
 
+ * NOTES:
+ *  % steemit posts can have many tags (how do we adapt that to listings)
+ *  % i am so dandy today
+*/
 (function (exports, document) {
     var tries = 3;
     var jobId;
+
+    Crawl();
 
     exports.StopCrawler = function () {
         clearInterval(jobId);
@@ -26,22 +31,25 @@
     function Crawl() {
         var queue = [];
         var posts=document.getElementById("posts_list").firstChild.children;
+
+        // as a dom node, p is
         _foreach(posts, function (p){
             var req = getPostRequest(p);
-            INFO(req);
-            // queue.push(createPost(req));
+            queue.push(createPost(req));
         });
 
-//         Promise.all(queue)        
-//         .then(function () {
-//            tries = 3;
-//            INFO("Done crawling ");
-//            _go();
-//         }, function () {
-//             WARN("Humm, something went wrong");
-//             tries += 1;
-//             if (tries == 3) { _go(); }
-//         });
+        Promise.all(queue)        
+        .then(function () {
+           tries = 3;
+           INFO("Done crawling ");
+           _go();
+        }, function () {
+            WARN("Humm, something went wrong");
+            tries += 1;
+            if (tries == 3) { 
+                _go(); 
+            }
+        });
     }
 
     function _go() {
@@ -67,26 +75,23 @@
         var footerDetails = footer.getElementsByClassName('show-for-medium')[0].firstChild;
         var postInfo = _rawPost.firstChild.lastChild;
 
-        // profile code
         var profile = {
             username: footerDetails.children[1].firstChild.innerText,
             title: footerDetails.children[1].firstChild.innerText,
             link: footerDetails.children[1].firstChild.href
         };
 
-        // listing code
         var listing = {            
             link: footerDetails.children[2].firstChild.href,
             name: footerDetails.children[2].firstChild.innerText
         };
 
-        // post-reaction code
         // TODO: countShares, countComments
         var postReaction = {
             countLikes: parseInt(footer.children[1].firstChild.innerText.trim())
         };
 
-        // post-links code
+        // FIXME: steemit doesnt have comments and share links, how do we handle that?
         var viewLink=postInfo.firstChild.getElementsByTagName("a")[0].href;
         var postLink = {
             viewLink: viewLink,
@@ -94,21 +99,21 @@
             shareLink: viewLink
         };
 
-        // post code
-        // TODO: timming
+        var postDate = footerDetails.children[0].firstChild.title;
         var post = {
             description: postInfo.firstChild.getElementsByTagName("a")[0].innerText,
             postLink: postLink,
             postReaction: postReaction,
-            timming: 'Just now',
+            timestamp: new Date(postDate).getTime(),
+            timming: postDate,
             type: "post",
             facebookId: postLink.viewLink,
         };
 
-        // TODO: get listing on which this post was created
+        // TODO: get listing(s) on which this post was created
         return {
             profile: profile,
-            post: post        
+            post: post,       
         };
     }
 
@@ -126,15 +131,22 @@
     }
 
     function LOG(msg) {
-       console.log("[LOG] " + new Date() + " " + msg);  
+       console.log("[LOG] " + new Date(), msg);  
     }
 
     function WARN(msg) {
-       console.warn("[INFO] " + new Date() + " " + msg);  
+       console.warn("[INFO] " + new Date(), msg);  
     }
 
     function INFO(msg) {
-       console.info("[INFO] " + new Date() + " " + msg);  
+       console.info("[INFO] " + new Date(), msg);  
+    }
+
+    function ASSERT(cond, msg) {
+        if (!cond) {
+            msg = msg || "Assertion error";
+            throw new Error(msg);
+        }
     }
 
     function _foreach(ary, callback) {
