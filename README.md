@@ -26,7 +26,7 @@ for now platform code only.
 - [ ] posts filter
 - [ ] posts browser (by date range, profiles, listings, topics)
 - [ ] rich multimedia design  (music, videos, images, links, etc)
-- [ ] jquery/javascript modularized architecture
+- [X] jquery/javascript modularized architecture
 - [X] adopt a framework for php ? (yii 2)
 - [ ] get rid of the platform folder
 
