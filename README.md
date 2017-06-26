@@ -31,7 +31,6 @@ for now platform code only.
 - [ ] get rid of the platform folder
 
 ### Crawler
-- [ ] enhance the code, it's very messy
 - [ ] batch posts
 - [ ] modularize the code
 
