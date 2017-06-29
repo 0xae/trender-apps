@@ -5,6 +5,8 @@ for now platform code only.
 ## Prologue 
 ### platform 
     extensive data analysis, realtime search, profile views,trending activity/topics,
+    steemit integration, coinmarketcap tracking, gold/silver market trends, korean comsumption channels
+    korean tv broadcast, news
     glitch.com ideas ?
     
 ### news 
