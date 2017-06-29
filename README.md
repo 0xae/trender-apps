@@ -37,6 +37,13 @@ for now platform code only.
 - [ ] modularize the code
 
 ## Ideas for timeline/searching/design
+
+### bittorrent network
+    stream videos, music, shows, cartoons from the bittorrent tv
+    adapt to fluctuating network speeds
+
+[BitTorrent TV](https://btlive.tv/)
+
 [#UbiE3 pirate](https://twitter.com/search?q=%23UbiE3%20pirate&src=typd)
 
 [#SkullandBones](https://twitter.com/hashtag/SkullandBones?src=hash)
