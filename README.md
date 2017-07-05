@@ -5,6 +5,8 @@ for now platform code only.
 ## Prologue 
 ### platform 
     extensive data analysis, realtime search, profile views,trending activity/topics,
+    steemit integration, coinmarketcap tracking, gold/silver market trends, korean comsumption channels
+    korean tv broadcast, news, frame plugin type,
     glitch.com ideas ?
     
 ### news 
@@ -26,16 +28,23 @@ for now platform code only.
 - [ ] posts filter
 - [ ] posts browser (by date range, profiles, listings, topics)
 - [ ] rich multimedia design  (music, videos, images, links, etc)
-- [ ] jquery/javascript modularized architecture
+- [X] jquery/javascript modularized architecture
 - [X] adopt a framework for php ? (yii 2)
 - [ ] get rid of the platform folder
 
 ### Crawler
-- [ ] enhance the code, it's very messy
 - [ ] batch posts
 - [ ] modularize the code
+- [ ] link tracking code
 
 ## Ideas for timeline/searching/design
+
+### bittorrent network
+    stream videos, music, shows, cartoons from the bittorrent tv
+    adapt to fluctuating network speeds
+
+[BitTorrent TV](https://btlive.tv/)
+
 [#UbiE3 pirate](https://twitter.com/search?q=%23UbiE3%20pirate&src=typd)
 
 [#SkullandBones](https://twitter.com/hashtag/SkullandBones?src=hash)
