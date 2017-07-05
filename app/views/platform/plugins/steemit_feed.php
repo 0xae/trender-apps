@@ -23,24 +23,24 @@
 
 
             <li role="presentation" class="disabled">
-                <a href="#" style="font-size:11px;padding: 0px;padding-right:3px;">
+                <a href="{{ p.postLink.viewLink" style="font-size:11px;padding: 0px;padding-right:3px;">
                 · Like
                 </a>
             </li>
             <li role="presentation" class="disabled">
-                <a href="#" style="font-size:11px;padding: 0px;padding-right:3px;">
+                <a href="{{ p.postLink.commentLink }}" style="font-size:11px;padding: 0px;padding-right:3px;">
                  · Comment
                 </a>
             </li>
             <li role="presentation" class="disabled">
-                <a href="#" style="font-size:11px;padding: 0px;padding-right:3px;">
+                <a href="{{ p.postLink.viewLink }}" style="font-size:11px;padding: 0px;padding-right:3px;">
                  · Full Story · 
                 </a>
             </li>
             <li role="presentation" class="disabled">
                 <a href="#" style="font-size:11px;padding: 0px;padding-right:3px;">
             <!--        <span style="font-weight:bold;font-size:10px"class="fa fa-calendar"></span> -->
-                    {{ p.timming }} 
+                    {{ p.post_time }} 
                 </a>
             </li>
         </ul>
