@@ -11,9 +11,9 @@ angular.module('trender')
         var today = moment();
         
         if (today.format("YYYY-MM-DD") == m.format("YYYY-MM-DD")) {
-            return "Today at " + m.format("h:mma");
+            return m.format("h:mma");
         } else {
-            return m.format("ddd MMM Do YYYY, h:mma");
+            return m.format("MMM DD YYYY, h:mma");
         }
     }
 

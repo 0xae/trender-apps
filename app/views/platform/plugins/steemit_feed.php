@@ -10,7 +10,11 @@
         </a>
       </div>
       <div class="media-body">
-        <h4 class="st-post-author" style="display: inherit;">{{ p.author.title }}</h4>
+        <h4 class="st-post-author" style="display: inherit;">{{ p.author.title }}
+            <a href="#" style="font-size:11px;padding: 0px;padding-right:3px;color:#777;text-decoration:none;font-weight:normal;">
+             · {{ p.post_time }} 
+            </a>
+        </h4>
         <p style="font-size:13px;">{{ p.description }} </p>
         <ul class="nav nav-pills">
             <li role="presentation" class="">
@@ -37,10 +41,6 @@
                 </a>
             </li>
             <li role="presentation" class="disabled">
-                <a href="#" style="font-size:11px;padding: 0px;padding-right:3px;">
-            <!--        <span style="font-weight:bold;font-size:10px"class="fa fa-calendar"></span> -->
-                    {{ p.post_time }} 
-                </a>
             </li>
         </ul>
       </div>
