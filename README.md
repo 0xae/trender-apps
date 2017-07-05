@@ -14,6 +14,7 @@ for now platform code only.
     ...we need more ideas for this...
     
 ### tv 
+    streamming tv shows, movies, anime, cartoon, weird comercials and south korean stuff
     smart/exquisite youtube video browsing (bring old cinema to my laptop)
     youtube live watching
     youtube live events video agg (like #UBIE3)
