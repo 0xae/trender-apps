@@ -6,7 +6,7 @@ for now platform code only.
 ### platform 
     extensive data analysis, realtime search, profile views,trending activity/topics,
     steemit integration, coinmarketcap tracking, gold/silver market trends, korean comsumption channels
-    korean tv broadcast, news
+    korean tv broadcast, news, frame plugin type,
     glitch.com ideas ?
     
 ### news 
