@@ -25,22 +25,20 @@
             </li>
 
 
-            <li role="presentation" class="disabled">
-                <a href="{{ p.postLink.viewLink" style="font-size:12px;padding: 0px;padding-right:3px;">
+            <li role="presentation" class="">
+                <a href="{{ p.postLink.viewLink" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
                 · like
                 </a>
             </li>
-            <li role="presentation" class="disabled">
-                <a href="{{ p.postLink.commentLink }}" style="font-size:12px;padding: 0px;padding-right:3px;">
+            <li role="presentation" class="">
+                <a href="{{ p.postLink.commentLink }}" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
                  · comment
                 </a>
             </li>
-            <li role="presentation" class="disabled">
-                <a href="{{ p.postLink.viewLink }}" style="font-size:12px;padding: 0px;padding-right:3px;">
-                 · full Story
+            <li role="presentation" class="color: #777">
+                <a href="{{ p.postLink.viewLink }}" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
+                 · full story
                 </a>
-            </li>
-            <li role="presentation" class="disabled">
             </li>
         </ul>
       </div>
