@@ -35,6 +35,7 @@ for now platform code only.
 ### Crawler
 - [ ] batch posts
 - [ ] modularize the code
+- [ ] link tracking code
 
 ## Ideas for timeline/searching/design
 
