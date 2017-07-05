@@ -23,8 +23,11 @@ class AppAsset extends AssetBundle {
 
     public $js = [
         "static/lib/lodash/lodash.js",
-        "static/lib/vuejs/vue-2.3.4.js",
-        "static/app/app.js"
+        "static/lib/moment/moment.min.js",
+        "static/lib/moment-duration-format/moment-duration-format.js",
+        "static/lib/angularjs/angular.min.js",
+        "static/app/app.js",
+        "static/app/controllers/post.js",
     ];
 
     public $depends = [

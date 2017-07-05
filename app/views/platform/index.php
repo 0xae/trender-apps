@@ -8,7 +8,7 @@ $this->title = 'Trender Platform';
     </div>
 
     <div class="col-md-8" style="margin-left:250px;margin-top: 50px;">
-        <?php echo $this->render("code/components"); ?>
+        <?php echo $this->render("plugins/steemit_feed"); ?>
     </div>
  </div>
 

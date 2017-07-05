@@ -143,19 +143,3 @@ h5.title {
     display: inline-block;
     background: #ffb300;
 }
-
-.st-post-author {
-    color: #2b55ad;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-
-.calendar {
-    
-    background-size: auto;
-    background-repeat: no-repeat;
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-}
