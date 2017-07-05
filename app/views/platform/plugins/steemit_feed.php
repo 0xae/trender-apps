@@ -15,7 +15,7 @@
              · {{ p.post_time }} 
             </a>
         </h4>
-        <p style="font-size:13px;">{{ p.description }} </p>
+        <p style="margin-bottom:5px;font-size:13px;">{{ p.description }} </p>
         <ul class="nav nav-pills">
             <li role="presentation" class="">
                 <a href="#" style="font-size:12px;padding: 0px;padding-right:3px;">
@@ -27,17 +27,17 @@
 
             <li role="presentation" class="disabled">
                 <a href="{{ p.postLink.viewLink" style="font-size:12px;padding: 0px;padding-right:3px;">
-                · Like
+                · like
                 </a>
             </li>
             <li role="presentation" class="disabled">
                 <a href="{{ p.postLink.commentLink }}" style="font-size:12px;padding: 0px;padding-right:3px;">
-                 · Comment
+                 · comment
                 </a>
             </li>
             <li role="presentation" class="disabled">
                 <a href="{{ p.postLink.viewLink }}" style="font-size:12px;padding: 0px;padding-right:3px;">
-                 · Full Story · 
+                 · full Story
                 </a>
             </li>
             <li role="presentation" class="disabled">
