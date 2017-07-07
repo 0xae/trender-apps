@@ -37,7 +37,7 @@ angular.module('trender')
             return;            
         }
 
-        postService.stream(time)
+        postService.stream(time, 10)
         .then(function (data) {
             data.forEach(function (p) {
                p.post_time = formatTime(p.timestampFmt); 

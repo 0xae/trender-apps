@@ -26,8 +26,9 @@ angular.module('trender')
     }
 
     var offset=0;
-    function stream(startDate) {
-        return fetchPosts(startDate, 4, offset, 'asc')
+    function stream(startDate, limit) {
+        limit = limit || 4;
+        return fetchPosts(startDate, limit, offset, 'asc')
         .then(function (data) {
             if (data.length > 0) {
                 offset += 4;                

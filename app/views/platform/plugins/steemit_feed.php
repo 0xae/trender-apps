@@ -1,9 +1,8 @@
-<h1 id="steemit_title">Steemit Feed</h1>
 
 <div class="col-md-6" ng-controller="PostController">
+<span id="steemit_title"></span>
 
 <div class="media" ng-repeat="p in posts">
-
       <div class="media-left">
         <a href="#">
           <img class="media-object" ng-src="{{ p.picture }}" alt="Foto of {{p.author.name}}" width="70" height="50"/>
