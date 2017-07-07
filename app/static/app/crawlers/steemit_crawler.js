@@ -55,7 +55,7 @@
         }, function () {
             WARN("Humm, something went wrong");
             tries += 1;
-            if (tries == 3) { 
+            if (tries >= 3) { 
                 _go(); 
             }
         });

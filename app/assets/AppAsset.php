@@ -27,9 +27,9 @@ class AppAsset extends AssetBundle {
         "static/lib/moment-duration-format/moment-duration-format.js",
         "static/lib/angularjs/angular.min.js",
         "static/app/app.js",
-        "static/app/services/post.js",
+        "static/app/services/post.service.js",
         "static/app/services/api.js",
-        "static/app/controllers/post.js",
+        "static/app/controllers/post.controller.js",
     ];
 
     public $depends = [
