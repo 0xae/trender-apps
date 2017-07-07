@@ -6,33 +6,34 @@ angular.module('trender')
         });
     }
 
-    var seedPost=undefined;
-    function getSeed(startDate) {
-        var q = $q.defer();
-        if (seedPost == undefined) {
-            var seedUrl = API.url() + 'api/recent_posts?time='+decodeURIComponent(startDate)
-                     + '&limit=1&o=asc';
-
-            promisify($http.get(seedUrl))
-                .then(function (data) {
-                    if (data.length==0) {
-                        q.resolve(null); // no posts fella
-                    } else {
-                        var older = data[0];
-                        var t = moment(older.timestampFmt);
-                        q.resolve(t);
-                    }
-                });
-        } else {
-            q.resolve(seedPost);
+    function fetchPosts(time, limit, offset, sortOrder) {
+        var url = API.url() + 'api/recent_posts?';
+        if (time) {
+            var timef = decodeURIComponent(time); 
+            url = url + "time="+ timef  + '&';
+        }
+        if (offset) {
+            url = url + 'offset='+offset+'&';
+        }
+        if (limit) {
+            url = url + 'limit='+limit+'&';
+        }
+        if (sortOrder) {
+            url = url + 'o='+ sortOrder + '&';
         }
 
-        return q.promise;
+        return promisify($http.get(url));
     }
 
+    var offset=0;
     function stream(startDate) {
-        var q = $q.defer();
-        return q.promise;
+        return fetchPosts(startDate, 4, offset, 'asc')
+        .then(function (data) {
+            if (data.length > 0) {
+                offset += 4;                
+            }
+            return data;
+        });
     }
 
     return {
@@ -44,20 +45,7 @@ angular.module('trender')
             return promisify($http.get(API.url() + 'post/fbid/'+fbid));
         },
 
-        getRecentPosts: function (time,limit,sortOrder) {
-            var url = API.url() + 'api/recent_posts?';
-            if (time) {
-                var timef = decodeURIComponent(time); 
-                url = url + "time="+ timef  + '&';
-            }
-            if (limit) {
-                url = url + 'limit='+limit+'&';
-            }
-            if (sortOrder) {
-                url = url + 'o='+ sortOrder + '&';
-            }
-
-            return promisify($http.get(url));
-        }
+        getRecentPosts: fetchPosts,
+        stream: stream,
     }
 }]);
