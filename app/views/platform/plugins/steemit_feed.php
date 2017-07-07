@@ -1,4 +1,4 @@
-<h1>Steemit Feed</h1>
+<h1 id="steemit_title">Steemit Feed</h1>
 
 <div class="col-md-6" ng-controller="PostController">
 
