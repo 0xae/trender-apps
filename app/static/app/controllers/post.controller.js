@@ -15,6 +15,9 @@ angular.module('trender')
         }
     }
 
+    /**
+       * @see https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
+    */
     function isElVisible(element, fullyInView) {
         var pageTop = $(window).scrollTop();
         var pageBottom = pageTop + $(window).height();
