@@ -31,7 +31,7 @@ angular.module('trender')
         return fetchPosts(startDate, limit, offset, 'asc')
         .then(function (data) {
             if (data.length > 0) {
-                offset += 4;                
+                offset += 4;        
             }
             return data;
         });

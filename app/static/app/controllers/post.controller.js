@@ -4,6 +4,11 @@ angular.module('trender')
              .subtract(5, 'days')
              .format("YYYY-MM-DD HH:mm:ss");
 
+    $scope.stoped = false;
+    $scope.toggleStreamming = function () {
+        $scope.stoped = !$scope.stoped;
+    }
+
     function formatTime(time) {
         var m=moment(time);
         var today = moment();
@@ -32,7 +37,7 @@ angular.module('trender')
     }
 
     function fetchPosts () {
-        if (!isElVisible($("#steemit_title"), false)) {
+        if (!isElVisible($("#steemit_title"), false) || $scope.stoped) {
             console.info("not loading...");
             return;            
         }
