@@ -1,3 +1,23 @@
+<style>
+ul.nav li.active a {
+    background-color: #337ABC;
+    color: rgba(250,249,250,0.62);
+    border:0px;
+    background-color: #337ABC;
+    color: rgba(250,249,250,0.62);
+}
+.nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 8px 8px 8px 8px;
+    padding: 0px 8px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+</style>
+
 <div class="row" ng-controller="PostController" >
     <div class="col-md-12 " style="background-color:#000;height:340px">
         <div class="col-md-4" style="margin-top: 25px;">
@@ -11,9 +31,9 @@
         </div>
     </div>
 
-    <div class="col-md-12" style="background-color: #000;">
+    <div class="col-md-12" style="background-color: #000;padding-top:20px;">
           <div class="pull-left"> 
-              <ul class="nav nav-tabs" role="tablist">
+              <ul class="nav nav-tabs" style="border:0px;" role="tablist">
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
                     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
