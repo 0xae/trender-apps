@@ -46,8 +46,8 @@ angular.module('trender')
 
     function fetchPosts () {
         if (!isElVisible($("#steemit_title"), false) || $scope.stoped) {
-            console.info("not loading...");
-            return;            
+//             console.info("not loading...");
+//             return;            
         }
 
         postService.stream(time, 10)
@@ -68,17 +68,35 @@ angular.module('trender')
                     return -p.postReaction.countLikes;
                 });
 
-                $scope.top_posts = sorted.slice(0, 4).map(function (p) {
+                var totalIntervals = Math.floor(sorted.length/3);
+
+                var r=nextInterval();
+                var slice = sorted.slice(r[0], r[1]);
+                $scope.top_mode = 'top-'+(r[0]+r[1]);
+                $scope.top_posts = slice.map(function (p) {
                    p.description_f = p.description;
                    if (p.description.length > 90) {
                        p.description_f = p.description.substr(0, 90) + "...";
                    }
                    return p;
                 });
-
-                console.info($scope.top_posts);
             }
         });
+    }
+
+    var lastOne=0;
+    var repeat=0;
+    function nextInterval() {        
+        var ret=[lastOne, lastOne+3];
+        if ((lastOne>0 &&lastOne%5 == 0) && repeat < 2) { // hummm
+            lastOne-=3;
+            repeat+=1;
+        } else {
+            lastOne+=3;            
+            repeat=0;
+        }
+
+        return ret;
     }
 
     fetchPosts();

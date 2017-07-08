@@ -28,8 +28,9 @@ ul.nav li.active a {
 </style>
 
 <div class="row" ng-controller="PostController" >
-    <div class="col-md-12 " style="background-color:#000;height:340px">
-        <div class="col-md-4" style="margin-top: 25px;">
+    <div class="col-md-12 " style="background-color:#000;height:285px">
+        <div class="col-md-4" style="">
+            <h4 style="font-size:13px;font-weight:bold;"> #{{ top_mode }} </h4>
             <div ng-repeat="post in top_posts" style="margin-bottom: 15px;">
                 <steemit-top-post p="post">
                 </steemit-top-post>
@@ -37,10 +38,20 @@ ul.nav li.active a {
         </div>
 
         <div class="col-md-8">
+            <div style="" class="pull-right">
+                 <iframe
+                     src="http://player.twitch.tv/?channel=yoda&muted=true"
+                     height="300"
+                     width="450"
+                     frameborder="0"
+                     scrolling="no"
+                     allowfullscreen="true">
+                 </iframe>
+             </div>
         </div>
     </div>
 
-    <div class="col-md-12" style="background-color: #000;padding-bottom:10px;padding-top:20px;">
+    <div class="col-md-12" style="background-color: #000;padding-bottom:10px;padding-top:23px;">
           <div class=""> 
               <ul class="nav nav-tabs" style="border:0px;" role="tablist">
                     <li role="presentation" ng-class="{active: context=='home'}">
@@ -53,9 +64,14 @@ ul.nav li.active a {
                         </a>
                     </li>
 
+                    <li role="presentation" ng-class="{active: context=='market'}">
+                        <a href="#settings" ng-click="setContext('market');" aria-controls="settings" role="tab" data-toggle="tab">market</a>
+                    </li>
+                    <!--
                     <li role="presentation" ng-class="{active: context=='settings'}">
                         <a href="#settings" ng-click="setContext('settings');" aria-controls="settings" role="tab" data-toggle="tab">settings</a>
                     </li>
+                    -->
 
                     <li role="presentation" ng-class="{active: context=='bitcoin'}">
                         <a href="#messages" ng-click="setContext('bitcoin');" aria-controls="messages" role="tab" data-toggle="tab">#bitcoin</a>
@@ -67,14 +83,14 @@ ul.nav li.active a {
 
                     <!-- buttons to the right -->
                     <li class="pull-right" ng-if="stoped" ng-click="toggleStreamming()" role="presentation">
-                        <a style="background-color: #5cb85c;color:#fff;" href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+                        <a style="background-color: #5cb85c;color:#fff;margin-right:24px;" href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
                             resume
                         </a>
                     </li>
 
                     <li class="pull-right" ng-if="!stoped" ng-click="toggleStreamming()" role="presentation">
                             <a href="#settings" 
-                               style="background-color: #d9534f;color:#fff;font-size:11px;" 
+                               style="background-color: #d9534f;color:#fff;font-size:11px;margin-right:24px;" 
                                aria-controls="settings" 
                                role="tab" data-toggle="tab">
                             stop
@@ -103,16 +119,6 @@ ul.nav li.active a {
                 <span class="pull-right" style="margin-top:7px;font-size:11px;color:#777;background-color:#eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;"> <div class="live-indicator"></div> LIVE </span>
             </div>
 
-            <div style="">
-                 <iframe
-                     src="http://player.twitch.tv/?channel=yoda&muted=true"
-                     height="220"
-                     width="250"
-                     frameborder="0"
-                     scrolling="no"
-                     allowfullscreen="true">
-                 </iframe>
-             </div>
           </div>
         </div>
     </div>
