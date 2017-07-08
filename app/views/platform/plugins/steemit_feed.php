@@ -5,12 +5,16 @@
                 <steemit-top-post p="post">
                 </steemit-top-post>
             </div>
-            <div class="">
+        </div>
+
+        <div class="col-md-8">
+        </div>
+
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="pull-right">
                 <button type="button" class="btn btn-sm btn-success" ng-if="stoped" ng-click="toggleStreamming()">resume</button>
                 <button type="button" class="btn btn-sm btn-danger" ng-if="!stoped"ng-click="toggleStreamming()">stop</button>
             </div>
-        </div>
-        <div class="col-md-8">
         </div>
     </div>
 
