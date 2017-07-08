@@ -62,12 +62,11 @@
 
             <div style="">
                  <iframe
-                     src="http://player.twitch.tv/?channel=yoda&muted=true"
-                    height="220"
+                     src="http://player.twitch.tv/?channel=yoda&muted=false"
+                     height="220"
                      width="250"
                      frameborder="0"
                      scrolling="no"
-                     autoplay=false
                      allowfullscreen="true">
                  </iframe>
              </div>
