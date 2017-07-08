@@ -48,7 +48,13 @@ ul.nav li.active a {
                     </li>
 
                     <li role="presentation" ng-class="{active: context=='media'}">
-                        <a href="#profile" ng-click="setContext('media');" aria-controls="profile" role="tab" data-toggle="tab">media</a>
+                        <a href="#profile" ng-click="setContext('media');" aria-controls="profile" role="tab" data-toggle="tab">
+                            <span style="color:#d9534f;">tv</span>/media
+                        </a>
+                    </li>
+
+                    <li role="presentation" ng-class="{active: context=='settings'}">
+                        <a href="#settings" ng-click="setContext('settings');" aria-controls="settings" role="tab" data-toggle="tab">settings</a>
                     </li>
 
                     <li role="presentation" ng-class="{active: context=='bitcoin'}">
@@ -57,10 +63,6 @@ ul.nav li.active a {
 
                     <li role="presentation" ng-class="{active: context=='news'}">
                         <a href="#messages" ng-click="setContext('news');" aria-controls="messages" role="tab" data-toggle="tab">#news</a>
-                    </li>
-
-                    <li role="presentation" ng-class="{active: context=='settings'}">
-                        <a href="#settings" ng-click="setContext('settings');" aria-controls="settings" role="tab" data-toggle="tab">settings</a>
                     </li>
 
                     <!-- buttons to the right -->
