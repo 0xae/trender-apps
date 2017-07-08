@@ -1,31 +1,29 @@
 <div class="row" ng-controller="PostController" >
+    <div class="col-md-12 " style="background-color:#000">
+        <div class="col-md-4" style="margin-top: 25px;">
+            <div ng-repeat="post in top_posts" style="margin-bottom: 25px;">
+                <steemit-top-post p="post">
+                </steemit-top-post>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-sm btn-success" ng-if="stoped" ng-click="toggleStreamming()">resume</button>
+                <button type="button" class="btn btn-sm btn-danger" ng-if="!stoped"ng-click="toggleStreamming()">stop</button>
+            </div>
+        </div>
+        <div class="col-md-8">
+        </div>
+    </div>
 
-<div class="col-md-12 " style="background-color:#000">
-    <div class="col-md-4" style="margin-top: 25px;">
-        <div ng-repeat="post in top_posts" style="margin-bottom: 25px;">
-            <steemit-post p="post" hide-link="true">
+    <div class="col-md-5" style="margin-top: 25px;">
+        <span id="steemit_title"></span>
+        <div ng-repeat="post in posts" style="margin-bottom: 25px;">
+            <steemit-post p="post">
             </steemit-post>
         </div>
-        <div class="">
-            <button type="button" class="btn btn-sm btn-success" ng-if="stoped" ng-click="toggleStreamming()">resume</button>
-            <button type="button" class="btn btn-sm btn-danger" ng-if="!stoped"ng-click="toggleStreamming()">stop</button>
-        </div>
     </div>
-    <div class="col-md-8">
-    </div>
-</div>
-
-<div class="col-md-5" style="margin-top: 25px;">
-    <span id="steemit_title"></span>
-    <div ng-repeat="post in posts" style="margin-bottom: 25px;">
-        <steemit-post p="post">
-        </steemit-post>
-    </div>
-</div>
 
     <div class="col-md-6">
         <div class="row">
-
           <div class="col-md-7 pull-right">
             <div class="">
                 <h4 class="st-post-author pull-left" style="display: inherit;color: #ccc;">
