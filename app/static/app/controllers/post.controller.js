@@ -45,9 +45,9 @@ angular.module('trender')
     }
 
     function fetchPosts () {
-        if (!isElVisible($("#steemit_title"), false) || $scope.stoped) {
-//             console.info("not loading...");
-//             return;            
+        if (/*!isElVisible($("#steemit_title"), false) ||*/ $scope.stoped) {
+            console.info("not loading...");
+            return;            
         }
 
         postService.stream(time)
@@ -65,7 +65,7 @@ angular.module('trender')
                 }
 
                 var sorted = _.sortBy($scope.posts, function (p){
-                    return -p.postReaction.countLikes;
+                    return p.postReaction.countLikes;
                 });
 
                 $scope.total_items = sorted.length;

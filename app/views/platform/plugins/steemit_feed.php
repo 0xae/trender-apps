@@ -28,7 +28,7 @@ ul.nav li.active a {
 </style>
 
 <div class="row" ng-controller="PostController" >
-    <div class="col-md-12 " style="background-color:#000;height:285px">
+    <div class="col-md-12 " style="background-color:#000;height:330px">
         <div class="col-md-4" style="">
             <h4 style="font-size:13px;font-weight:bold;"> showing #{{ top_mode }} <br/>
                 about {{ total_items }} posts</h4>

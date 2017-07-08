@@ -10,7 +10,7 @@ angular.module('trender')
         var url = API.url() + 'api/recent_posts?';
         if (time) {
             var timef = decodeURIComponent(time); 
-            url = url + "time="+ timef  + '&';
+            url = url + "since="+ timef  + '&';
         }
         if (offset) {
             url = url + 'offset='+offset+'&';
@@ -26,11 +26,17 @@ angular.module('trender')
     }
 
     var offset=0;
+    var v=localStorage.getItem('tm_offset');
+    if (v!=null) {
+        offset = parseInt(v);
+    }
+
     function stream(startDate, limit) {
         limit = limit || 4;
         return fetchPosts(startDate, limit, offset, 'asc')
         .then(function (data) {
             if (data.length > 0) {
+                localStorage.setItem('tm_offset', offset);
                 offset += 4;        
             }
             return data;
