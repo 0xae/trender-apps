@@ -7,7 +7,7 @@ $this->title = 'Trender Platform';
         <?php echo $this->render("helpers/sidebar"); ?>
     </div>
 
-    <div class="col-md-8" style="margin-top: 50px;">
+    <div class="col-md-10" style="margin-top: 50px;">
         <?php echo $this->render("plugins/steemit_feed"); ?>
     </div>
  </div>

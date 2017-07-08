@@ -3,7 +3,7 @@ angular.module('trender')
     var time=moment()
              .subtract(5, 'days')
              .format("YYYY-MM-DD HH:mm:ss");
-
+    $scope.top_posts = null;
     $scope.stoped = false;
     $scope.toggleStreamming = function () {
         $scope.stoped = !$scope.stoped;
@@ -54,7 +54,13 @@ angular.module('trender')
                     $scope.posts = data.concat($scope.posts);
                 } else {
                     $scope.posts = data;                    
-                }            
+                }
+
+                var sorted = _.sortBy(data, function (p){
+                    return moment(p.timestampFmt).toDate().getTime();
+                });
+
+                $scope.top_posts = sorted.slice(0, 3);
             }
         });
     }
