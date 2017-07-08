@@ -1,4 +1,10 @@
 <div class="row" ng-controller="PostController" style="margin-top: 25px;">
+
+<div class="col-md-7 pull-left">
+    <button type="button" class="btn btn-sm btn-success" ng-if="stoped" ng-click="toggleStreamming()">Resume</button>
+    <button type="button" class="btn btn-sm btn-danger" ng-if="!stoped"ng-click="toggleStreamming()">Stop</button>
+</div>
+
 <div class="col-md-6" >
     <span id="steemit_title"></span>
     <div class="media" ng-repeat="p in posts">
@@ -44,9 +50,16 @@
 
     <div class="col-md-6">
         <div class="row">
-          <div class="col-md-7">
-            <button type="button" class="btn btn-sm btn-success" ng-if="stoped" ng-click="toggleStreamming()">Resume</button>
-            <button type="button" class="btn btn-sm btn-danger" ng-if="!stoped"ng-click="toggleStreamming()">Stop</button>
+
+          <div class="col-md-7 pull-right">
+            <div class="">
+                <h4 class="st-post-author pull-left" style="display: inherit;color: #ccc;">
+                    Twitch.Tv
+                </h4>
+
+                <span class="pull-right" style="margin-top:7px;font-size:11px;color:#777;background-color:#eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;"> <div class="live-indicator"></div> LIVE </span>
+            </div>
+
             <div style="">
                  <iframe
                      src="http://player.twitch.tv/?channel=yoda&muted=true"
@@ -54,6 +67,7 @@
                      width="250"
                      frameborder="0"
                      scrolling="no"
+                     autoplay=false
                      allowfullscreen="true">
                  </iframe>
              </div>
