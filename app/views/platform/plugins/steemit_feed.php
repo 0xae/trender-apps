@@ -30,7 +30,8 @@ ul.nav li.active a {
 <div class="row" ng-controller="PostController" >
     <div class="col-md-12 " style="background-color:#000;height:285px">
         <div class="col-md-4" style="">
-            <h4 style="font-size:13px;font-weight:bold;"> #{{ top_mode }} </h4>
+            <h4 style="font-size:13px;font-weight:bold;"> showing #{{ top_mode }} <br/>
+                about {{ total_items }} posts</h4>
             <div ng-repeat="post in top_posts" style="margin-bottom: 15px;">
                 <steemit-top-post p="post">
                 </steemit-top-post>

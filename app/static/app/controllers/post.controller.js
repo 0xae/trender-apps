@@ -50,7 +50,7 @@ angular.module('trender')
 //             return;            
         }
 
-        postService.stream(time, 10)
+        postService.stream(time)
         .then(function (data) {
             data.forEach(function (p) {
                p.post_time = formatTime(p.timestampFmt); 
@@ -68,9 +68,13 @@ angular.module('trender')
                     return -p.postReaction.countLikes;
                 });
 
-                var totalIntervals = Math.floor(sorted.length/3);
+                $scope.total_items = sorted.length;
 
                 var r=nextInterval();
+                if (r[0] > sorted.length) {
+                    resetInterval();
+                    r = nextInterval();
+                }
                 var slice = sorted.slice(r[0], r[1]);
                 $scope.top_mode = 'top-'+(r[0]+r[1]);
                 $scope.top_posts = slice.map(function (p) {
@@ -85,17 +89,12 @@ angular.module('trender')
     }
 
     var lastOne=0;
-    var repeat=0;
+    function resetInterval() {
+        lastOne=0;
+    }
     function nextInterval() {        
-        var ret=[lastOne, lastOne+3];
-        if ((lastOne>0 &&lastOne%5 == 0) && repeat < 2) { // hummm
-            lastOne-=3;
-            repeat+=1;
-        } else {
-            lastOne+=3;            
-            repeat=0;
-        }
-
+        var ret=[lastOne, lastOne+3];        
+        lastOne += 3;
         return ret;
     }
 
