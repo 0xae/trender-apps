@@ -26,18 +26,25 @@
     function fetchPostFromIndex() {
         if (!index || index.length==0) {
             return new Promise(function (resolve, reject){
-                fetch('127.0.0.1:5000/api/media/to_index')
-                .then(function (){
-                    index=response.json();
-                    if (index.length > 0)
-                        resolve(index.pop());
-                    else
-                        reject('No Post');
+                fetch('http://127.0.0.1:5000/api/media/to_index')
+                .then(function (response){
+                    response.json()
+                    .then(function (data){
+                        index = data;
+                        if (index.length > 0)
+                            resolve(index.pop());
+                        else
+                            reject('No Post');
+                        console.info("index is ", index);
+                    }, reject);
                 });
             });
         } else {            
             return new Promise(function (resolve, reject){
-                resolve(index.pop());
+                if (index.length > 0)
+                    resolve(index.pop());
+                else
+                    reject('No Post');
             });
         }
     }
