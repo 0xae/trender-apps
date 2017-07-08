@@ -56,11 +56,19 @@ angular.module('trender')
                     $scope.posts = data;                    
                 }
 
-                var sorted = _.sortBy(data, function (p){
-                    return moment(p.timestampFmt).toDate().getTime();
+                var sorted = _.sortBy($scope.posts, function (p){
+                    return -p.postReaction.countLikes;
                 });
 
-                $scope.top_posts = sorted.slice(0, 3);
+                $scope.top_posts = sorted.slice(0, 4).map(function (p) {
+                   p.description_f = p.description;
+                   if (p.description.length > 90) {
+                       p.description_f = p.description.substr(0, 90) + "...";
+                   }
+                   return p;
+                });
+
+                console.info($scope.top_posts);
             }
         });
     }

@@ -1,7 +1,7 @@
 <div class="row" ng-controller="PostController" >
-    <div class="col-md-12 " style="background-color:#000">
+    <div class="col-md-12 " style="background-color:#000;height:340px">
         <div class="col-md-4" style="margin-top: 25px;">
-            <div ng-repeat="post in top_posts" style="margin-bottom: 25px;">
+            <div ng-repeat="post in top_posts" style="margin-bottom: 15px;">
                 <steemit-top-post p="post">
                 </steemit-top-post>
             </div>
@@ -9,12 +9,21 @@
 
         <div class="col-md-8">
         </div>
+    </div>
 
-        <div class="col-md-12" style="padding-bottom: 10px;">
-            <div class="pull-right">
-                <button type="button" class="btn btn-sm btn-success" ng-if="stoped" ng-click="toggleStreamming()">resume</button>
-                <button type="button" class="btn btn-sm btn-danger" ng-if="!stoped"ng-click="toggleStreamming()">stop</button>
-            </div>
+    <div class="col-md-12" style="background-color: #000;">
+          <div class="pull-left"> 
+              <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+              </ul>
+          </div>
+
+        <div class="pull-right">
+            <button type="button" class="btn btn-sm btn-success" ng-if="stoped" ng-click="toggleStreamming()">resume</button>
+            <button type="button" class="btn btn-sm btn-danger" ng-if="!stoped"ng-click="toggleStreamming()">stop</button>
         </div>
     </div>
 
