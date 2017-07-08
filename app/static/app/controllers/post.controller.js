@@ -1,12 +1,20 @@
 angular.module('trender')
 .controller('PostController', ['$scope', 'PostService', function ($scope, postService){
+    $scope.context = 'home';
+    $scope.top_posts = null;
+    $scope.stoped = false;
     var time=moment()
              .subtract(5, 'days')
              .format("YYYY-MM-DD HH:mm:ss");
-    $scope.top_posts = null;
-    $scope.stoped = false;
+
+
     $scope.toggleStreamming = function () {
         $scope.stoped = !$scope.stoped;
+    }
+
+    $scope.setContext = function (context) {
+        $scope.context = context;
+        console.info("switch to context: ",  context);
     }
 
     function formatTime(time) {

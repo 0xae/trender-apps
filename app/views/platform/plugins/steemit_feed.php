@@ -16,6 +16,15 @@ ul.nav li.active a {
     font-weight: bold;
 }
 
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+    background-color: #337ABC;
+    color: rgba(250,249,250,0.62);
+    border:0px;
+    background-color: #337ABC;
+    color: rgba(250,249,250,0.62);
+}
+
 </style>
 
 <div class="row" ng-controller="PostController" >
@@ -31,20 +40,46 @@ ul.nav li.active a {
         </div>
     </div>
 
-    <div class="col-md-12" style="background-color: #000;padding-top:20px;">
-          <div class="pull-left"> 
+    <div class="col-md-12" style="background-color: #000;padding-bottom:10px;padding-top:20px;">
+          <div class=""> 
               <ul class="nav nav-tabs" style="border:0px;" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                    <li role="presentation" ng-class="{active: context=='home'}">
+                        <a href="#home" ng-click="setContext('home');" aria-controls="home" role="tab" data-toggle="tab">what's happening</a>
+                    </li>
+
+                    <li role="presentation" ng-class="{active: context=='media'}">
+                        <a href="#profile" ng-click="setContext('media');" aria-controls="profile" role="tab" data-toggle="tab">media</a>
+                    </li>
+
+                    <li role="presentation" ng-class="{active: context=='bitcoin'}">
+                        <a href="#messages" ng-click="setContext('bitcoin');" aria-controls="messages" role="tab" data-toggle="tab">#bitcoin</a>
+                    </li>
+
+                    <li role="presentation" ng-class="{active: context=='news'}">
+                        <a href="#messages" ng-click="setContext('news');" aria-controls="messages" role="tab" data-toggle="tab">#news</a>
+                    </li>
+
+                    <li role="presentation" ng-class="{active: context=='settings'}">
+                        <a href="#settings" ng-click="setContext('settings');" aria-controls="settings" role="tab" data-toggle="tab">settings</a>
+                    </li>
+
+                    <!-- buttons to the right -->
+                    <li class="pull-right" ng-if="stoped" ng-click="toggleStreamming()" role="presentation">
+                        <a style="background-color: #5cb85c;color:#fff;" href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+                            resume
+                        </a>
+                    </li>
+
+                    <li class="pull-right" ng-if="!stoped" ng-click="toggleStreamming()" role="presentation">
+                            <a href="#settings" 
+                               style="background-color: #d9534f;color:#fff;font-size:11px;" 
+                               aria-controls="settings" 
+                               role="tab" data-toggle="tab">
+                            stop
+                        </a>
+                    </li>
               </ul>
           </div>
-
-        <div class="pull-right">
-            <button type="button" class="btn btn-sm btn-success" ng-if="stoped" ng-click="toggleStreamming()">resume</button>
-            <button type="button" class="btn btn-sm btn-danger" ng-if="!stoped"ng-click="toggleStreamming()">stop</button>
-        </div>
     </div>
 
     <div class="col-md-5" style="margin-top: 25px;">
