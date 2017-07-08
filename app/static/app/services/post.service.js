@@ -43,6 +43,10 @@ angular.module('trender')
         });
     }
 
+    function indexPosts(urls) {
+        return $http.post(API.url() + 'api/media/index', JSON.stringify(urls));
+    }
+
     return {
         getPostById: function (id) {
             return $.get(API.url() + 'post/'+id);
@@ -54,5 +58,6 @@ angular.module('trender')
 
         getRecentPosts: fetchPosts,
         stream: stream,
+        indexPostMedia: indexPosts
     }
 }]);

@@ -63,28 +63,32 @@ angular.module('trender')
                 } else {
                     $scope.posts = data;                    
                 }
-
-                var sorted = _.sortBy($scope.posts, function (p){
-                    return p.postReaction.countLikes;
-                });
-
-                $scope.total_items = sorted.length;
-
-                var r=nextInterval();
-                if (r[0] > sorted.length) {
-                    resetInterval();
-                    r = nextInterval();
-                }
-                var slice = sorted.slice(r[0], r[1]);
-                $scope.top_mode = 'top-'+(r[0]+r[1]);
-                $scope.top_posts = slice.map(function (p) {
-                   p.description_f = p.description;
-                   if (p.description.length > 90) {
-                       p.description_f = p.description.substr(0, 90) + "...";
-                   }
-                   return p;
-                });
             }
+
+            var sorted = _.sortBy($scope.posts, function (p){
+                return p.postReaction.countLikes;
+            });
+
+            $scope.total_items = sorted.length;
+
+            var r=nextInterval();
+            if (r[0] > sorted.length) {
+                resetInterval();
+                r = nextInterval();
+            }
+
+            var slice = sorted.slice(r[0], r[1]);
+            var links = slice.map(function (pm){ return pm.postLink.viewLink; });
+            postService.indexPostMedia(links);
+
+            $scope.top_mode = 'top-'+(r[0]+r[1]);
+            $scope.top_posts = slice.map(function (p) {
+               p.description_f = p.description;
+               if (p.description.length > 90) {
+                   p.description_f = p.description.substr(0, 90) + "...";
+               }
+               return p;
+            });            
         });
     }
 
