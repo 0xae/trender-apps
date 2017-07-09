@@ -1,5 +1,5 @@
 > ### Internaut
-> Internaut is a portmanteau of the words Internet and astronaut and refers to a designer, operator, or technically capable user of the Internet. Wikipedia
+> Internaut is a portmanteau of the words Internet and astronaut and refers to a designer, operator, or technically capable user of the Internet. *[wikipedia](https://en.wikipedia.org/wiki/Internaut)*
 
 # trender-apps
 Fast, beautifull and interactive apps built for the [Trender Platform](https://github.com/0xae/trender).<br/>
