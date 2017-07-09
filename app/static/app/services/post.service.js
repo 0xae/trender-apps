@@ -7,7 +7,7 @@ angular.module('trender')
     }
 
     function fetchPosts(time, limit, offset, sortOrder) {
-        var url = API.url() + 'api/recent_posts?';
+        var url = API.url() + 'api/post/recent?';
         if (time) {
             var timef = decodeURIComponent(time); 
             url = url + "since="+ timef  + '&';

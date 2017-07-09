@@ -24,7 +24,6 @@ ul.nav li.active a {
     background-color: #337ABC;
     color: rgba(250,249,250,0.62);
 }
-
 </style>
 
 <div class="row" ng-controller="PostController" >
@@ -40,12 +39,8 @@ ul.nav li.active a {
 
         <div class="col-md-8">
             <div style="" class="pull-right">
-                 <iframe
-                     src="http://player.twitch.tv/?channel=yoda&muted=true"
-                     height="300"
-                     width="450"
-                     frameborder="0"
-                     scrolling="no"
+                 <iframe src="http://player.twitch.tv/?channel=yoda&muted=true"
+                     height="300" width="450" frameborder="0" scrolling="no"
                      allowfullscreen="true">
                  </iframe>
              </div>

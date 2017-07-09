@@ -13,7 +13,7 @@
 */
 (function (exports, document) {
     var tries = 3;
-    var MIN_POSTS_PER_PAGE=100;
+    var MIN_POSTS_PER_PAGE=60;
     var jobId;
 
     exports.StopCrawler = function () {
@@ -152,7 +152,7 @@
             headers: {'Content-Type' : 'application/json'}
         };
      
-        return fetch('http://127.0.0.1:5000/api/add_post', opts)
+        return fetch('http://127.0.0.1:5000/api/post/new', opts)
         .then(function (response) {
           return response.json();
         });

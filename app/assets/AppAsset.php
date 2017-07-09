@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle {
         "static/lib/angularjs/angular.min.js",
         "static/app/app.js",
         "static/app/services/post.service.js",
+        "static/app/services/media.service.js",
         "static/app/services/api.js",
         "static/app/controllers/post.controller.js",
         "static/app/directives/steemit_post.js",

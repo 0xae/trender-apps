@@ -1,5 +1,5 @@
 angular.module('trender')
-.controller('PostController', ['$scope', 'PostService', function ($scope, postService){
+.controller('PostController', ['$scope', 'PostService', 'MediaService', function ($scope, postService, mediaService){
     $scope.context = 'home';
     $scope.top_posts = null;
     $scope.stoped = false;
@@ -78,8 +78,14 @@ angular.module('trender')
             }
 
             var slice = sorted.slice(r[0], r[1]);
-            var links = slice.map(function (pm){ return pm.postLink.viewLink; });
-            postService.indexPostMedia(links);
+            var req = slice.map(function (pm){ 
+                return {
+                    fId: pm.facebookId,
+                    postId: pm.id,
+                    links: [pm.postLink.viewLink]
+                };
+            });
+            postService.indexPostMedia(req);
 
             $scope.top_mode = 'top-'+(r[0]+r[1]);
             $scope.top_posts = slice.map(function (p) {
