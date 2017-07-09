@@ -1,6 +1,8 @@
 # trender-apps
-apps,crawlers,indexers,stuff built for the [Trender Platform](https://github.com/0xae/trender).
-for now platform code only.
+Fast, beautifull and interactive apps built for the [Trender Platform](https://github.com/0xae/trender).
+
+Trender apps are stuff you will spend hours exploring, customizing and analyzing.
+
 
 ## Prologue 
 ### platform 
