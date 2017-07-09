@@ -98,7 +98,7 @@ ul.nav li.active a {
 
     <div class="col-md-5" style="margin-top: 25px;">
         <span id="steemit_title"></span>
-        <div ng-repeat="post in posts" style="margin-bottom: 25px;">
+        <div ng-repeat="post in posts track by $index" style="margin-bottom: 25px;">
             <steemit-post p="post">
             </steemit-post>
         </div>
@@ -106,16 +106,17 @@ ul.nav li.active a {
 
     <div class="col-md-6">
         <div class="row">
-          <div class="col-md-7 pull-right">
-            <div class="">
-                <h4 class="st-post-author pull-left" style="display: inherit;color: #ccc;">
-                    Twitch.Tv
-                </h4>
-
-                <span class="pull-right" style="margin-top:7px;font-size:11px;color:#777;background-color:#eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;"> <div class="live-indicator"></div> LIVE </span>
-            </div>
-
-          </div>
+              <div class="col-md-7 pull-right">
+                <div class="">
+                    <h4 class="st-post-author pull-left" style="display: inherit;color: #ccc;">
+                        Twitch.Tv
+                    </h4>
+                    <span class="pull-right" 
+                        style="margin-top:7px;font-size:11px;color:#777;background-color:#eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">
+                             <div class="live-indicator"></div> LIVE
+                     </span>
+                </div>
+              </div>
         </div>
     </div>
 </div>

@@ -1,12 +1,16 @@
 angular.module('trender')
-.controller('PostController', ['$scope', 'PostService', 'MediaService', function ($scope, postService, mediaService){
+.controller('PostController', ['$scope', 'PostService', 'MediaService', 
+function ($scope, postService, mediaService){
+    var TIMELINE_MAX_POSTS = 20;
+    var POST_PER_REQUEST = 4;
+
     $scope.context = 'home';
     $scope.top_posts = null;
     $scope.stoped = false;
+    $scope.posts = [];
     var time=moment()
              .subtract(5, 'days')
              .format("YYYY-MM-DD HH:mm:ss");
-
 
     $scope.toggleStreamming = function () {
         $scope.stoped = !$scope.stoped;
@@ -14,7 +18,74 @@ angular.module('trender')
 
     $scope.setContext = function (context) {
         $scope.context = context;
-        console.info("switch to context: ",  context);
+    }
+
+    function updateUI() {
+        if (/*!isElVisible($("#steemit_title"), false) ||*/ $scope.stoped) {
+            return;            
+        }
+
+        postService.stream(time, POST_PER_REQUEST)
+        .then(function (data) {
+            if (data.length > 0) {
+                data.forEach(function (p) {
+                    p.post_time = formatTime(p.timestampFmt); 
+                });
+                
+                // TODO: work on this later
+                var all=data.concat($scope.posts);
+                if (all.length > TIMELINE_MAX_POSTS) {
+                    $scope.posts = all.slice(0, TIMELINE_MAX_POSTS);
+                } else {
+                    $scope.posts = $scope.posts.concat(all);
+                }
+
+                var req = filterTop(data, 0, POST_PER_REQUEST)
+                .map(function (pm){ 
+                    return {
+                        fId: pm.facebookId,
+                        postId: pm.id,
+                        links: [pm.postLink.viewLink]
+                    };
+                });
+
+                mediaService.index(req);
+                postService.cache(all);
+            }
+        });
+
+         postService.getCache()
+        .then(updateTopPosts);
+         updateMedia();
+    }
+
+    // XXX: bad design
+    function updateMedia() {
+        if ($scope.loading) return;
+        mediaService.recent()
+        .then(function (data){
+            $scope.loading=false;
+        });
+    }
+
+    function updateTopPosts(posts) {
+        var r=nextInterval();
+        var topPosts = filterTop(posts, r[0], r[1]);
+        if (r[0] > topPosts.length) {
+            resetInterval();
+        }
+ 
+        $scope.total_items = posts.length;
+        $scope.top_mode = 'top-'+(r[0]+r[1]);
+        $scope.top_posts = topPosts;
+    }
+
+    function filterTop(posts, start, end) {
+        var sorted = _.sortBy(posts, function (p) {
+           return p.postReaction.countLikes;
+        });
+
+        return _.uniqBy(sorted, function (p) { return p.id; }).slice(start, end);
     }
 
     function formatTime(time) {
@@ -44,60 +115,6 @@ angular.module('trender')
         }
     }
 
-    function fetchPosts () {
-        if (/*!isElVisible($("#steemit_title"), false) ||*/ $scope.stoped) {
-            console.info("not loading...");
-            return;            
-        }
-
-        postService.stream(time)
-        .then(function (data) {
-            data.forEach(function (p) {
-               p.post_time = formatTime(p.timestampFmt); 
-            });
-
-            if (data.length) {
-                last = data[0].timestampFmt; 
-                if ($scope.posts) {
-                    $scope.posts = data.concat($scope.posts);
-                } else {
-                    $scope.posts = data;                    
-                }
-            }
-
-            var sorted = _.sortBy($scope.posts, function (p){
-                return p.postReaction.countLikes;
-            });
-
-            $scope.total_items = sorted.length;
-
-            var r=nextInterval();
-            if (r[0] > sorted.length) {
-                resetInterval();
-                r = nextInterval();
-            }
-
-            var slice = sorted.slice(r[0], r[1]);
-            var req = slice.map(function (pm){ 
-                return {
-                    fId: pm.facebookId,
-                    postId: pm.id,
-                    links: [pm.postLink.viewLink]
-                };
-            });
-            postService.indexPostMedia(req);
-
-            $scope.top_mode = 'top-'+(r[0]+r[1]);
-            $scope.top_posts = slice.map(function (p) {
-               p.description_f = p.description;
-               if (p.description.length > 90) {
-                   p.description_f = p.description.substr(0, 90) + "...";
-               }
-               return p;
-            });            
-        });
-    }
-
     var lastOne=0;
     function resetInterval() {
         lastOne=0;
@@ -108,6 +125,6 @@ angular.module('trender')
         return ret;
     }
 
-    fetchPosts();
-    setInterval(fetchPosts, 5000);
+    updateUI();
+    setInterval(updateUI, 5000);
 }]);

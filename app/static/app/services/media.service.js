@@ -6,8 +6,22 @@ angular.module('trender')
         });
     }
 
-    function fetchRecentMedia() {
-        var url = API.url() + 'api/media/recent?';        
+    function fetchRecent(since, fid, type) {
+        fid = fid || 'everybody';
+        type = type || '*';
+        var url = API.url() + 'api/media/recent?';
+        url += 'fid='+encodeURIComponent(fid)+'&';
+        url += 'type='+encodeURIComponent(type)+'&';
+
+        if (since) {
+            url += 'since='+encodeURIComponent(since)+'&';
+        }
+
+        return promisify($http.get(url));
+    }
+
+    function indexMedia(urls) {
+        return $http.post(API.url() + 'api/media/index', JSON.stringify(urls));
     }
 
     function fetchMediaFrom() {        
@@ -15,7 +29,8 @@ angular.module('trender')
     }
 
     return {
-        fetchRecentMedia: fetchRecentMedia,
-        fetchMediaFrom: fetchMediaFrom
+        recent: fetchRecent,
+        fetchFrom: fetchMediaFrom,
+        index: indexMedia
     };
 }]);

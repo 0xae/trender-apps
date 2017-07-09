@@ -9,7 +9,7 @@ angular.module('trender')
     function fetchPosts(time, limit, offset, sortOrder) {
         var url = API.url() + 'api/post/recent?';
         if (time) {
-            var timef = decodeURIComponent(time); 
+            var timef = encodeURIComponent(time); 
             url = url + "since="+ timef  + '&';
         }
         if (offset) {
@@ -32,7 +32,6 @@ angular.module('trender')
     }
 
     function stream(startDate, limit) {
-        limit = limit || 4;
         return fetchPosts(startDate, limit, offset, 'asc')
         .then(function (data) {
             if (data.length > 0) {
@@ -43,21 +42,33 @@ angular.module('trender')
         });
     }
 
-    function indexPosts(urls) {
-        return $http.post(API.url() + 'api/media/index', JSON.stringify(urls));
+    // TODO: use $q
+    function cachePosts(posts) {
+        var p = new Promise(function(resolve, reject){
+            localStorage.setItem('_posts', JSON.stringify(posts));
+            resolve(posts);
+        });
+        return p;
+    }
+
+    function getCache() {
+        var p = new Promise(function(resolve, reject){
+            var p = localStorage.getItem('_posts') + '';
+            resolve(JSON.parse(p) || []);
+        });
+        return p;
     }
 
     return {
-        getPostById: function (id) {
+        getById: function (id) {
             return $.get(API.url() + 'post/'+id);
         },
-
-        getPostByFbId: function (fbid) {
+        getByFbId: function (fbid) {
             return promisify($http.get(API.url() + 'post/fbid/'+fbid));
         },
-
-        getRecentPosts: fetchPosts,
+        getRecent: fetchPosts,
         stream: stream,
-        indexPostMedia: indexPosts
+        cache: cachePosts,
+        getCache: getCache
     }
 }]);
