@@ -4,7 +4,7 @@
 # trender-apps
 Fast, beautifull and interactive apps built for the [Trender Platform](https://github.com/0xae/trender).<br/>
 Trender apps are stuff you will spend hours exploring, customizing and analyzing.<br/>
-This was built for the not so common hardcore internaut - you.
+They were built for internaut - you.
 
 
 ## Prologue 
