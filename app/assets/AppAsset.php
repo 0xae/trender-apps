@@ -31,7 +31,8 @@ class AppAsset extends AssetBundle {
         "static/app/services/media.service.js",
         "static/app/services/api.js",
         "static/app/controllers/post.controller.js",
-        "static/app/directives/steemit_post.js",
+        "static/app/directives/steemit.js",
+        "static/app/directives/media.js",
     ];
 
     public $depends = [

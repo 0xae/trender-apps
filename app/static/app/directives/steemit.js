@@ -3,7 +3,6 @@ angular.module('trender')
     return {
         restrict: "E",
         scope: {p: '='},
-        transclude: true,
         template: '<div class="media">'+
                 '      <div class="media-left">'+
                 '        <a href="#">'+
@@ -75,4 +74,3 @@ angular.module('trender')
     }
 })
 
-;

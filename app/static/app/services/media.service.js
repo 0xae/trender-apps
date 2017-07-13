@@ -17,7 +17,11 @@ angular.module('trender')
             url += 'since='+encodeURIComponent(since)+'&';
         }
 
-        return promisify($http.get(url));
+        return $http.get(url)
+               .then(function (resp) {
+                   resp.data.forEach(function (p) { p.jdata = JSON.parse(p.data); })
+                   return resp.data;
+               });
     }
 
     function indexMedia(urls) {

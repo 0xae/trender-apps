@@ -1,7 +1,7 @@
 angular.module('trender')
 .controller('PostController', ['$scope', 'PostService', 'MediaService', 
 function ($scope, postService, mediaService){
-    var TIMELINE_MAX_POSTS = 20;
+    var TIMELINE_MAX_POSTS = 35;
     var POST_PER_REQUEST = 4;
 
     $scope.context = 'home';
@@ -9,8 +9,8 @@ function ($scope, postService, mediaService){
     $scope.stoped = false;
     $scope.posts = [];
     var time=moment()
-             .subtract(5, 'days')
-             .format("YYYY-MM-DD HH:mm:ss");
+     .subtract(5, 'days')
+     .format("YYYY-MM-DD HH:mm:ss");
 
     $scope.toggleStreamming = function () {
         $scope.stoped = !$scope.stoped;
@@ -31,17 +31,18 @@ function ($scope, postService, mediaService){
                 data.forEach(function (p) {
                     p.post_time = formatTime(p.timestampFmt); 
                 });
-                
-                // TODO: work on this later
-                var all=data.concat($scope.posts);
-                if (all.length > TIMELINE_MAX_POSTS) {
-                    $scope.posts = all.slice(0, TIMELINE_MAX_POSTS);
-                } else {
-                    $scope.posts = $scope.posts.concat(all);
+
+                data = _.sortBy(data, function (p) {
+                    return moment(p.timestampFmt).toDate().getTime();
+                });
+
+                if ($scope.posts.length > TIMELINE_MAX_POSTS) {
+                    $scope.posts.splice($scope.posts.length-POST_PER_REQUEST);
                 }
+                $scope.posts = $scope.posts.concat(data);
 
                 var req = filterTop(data, 0, POST_PER_REQUEST)
-                .map(function (pm){ 
+                .map(function (pm){
                     return {
                         fId: pm.facebookId,
                         postId: pm.id,
@@ -50,7 +51,7 @@ function ($scope, postService, mediaService){
                 });
 
                 mediaService.index(req);
-                postService.cache(all);
+                postService.cache(data);
             }
         });
 
@@ -64,7 +65,8 @@ function ($scope, postService, mediaService){
         if ($scope.loading) return;
         mediaService.recent()
         .then(function (data){
-            $scope.loading=false;
+            $scope.loading=false;            
+            $scope.mediaData = data.slice(0, 4);
         });
     }
 
@@ -81,11 +83,11 @@ function ($scope, postService, mediaService){
     }
 
     function filterTop(posts, start, end) {
-        var sorted = _.sortBy(posts, function (p) {
-           return p.postReaction.countLikes;
-        });
-
-        return _.uniqBy(sorted, function (p) { return p.id; }).slice(start, end);
+        var unique = _.uniqBy(posts, function (p) { return p.id; });
+        return  _.sortBy(unique, function (p) {
+                   return p.postReaction.countLikes;
+                })
+                .slice(start, end);
     }
 
     function formatTime(time) {

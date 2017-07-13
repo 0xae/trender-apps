@@ -29,20 +29,44 @@ ul.nav li.active a {
 <div class="row" ng-controller="PostController" >
     <div class="col-md-12 " style="background-color:#000;height:330px">
         <div class="col-md-4" style="">
-            <h4 style="font-size:13px;font-weight:bold;"> showing #{{ top_mode }} <br/>
-                about {{ total_items }} posts</h4>
+            <h4 style="font-size:13px;font-weight:bold;"> 
+                showing #{{ top_mode }} <br/>
+                about {{ total_items }} posts
+            </h4>
             <div ng-repeat="post in top_posts" style="margin-bottom: 15px;">
                 <steemit-top-post p="post">
                 </steemit-top-post>
             </div>
         </div>
 
-        <div class="col-md-8">
-            <div style="" class="pull-right">
-                 <iframe src="http://player.twitch.tv/?channel=yoda&muted=true"
-                     height="300" width="450" frameborder="0" scrolling="no"
-                     allowfullscreen="true">
-                 </iframe>
+        <div class="col-md-6 pull-right" style="">
+            <div style="" class="row">
+                <div class="col-md-12">
+                    <h4 style="font-size:13px;font-weight:bold;"> 
+                        Media 
+                    </h4>
+                </div>
+                
+                <div class="col-md-2">
+                    <!--
+                    <media-listing data="mediaData">
+                    </media-listing>
+                    -->
+                    <div class="" style="" ng-repeat="m in mediaData">
+                        <div class="" style="" ng-if="m.type == 'image'">
+                            <img class="media-object" ng-src="{{ m.jdata.url }}" width="85" height="70" />
+                        </div> 
+                        <div class="" style="" ng-if="m.type == 'youtube-video'">
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                     <iframe src="http://player.twitch.tv/?channel=yoda&muted=true"
+                         height="300" width="450" frameborder="0" scrolling="no"
+                         allowfullscreen="true">
+                     </iframe>
+                </div>
              </div>
         </div>
     </div>
