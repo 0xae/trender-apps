@@ -9,7 +9,7 @@ function ($scope, postService, mediaService){
     $scope.stoped = false;
     $scope.posts = [];
     var time=moment()
-     .subtract(15, 'days')
+     .subtract(1, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
     $scope.toggleStreamming = function () {
@@ -32,14 +32,15 @@ function ($scope, postService, mediaService){
                     p.post_time = formatTime(p.timestampFmt); 
                 });
 
-                data = _.sortBy(data, function (p) {
-                    return moment(p.timestampFmt).toDate().getTime();
-                });
-
                 if ($scope.posts.length > TIMELINE_MAX_POSTS) {
                     $scope.posts.splice($scope.posts.length-POST_PER_REQUEST);
                 }
-                $scope.posts = $scope.posts.concat(data);
+
+                var allPosts = _.sortBy($scope.posts.concat(data), function (e) {
+                    return -moment(e.timestampFmt).toDate().getTime();
+                });
+
+                $scope.posts = allPosts;
 
                 var req = filterTop(data, 0, POST_PER_REQUEST)
                 .map(function (pm){
@@ -53,11 +54,13 @@ function ($scope, postService, mediaService){
                 mediaService.index(req);
                 postService.cache(data);
             }
+        })
+        .finally(function () {
+             postService.getCache()
+            .then(updateTopPosts);
+             updateMedia();            
         });
 
-         postService.getCache()
-        .then(updateTopPosts);
-         updateMedia();
     }
 
     // XXX: bad design
