@@ -48,7 +48,7 @@ angular.module('trender')
         var p = new Promise(function(resolve, reject){
 //             localStorage.setItem('_posts', JSON.stringify(posts));
             cache = cache.concat(posts);
-            resolve(posts);
+            resolve(cache.slice());
         });
         return p;
     }
@@ -56,7 +56,7 @@ angular.module('trender')
     function getCache() {
         var p = new Promise(function(resolve, reject){
 //             var p = localStorage.getItem('_posts') + '';
-            resolve(cache);
+            resolve(cache.slice());
         });
         return p;
     }
