@@ -9,7 +9,7 @@ function ($scope, postService, mediaService){
     $scope.stoped = false;
     $scope.posts = [];
     var time=moment()
-     .subtract(5, 'days')
+     .subtract(15, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
     $scope.toggleStreamming = function () {

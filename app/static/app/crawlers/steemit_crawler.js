@@ -12,8 +12,8 @@
  *  % i am so dandy today
 */
 (function (exports, document) {
-    var MIN_POSTS_PER_PAGE=60;
-    var tries = 3;
+    var MIN_POSTS_PER_PAGE=35;
+    var tries=3;
     var jobId;
 
     exports.StopCrawler = function () {
@@ -190,7 +190,7 @@
             window.scrollTo(0,document.body.scrollHeight);
             return false;
         } else {
-            INFO("ready to crawl");
+            INFO("ready!");
             return true;
         }
     }
