@@ -36,9 +36,8 @@ They were built for internaut - you.
 - [ ] rich multimedia design  (music, videos, images, links, etc)
 - [X] jquery/javascript modularized architecture
 - [X] adopt a framework for php ? (yii 2)
-- [ ] get rid of the platform folder
 
-### Crawler
+### Crawle
 - [ ] batch posts
 - [ ] modularize the code
 - [ ] link tracking code
