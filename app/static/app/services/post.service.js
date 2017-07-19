@@ -26,16 +26,10 @@ angular.module('trender')
     }
 
     var offset=0;
-    var v=localStorage.getItem('tm_offset');
-    if (v!=null) {
-        offset = parseInt(v);
-    }
-
     function stream(startDate, limit) {
         return fetchPosts(startDate, limit, offset, 'asc')
         .then(function (data) {
             if (data.length > 0) {
-                localStorage.setItem('tm_offset', offset);
                 offset += 4;        
             }
             return data;
@@ -46,7 +40,6 @@ angular.module('trender')
     var cache = [];
     function cachePosts(posts) {
         var p = new Promise(function(resolve, reject){
-//             localStorage.setItem('_posts', JSON.stringify(posts));
             cache = cache.concat(posts);
             resolve(cache.slice());
         });
@@ -55,7 +48,6 @@ angular.module('trender')
 
     function getCache() {
         var p = new Promise(function(resolve, reject){
-//             var p = localStorage.getItem('_posts') + '';
             resolve(cache.slice());
         });
         return p;

@@ -10,8 +10,6 @@ function ($scope, postService, mediaService){
     $scope.posts = [];
 
     var daysAgo = parseInt(localStorage.getItem('tm_start_day') || 2);
-    console.info("days ago is ", daysAgo);
-
     var time=moment()
      .subtract(daysAgo, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
