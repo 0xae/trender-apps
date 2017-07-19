@@ -8,8 +8,12 @@ function ($scope, postService, mediaService){
     $scope.top_posts = null;
     $scope.stoped = false;
     $scope.posts = [];
+
+    var daysAgo = parseInt(localStorage.getItem('tm_start_day') || 2);
+    console.info("days ago is ", daysAgo);
+
     var time=moment()
-     .subtract(2, 'days')
+     .subtract(daysAgo, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
     $scope.toggleStreamming = function () {
