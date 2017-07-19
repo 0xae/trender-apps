@@ -8,7 +8,7 @@
  *  [X] fix `'Access-Control-Allow-Origin' errors
 
  * NOTES:
- *  % steemit posts can have many tags (how do we adapt that to listings)
+ *  % steemit posts can have many tags (how do we adapt that to listings?)
  *  % i am so dandy today
 */
 (function (exports, document) {

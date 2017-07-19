@@ -19,7 +19,14 @@ angular.module('trender')
 
         return $http.get(url)
                .then(function (resp) {
-                   resp.data.forEach(function (p) { p.jdata = JSON.parse(p.data); })
+                   resp.data.forEach(function (p) { 
+                        var json = p.jdata = JSON.parse(p.data);
+                        json.app_url = json.url;
+                        var cache = json._cache;
+                        if (!_.isEmpty(cache)) {
+                            json.app_url = "http://127.0.0.1/trender/media/" + cache[0];
+                        }
+                   });
                    return resp.data;
                });
     }

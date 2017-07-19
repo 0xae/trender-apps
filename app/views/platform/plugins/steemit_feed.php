@@ -54,7 +54,7 @@ ul.nav li.active a {
                     -->
                     <div class="" style="" ng-repeat="m in mediaData">
                         <div class="" style="" ng-if="m.type == 'image'">
-                            <img class="media-object" ng-src="{{ m.jdata.url }}" width="85" height="70" />
+                            <img class="media-object" ng-src="{{ m.jdata.app_url }}" width="85" height="70" />
                         </div> 
                         <div class="" style="" ng-if="m.type == 'youtube-video'">
                         </div> 
