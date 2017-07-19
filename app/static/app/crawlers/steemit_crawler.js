@@ -151,7 +151,8 @@
             body: JSON.stringify(post),
             headers: {'Content-Type' : 'application/json'}
         };
-     
+
+        // look for ways to fix the cors error (steemit_crawler.js)
         return fetch('http://127.0.0.1:5000/api/post/new', opts)
         .then(function (response) {
           return response.json();
