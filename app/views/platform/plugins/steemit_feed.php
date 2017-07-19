@@ -24,6 +24,21 @@ ul.nav li.active a {
     background-color: #337ABC;
     color: rgba(250,249,250,0.62);
 }
+.media-pic-item {
+    width: 150px;
+    height: 90px;
+}
+.media-pic-title {
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(0,0,0,0.4) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.4) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#66000000',GradientType=0 );
+    opacity: 1;
+    color: #fff;
+    background-color: #000;
+    font-size: 12px;
+}
+
 </style>
 
 <div class="row" ng-controller="PostController" >
@@ -47,18 +62,30 @@ ul.nav li.active a {
                     </h4>
                 </div>
                 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <!--
                     <media-listing data="mediaData">
                     </media-listing>
                     -->
-                    <div class="" style="" ng-repeat="m in mediaData">
-                        <div class="" style="" ng-if="m.type == 'image'">
-                            <img class="media-object" ng-src="{{ m.jdata.app_url }}" width="85" height="70" />
+                    <div class="" style="padding:0px;margin-bottom: 0px;" ng-repeat="m in mediaData">
+                        <div class="" style="width:100%;background-color:#000;" ng-if="m.type == 'image'">
+                            <img class="media-pic-item media-object" ng-src="{{ m.jdata.app_url }}" width="85" height="70" />
+                            <div style="margin-top: -15px;width:100%;z-index:1000;padding-bottom: 3px;">
+                                <span class="media-pic-title">This is a post</span>
+                            </div>
                         </div> 
                         <div class="" style="" ng-if="m.type == 'youtube-video'">
                         </div> 
                     </div>
+                    <!--
+                    <div class="" style="margin-bottom: 15px;" ng-repeat="m in mediaData">
+                        <div class="" style="" ng-if="m.type == 'image'">
+                            <img class="media-pic-item media-object" ng-src="{{ m.jdata.app_url }}" width="85" height="70" />
+                        </div> 
+                        <div class="" style="" ng-if="m.type == 'youtube-video'">
+                        </div> 
+                    </div>
+                    -->
                 </div>
 
                 <div class="col-md-8">

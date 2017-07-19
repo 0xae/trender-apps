@@ -71,7 +71,8 @@ function ($scope, postService, mediaService){
         mediaService.recent()
         .then(function (data){
             $scope.loading=false;            
-            $scope.mediaData = data.slice(0, 4);
+            // XXX: think about this value
+            $scope.mediaData = data.slice(0, 3);
         });
     }
 
