@@ -11,7 +11,7 @@ angular.module('trender')
                 '      </div>'+
                 '      <div class="media-body">'+
                 '        <h4 class="st-post-author" style="display: inherit;">{{ p.author.title }}'+
-                '            <a href="#" style="font-size:11px;padding: 0px;padding-right:3px;color:#777;text-decoration:none;font-weight:normal;">'+
+                '            <a href="#" title="{{ p.timestampFmt }}" style="font-size:11px;padding: 0px;padding-right:3px;color:#777;text-decoration:none;font-weight:normal;">'+
                 '             · {{ p.post_time }} '+
                 '            </a>'+
                 '        </h4>'+
