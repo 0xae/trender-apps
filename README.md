@@ -37,7 +37,7 @@ They were built for internaut - you.
 - [X] jquery/javascript modularized architecture
 - [X] adopt a framework for php ? (yii 2)
 
-### Crawle
+### Crawlers
 - [ ] batch posts
 - [ ] modularize the code
 - [ ] link tracking code
