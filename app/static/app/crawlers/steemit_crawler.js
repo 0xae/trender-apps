@@ -12,7 +12,7 @@
  *  % i am so dandy today
 */
 (function (exports, document) {
-    var MIN_POSTS_PER_PAGE=55;
+    var MIN_POSTS_PER_PAGE=20;
     var tries=3;
     var jobId;
 
@@ -21,6 +21,7 @@
     }
 
     exports.StartCrawler = function () {
+        StopCrawler();
         jobId = setInterval(Crawl, 4000);
     }
 
@@ -45,7 +46,8 @@
         // as a dom node, p is
         _foreach(posts, function (p){
             var req = getPostRequest(p);
-            queue.push(createPost(req));
+            console.info(req);
+            // queue.push(createPost(req));
         });
 
         Promise.all(queue)        

@@ -62,7 +62,6 @@ function ($scope, postService, mediaService, $api){
             .then(updateTopPosts);
              updateMedia();            
         });
-
     }
 
     // XXX: bad design
@@ -71,7 +70,7 @@ function ($scope, postService, mediaService, $api){
         mediaService.recent()
         .then(function (data){
             $scope.loading=false;            
-            // XXX: think about this value
+            // TODO: think about this value
             $scope.mediaData = data.slice(0, 3);
         });
     }
