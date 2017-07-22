@@ -27,22 +27,28 @@ ul.nav li.active a {
 .media-pic-item {
     width: 150px;
     height: 90px;
+    z-index:0;
 }
 .media-pic-title {
+    color: #fff;
+    background-color: transparent;
+    font-size: 12px;
+    position:absolute;
+    z-index: 100;
+}
+
+.obfs {
     background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4) 100%);
     background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(0,0,0,0.4) 100%);
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.4) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#66000000',GradientType=0 );
     opacity: 1;
-    color: #fff;
-    background-color: #000;
-    font-size: 12px;
 }
 
 </style>
 
 <div class="row" ng-controller="PostController" >
-    <div class="col-md-12 " style="background-color:#000;height:330px">
+    <div class="col-md-12 " style="background-color:#000;height:430px">
         <div class="col-md-4" style="">
             <h4 style="font-size:13px;font-weight:bold;"> 
                 showing #{{ top_mode }} <br/>
@@ -68,11 +74,11 @@ ul.nav li.active a {
                     </media-listing>
                     -->
                     <div class="" style="padding:0px;margin-bottom: 0px;" ng-repeat="m in mediaData">
-                        <div class="" style="width:100%;background-color:#000;" ng-if="m.type == 'image'">
-                            <img class="media-pic-item media-object" ng-src="{{ m.jdata.app_url }}" width="85" height="70" />
-                            <div style="margin-top: -15px;width:100%;z-index:1000;padding-bottom: 3px;">
-                                <span class="media-pic-title">This is a post</span>
+                        <div class="" style="width:100%;background-color:transparent;z-index:1000;" ng-if="m.type == 'image'">
+                            <div class="" tyle="padding-left: 85px;">
+                                <span class="obfs media-pic-title" style="padding: 4px;padding-left: 0px;">{{ m.jdata.time_fmt }}</span>
                             </div>
+                            <img class="media-pic-item media-object" ng-src="{{ m.jdata.app_url }}" style="z-index:0;" width="85" height="70" />
                         </div> 
                         <div class="" style="" ng-if="m.type == 'youtube-video'">
                         </div> 

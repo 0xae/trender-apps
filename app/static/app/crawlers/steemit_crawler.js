@@ -12,7 +12,7 @@
  *  % i am so dandy today
 */
 (function (exports, document) {
-    var MIN_POSTS_PER_PAGE=35;
+    var MIN_POSTS_PER_PAGE=55;
     var tries=3;
     var jobId;
 
@@ -33,6 +33,7 @@
         var queue = [];
         var posts=document.getElementById("posts_list").firstChild.children;
         if (!skipLoading && !isPageReady()) {
+            WARN("NOT CRAWLING")
             return;
         }
 

@@ -1,5 +1,5 @@
 angular.module('trender')
-.factory('MediaService', ['$http', '$q', '$api', function ($http, $q, API){
+.factory('MediaService', ['$http', '$q', '$api', function ($http, $q, $api){
     function promisify(p) {
         return p.then(function (resp) {
             return resp.data;
@@ -9,7 +9,7 @@ angular.module('trender')
     function fetchRecent(since, fid, type) {
         fid = fid || 'everybody';
         type = type || '*';
-        var url = API.url() + 'api/media/recent?';
+        var url = $api.url() + 'api/media/recent?';
         url += 'fid='+encodeURIComponent(fid)+'&';
         url += 'type='+encodeURIComponent(type)+'&';
 
@@ -22,6 +22,7 @@ angular.module('trender')
                    resp.data.forEach(function (p) { 
                         var json = p.jdata = JSON.parse(p.data);
                         json.app_url = json.url;
+                        json.time_fmt = $api.formatPostTime(p.timeFmt);
                         var cache = json._cache;
                         if (!_.isEmpty(cache)) {
                             json.app_url = "http://127.0.0.1/trender/media/" + cache[0];
@@ -32,16 +33,16 @@ angular.module('trender')
     }
 
     function indexMedia(urls) {
-        return $http.post(API.url() + 'api/media/index', JSON.stringify(urls));
+        return $http.post($api.url() + 'api/media/index', JSON.stringify(urls));
     }
 
     function fetchMediaFrom() {        
-        var url = API.url() + 'api/media?';        
+        var url = $api.url() + 'api/media?';        
     }
 
     return {
         recent: fetchRecent,
         fetchFrom: fetchMediaFrom,
-        index: indexMedia
+        index: indexMedia,
     };
 }]);

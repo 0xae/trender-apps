@@ -1,6 +1,6 @@
 angular.module('trender')
-.controller('PostController', ['$scope', 'PostService', 'MediaService', 
-function ($scope, postService, mediaService){
+.controller('PostController', ['$scope', 'PostService', 'MediaService',  '$api',
+function ($scope, postService, mediaService, $api){
     var TIMELINE_MAX_POSTS = 35;
     var POST_PER_REQUEST = 4;
 
@@ -31,7 +31,7 @@ function ($scope, postService, mediaService){
         .then(function (data) {
             if (data.length > 0) {
                 data.forEach(function (p) {
-                    p.post_time = formatTime(p.timestampFmt); 
+                    p.post_time = $api.formatPostTime(p.timestampFmt); 
                 });
 
                 if ($scope.posts.length > TIMELINE_MAX_POSTS) {
@@ -94,17 +94,6 @@ function ($scope, postService, mediaService){
                    return p.postReaction.countLikes;
                 })
                 .slice(start, end);
-    }
-
-    function formatTime(time) {
-        var m=moment(time);
-        var today = moment();
-        
-        if (today.format("YYYY-MM-DD") == m.format("YYYY-MM-DD")) {
-            return m.format("h:mm:ssa");
-        } else {
-            return m.format("MMM DD YYYY, h:mm:ssa");
-        }
     }
 
     /**
