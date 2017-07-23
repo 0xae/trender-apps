@@ -33,7 +33,6 @@ ul.nav li.active a {
     color: #fff;
     background-color: transparent;
     font-size: 12px;
-    position:absolute;
     z-index: 100;
 }
 
@@ -45,6 +44,14 @@ ul.nav li.active a {
     opacity: 1;
 }
 
+a.top-media-item img {
+    border: 4px solid #000;
+    border-radius: 3px;
+}
+
+a.top-media-item:hover img {
+    border-color: #fff;
+}
 </style>
 
 <div class="row" ng-controller="PostController" >
@@ -71,19 +78,30 @@ ul.nav li.active a {
 
                 <div class="col-md-12" style="border-radius:2px;background-color:rgba(204, 204, 204, 0.25);">
                     <div class="row">
-                        <div class="col-md-3 pull-left" style="padding: 10px;padding-top:0px;">
-                            <div class="" style="padding-top:10px;" ng-repeat="m in mediaData track by $index" ng-if=" m.jdata.app_url">
-                                <div class="" style="z-index:1000;" >
-                                    <div class="" tyle="">
-                                        <span class="obfs media-pic-title" style="padding: 4px;padding-left: 0px;">{{ m.jdata.time_fmt }}</span>
+                        <div class="col-md-3 pull-left" style="">
+                            <div class="" style="" ng-repeat="m in mediaData track by $index" ng-if="m.jdata.app_url">
+                                <a href="#" class="top-media-item" ng-click="setMediaOutdoor(m)">
+                                    <div class="" style="z-index:1000;" >
+                                        <img class="media-pic-item media-object" 
+                                            ng-src="{{ m.jdata.app_url }}" 
+                                            style="z-index:0;" 
+                                        />
+                                        <div class="" style="">
+                                            <span class="obfs media-pic-title"
+                                                style="padding-left: 0px;">
+                                                {{ m.jdata.time_fmt}}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <img class="media-pic-item media-object" ng-src="{{ m.jdata.app_url }}" style="z-index:0;" />
-                                </div> 
+                                </a>
                             </div>
                         </div>
 
-                        <div class="col-md-8" style="margin-top:10px;margin-bottom:10px;width:450px;height:300px;">
-                            <div class="" style="position: absolute;top:72%;width:100%;">
+                        <div class="col-md-8" 
+                            style="margin-top:10px;margin-bottom:10px;width:450px;height:300px;">
+                            <div class="" 
+                                style="position: absolute;top:72%;width:100%;">
+                                <!--
                                 <span class="obfs media-pic-title" style="font-size:13px;padding: 16px;">
                                     <span style="margin-right:5px;" class="pull-left">
                                         <img src="http://127.0.0.1/trender/media/full/b480c7224d9df9c388c8b1e0eec5167c2f3134fe.jpg" 
@@ -91,8 +109,9 @@ ul.nav li.active a {
                                     </span>
                                     Crypt0's News: $500,000 Bitcoin Within 3 Years...Wanna Bet? / CoinDash Site HACKED - ICO in Peril
                                 </span>
+                                -->
                             </div>
-                            <img src="http://127.0.0.1/trender/media/full/44dc074bfd10c79209eb736390566695bafd953e.jpg"
+                            <img ng-src="{{ outdoor.background }}"
                                  style="width:450px;height:289px;" />
                         </div>
 

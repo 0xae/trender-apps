@@ -47,10 +47,9 @@ angular.module('trender')
     }
 
     function getCache() {
-        var p = new Promise(function(resolve, reject){
-            resolve(cache.slice());
-        });
-        return p;
+        var defer = $q.defer();
+        defer.resolve(cache.slice());
+        return defer.promise;
     }
 
     return {

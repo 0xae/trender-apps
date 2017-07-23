@@ -38,6 +38,13 @@ angular.module('trender')
                 '                 ·  <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">full story</span>'+
                 '                </a>'+
                 '            </li>'+
+                '            <li role="presentation" class="color: #777">'+
+                '                <a target="__blank" href="{{ p.postLink.viewLink }}" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">'+
+                '                 ·  <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">'+
+                                        '<img src="static/img/steemit-196x196.png" style="display:inline;width:15px;height:15px;" /> steemit.com'+
+                                  '</span>'+
+                '                </a>'+
+                '            </li>'+
                 '        </ul>'+
                 '      </div>'+
                 '</div>'

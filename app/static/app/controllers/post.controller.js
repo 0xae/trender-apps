@@ -11,7 +11,7 @@ function ($scope, postService, mediaService, $api){
 
     var daysAgo = parseInt(localStorage.getItem('tm_start_day') || 2);
     var time=moment()
-     .subtract(1, 'days')
+     .subtract(5, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
     $scope.toggleStreamming = function () {
@@ -20,6 +20,18 @@ function ($scope, postService, mediaService, $api){
 
     $scope.setContext = function (context) {
         $scope.context = context;
+    }
+
+    $scope.outdoor ={
+        background: "http://127.0.0.1/trender/media/full/44dc074bfd10c79209eb736390566695bafd953e.jpg",
+        text: "",
+        avatar: ""
+    }
+
+    $scope.setMediaOutdoor = function (m) {
+        $scope.outdoor = {
+            background: m.jdata.app_url
+        }
     }
 
     function updateUI() {
