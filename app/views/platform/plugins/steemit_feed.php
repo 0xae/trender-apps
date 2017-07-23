@@ -49,7 +49,7 @@ ul.nav li.active a {
 
 <div class="row" ng-controller="PostController" >
     <div class="col-md-12 " style="background-color:#000;height:430px">
-        <div class="col-md-4" style="">
+        <div class="col-md-4" style="margin-top:25px;">
             <h4 style="font-size:13px;font-weight:bold;"> 
                 showing #{{ top_mode }} <br/>
                 about {{ total_items }} posts
@@ -60,47 +60,54 @@ ul.nav li.active a {
             </div>
         </div>
 
-        <div class="col-md-6 pull-right" style="">
-            <div style="" class="row">
-                <div class="col-md-12">
+        <div class="col-md-6 pull-right" style="margin-top:25px;margin-right: 35px;">
+            <div class="row">
+                <div class="col-md-12" style="">
                     <h4 style="font-size:13px;font-weight:bold;"> 
                         Media 
                     </h4>
                 </div>
-                
-                <div class="col-md-3">
-                    <!--
-                    <media-listing data="mediaData">
-                    </media-listing>
-                    -->
-                    <div class="" style="padding:0px;margin-bottom: 0px;" ng-repeat="m in mediaData">
-                        <div class="" style="width:100%;background-color:transparent;z-index:1000;" ng-if="m.type == 'image'">
-                            <div class="" tyle="padding-left: 85px;">
-                                <span class="obfs media-pic-title" style="padding: 4px;padding-left: 0px;">{{ m.jdata.time_fmt }}</span>
-                            </div>
-                            <img class="media-pic-item media-object" ng-src="{{ m.jdata.app_url }}" style="z-index:0;" width="85" height="70" />
-                        </div> 
-                        <div class="" style="" ng-if="m.type == 'youtube-video'">
-                        </div> 
-                    </div>
-                    <!--
-                    <div class="" style="margin-bottom: 15px;" ng-repeat="m in mediaData">
-                        <div class="" style="" ng-if="m.type == 'image'">
-                            <img class="media-pic-item media-object" ng-src="{{ m.jdata.app_url }}" width="85" height="70" />
-                        </div> 
-                        <div class="" style="" ng-if="m.type == 'youtube-video'">
-                        </div> 
-                    </div>
-                    -->
-                </div>
+                <!-- col-md-12 -->
 
-                <div class="col-md-8">
-                     <iframe src="http://player.twitch.tv/?channel=yoda&muted=true"
-                         height="300" width="450" frameborder="0" scrolling="no"
-                         allowfullscreen="true">
-                     </iframe>
+                <div class="col-md-12" style="border-radius:2px;background-color:rgba(204, 204, 204, 0.25);">
+                    <div class="row">
+                        <div class="col-md-3 pull-left" style="padding: 10px;padding-top:0px;">
+                            <div class="" style="padding-top:10px;" ng-repeat="m in mediaData track by $index" >
+                                <div class="" style="z-index:1000;" ng-if="m.type == 'image' && m.jdata.app_url">
+                                    <div class="" tyle="">
+                                        <span class="obfs media-pic-title" style="padding: 4px;padding-left: 0px;">{{ m.jdata.time_fmt }}</span>
+                                    </div>
+                                    <img class="media-pic-item media-object" ng-src="{{ m.jdata.app_url }}" style="z-index:0;" />
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="col-md-8" style="margin-top:10px;margin-bottom:10px;width:450px;height:300px;">
+                            <div class="" style="position: absolute;top:72%;width:100%;">
+                                <span class="obfs media-pic-title" style="font-size:13px;padding: 16px;">
+                                    <span style="margin-right:5px;" class="pull-left">
+                                        <img src="http://127.0.0.1/trender/media/full/b480c7224d9df9c388c8b1e0eec5167c2f3134fe.jpg" 
+                                             style="border:3px solid #fff;border-radius:90px;width:42px;height:42px;"/>
+                                    </span>
+                                    Crypt0's News: $500,000 Bitcoin Within 3 Years...Wanna Bet? / CoinDash Site HACKED - ICO in Peril
+                                </span>
+                            </div>
+                            <img src="http://127.0.0.1/trender/media/full/44dc074bfd10c79209eb736390566695bafd953e.jpg"
+                                 style="width:450px;height:289px;" />
+                        </div>
+
+                        <!--
+                        <div class="col-md-8" style="">
+                             <iframe src="http://player.twitch.tv/?channel=yoda&muted=true"
+                                 height="300" width="450" frameborder="0" scrolling="no"
+                                 allowfullscreen="true">
+                             </iframe>
+                        </div>
+                        -->
+                    </div>
                 </div>
-             </div>
+            </div>
+            <!-- col-md-12 -->
         </div>
     </div>
 
@@ -166,12 +173,8 @@ ul.nav li.active a {
               <div class="col-md-7 pull-right">
                 <div class="">
                     <h4 class="st-post-author pull-left" style="display: inherit;color: #ccc;">
-                        Twitch.Tv
+                        Most liked
                     </h4>
-                    <span class="pull-right" 
-                        style="margin-top:7px;font-size:11px;color:#777;background-color:#eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">
-                             <div class="live-indicator"></div> LIVE
-                     </span>
                 </div>
               </div>
         </div>

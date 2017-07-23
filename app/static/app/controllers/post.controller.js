@@ -70,7 +70,7 @@ function ($scope, postService, mediaService, $api){
         mediaService.recent()
         .then(function (data){
             $scope.loading=false;            
-            // TODO: think about this value
+            // XXX: think about this value
             $scope.mediaData = data.slice(0, 3);
         });
     }
