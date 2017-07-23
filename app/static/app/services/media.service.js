@@ -6,12 +6,16 @@ angular.module('trender')
         });
     }
 
-    function fetchRecent(since, fid, type) {
+    function fetchRecent(since, fid, type, offset) {
         fid = fid || 'everybody';
         type = type || '*';
         var url = $api.url() + 'api/media/recent?';
         url += 'fid='+encodeURIComponent(fid)+'&';
         url += 'type='+encodeURIComponent(type)+'&';
+ 
+        if (offset) {
+            url += 'offset='+encodeURIComponent(offset)+'&';
+        }
 
         if (since) {
             url += 'since='+encodeURIComponent(since)+'&';

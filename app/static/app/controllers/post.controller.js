@@ -18,10 +18,6 @@ function ($scope, postService, mediaService, $api){
 
     $scope.toggleStreamming = function () {
         $scope.stoped = !$scope.stoped;
-        if ($scope.$scope)
-            onResumeStreamming();
-        else
-            onStopStreamming();
     }
 
     $scope.setContext = function (context) {
@@ -44,7 +40,7 @@ function ($scope, postService, mediaService, $api){
             href: m.post.postLink.viewLink,
             tag: m.listing.title,
             time: m.jdata.time_fmt
-        };
+        };1
     }
 
     function updateUI() {
@@ -90,36 +86,21 @@ function ($scope, postService, mediaService, $api){
     }
 
     // XXX: bad design
-    var cache=null;
+    var cache=[], offset=0;
     function updateMedia() {
-        if (cache) return;
-        mediaService.recent(time)
+        mediaService.recent(time, null, null, offset)
         .then(function (data){
-            $scope.loading=false;            
-            if (!cache) { cache = data; }
-            var mediaData = data
-                .filter(function (m) { return m.jdata.app_url; })
-                .slice(0, 5);
+            $scope.loading=false;
+            cache = cache.concat(data);
+            offset += 30;
 
-            if (mediaData.length > 0) {
-                $scope.setMediaOutdoor(mediaData[0]);
-            }
-
-            $scope.mediaData = mediaData;
+            updateMediaOutdoor();
         });
     }
 
-    function onResumeStreamming() {
-        media_jobid = setInterval(updateMediaOutdoor, 5000);    
-    }
-
-    function onStopStreamming() {   
-        clearInterval(media_jobid);     
-    }
-
-    var last=0, media_jobid;
+    var last=0;
     function updateMediaOutdoor() {
-        if (last>0 && last%5==0) {
+        if (last%5==0) {
             $scope.mediaData = cache.slice(last, last+5);
             $scope.$apply();
         }
@@ -132,8 +113,6 @@ function ($scope, postService, mediaService, $api){
             last = 0;
         }
     }
-
-    media_jobid = setInterval(updateMediaOutdoor, 4000);
 
     function updateTopPosts(posts) {
         var r=nextInterval();
