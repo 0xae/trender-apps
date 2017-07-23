@@ -72,8 +72,8 @@ ul.nav li.active a {
                 <div class="col-md-12" style="border-radius:2px;background-color:rgba(204, 204, 204, 0.25);">
                     <div class="row">
                         <div class="col-md-3 pull-left" style="padding: 10px;padding-top:0px;">
-                            <div class="" style="padding-top:10px;" ng-repeat="m in mediaData track by $index" >
-                                <div class="" style="z-index:1000;" ng-if="m.type == 'image' && m.jdata.app_url">
+                            <div class="" style="padding-top:10px;" ng-repeat="m in mediaData track by $index" ng-if=" m.jdata.app_url">
+                                <div class="" style="z-index:1000;" >
                                     <div class="" tyle="">
                                         <span class="obfs media-pic-title" style="padding: 4px;padding-left: 0px;">{{ m.jdata.time_fmt }}</span>
                                     </div>

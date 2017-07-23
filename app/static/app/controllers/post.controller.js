@@ -11,7 +11,7 @@ function ($scope, postService, mediaService, $api){
 
     var daysAgo = parseInt(localStorage.getItem('tm_start_day') || 2);
     var time=moment()
-     .subtract(daysAgo, 'days')
+     .subtract(1, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
     $scope.toggleStreamming = function () {
@@ -67,11 +67,12 @@ function ($scope, postService, mediaService, $api){
     // XXX: bad design
     function updateMedia() {
         if ($scope.loading) return;
-        mediaService.recent()
+        mediaService.recent(time)
         .then(function (data){
             $scope.loading=false;            
             // XXX: think about this value
-            $scope.mediaData = data.slice(0, 3);
+            $scope.mediaData = data.filter(function (m) { return m.jdata.app_url; }).slice(0, 3);
+            console.log($scope.mediaData);
         });
     }
 
@@ -96,7 +97,7 @@ function ($scope, postService, mediaService, $api){
     }
 
     /**
-       * @see https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
+     * https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
     */
     function isElVisible(element, fullyInView) {
         var pageTop = $(window).scrollTop();
