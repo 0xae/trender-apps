@@ -8,14 +8,20 @@ function ($scope, postService, mediaService, $api){
     $scope.top_posts = null;
     $scope.stoped = false;
     $scope.posts = [];
+    $scope.sliderPos = 0;
 
     var daysAgo = parseInt(localStorage.getItem('tm_start_day') || 2);
     var time=moment()
      .subtract(5, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
+
     $scope.toggleStreamming = function () {
         $scope.stoped = !$scope.stoped;
+        if ($scope.$scope)
+            onResumeStreamming();
+        else
+            onStopStreamming();
     }
 
     $scope.setContext = function (context) {
@@ -38,7 +44,7 @@ function ($scope, postService, mediaService, $api){
             href: m.post.postLink.viewLink,
             tag: m.listing.title,
             time: m.jdata.time_fmt
-        }
+        };
     }
 
     function updateUI() {
@@ -84,20 +90,50 @@ function ($scope, postService, mediaService, $api){
     }
 
     // XXX: bad design
+    var cache=null;
     function updateMedia() {
-        if ($scope.loading) return;
+        if (cache) return;
         mediaService.recent(time)
         .then(function (data){
             $scope.loading=false;            
-            $scope.mediaData = data
+            if (!cache) { cache = data; }
+            var mediaData = data
                 .filter(function (m) { return m.jdata.app_url; })
                 .slice(0, 5);
 
-            if ($scope.mediaData.length > 0) {
-                $scope.setMediaOutdoor($scope.mediaData[0]);
+            if (mediaData.length > 0) {
+                $scope.setMediaOutdoor(mediaData[0]);
             }
+
+            $scope.mediaData = mediaData;
         });
     }
+
+    function onResumeStreamming() {
+        media_jobid = setInterval(updateMediaOutdoor, 5000);    
+    }
+
+    function onStopStreamming() {   
+        clearInterval(media_jobid);     
+    }
+
+    var last=0, media_jobid;
+    function updateMediaOutdoor() {
+        if (last>0 && last%5==0) {
+            $scope.mediaData = cache.slice(last, last+5);
+            $scope.$apply();
+        }
+
+        if ($scope.stoped) return;
+        var media = cache[last];
+        $scope.setMediaOutdoor(media);
+        last++;
+        if (last >= cache.length) {
+            last = 0;
+        }
+    }
+
+    media_jobid = setInterval(updateMediaOutdoor, 4000);
 
     function updateTopPosts(posts) {
         var r=nextInterval();
