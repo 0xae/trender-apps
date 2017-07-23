@@ -67,7 +67,7 @@ a.top-media-item:hover img {
             </div>
         </div>
 
-        <div class="col-md-6 pull-right" style="margin-top:25px;margin-right: 35px;">
+        <div class="col-md-6 pull-right" style="margin-top:15px;margin-right: 35px;">
             <div class="row">
                 <div class="col-md-12" style="">
                     <h4 style="font-size:13px;font-weight:bold;"> 
@@ -76,43 +76,58 @@ a.top-media-item:hover img {
                 </div>
                 <!-- col-md-12 -->
 
-                <div class="col-md-12" style="border-radius:2px;background-color:rgba(204, 204, 204, 0.25);">
+                <div class="col-md-12" style="border-radius:2px;background-color:rgba(204, 204, 204, 0.25);padding:0px;">
                     <div class="row">
-                        <div class="col-md-3 pull-left" style="">
-                            <div class="" style="" ng-repeat="m in mediaData track by $index" ng-if="m.jdata.app_url">
-                                <a href="#" class="top-media-item" ng-click="setMediaOutdoor(m)">
-                                    <div class="" style="z-index:1000;" >
-                                        <img class="media-pic-item media-object" 
+                        <div class="col-md-2" style="margin:7px;">
+                            <div style="width:90px;padding-bottom:5px;" 
+                                 ng-repeat="m in mediaData track by $index" 
+                                 ng-if="m.jdata.app_url">
+                                <a href="#" ng-click="setMediaOutdoor(m);">
+                                        <img class="" 
                                             ng-src="{{ m.jdata.app_url }}" 
-                                            style="z-index:0;" 
+                                            style="display:inline;width:100px;height:70px;display:inline;z-index:0;" 
                                         />
-                                        <div class="" style="">
-                                            <span class="obfs media-pic-title"
-                                                style="padding-left: 0px;">
-                                                {{ m.jdata.time_fmt}}
-                                            </span>
-                                        </div>
-                                    </div>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="col-md-8" 
-                            style="margin-top:10px;margin-bottom:10px;width:450px;height:300px;">
-                            <div class="" 
-                                style="position: absolute;top:72%;width:100%;">
-                                <!--
-                                <span class="obfs media-pic-title" style="font-size:13px;padding: 16px;">
-                                    <span style="margin-right:5px;" class="pull-left">
-                                        <img src="http://127.0.0.1/trender/media/full/b480c7224d9df9c388c8b1e0eec5167c2f3134fe.jpg" 
-                                             style="border:3px solid #fff;border-radius:90px;width:42px;height:42px;"/>
-                                    </span>
-                                    Crypt0's News: $500,000 Bitcoin Within 3 Years...Wanna Bet? / CoinDash Site HACKED - ICO in Peril
-                                </span>
-                                -->
+                        <div class="col-md-9" style="margin:0px;padding:0px;margin-top:6px;">
+                            <a href="{{outdoor.href}}" target=_blank>
+                                <div style="background-color:#000;border: 1px solid #000; border-bottom: 0px;padding: 10px;">
+                                    <center>
+                                        <img ng-src="{{ outdoor.background }}"
+                                             style="width:450px;z-index:1;height:274px;" />
+                                    </center>
+                                </div>
+                            </a>
+                            
+                            <div style="border-radius:2px;padding:0px;background-color:#000;z-index:1000;">
+                                <div style="padding-bottom:15px;">
+                                    <p class="pull-left" style="padding-left:25px;">
+                                        <span class="glyphicon glyphicon-triangle-left" style="color:#aaa;fonts-size:19px;"></span>
+                                    </p>
+                                    <p class="pull-right" style="padding-right:25px;">
+                                        <span class="glyphicon glyphicon-triangle-right" style="color:#aaa;fonts-size:19px;"></span>
+                                    </p>
+                                </div>
+                                <p style="clear:both;padding:7px;padding-top:0px;padding-bottom:1px;margin-bottom:1px;font-size:13px;color: #ccc;">
+                                    {{ outdoor.text }} 
+                                </p>
+                                <div style="padding: 5px;padding-top:0px;">
+                                    <img src="static/img/steemit-196x196.png" style="display:inline;width:15px;height:15px;" />
+                                    <h4 class="st-post-author" style="color: #ccc;display: inline;">
+                                         {{outdoor.author}}
+                                    </h4>
+                                    <h4 class="st-post-author" style="color: #ccc;font-weight:normal;display: inline;"> in </h4>
+                                    <h4 class="st-post-author" style="color: #ccc;display: inline;">
+                                         {{outdoor.tag}}
+                                    </h4>
+                                    <div style="display: inline" class="pull-right">
+                                        <span style="color:#888;font-size:10px;" class="glyphicon glyphicon-time"></span>
+                                        <span style="color:#999;font-size:11px;font-weight:bold;">{{ outdoor.time }}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <img ng-src="{{ outdoor.background }}"
-                                 style="width:450px;height:289px;" />
                         </div>
 
                         <!--

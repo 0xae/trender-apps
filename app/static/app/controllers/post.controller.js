@@ -22,15 +22,22 @@ function ($scope, postService, mediaService, $api){
         $scope.context = context;
     }
 
-    $scope.outdoor ={
+    $scope.outdoor = {
         background: "http://127.0.0.1/trender/media/full/44dc074bfd10c79209eb736390566695bafd953e.jpg",
         text: "",
-        avatar: ""
+        avatar: "",
+        href: "#"
     }
 
     $scope.setMediaOutdoor = function (m) {
         $scope.outdoor = {
-            background: m.jdata.app_url
+            background: m.jdata.app_url,
+            text: m.post.description,
+            avatar: m.post.picture,
+            author: m.post.author.username,
+            href: m.post.postLink.viewLink,
+            tag: m.listing.title,
+            time: m.jdata.time_fmt
         }
     }
 
@@ -82,9 +89,13 @@ function ($scope, postService, mediaService, $api){
         mediaService.recent(time)
         .then(function (data){
             $scope.loading=false;            
-            // XXX: think about this value
-            $scope.mediaData = data.filter(function (m) { return m.jdata.app_url; }).slice(0, 3);
-            console.log($scope.mediaData);
+            $scope.mediaData = data
+                .filter(function (m) { return m.jdata.app_url; })
+                .slice(0, 5);
+
+            if ($scope.mediaData.length > 0) {
+                $scope.setMediaOutdoor($scope.mediaData[0]);
+            }
         });
     }
 
