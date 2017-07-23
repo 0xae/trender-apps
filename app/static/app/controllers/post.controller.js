@@ -40,7 +40,10 @@ function ($scope, postService, mediaService, $api){
             href: m.post.postLink.viewLink,
             tag: m.listing.title,
             time: m.jdata.time_fmt
-        };1
+        };
+
+        // with jquery this is faster
+        $("#outdoor_img").attr("src", $scope.outdoor.background);
     }
 
     function updateUI() {
@@ -102,7 +105,6 @@ function ($scope, postService, mediaService, $api){
     function updateMediaOutdoor() {
         if (last%5==0) {
             $scope.mediaData = cache.slice(last, last+5);
-            $scope.$apply();
         }
 
         if ($scope.stoped) return;
@@ -112,6 +114,10 @@ function ($scope, postService, mediaService, $api){
         if (last >= cache.length) {
             last = 0;
         }
+    }
+
+    function apply() {
+        try{$scope.$apply();}catch(e){}
     }
 
     function updateTopPosts(posts) {

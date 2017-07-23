@@ -95,7 +95,7 @@ a.top-media-item:hover img {
                             <a href="{{outdoor.href}}" target=_blank>
                                 <div style="background-color:#000;border: 1px solid #000; border-bottom: 0px;padding: 10px;">
                                     <center>
-                                        <img ng-src="{{ outdoor.background }}"
+                                        <img id="outdoor_img" 
                                              style="width:450px;z-index:1;height:274px;" />
                                     </center>
                                 </div>
@@ -104,15 +104,9 @@ a.top-media-item:hover img {
                             <div style="border-radius:2px;padding:0px;background-color:#000;z-index:1000;">
                                 <div style="padding-bottom:15px;">
                                     <p class="pull-left" style="padding-left:25px;">
-                                        <a href="#" title="Previous" >
-                                            <span class="glyphicon glyphicon-triangle-left" style="color:#aaa;fonts-size:19px;"></span>
-                                        </a>
                                     </p>
 
                                     <p class="pull-right" style="padding-right:25px;">
-                                        <a href="#" title="Next" ng-click="slideNext()">
-                                            <span class="glyphicon glyphicon-triangle-right" style="color:#aaa;fonts-size:19px;"></span>
-                                        </a>
                                     </p>
                                 </div>
                                 <p style="clear:both;padding:7px;padding-top:0px;padding-bottom:1px;margin-bottom:1px;font-size:13px;color: #ccc;">
