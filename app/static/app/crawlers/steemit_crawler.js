@@ -46,8 +46,7 @@
         // as a dom node, p is
         _foreach(posts, function (p){
             var req = getPostRequest(p);
-            console.info(req);
-            // queue.push(createPost(req));
+            queue.push(createPost(req));
         });
 
         Promise.all(queue)        

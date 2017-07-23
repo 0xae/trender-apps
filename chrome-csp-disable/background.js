@@ -10,7 +10,8 @@ var callback = function(details) {
     }
 
     for (var i = 0; i < details.responseHeaders.length; i++) {
-        if ('content-security-policy' === details.responseHeaders[i].name.toLowerCase()) {
+        var header=details.responseHeaders[i].name.toLowerCase();
+        if ('content-security-policy' == header) {
             details.responseHeaders[i].value = '';
             console.info("ignoring 'csp'");
         } 
