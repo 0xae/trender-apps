@@ -15,21 +15,20 @@ function ($scope, postService, mediaService, $api){
      .subtract(5, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
-
     $scope.toggleStreamming = function () {
         $scope.stoped = !$scope.stoped;
-    }
+    };
 
     $scope.setContext = function (context) {
         $scope.context = context;
-    }
+    };
 
     $scope.outdoor = {
         background: "http://127.0.0.1/trender/media/full/44dc074bfd10c79209eb736390566695bafd953e.jpg",
         text: "",
         avatar: "",
         href: "#"
-    }
+    };
 
     $scope.setMediaOutdoor = function (m) {
         $scope.outdoor = {
@@ -44,7 +43,7 @@ function ($scope, postService, mediaService, $api){
 
         // with jquery this is faster
         $("#outdoor_img").attr("src", $scope.outdoor.background);
-    }
+    };
 
     function updateUI() {
         if (/*!isElVisible($("#steemit_title"), false) ||*/ $scope.stoped) {
@@ -91,6 +90,8 @@ function ($scope, postService, mediaService, $api){
     // XXX: bad design
     var cache=[], offset=0;
     function updateMedia() {
+        if ($scope.stoped) return;
+
         mediaService.recent(time, null, null, offset)
         .then(function (data){
             $scope.loading=false;
@@ -103,11 +104,12 @@ function ($scope, postService, mediaService, $api){
 
     var last=0;
     function updateMediaOutdoor() {
+        if ($scope.stoped) return;
+
         if (last%5==0) {
             $scope.mediaData = cache.slice(last, last+5);
         }
 
-        if ($scope.stoped) return;
         var media = cache[last];
         $scope.setMediaOutdoor(media);
         last++;
@@ -161,8 +163,8 @@ function ($scope, postService, mediaService, $api){
         lastOne=0;
     }
     function nextInterval() {        
-        var ret=[lastOne, lastOne+3];        
-        lastOne += 3;
+        var ret=[lastOne, lastOne+POST_PER_REQUEST];        
+        lastOne += POST_PER_REQUEST;
         return ret;
     }
 

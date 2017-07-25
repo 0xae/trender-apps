@@ -96,7 +96,7 @@ a.top-media-item:hover img {
                                 <div style="background-color:#000;border: 1px solid #000; border-bottom: 0px;padding: 10px;">
                                     <center>
                                         <img id="outdoor_img" 
-                                             style="width:450px;z-index:1;height:274px;" />
+                                             style="width:486px;z-index:1;height:274px;" />
                                     </center>
                                 </div>
                             </a>
