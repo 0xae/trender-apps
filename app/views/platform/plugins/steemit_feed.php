@@ -89,7 +89,8 @@ a.top-media-item:hover img {
                 <a style="margin-top:0px;" href="{{outdoor.href}}" target=_blank>
                     <center>
                         <img id="outdoor_img" 
-                             style="margin-top:12px;width:486px;z-index:1;height:274px;" />
+                             style="margin-top:12px;width:486px;z-index:1;height:274px;" 
+                        />
                     </center>
                 </a>
 
@@ -97,6 +98,7 @@ a.top-media-item:hover img {
                     <p style="padding:7px;padding-bottom:1px;margin-bottom:1px;font-size:13px;color: #ccc;">
                         {{ outdoor.text }} 
                     </p>
+
                     <img src="static/img/steemit-196x196.png" style="display:inline;width:15px;height:15px;" />
                     <h4 class="st-post-author" style="color: #ccc;display: inline;">
                          {{outdoor.author}}
@@ -105,7 +107,8 @@ a.top-media-item:hover img {
                     <h4 class="st-post-author" style="color: #ccc;display: inline;">
                          {{outdoor.tag}}
                     </h4>
-                    <div style="display: inline" class="pull-right">
+
+                    <div class="pull-right">
                         <span style="color:#888;font-size:10px;" class="glyphicon glyphicon-time"></span>
                         <span style="color:#999;font-size:11px;font-weight:bold;">{{ outdoor.time }}</span>
                     </div>

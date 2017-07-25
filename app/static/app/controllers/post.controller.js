@@ -3,7 +3,7 @@ angular.module('trender')
 function ($scope, postService, mediaService, $api){
     var TIMELINE_MAX_POSTS = 35;
     var POST_PER_REQUEST = 4;
-    var MAX_TOP_PICS=9;
+    var MAX_TOP_PICS=8;
 
     $scope.context = 'home';
     $scope.top_posts = null;
@@ -91,7 +91,7 @@ function ($scope, postService, mediaService, $api){
     // XXX: bad design
     var cache=[], offset=0;
     var mediaFilterTime=moment()
-     .subtract(2, 'days')
+     .subtract(1, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
     function updateMedia() {
@@ -102,13 +102,11 @@ function ($scope, postService, mediaService, $api){
             $scope.loading=false;
             cache = cache.concat(data);
             offset += 30;
-
             updateMediaOutdoor();
         });
     }
 
     var last=0;
-
     function updateMediaOutdoor() {
         if ($scope.stoped) return;
 

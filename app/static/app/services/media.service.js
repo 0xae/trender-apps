@@ -33,8 +33,9 @@ angular.module('trender')
                 if (!_.isEmpty(cache)) {
                     json.app_url = $api.serverHost() + "/trender/media/" + cache[0];
                 }
-               
-               defer.resolve(resp.data);
+                
+                console.info("app_url: ", json.app_url);              
+                defer.resolve(resp.data);
             });
         });
 
