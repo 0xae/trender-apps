@@ -75,41 +75,28 @@ a.top-media-item:hover img {
                 Media 
             </h4>
 
-            <a href="{{outdoor.href}}" target=_blank>
-                <div style="background-color:#000;border: 1px solid #000; border-bottom: 0px;padding: 10px;">
+            <div style="display:table;background-color:rgba(204, 204, 204, 0.17);border: 1px solid #000; border-bottom: 0px;padding: 4px;border-radius:3px;">
+                 <a href="#" ng-repeat="m in mediaData track by $index" 
+                    ng-if="m.jdata.app_url"
+                    ng-click="setMediaOutdoor(m);">
+                    <img ng-src="{{ m.jdata.app_url }}" 
+                        style="width:50px;height:40px;display:inline;z-index:0;" 
+                    />
+                </a>
+            </div>
+
+            <div style="border:1px solid #666;margin-top:6px;border-radius:2px;padding:0px;background-color:#000;z-index:1000;">
+                <a style="margin-top:0px;" href="{{outdoor.href}}" target=_blank>
                     <center>
                         <img id="outdoor_img" 
-                             style="width:486px;z-index:1;height:274px;" />
+                             style="margin-top:12px;width:486px;z-index:1;height:274px;" />
                     </center>
-                </div>
-            </a>
-            
-            <!--
-            <div class="" style="">
-                <div style="width:90px;padding-bottom:5px;" 
-                     ng-repeat="m in mediaData track by $index" 
-                     ng-if="m.jdata.app_url">
-                     <a href="#" ng-click="setMediaOutdoor(m);">
-                        <img ng-src="{{ m.jdata.app_url }}" 
-                            style="display:inline;width:100px;height:70px;display:inline;z-index:0;" 
-                        />
-                    </a>
-                </div>
-            </div>
-            -->
+                </a>
 
-            <div style="border-radius:2px;padding:0px;background-color:#000;z-index:1000;">
-                <div style="padding-bottom:15px;">
-                    <p class="pull-left" style="padding-left:25px;">
+                <div style="padding: 15px;">
+                    <p style="padding:7px;padding-bottom:1px;margin-bottom:1px;font-size:13px;color: #ccc;">
+                        {{ outdoor.text }} 
                     </p>
-
-                    <p class="pull-right" style="padding-right:25px;">
-                    </p>
-                </div>
-                <p style="clear:both;padding:7px;padding-top:0px;padding-bottom:1px;margin-bottom:1px;font-size:13px;color: #ccc;">
-                    {{ outdoor.text }} 
-                </p>
-                <div style="padding: 5px;padding-top:0px;">
                     <img src="static/img/steemit-196x196.png" style="display:inline;width:15px;height:15px;" />
                     <h4 class="st-post-author" style="color: #ccc;display: inline;">
                          {{outdoor.author}}

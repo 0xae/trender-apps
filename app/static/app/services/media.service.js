@@ -31,7 +31,7 @@ angular.module('trender')
                 json.time_fmt = $api.formatPostTime(p.timeFmt);
                 var cache = json._cache;
                 if (!_.isEmpty(cache)) {
-                    json.app_url = "http://127.0.0.1/trender/media/" + cache[0];
+                    json.app_url = $api.serverHost() + "/trender/media/" + cache[0];
                 }
                
                defer.resolve(resp.data);

@@ -8,6 +8,12 @@ angular.module('trender')
             return API;
         },
 
+        serverHost: function () {
+            var idx = location.href.indexOf('trender');
+            var host = location.href.substr(0, idx-1);
+            return host;            
+        },
+
         formatPostTime: function (time) {
             var m=moment(time);
             var today = moment();

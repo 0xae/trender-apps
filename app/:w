@@ -1,0 +1,8 @@
+<?php $this->title = 'Trender Platform'; ?>
+ 
+<div class="row">
+    <div class="col-md-12">
+        <?php echo $this->render("plugins/steemit_feed"); ?>
+    </div>
+ </div>
+
