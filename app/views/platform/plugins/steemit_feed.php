@@ -89,7 +89,7 @@ a.top-media-item:hover img {
                 <a style="margin-top:0px;" href="{{outdoor.href}}" target=_blank>
                     <center>
                         <img id="outdoor_img" 
-                             style="margin-top:12px;width:486px;z-index:1;height:274px;" 
+                             style="margin-top:12px;width:406px;z-index:1;height:234px;" 
                         />
                     </center>
                 </a>

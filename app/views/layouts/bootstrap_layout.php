@@ -34,15 +34,18 @@ AppAsset::register($this);
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/trender/app/index.php" style="color: #d7cceb;">
-                     <!-- <img alt="Brand" src="static/img/tv-yellow2.png" style="width: 90px"> -->
-                <span style="color: #ccc" class="fa fa-google-wallet"></span>
+                <!-- <span style="color: #ccc" class="fa fa-google-wallet"></span> -->
                 Trender
              </a>
         </div>
         <div id="w0-collapse" class="collapse navbar-collapse">
             <ul id="w1-ul-li-ul" class="navbar-nav navbar-right nav">
                 <li>
-                    <a href="/trender/app/index.php?r=platform%2Findex" style="color: #d7cceb;">Platform</a>
+                    <a href="/trender/app/index.php?r=home/index" style="color: #d7cceb;">Home</a>
+                </li>
+                <!--
+                <li>
+                    <a href="/trender/app/index.php?r=platform/index" style="color: #d7cceb;">Platform</a>
                 </li>
                 <li>
                     <a href="/trender/app/index.php?r=tv/index" style="color: #d7cceb;">Tv</a>
@@ -50,6 +53,7 @@ AppAsset::register($this);
                 <li>
                     <a href="/trender/app/index.php?r=system/index" style="color: #d7cceb;">System Stats</a>
                 </li>
+                -->
                 <li>
                     <a href="/trender/app/index.php?r=settings/index" style="color: #d7cceb;">Settings</a>
                 </li>
@@ -58,19 +62,16 @@ AppAsset::register($this);
     </div>
 </nav>
 
-<div style="padding:0px;">
+<div style="margin-top:30px;padding:0px;">
      <?= $content ?>
  </div>
 
-<!--
 <footer class="footer">
     <div class="container">
-        <p class="pull-left"><i>ayrton@thinkpad</i></p>
-
+        <p class="pull-left"><i>&copy; trender 2017</i></p>
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
--->
 
 <?php $this->endBody() ?>
 </body>
