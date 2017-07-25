@@ -55,8 +55,8 @@ a.top-media-item:hover img {
 </style>
 
 <div class="row" ng-controller="PostController" >
-    <div class="col-md-12 " style="background-color:#000;height:430px">
-        <div class="col-md-4" style="margin-top:25px;">
+    <div class="col-md-12" style="padding-top:50px;background-color:#000;">
+        <div class="col-md-4" style="">
             <h4 style="font-size:13px;font-weight:bold;"> 
                 showing #{{ top_mode }} <br/>
                 about {{ total_items }} posts
@@ -67,84 +67,76 @@ a.top-media-item:hover img {
             </div>
         </div>
 
-        <div class="col-md-6 pull-right" style="margin-top:15px;margin-right: 35px;">
-            <div class="row">
-                <div class="col-md-12" style="">
-                    <h4 style="font-size:13px;font-weight:bold;"> 
-                        Media 
-                    </h4>
+        <div class="col-md-8" style="">
+            <h4 style="font-size:13px;font-weight:bold;"> 
+                Media 
+            </h4>
+
+            <a href="{{outdoor.href}}" target=_blank>
+                <div style="background-color:#000;border: 1px solid #000; border-bottom: 0px;padding: 10px;">
+                    <center>
+                        <img id="outdoor_img" 
+                             style="width:486px;z-index:1;height:274px;" />
+                    </center>
                 </div>
-                <!-- col-md-12 -->
+            </a>
+            
+            <!--
+            <div class="" style="">
+                <div style="width:90px;padding-bottom:5px;" 
+                     ng-repeat="m in mediaData track by $index" 
+                     ng-if="m.jdata.app_url">
+                     <a href="#" ng-click="setMediaOutdoor(m);">
+                        <img ng-src="{{ m.jdata.app_url }}" 
+                            style="display:inline;width:100px;height:70px;display:inline;z-index:0;" 
+                        />
+                    </a>
+                </div>
+            </div>
+            -->
 
-                <div class="col-md-12" style="border-radius:2px;background-color:rgba(204, 204, 204, 0.25);padding:0px;">
-                    <div class="row">
-                        <div class="col-md-2" style="margin:7px;">
-                            <div style="width:90px;padding-bottom:5px;" 
-                                 ng-repeat="m in mediaData track by $index" 
-                                 ng-if="m.jdata.app_url">
-                                <a href="#" ng-click="setMediaOutdoor(m);">
-                                        <img class="" 
-                                            ng-src="{{ m.jdata.app_url }}" 
-                                            style="display:inline;width:100px;height:70px;display:inline;z-index:0;" 
-                                        />
-                                </a>
-                            </div>
-                        </div>
+            <div style="border-radius:2px;padding:0px;background-color:#000;z-index:1000;">
+                <div style="padding-bottom:15px;">
+                    <p class="pull-left" style="padding-left:25px;">
+                    </p>
 
-                        <div class="col-md-9" style="margin:0px;margin-left:5px;padding:0px;margin-top:6px;">
-                            <a href="{{outdoor.href}}" target=_blank>
-                                <div style="background-color:#000;border: 1px solid #000; border-bottom: 0px;padding: 10px;">
-                                    <center>
-                                        <img id="outdoor_img" 
-                                             style="width:486px;z-index:1;height:274px;" />
-                                    </center>
-                                </div>
-                            </a>
-                            
-                            <div style="border-radius:2px;padding:0px;background-color:#000;z-index:1000;">
-                                <div style="padding-bottom:15px;">
-                                    <p class="pull-left" style="padding-left:25px;">
-                                    </p>
-
-                                    <p class="pull-right" style="padding-right:25px;">
-                                    </p>
-                                </div>
-                                <p style="clear:both;padding:7px;padding-top:0px;padding-bottom:1px;margin-bottom:1px;font-size:13px;color: #ccc;">
-                                    {{ outdoor.text }} 
-                                </p>
-                                <div style="padding: 5px;padding-top:0px;">
-                                    <img src="static/img/steemit-196x196.png" style="display:inline;width:15px;height:15px;" />
-                                    <h4 class="st-post-author" style="color: #ccc;display: inline;">
-                                         {{outdoor.author}}
-                                    </h4>
-                                    <h4 class="st-post-author" style="color: #ccc;font-weight:normal;display: inline;"> in </h4>
-                                    <h4 class="st-post-author" style="color: #ccc;display: inline;">
-                                         {{outdoor.tag}}
-                                    </h4>
-                                    <div style="display: inline" class="pull-right">
-                                        <span style="color:#888;font-size:10px;" class="glyphicon glyphicon-time"></span>
-                                        <span style="color:#999;font-size:11px;font-weight:bold;">{{ outdoor.time }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--
-                        <div class="col-md-8" style="">
-                             <iframe src="http://player.twitch.tv/?channel=yoda&muted=true"
-                                 height="300" width="450" frameborder="0" scrolling="no"
-                                 allowfullscreen="true">
-                             </iframe>
-                        </div>
-                        -->
+                    <p class="pull-right" style="padding-right:25px;">
+                    </p>
+                </div>
+                <p style="clear:both;padding:7px;padding-top:0px;padding-bottom:1px;margin-bottom:1px;font-size:13px;color: #ccc;">
+                    {{ outdoor.text }} 
+                </p>
+                <div style="padding: 5px;padding-top:0px;">
+                    <img src="static/img/steemit-196x196.png" style="display:inline;width:15px;height:15px;" />
+                    <h4 class="st-post-author" style="color: #ccc;display: inline;">
+                         {{outdoor.author}}
+                    </h4>
+                    <h4 class="st-post-author" style="color: #ccc;font-weight:normal;display: inline;"> in </h4>
+                    <h4 class="st-post-author" style="color: #ccc;display: inline;">
+                         {{outdoor.tag}}
+                    </h4>
+                    <div style="display: inline" class="pull-right">
+                        <span style="color:#888;font-size:10px;" class="glyphicon glyphicon-time"></span>
+                        <span style="color:#999;font-size:11px;font-weight:bold;">{{ outdoor.time }}</span>
                     </div>
                 </div>
             </div>
-            <!-- col-md-12 -->
         </div>
+
+        <div class="col-md-8" style="border-radius:2px;padding:0px;">
+                <!--
+                <div class="col-md-8" style="">
+                     <iframe src="http://player.twitch.tv/?channel=yoda&muted=true"
+                         height="300" width="450" frameborder="0" scrolling="no"
+                         allowfullscreen="true">
+                     </iframe>
+                </div>
+                -->
+        </div>
+    <!-- col-md-12 -->
     </div>
 
-    <div class="col-md-12" style="background-color: #000;padding-bottom:10px;padding-top:23px;">
+    <div class="col-md-12" style="background-color: #000;padding-bottom:10px;padding-top:23px;padding-left:25px;">
           <div class=""> 
               <ul class="nav nav-tabs" style="border:0px;" role="tablist">
                     <li role="presentation" ng-class="{active: context=='home'}">
@@ -193,7 +185,7 @@ a.top-media-item:hover img {
           </div>
     </div>
 
-    <div class="col-md-5" style="margin-top: 25px;">
+    <div class="col-md-5" style="padding:10px;margin-left:35px;margin-top: 15px;">
         <span id="steemit_title"></span>
         <div ng-repeat="post in posts track by $index" style="margin-bottom: 25px;">
             <steemit-post p="post">

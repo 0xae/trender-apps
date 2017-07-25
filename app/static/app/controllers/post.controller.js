@@ -12,7 +12,7 @@ function ($scope, postService, mediaService, $api){
 
     var daysAgo = parseInt(localStorage.getItem('tm_start_day') || 2);
     var time=moment()
-     .subtract(5, 'days')
+//      .subtract(1, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
     $scope.toggleStreamming = function () {
@@ -89,10 +89,14 @@ function ($scope, postService, mediaService, $api){
 
     // XXX: bad design
     var cache=[], offset=0;
+    var mediaFilterTime=moment()
+     .subtract(7, 'days')
+     .format("YYYY-MM-DD HH:mm:ss");
+
     function updateMedia() {
         if ($scope.stoped) return;
 
-        mediaService.recent(time, null, null, offset)
+        mediaService.recent(mediaFilterTime, null, null, offset)
         .then(function (data){
             $scope.loading=false;
             cache = cache.concat(data);
@@ -103,6 +107,7 @@ function ($scope, postService, mediaService, $api){
     }
 
     var last=0;
+
     function updateMediaOutdoor() {
         if ($scope.stoped) return;
 
