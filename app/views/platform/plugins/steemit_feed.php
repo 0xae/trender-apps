@@ -67,7 +67,10 @@ a.top-media-item:hover img {
             </div>
         </div>
 
-        <div class="col-md-8" style="">
+        <div class="col-md-3">
+        </div>
+
+        <div class="col-md-4" style="">
             <h4 style="font-size:13px;font-weight:bold;"> 
                 Media 
             </h4>
