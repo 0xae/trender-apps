@@ -33,8 +33,6 @@ angular.module('trender')
                 if (!_.isEmpty(cache)) {
                     json.app_url = $api.serverHost() + "/trender/media/" + cache[0];
                 }
-                
-                console.info("app_url: ", json.app_url);              
                 defer.resolve(resp.data);
             });
         });
@@ -43,7 +41,8 @@ angular.module('trender')
     }
 
     function indexMedia(urls) {
-        return $http.post($api.url() + 'api/media/index', JSON.stringify(urls));
+        var indexName = 't:timeline';
+        return $http.post($api.url() + 'api/media/index/' + encodeURIComponent(indexName), JSON.stringify(urls));
     }
 
     function fetchMediaFrom() {        

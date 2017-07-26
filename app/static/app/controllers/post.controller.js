@@ -13,7 +13,7 @@ function ($scope, postService, mediaService, $api){
 
     var daysAgo = parseInt(localStorage.getItem('tm_start_day') || 2);
     var time=moment()
-//      .subtract(1, 'days')
+     .subtract(2, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
     $scope.toggleStreamming = function () {

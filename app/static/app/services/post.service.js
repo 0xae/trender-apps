@@ -46,6 +46,10 @@ angular.module('trender')
         return p;
     }
 
+    function searchPosts(query) {
+        return $.get(API.url() + 'api/post/search?q=' + encodeURIComponent(query));
+    }
+
     function getCache() {
         var defer = $q.defer();
         defer.resolve(cache.slice());
@@ -62,6 +66,7 @@ angular.module('trender')
         getRecent: fetchPosts,
         stream: stream,
         cache: cachePosts,
-        getCache: getCache
+        getCache: getCache,
+        search: searchPosts
     }
 }]);
