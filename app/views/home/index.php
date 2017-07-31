@@ -2,9 +2,17 @@
 $this->title = 'Home';
 ?>
 
-<div ng-controller="HomeController">
+<style>
+.tr-header {
+    background: url(static/img/marketplace.webp) no-repeat;
+    background-position: 89% 38%;
+    background-size: cover;
+}
+</style>
 
-    <div class="row" style="padding:10px;padding-top:30px;padding-bottom:16px;background-color: #000;">
+<div ng-controller="HomeController">
+    <div class="row tr-header" style="height:230px;background-color: #000;">
+          <!--
           <div class="col-lg-4">
                 <h2 ng-if="!searchTerm" style="margin-bottom:0px;color:#ccc;">Home</h2>
                 <h2 ng-if="searchTerm" style="margin-bottom:0px;color:#ccc;"># {{searchTerm}}</h2>
@@ -21,23 +29,19 @@ $this->title = 'Home';
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                       </span>
-                </div><!-- /input-group -->
+                </div>
                 <span ng-if="searchTerm" style="color:#ccc;font-size:10px" class="text-default">
                     Searching for 
                     <strong>
                         <a style="font-weight:bold" href="#">#{{searchTerm}}</a>
                     </strong>
                  </span>
-          </div><!-- /.col-lg-6 -->
+          </div>
+          -->
     </div><!-- /.row -->
 
+
     <div class="row">
-        <div class="col-lg-5" style="padding: 20px;padding-left:45px;">
-            <div ng-repeat="post in posts_search_results" style="margin-bottom: 15px;">
-                <steemit-post p="post">
-                </steemit-post>
-            </div>
-        </div>
 
         <div class="col-lg-4">
             <h2>Heading</h2>
@@ -60,7 +64,7 @@ $this->title = 'Home';
 
             <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
         </div>
-
     </div>
+
 
 </div>

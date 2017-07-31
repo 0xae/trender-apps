@@ -6,11 +6,11 @@ angular.module('trender')
         });
     }
 
-    function fetchRecent(since, fid, type, offset) {
-        fid = fid || 'everybody';
+    function fetchRecent(since, ref, type, offset) {
+        ref = ref || 'everybody';
         type = type || '*';
         var url = $api.url() + 'api/media/recent?';
-        url += 'fid='+encodeURIComponent(fid)+'&';
+        url += 'ref='+encodeURIComponent(ref)+'&';
         url += 'type='+encodeURIComponent(type)+'&';
  
         if (offset) {
@@ -40,12 +40,12 @@ angular.module('trender')
          return defer.promise;
     }
 
-    function indexMedia(urls) {
+    function indexMedia(items) {
         var indexName = 't:timeline';
-        return $http.post($api.url() + 'api/media/index/' + encodeURIComponent(indexName), JSON.stringify(urls));
+        return $http.post($api.url() + 'api/media/index/' + encodeURIComponent(indexName), JSON.stringify(items));
     }
 
-    function fetchMediaFrom() {        
+    function fetchMediaFrom() {    
         var url = $api.url() + 'api/media?';        
     }
 

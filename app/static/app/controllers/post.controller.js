@@ -71,7 +71,7 @@ function ($scope, postService, mediaService, $api){
                 var req = filterTop(data, 0, POST_PER_REQUEST)
                 .map(function (pm){
                     return {
-                        fId: pm.facebookId,
+                        ref: pm.ref,
                         postId: pm.id,
                         links: [pm.postLink.viewLink]
                     };
@@ -90,11 +90,12 @@ function ($scope, postService, mediaService, $api){
 
     var cache=[], offset=0;
     var mediaFilterTime=moment()
-     .subtract(1, 'days')
+     .subtract(3, 'days')
      .format("YYYY-MM-DD HH:mm:ss");
 
     // XXX: bad design
     function updateMedia() {
+        console.info("::updateMedia::");
         if ($scope.stoped) return;
 
         mediaService.recent(mediaFilterTime, null, null, offset)
@@ -120,10 +121,6 @@ function ($scope, postService, mediaService, $api){
         if (last >= cache.length) {
             last = 0;
         }
-    }
-
-    function apply() {
-        try{$scope.$apply();}catch(e){}
     }
 
     function updateTopPosts(posts) {

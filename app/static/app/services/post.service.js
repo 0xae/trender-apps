@@ -57,12 +57,6 @@ angular.module('trender')
     }
 
     return {
-        getById: function (id) {
-            return $.get(API.url() + 'post/'+id);
-        },
-        getByFbId: function (fbid) {
-            return promisify($http.get(API.url() + 'post/fbid/'+fbid));
-        },
         getRecent: fetchPosts,
         stream: stream,
         cache: cachePosts,

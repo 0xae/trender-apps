@@ -24,6 +24,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+<!-- 
 <nav class="navbar-inverse navbar-fixed-top trender-color navbar" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -34,7 +35,6 @@ AppAsset::register($this);
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/trender/app/index.php" style="color: #d7cceb;">
-                <!-- <span style="color: #ccc" class="fa fa-google-wallet"></span> -->
                 Trender
              </a>
         </div>
@@ -43,7 +43,6 @@ AppAsset::register($this);
                 <li>
                     <a href="/trender/app/index.php?r=home/index" style="color: #d7cceb;">Home</a>
                 </li>
-                <!--
                 <li>
                     <a href="/trender/app/index.php?r=platform/index" style="color: #d7cceb;">Platform</a>
                 </li>
@@ -53,7 +52,6 @@ AppAsset::register($this);
                 <li>
                     <a href="/trender/app/index.php?r=system/index" style="color: #d7cceb;">System Stats</a>
                 </li>
-                -->
                 <li>
                     <a href="/trender/app/index.php?r=settings/index" style="color: #d7cceb;">Settings</a>
                 </li>
@@ -61,8 +59,8 @@ AppAsset::register($this);
         </div>
     </div>
 </nav>
-
-<div style="margin-top:30px;padding:0px;">
+-->
+<div style="padding:0px;">
      <?= $content ?>
  </div>
 
