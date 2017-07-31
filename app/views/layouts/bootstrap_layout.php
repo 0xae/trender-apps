@@ -62,14 +62,8 @@ AppAsset::register($this);
 -->
 <div style="padding:0px;">
      <?= $content ?>
- </div>
+</div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left"><i>&copy; trender 2017</i></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>

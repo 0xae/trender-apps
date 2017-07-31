@@ -8,6 +8,28 @@ $this->title = 'Home';
     background-position: 89% 38%;
     background-size: cover;
 }
+
+.tr-top-menu {
+}
+
+.tr-top-menu li {
+    margin:0px;
+}
+
+.tr-top-menu li a.top-link:hover,
+.tr-top-menu li a.top-link:focus
+{
+    background-color: #337ab7;
+}
+
+.tr-top-menu li a {
+    padding:2px;
+    padding-left:6px;
+    padding-right:6px;
+    font-size:12px;
+    margin:0px;
+    color: #fff;
+}
 </style>
 
 <div ng-controller="HomeController">
@@ -40,6 +62,29 @@ $this->title = 'Home';
           -->
     </div><!-- /.row -->
 
+    <div class="row" style="margin-top:-30px;background-color:rgba(0,0,0,.6);margin-left:0px;padding:0px;">
+        <div class="col-md-12" style="padding:4px;">
+            <ul class="nav nav-pills tr-top-menu">
+              <li role="presentation" class="active">
+                <a class="top-link" href="#">what's happening</a>
+              </li>
+
+              <li role="presentation" class="">
+                <a class="top-link" href="#">news</a>
+              </li>
+
+              <li role="presentation" class="">
+                <a class="top-link" href="#">trending</a>
+              </li>
+
+              <li role="presentation" class="pull-right">
+                <a href="#">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+              </li>
+            </ul>
+        </div>
+    </div>
 
     <div class="row">
 
