@@ -21,6 +21,8 @@ $this->title = 'Home';
 
 .tr-top-menu li {
     margin:0px;
+    padding-left:12px;
+    
 }
 
 .tr-top-menu li a.top-link:hover,
@@ -67,11 +69,15 @@ $this->title = 'Home';
     border:1px solid #000;
 }
 
+.search-btn .input-group-addon a{
+    color: #fff;
+}
+
 .search-btn input {
     background-color: rgba(19, 10, 0, 0.9);
     border:0px;
     font-size:13px;
-    border:1px solid #000;
+    color: #999;
 }
 
 .search-area {
@@ -89,31 +95,34 @@ $this->title = 'Home';
                     <div class="row" style="">
                         <div class="col-md-12 search-area" style="">
                             <div class="col-md-4"> </div>
-                            <div class="col-md-4">
-                            <h2 class="tr-top-title">#Welcome to Trender</h2>
+                            <div class="col-md-4" style="background:transparent;">
+                                <h2 class="tr-top-title">#Welcome to Trender</h2>
                                 <div class="input-group search-btn">
                                   <input type="text" class="form-control" 
+                                         ng-model="query"
                                          placeholder="What's happening?" 
                                          aria-describedby="sizing-addon2">
-                                  <span class="input-group-addon search-btn" style="" id="sizing-addon2">
-                                    <span class="glyphicon glyphicon-search"></span>
+                                  <span ng-click="search(query)" class="input-group-addon search-btn" style="" id="sizing-addon2">
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </a>
                                   </span>
                                 </div>
                             </div>
                             <div class="col-md-4"> </div>
                         </div>
                         <div class="col-md-12" style="margin:0px;";>
-                            <h2 class="tr-top-title">news</h2>
+                            <h2 class="tr-top-title">{{search_topic}}</h2>
                         </div>
                         <div class="col-md-12" style="background-color:rgba(0,0,0,.6);padding-top:0px;">
                             <ul class="nav nav-pills tr-top-menu">
 
-                              <li role="presentation" class="">
-                                <a class="top-link" href="#">news</a>
-                              </li>
-
-                              <li role="presentation" class="">
-                                <a class="top-link" href="#">trending</a>
+                              <li ng-repeat="c in top_categories track by $index" role="presentation" class="">
+                                <a class="top-link" href="#">
+                                    {{c.key}}
+                                    <span class="badge-primary"
+                                        style=""><strong>{{c.value}}</strong></span>
+                                </a>
                               </li>
 
                               <li role="presentation" class="pull-right">
@@ -132,16 +141,38 @@ $this->title = 'Home';
 
 
     <div class="row">
+        <div class="col-lg-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Category</h2>
 
-        <div class="col-lg-2">
-            <h2>Heading</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur.</p>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur.</p>
+                    <p>
+                        <a class="btn btn-default" href="http://www.yiiframework.com/extensions/">
+                            Load More
+                        </a>
+                    </p>
+                </div>
 
-            <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <div class="col-lg-12">
+                    <h2>Type</h2>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur.</p>
+
+                    <p>
+                        <a class="btn btn-default" href="http://www.yiiframework.com/extensions/">
+                            Load More
+                        </a>
+                    </p>
+                </div>
+            </div>
         </div>
 
         <div class="col-lg-4">
