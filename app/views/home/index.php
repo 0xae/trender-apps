@@ -5,7 +5,7 @@ $this->title = 'Home';
 <style>
 .tr-header {
     background: url(static/img/marketplace.webp) no-repeat;
-    background-position: 89% 38%;
+    background-position: 89% 58%;
     background-size: cover;
 }
 
@@ -29,6 +29,12 @@ $this->title = 'Home';
     background-color: #337ab7;
 }
 
+.tr-top-menu li a.settings-link:hover,
+.tr-top-menu li a.settings-link:focus
+{
+    background-color: transparent;
+}
+
 .tr-top-menu li a {
     padding:4px;
     padding-left:6px;
@@ -36,7 +42,9 @@ $this->title = 'Home';
     font-size:12px;
     margin:0px;
     color: #fff;
+    border-radius:0px;
 }
+
 
 .tr-outside {
     background-color: #EEE; /*to make it visible*/
@@ -71,7 +79,7 @@ $this->title = 'Home';
                               </li>
 
                               <li role="presentation" class="pull-right">
-                                <a href="#">
+                                <a href="#" class="settings-link">
                                     <span class="glyphicon glyphicon-cog"></span>
                                 </a>
                               </li>
