@@ -88,60 +88,8 @@ function ($scope, postService, mediaService, $api){
         });
     }
 
-    var cache=[], offset=0;
-    var mediaFilterTime=moment()
-     .subtract(3, 'days')
-     .format("YYYY-MM-DD HH:mm:ss");
 
-    // XXX: bad design
-    function updateMedia() {
-        console.info("::updateMedia::");
-        if ($scope.stoped) return;
-
-        mediaService.recent(mediaFilterTime, null, null, offset)
-        .then(function (data){
-            $scope.loading=false;
-            cache = cache.concat(data);
-            offset += 30;
-            updateMediaOutdoor();
-        });
-    }
-
-    var last=0;
-    function updateMediaOutdoor() {
-        if ($scope.stoped) return;
-
-        if (last%MAX_TOP_PICS==0) {
-            $scope.mediaData = cache.slice(last, last+MAX_TOP_PICS);
-        }
-
-        var media = cache[last];
-        $scope.setMediaOutdoor(media);
-        last++;
-        if (last >= cache.length) {
-            last = 0;
-        }
-    }
-
-    function updateTopPosts(posts) {
-        var r=nextInterval();
-        var topPosts = filterTop(posts, r[0], r[1]);
-        if (r[0] > topPosts.length) {
-            resetInterval();
-        }
  
-        $scope.total_items = posts.length;
-        $scope.top_mode = 'top-'+(r[0]+r[1]);
-        $scope.top_posts = topPosts;
-    }
-
-    function filterTop(posts, start, end) {
-        var unique = _.uniqBy(posts, function (p) { return p.id; });
-        return  _.sortBy(unique, function (p) {
-                   return p.postReaction.countLikes;
-                })
-                .slice(start, end);
-    }
 
     /**
      * https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling

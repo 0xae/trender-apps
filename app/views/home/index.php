@@ -55,17 +55,55 @@ $this->title = 'Home';
     height: 200px;
     top: 67%;
 }
+.row {
+}
+
+.search-btn .input-group-addon{
+    border-top: 1px solid transparent;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+    color: #fff;
+    background-color:#d43b03;
+    border:1px solid #000;
+}
+
+.search-btn input {
+    background-color: rgba(19, 10, 0, 0.9);
+    border:0px;
+    font-size:13px;
+    border:1px solid #000;
+}
+
+.search-area {
+    margin-top:70px;
+    margin-bottom:50px;
+}
 </style>
 
 <div ng-controller="HomeController">
     <div class="row tr-header" style="">
 
         <div class="col-md-12" style="">
-             <div class="tr-outside tr-header" style="">
-                <div class="tr-inside" style="">
+             <div class="tr-outside tr-header" style="height:0px">
+                <div class="tr-inside" style="height:0px;">
                     <div class="row" style="">
+                        <div class="col-md-12 search-area" style="">
+                            <div class="col-md-4"> </div>
+                            <div class="col-md-4">
+                            <h2 class="tr-top-title">#Welcome to Trender</h2>
+                                <div class="input-group search-btn">
+                                  <input type="text" class="form-control" 
+                                         placeholder="What's happening?" 
+                                         aria-describedby="sizing-addon2">
+                                  <span class="input-group-addon search-btn" style="" id="sizing-addon2">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                  </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4"> </div>
+                        </div>
                         <div class="col-md-12" style="margin:0px;";>
-                            <h2 class="tr-top-title">#What's happening?</h2>
+                            <h2 class="tr-top-title">news</h2>
                         </div>
                         <div class="col-md-12" style="background-color:rgba(0,0,0,.6);padding-top:0px;">
                             <ul class="nav nav-pills tr-top-menu">
@@ -95,7 +133,7 @@ $this->title = 'Home';
 
     <div class="row">
 
-        <div class="col-lg-4">
+        <div class="col-lg-2">
             <h2>Heading</h2>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
