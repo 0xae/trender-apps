@@ -47,7 +47,6 @@ $this->title = 'Home';
     border-radius:0px;
 }
 
-
 .tr-outside {
     background-color: #EEE; /*to make it visible*/
     height: 200px;
@@ -83,6 +82,31 @@ $this->title = 'Home';
 .search-area {
     margin-top:70px;
     margin-bottom:50px;
+}
+
+.category-link {
+    font-weight: bold;
+}
+.tr-category-stats {
+    color: #ccc;
+    font-size: 12px;
+}
+.tr-section-title {
+    font-size:16px;
+    font-weight: bold;
+}
+.tr-category-loadmore {
+    font-size: 12px;
+}
+.tr-category {
+    margin:0px;
+    margin-bottom: 6px;
+}
+.tr-type-log label {
+    font-size: 12px;
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 </style>
 
@@ -143,35 +167,38 @@ $this->title = 'Home';
     <div class="row">
         <div class="col-lg-3">
             <div class="row">
-                <div class="col-lg-12">
-                    <h2>Category</h2>
+                <div class="col-lg-12" style="padding-left: 35px;padding-top:0px;">
+                    <h2 class="tr-section-title">By category</h2>
+                    <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;">
+                        <p ng-repeat="cat in remain_categories" class="tr-category">
+                            <a href="#" class="category-link">
+                               {{cat.key}}
+                            </a>
+                            <br/>
+                            <span class="tr-category-stats">{{cat.value}} posts </span>
+                        </p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur.</p>
-
-                    <p>
-                        <a class="btn btn-default" href="http://www.yiiframework.com/extensions/">
-                            Load More
-                        </a>
-                    </p>
+                        <p>
+                            <a class="tr-category-loadmore" href="http://www.yiiframework.com/extensions/">
+                                Load More
+                            </a>
+                        </p>
+                    </div>
                 </div>
 
-                <div class="col-lg-12">
-                    <h2>Type</h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur.</p>
-
-                    <p>
-                        <a class="btn btn-default" href="http://www.yiiframework.com/extensions/">
-                            Load More
-                        </a>
-                    </p>
+                <div class="col-lg-12" style="padding-left: 35px;padding-top:0px;">
+                    <h2 class="tr-section-title">by source</h2>
+                    <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;">
+                        <p ng-repeat="cat in type_result" class="tr-category">
+                            <a href="#" class="category-link">
+                               {{cat.key}}
+                            </a>
+                            <br/>
+                            <span class="tr-category-stats">{{cat.value}} posts </span>
+                        </p>
+                    </div>
                 </div>
+
             </div>
         </div>
 

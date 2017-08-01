@@ -19,9 +19,10 @@ function ($scope, service, $api){
 
             $scope.top_categories = sorted.slice(0, 10);
             $scope.search_topic = q;
-            console.log($scope.top_categories);
-            $scope.remain_categories = sorted.slice(7);
-            $scope.type_result = postTypes;
+            $scope.remain_categories = sorted.slice(7, 11);
+            $scope.type_result = _.sortBy(postTypes, function (p) {
+                return p.value;
+            });
             $scope.total_found = data.response.numFound;
         });
     }
@@ -30,6 +31,7 @@ function ($scope, service, $api){
         console.info("search for #"+q);
         if (!$scope.query)
             $scope.query = q;
+
         search(q);
     };
 
