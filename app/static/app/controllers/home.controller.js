@@ -2,6 +2,7 @@ angular.module('trender')
 .controller('HomeController', ['$scope', 'PostService', '$api',
 function ($scope, service, $api){
     $scope.search = function (q) {
+        $scope.posts = [];
         console.info("search for #"+q);
         if (!$scope.query)
             $scope.query = q;
@@ -30,6 +31,7 @@ function ($scope, service, $api){
     };
 
     $scope.searchByCategory = function (c) {
+        $scope.posts = [];
         $scope.fq = c.key;
         service.getData({
             q:$scope.query,
@@ -41,6 +43,7 @@ function ($scope, service, $api){
     }
 
     $scope.searchByType = function (c) {
+        $scope.posts = [];
         var conf = {
             q:$scope.query,
             fq: '&fq=type:'+c.key

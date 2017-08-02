@@ -7,7 +7,8 @@ angular.module('trender')
     }
 
     function getData(conf) {
-        var url = 'http://localhost:8983/solr/trender/query?q='+conf.q+
+        var q = encodeURIComponent(conf.q);
+        var url = 'http://localhost:8983/solr/trender/query?q='+q+
                   '&facet=true'+
                   '&facet.field=category'+
                   '&facet.field=type'+
@@ -17,7 +18,17 @@ angular.module('trender')
              url += '&fq=' + conf.fq;
          }
 
-         return _resolveData($http.get(url));
+         return $http.get(url)
+         .then(function (resp){
+             var data = resp.data.response.docs;
+             data.forEach(function (d){
+                 d.json = JSON.parse(d.data);
+                if (d.type == 'twitter-post') {
+                    console.info(d);
+                }
+             });          
+             return resp.data;
+         });
     }
 
     return {

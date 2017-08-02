@@ -229,15 +229,8 @@ a.category-link:visited {
             </div>
             -->
             <div class="col-md-4" style="padding:0px;margin-bottom:06px;padding-bottom:0px;" ng-repeat="post in posts" >
-                <div ng-if="post.type == 'twitter-post'">
-                    <twitter-post  p="post">
-                    </twitter-post>
-                </div>
-
-                <div ng-if="!(post.type == 'twitter-post')">
-                    <trender-post  p="post">
-                    </trender-post>
-                </div>
+                <trender-post ng-if="post.type == 'twitter-post'" p="post">
+                </trender>
             </div>
         </div>
     </div>

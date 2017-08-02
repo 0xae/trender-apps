@@ -98,6 +98,53 @@ angular.module('trender')
     }
 })
 
+.directive('twitterPost', function (){
+    return {
+        restrict: "E",
+        scope: {p: '='},
+        template: '<div class="media">'+
+                '      <div class="media-left">'+
+                '        <a href="#">'+
+                '          <img style="border-radius:88px" class="media-object" ng-src="{{ p.picture }}" alt="Foto of {{p.authorName}}" width="50" height="50"/>'+
+                '        </a>'+
+                '      </div>'+
+                '      <div class="media-body">'+
+                '        <h4 class="st-post-author" style="display: inherit;">'+
+                            '@{{ p.json.username }}'+
+                '            <a href="#" title="{{ p.timestampFmt }}" style="font-size:11px;padding: 0px;padding-right:3px;color:#777;text-decoration:none;font-weight:normal;">'+
+                '             · {{ p.timestamp }} '+
+                '            </a>'+
+                '        </h4>'+
+
+                '        <p style="margin-bottom:5px;font-size:13px;padding:4px;">{{ p.description }} </p>'+
+                         '<div class="row" ng-if="p.json.images.length">'+
+                            '<div class="col-xs-6 col-md-12">'+
+                               '<a href="#" class="thumbnail" style="border:0px;">'+
+                                   '<img style="border-radius:4px;height:200px;width:300px;" ng-src="{{p.json.images[0]}}" alt="...">'+
+                               '</a>'+
+                          '</div>'+
+                        '</div>'+
+
+                '        <ul class="nav nav-pills">'+
+                '            <li role="presentation" class="">'+
+                '                <a href="#" style="font-size:12px;padding: 4px;padding-right:3px;">'+
+                '                    <img style="display:inline-block;padding:0px;" src="static/img/like.png" width="13" height="13" class="o">'+
+                '                    {{ p.json.love }} '+
+                '                </a>'+
+                '            </li>'+
+                '            <li role="presentation" class="color: #777">'+
+                '                <a target="__blank" href="{{ p.link }}" style="color:#777;font-size:12px;padding: 4px;padding-right:3px;">'+
+                '                 ·  <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">'+
+                                        '<img src="static/img/twitter-192x192.png" style="display:inline;width:15px;height:15px;" /> twitter.com'+
+                                  '</span>'+
+                '                </a>'+
+                '            </li>'+
+                '        </ul>'+
+                '      </div>'+
+                '</div>'
+    }
+})
+
 .directive('trClock', function (){
     return {
         restrict: "E",
