@@ -107,9 +107,9 @@ angular.module('trender')
                 '        </h4>'+
 
                 '        <p style="margin-bottom:5px;font-size:13px;padding:4px;">{{ p.description }} </p>'+
-                         '<div class="row" ng-if="p.json.images.length">'+
-                            '<div class="col-xs-6 col-md-12">'+
-                               '<a href="#" class="thumbnail" style="border:0px;">'+
+                         '<div class="" ng-if="p.json.images.length">'+
+                            '<div class="col-md-12">'+
+                               '<a href="#" class="" style="border:0px;">'+
                                    '<img style="border-radius:4px;height:200px;width:300px;" ng-src="{{p.json.images[0]}}" alt="...">'+
                                '</a>'+
                           '</div>'+
@@ -154,7 +154,7 @@ angular.module('trender')
                 '        </h4>'+
                 '        <p style="margin-bottom:5px;font-size:13px;padding:4px;">{{ p.description }} </p>'+
                          '<div class="row">'+
-                            '<div class="col-xs-6 col-md-12">'+
+                            '<div class="col-md-12">'+
                                 '<iframe id="ytplayer" style="border:0px;border-radius:4px" type="text/html" width="300" height="200"'+
                                     'src="https://www.youtube.com/embed/j23HnORQXvs&autoplay=0'+
                                     'frameborder="0">'+
