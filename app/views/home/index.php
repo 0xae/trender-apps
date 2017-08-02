@@ -184,6 +184,19 @@ a.category-link:visited {
 
     <div class="row">
         <div class="col-lg-2">
+                <div class="" style="padding-left: 35px;padding-top:0px;">
+                    <h2 class="tr-section-title">by source</h2>
+                    <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;">
+                        <p ng-repeat="cat in type_result" class="tr-category">
+                            <a href="#" ng-click="searchByType(cat)" class="category-link">
+                               {{cat.key}}
+                            </a>
+                            <br/>
+                            <span class="tr-category-stats">{{cat.value}} posts </span>
+                        </p>
+                    </div>
+                </div>
+
                 <div class="2" style="padding-left: 35px;padding-top:0px;">
                     <h2 class="tr-section-title">By category</h2>
                     <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;padding-right:0px;">
@@ -203,25 +216,19 @@ a.category-link:visited {
                     </div>
                 </div>
 
-                <div class="" style="padding-left: 35px;padding-top:0px;">
-                    <h2 class="tr-section-title">by source</h2>
-                    <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;">
-                        <p ng-repeat="cat in type_result" class="tr-category">
-                            <a href="#" ng-click="searchByType(cat)" class="category-link">
-                               {{cat.key}}
-                            </a>
-                            <br/>
-                            <span class="tr-category-stats">{{cat.value}} posts </span>
-                        </p>
-                    </div>
-                </div>
         </div>
 
-        <div class="col-lg-9">
-            <div class="col-md-12">
-                <h2></h2>
+        <div class="col-lg-9" style="margin-top:20px;">
+          <!-- 
+           <div class="col-md-4 pull-right " style="margin-top:0px;">
+                <h2 class="tr-section-title" style="margin-top:0px;">Trender Tv</h2>
+                <iframe id="ytplayer" type="text/html" width="400" height="260"
+                  src="https://www.youtube.com/embed/hX3j0sQ7ot8autoplay=0&origin=http://example.com"
+                  frameborder="0">
+                </iframe>
             </div>
-            <div class="col-md-4" style="padding:0px;margin-bottom:26px;padding-bottom:0px;" ng-repeat="post in posts" >
+            -->
+            <div class="col-md-4" style="padding:0px;margin-bottom:06px;padding-bottom:0px;" ng-repeat="post in posts" >
                 <trender-post p="post">
                 </trender>
             </div>
