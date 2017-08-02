@@ -1,5 +1,5 @@
 <?php
-$this->title = 'Home';
+$this->title = 'Trender Home';
 ?>
 
 <style>
@@ -87,6 +87,16 @@ $this->title = 'Home';
 .category-link {
     font-weight: bold;
 }
+a.category-link:hover,
+a.category-link:focus,
+a.category-link:hover {
+    font-weight: bold;
+    text-decoration: none;
+}
+a.category-link:visited {
+    font-weight: bold;
+    text-decoration: underline;
+}
 .tr-category-stats {
     color: #ccc;
     font-size: 12px;
@@ -141,7 +151,15 @@ $this->title = 'Home';
                         <div class="col-md-12" style="background-color:rgba(0,0,0,.6);padding-top:0px;">
                             <ul class="nav nav-pills tr-top-menu">
 
-                              <li ng-repeat="c in top_categories track by $index" role="presentation" class="">
+                              <li role="presentation" ng-click="search(query)" class="active">
+                                <a class="top-link" href="#">
+                                    <span class="glyphicon glyphicon-home"></span>
+                                </a>
+                              </li>
+
+                              <li ng-repeat="c in top_categories track by $index" 
+                                  ng-click="searchByCategory(c)" 
+                                  role="presentation" class="">
                                 <a class="top-link" href="#">
                                     {{c.key}}
                                     <span class="badge-primary"
@@ -165,13 +183,12 @@ $this->title = 'Home';
 
 
     <div class="row">
-        <div class="col-lg-3">
-            <div class="row">
-                <div class="col-lg-12" style="padding-left: 35px;padding-top:0px;">
+        <div class="col-lg-2">
+                <div class="2" style="padding-left: 35px;padding-top:0px;">
                     <h2 class="tr-section-title">By category</h2>
-                    <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;">
+                    <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;padding-right:0px;">
                         <p ng-repeat="cat in remain_categories" class="tr-category">
-                            <a href="#" class="category-link">
+                            <a ng-click="searchByCategory(cat)" href="#" class="category-link">
                                {{cat.key}}
                             </a>
                             <br/>
@@ -186,11 +203,11 @@ $this->title = 'Home';
                     </div>
                 </div>
 
-                <div class="col-lg-12" style="padding-left: 35px;padding-top:0px;">
+                <div class="" style="padding-left: 35px;padding-top:0px;">
                     <h2 class="tr-section-title">by source</h2>
                     <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;">
                         <p ng-repeat="cat in type_result" class="tr-category">
-                            <a href="#" class="category-link">
+                            <a href="#" ng-click="searchByType(cat)" class="category-link">
                                {{cat.key}}
                             </a>
                             <br/>
@@ -198,30 +215,16 @@ $this->title = 'Home';
                         </p>
                     </div>
                 </div>
+        </div>
 
+        <div class="col-lg-9">
+            <div class="col-md-12">
+                <h2></h2>
             </div>
-        </div>
-
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur.</p>
-
-            <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-        </div>
-
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur.</p>
-
-            <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <div class="col-md-4" style="padding:0px;margin-bottom:26px;padding-bottom:0px;" ng-repeat="post in posts" >
+                <trender-post p="post">
+                </trender>
+            </div>
         </div>
     </div>
 
