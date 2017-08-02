@@ -228,13 +228,20 @@ a.category-link:visited {
                 </iframe>
             </div>
             -->
-            <div class="col-md-4" style="padding:0px;margin-bottom:06px;padding-bottom:0px;" ng-repeat="post in posts" >
-                <div ng-if="post.type == 'twitter-post'">
-                    <twitter-post  p="post">
+            <div class="col-md-4" ng-switch on="post.type"
+                style="padding:0px;margin-bottom:06px;padding-bottom:0px;" 
+                ng-repeat="post in posts" >
+                <div ng-switch-when="twitter-post">
+                    <twitter-post p="post">
                     </twitter-post>
                 </div>
 
-                <div ng-if="!(post.type == 'twitter-post')">
+                <div ng-switch-when="youtube-post">
+                    <youtube-post p="post">
+                    </youtube-post>
+                </div>
+
+                <div ng-switch-default>
                     <trender-post  p="post">
                     </trender-post>
                 </div>

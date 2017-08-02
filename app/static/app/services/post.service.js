@@ -12,7 +12,8 @@ angular.module('trender')
                   '&facet=true'+
                   '&facet.field=category'+
                   '&facet.field=type'+
-                  '&rows=50';
+                  '&rows=200'+
+                  '&sort=timestamp desc';
 
          if (conf.fq) {
              url += '&fq=' + conf.fq;
@@ -23,7 +24,7 @@ angular.module('trender')
              var data = resp.data.response.docs;
              data.forEach(function (d){
                  d.json = JSON.parse(d.data);
-                if (d.type == 'twitter-post') {
+                if (d.type == 'youtube-post') {
                     console.info(d);
                 }
              });          
