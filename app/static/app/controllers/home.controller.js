@@ -1,11 +1,24 @@
 angular.module('trender')
 .controller('HomeController', ['$scope', 'PostService', '$api',
 function ($scope, service, $api){
-    $scope.search = function (q) {
+    var lastSearch;
+    $scope.search = function (q) {        
+        q = q.trim();
+        if (lastSearch == q.trim())
+            return;
+
+        if (!q) return;
+
         $scope.posts = [];
         console.info("search for #"+q);
         if (!$scope.query)
             $scope.query = q;
+        
+        lastSearch = q;
+
+        if (q.split(' ').length > 1) {
+            q = '"'+q+'"';
+        }
 
         service.getData({q:q})
         .then(function (data){

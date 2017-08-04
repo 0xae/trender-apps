@@ -131,17 +131,20 @@ a.category-link:visited {
                             <div class="col-md-4"> </div>
                             <div class="col-md-4" style="background:transparent;">
                                 <h2 class="tr-top-title">#Welcome to Trender</h2>
-                                <div class="input-group search-btn">
-                                  <input type="text" class="form-control" 
-                                         ng-model="query"
-                                         placeholder="What's happening?" 
-                                         aria-describedby="sizing-addon2">
-                                  <span ng-click="search(query)" class="input-group-addon search-btn" style="" id="sizing-addon2">
-                                    <a href="#">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </a>
-                                  </span>
-                                </div>
+                                <form ng-submit="search(query)" name="searchForm" id="searchFormId">
+                                    <div class="input-group search-btn">
+                                      <input type="text" class="form-control" 
+                                             ng-model="query"
+                                             ng-submit="search(query)"
+                                             placeholder="What's happening?" 
+                                             aria-describedby="sizing-addon2">
+                                      <span ng-click="search(query)" class="input-group-addon search-btn" style="" id="sizing-addon2">
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </a>
+                                      </span>
+                                    </div>
+                                </form>
                             </div>
                             <div class="col-md-4"> </div>
                         </div>
@@ -219,17 +222,9 @@ a.category-link:visited {
         </div>
 
         <div class="col-lg-9" style="margin-top:20px;">
-          <!-- 
-           <div class="col-md-4 pull-right " style="margin-top:0px;">
-                <h2 class="tr-section-title" style="margin-top:0px;">Trender Tv</h2>
-                <iframe id="ytplayer" type="text/html" width="400" height="260"
-                  src="https://www.youtube.com/embed/hX3j0sQ7ot8autoplay=0&origin=http://example.com"
-                  frameborder="0">
-                </iframe>
-            </div>
-            -->
+            <div class="row">
             <div class="col-md-4" ng-switch on="post.type"
-                style="padding:0px;margin-bottom:06px;padding-bottom:0px;" 
+                style="padding:0px;padding-bottom:0px;" 
                 ng-repeat="post in posts" >
                 <div ng-switch-when="twitter-post">
                     <twitter-post p="post">
@@ -245,6 +240,7 @@ a.category-link:visited {
                     <trender-post  p="post">
                     </trender-post>
                 </div>
+            </div>
             </div>
         </div>
     </div>
