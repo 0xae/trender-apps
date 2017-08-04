@@ -118,6 +118,15 @@ a.category-link:visited {
     padding-left: 8px;
     padding-right: 8px;
 }
+.tr-search-results-count{
+    color: #999;
+    margin:0px;
+    padding: 0px;
+    font-weight: bold;
+    font-size: 12px;
+    border:0px;
+    margin-bottom: 20px;
+}
 </style>
 
 <div ng-controller="HomeController">
@@ -132,18 +141,18 @@ a.category-link:visited {
                             <div class="col-md-4" style="background:transparent;">
                                 <h2 class="tr-top-title">#Welcome to Trender</h2>
                                 <form ng-submit="search(query)" name="searchForm" id="searchFormId">
-                                    <div class="input-group search-btn">
-                                      <input type="text" class="form-control" 
-                                             ng-model="query"
-                                             ng-submit="search(query)"
-                                             placeholder="What's happening?" 
-                                             aria-describedby="sizing-addon2">
-                                      <span ng-click="search(query)" class="input-group-addon search-btn" style="" id="sizing-addon2">
-                                        <a href="#">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </a>
-                                      </span>
-                                    </div>
+                                        <div class="input-group search-btn">
+                                              <input type="text" class="form-control" 
+                                                     ng-model="query"
+                                                     ng-submit="search(query)"
+                                                     placeholder="What's happening?" 
+                                                     aria-describedby="sizing-addon2" />
+                                              <span ng-click="search(query)" class="input-group-addon search-btn" style="" id="sizing-addon2">
+                                                    <a href="#">
+                                                        <span class="glyphicon glyphicon-search"></span>
+                                                    </a>
+                                              </span>
+                                        </div>
                                 </form>
                             </div>
                             <div class="col-md-4"> </div>
@@ -220,27 +229,40 @@ a.category-link:visited {
                 </div>
 
         </div>
+        <div class="col-lg-9" style="margin-top:10px;">
+            <p ng-if="total_found" class="tr-search-results-count">
+                About {{total_found}} results found
+                <br/>
+                Showing {{total_fetched}} 
+                <br/>
+                <!-- 
+                Popularity <span style="padding-bottom:-4px;font-size:10px" class="glyphicon glyphicon-signal text-success"></span>
+                <br/>
+                -->
+            </p>
+        </div>
 
-        <div class="col-lg-9" style="margin-top:20px;">
+        <div class="col-lg-9" style="margin-top:10px;">
+
             <div class="row">
-            <div class="col-md-4" ng-switch on="post.type"
-                style="padding:0px;padding-bottom:0px;" 
-                ng-repeat="post in posts" >
-                <div ng-switch-when="twitter-post">
-                    <twitter-post p="post">
-                    </twitter-post>
-                </div>
+                <div class="col-md-4" ng-switch on="post.type"
+                    style="padding:0px;padding-bottom:0px;" 
+                    ng-repeat="post in posts" >
+                    <div ng-switch-when="twitter-post">
+                        <twitter-post p="post">
+                        </twitter-post>
+                    </div>
 
-                <div ng-switch-when="youtube-post">
-                    <youtube-post p="post">
-                    </youtube-post>
-                </div>
+                    <div ng-switch-when="youtube-post">
+                        <youtube-post p="post">
+                        </youtube-post>
+                    </div>
 
-                <div ng-switch-default>
-                    <trender-post  p="post">
-                    </trender-post>
+                    <div ng-switch-default>
+                        <trender-post  p="post">
+                        </trender-post>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

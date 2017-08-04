@@ -106,30 +106,30 @@ angular.module('trender')
                 '            </a>'+
                 '        </h4>'+
 
-                '        <p style="margin-bottom:5px;font-size:13px;padding:4px;">{{ p.description }} </p>'+
-                         '<div class="" ng-if="p.json.images.length">'+
-                            '<div class="col-md-12">'+
-                               '<a href="#" class="" style="border:0px;">'+
+                '        <p style="margin-bottom:0px;font-size:13px;padding:4px;padding-bottom:2px;">{{ p.description }} </p>'+
+                         '<div>'+
+                            '<div class="col-md-12" ng-if="p.json.images.length">'+
+                               '<a href="#" class="" style="border:0px;padding:0px;">'+
                                    '<img style="border-radius:4px;height:200px;width:300px;" ng-src="{{p.json.images[0]}}" alt="...">'+
                                '</a>'+
-                          '</div>'+
-                        '</div>'+
+                             '</div>'+
+                    '        <ul class="nav nav-pills">'+
+                    '            <li role="presentation" class="">'+
+                    '                <a href="#" style="font-size:12px;padding-right:2px;">'+
+                    '                    <span class="glyphicon glyphicon-heart text-danger" style="color: orangered"></span>'+
+                    '                    {{ p.json.love }} '+
+                    '                </a>'+
+                    '            </li>'+
+                    '            <li role="presentation" class="color: #000;margin-left:0px;padding-left:0px;">'+
+                    '                <a target="__blank" href="{{ p.link }}" style="padding-left:0px;font-size:12px;color:#777;">'+
+                    '                 ·  <span style="background-color: #eee;padding:2px;padding-right:4px;padding-bottom:4px;border-radius:3px;">'+
+                                            '<img src="static/img/twitter-192x192.png" style="display:inline;width:15px;height:15px;" /> twitter.com'+
+                                      '</span>'+
+                    '                </a>'+
+                    '            </li>'+
+                    '        </ul>'+
 
-                '        <ul class="nav nav-pills">'+
-                '            <li role="presentation" class="">'+
-                '                <a href="#" style="font-size:12px;padding: 4px;padding-right:3px;">'+
-                '                    <img style="display:inline-block;padding:0px;" src="static/img/like.png" width="13" height="13" class="o">'+
-                '                    {{ p.json.love }} '+
-                '                </a>'+
-                '            </li>'+
-                '            <li role="presentation" class="color: #777">'+
-                '                <a target="__blank" href="{{ p.link }}" style="color:#777;font-size:12px;padding: 4px;padding-right:3px;">'+
-                '                 ·  <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">'+
-                                        '<img src="static/img/twitter-192x192.png" style="display:inline;width:15px;height:15px;" /> twitter.com'+
-                                  '</span>'+
-                '                </a>'+
-                '            </li>'+
-                '        </ul>'+
+                        '</div>'+
                 '      </div>'+
                 '</div>'
     }

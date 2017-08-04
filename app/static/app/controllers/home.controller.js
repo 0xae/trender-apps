@@ -2,44 +2,47 @@ angular.module('trender')
 .controller('HomeController', ['$scope', 'PostService', '$api',
 function ($scope, service, $api){
     var lastSearch;
-    $scope.search = function (q) {        
-        q = q.trim();
+    $scope.search = function (query) {        
+        var q = query.trim();
         if (lastSearch == q.trim())
             return;
 
         if (!q) return;
 
         $scope.posts = [];
-        console.info("search for #"+q);
+
         if (!$scope.query)
             $scope.query = q;
         
         lastSearch = q;
-
-        if (q.split(' ').length > 1) {
-            q = '"'+q+'"';
-        }
+        q = '"'+q+'"';
 
         service.getData({q:q})
         .then(function (data){
             var postTypes = getTypesResume(data);
             var categories = getCategoryResume(data);
+            var totalFound = 0;
 
             $scope.posts = data.response.docs;
             categories = categories.filter(function (c){
-                return c.value > 0;
+                var value = parseInt(c.value);
+                totalFound += value;
+                return value > 0;
             });
+
             var sorted = _.sortBy(categories, function (c) {
                 return -parseInt(c.value);
             });
 
             $scope.top_categories = sorted.slice(0, 10);
-            $scope.search_topic = q;
+            $scope.search_topic = query;
             $scope.remain_categories = sorted.slice(11, 17);
             $scope.type_result = _.sortBy(postTypes, function (p) {
                 return p.value;
             });
-            $scope.total_found = data.response.numFound;            
+
+            $scope.total_found = totalFound;
+            $scope.total_fetched = data.response.numFound;
         });
     };
 
@@ -48,10 +51,11 @@ function ($scope, service, $api){
         $scope.fq = c.key;
         service.getData({
             q:$scope.query,
-            fq: encodeURIComponent(c.key)
+            fq: 'category:'+encodeURIComponent(c.key)
         })
         .then(function (data){
             $scope.posts = data.response.docs;
+            $scope.total_fetched = data.response.docs.length;
         });
     }
 
@@ -65,6 +69,7 @@ function ($scope, service, $api){
         service.getData(conf)
         .then(function (data){
             $scope.posts = data.response.docs;
+            $scope.total_fetched =  data.response.docs.length;
         });        
     }
 

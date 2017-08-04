@@ -24,9 +24,6 @@ angular.module('trender')
              var data = resp.data.response.docs;
              data.forEach(function (d){
                  d.json = JSON.parse(d.data);
-                if (d.type == 'youtube-post') {
-                    console.info(d);
-                }
              });          
              return resp.data;
          });
