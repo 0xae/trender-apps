@@ -50,7 +50,7 @@ function ($scope, service, $api){
         $scope.posts = [];
         $scope.fq = c.key;
         service.getData({
-            q:$scope.query,
+            q:'"'+$scope.query+'"',
             fq: 'category:'+encodeURIComponent(c.key)
         })
         .then(function (data){
@@ -62,7 +62,7 @@ function ($scope, service, $api){
     $scope.searchByType = function (c) {
         $scope.posts = [];
         var conf = {
-            q:$scope.query,
+            q:'"'+$scope.query+'"',
             fq: '&fq=type:'+c.key
         };
         if ($scope.fq) conf.fq = conf.fq + '&fq'+encodeURIComponent($scope.fq)

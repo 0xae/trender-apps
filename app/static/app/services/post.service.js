@@ -12,7 +12,7 @@ angular.module('trender')
                   '&facet=true'+
                   '&facet.field=category'+
                   '&facet.field=type'+
-                  '&rows=200'+
+                  '&rows=120'+
                   '&sort=timestamp desc';
 
          if (conf.fq) {
