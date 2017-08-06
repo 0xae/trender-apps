@@ -24,19 +24,19 @@ function ($scope, service, $api){
             var totalFound = 0;
 
             $scope.posts = data.response.docs;
-            categories = categories.filter(function (c){
+            var topCategories = categories.filter(function (c){
                 var value = parseInt(c.value);
                 totalFound += value;
                 return value > 0;
             });
 
-            var sorted = _.sortBy(categories, function (c) {
+            var sorted = _.sortBy(topCategories, function (c) {
                 return -parseInt(c.value);
             });
 
             $scope.top_categories = sorted.slice(0, 10);
             $scope.search_topic = query;
-            $scope.remain_categories = sorted.slice(11, 17);
+            $scope.remain_categories = sorted.slice(10, sorted.length);
             $scope.type_result = _.sortBy(postTypes, function (p) {
                 return p.value;
             });
