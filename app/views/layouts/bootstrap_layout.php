@@ -20,50 +20,171 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+<style>
+.tr-header {
+    background: url(static/img/marketplace.webp) no-repeat;
+    background-position: 89% 58%;
+    background-size: cover;
+}
+
+.tr-top-title {
+    color: #fff;
+    margin:0px;
+    padding: 5px;
+    text-shadow:0px 0px 4px #000;
+    font-weight: bold;
+    padding-top:0px;
+}
+
+p.tr-outdoor-content {
+    color: #fff;
+    margin:0px;
+    padding: 0px;
+    text-shadow:0px 0px 4px #000;
+    font-weight: bold;
+    font-size: 11px;
+    margin-left: 5px;
+}
+.tr-top-menu {
+}
+
+.tr-top-menu li {
+    margin:0px;
+    padding-left:12px;
+    
+}
+
+.tr-top-menu li a.top-link:hover,
+.tr-top-menu li a.top-link:focus
+{
+    background-color: #666;
+}
+
+.tr-top-menu li a.settings-link:hover,
+.tr-top-menu li a.settings-link:focus
+{
+    background-color: transparent;
+}
+
+.tr-top-menu li a {
+    padding:4px;
+    padding-left:6px;
+    padding-right:6px;
+    font-size:12px;
+    margin:0px;
+    color: #fff;
+    border-radius:0px;
+}
+
+.tr-outside {
+    background-color: #EEE; /*to make it visible*/
+    height: 200px;
+}
+.tr-inside {
+    position: relative;
+    height: 200px;
+    top: 67%;
+}
+.row {
+}
+
+.search-btn .input-group-addon{
+    border-top: 1px solid transparent;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+    color: #fff;
+    background-color:#d43b03;
+    border:1px solid #000;
+}
+
+.search-btn .input-group-addon a{
+    color: #fff;
+}
+
+.search-btn input {
+    background-color: rgba(19, 10, 0, 0.9);
+    border:0px;
+    font-size:13px;
+    color: #999;
+}
+
+.search-area {
+    margin-top:70px;
+    margin-bottom:50px;
+}
+
+.category-link {
+    font-weight: bold;
+}
+a.category-link:hover,
+a.category-link:focus,
+a.category-link:hover {
+    font-weight: bold;
+    text-decoration: none;
+}
+a.category-link:visited {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.tr-category-stats {
+    color: #ccc;
+    font-size: 12px;
+}
+.tr-section-title {
+    font-size:16px;
+    font-weight: bold;
+}
+.tr-category-loadmore {
+    font-size: 12px;
+}
+.tr-category {
+    margin:0px;
+    margin-bottom: 6px;
+}
+.tr-type-log label {
+    font-size: 12px;
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.tr-search-results-count{
+    color: #999;
+    margin:0px;
+    padding: 0px;
+    font-weight: bold;
+    font-size: 12px;
+    border:0px;
+    margin-bottom: 20px;
+}
+
+.row {
+margin-left:inherit;
+margin-right:inherit;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, 
+.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, 
+.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, 
+.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, 
+.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, 
+.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, 
+.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, 
+.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, 
+.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, 
+.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
+ .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, 
+.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding-right: inherit;
+    padding-left: inherit;
+}
+</style>
 </head>
 <body>
 <?php $this->beginBody() ?>
 
-<!-- 
-<nav class="navbar-inverse navbar-fixed-top trender-color navbar" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/trender/app/index.php" style="color: #d7cceb;">
-                Trender
-             </a>
-        </div>
-        <div id="w0-collapse" class="collapse navbar-collapse">
-            <ul id="w1-ul-li-ul" class="navbar-nav navbar-right nav">
-                <li>
-                    <a href="/trender/app/index.php?r=home/index" style="color: #d7cceb;">Home</a>
-                </li>
-                <li>
-                    <a href="/trender/app/index.php?r=platform/index" style="color: #d7cceb;">Platform</a>
-                </li>
-                <li>
-                    <a href="/trender/app/index.php?r=tv/index" style="color: #d7cceb;">Tv</a>
-                </li>
-                <li>
-                    <a href="/trender/app/index.php?r=system/index" style="color: #d7cceb;">System Stats</a>
-                </li>
-                <li>
-                    <a href="/trender/app/index.php?r=settings/index" style="color: #d7cceb;">Settings</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
--->
-<div style="padding:0px;">
+<div class="" style="">
      <?= $content ?>
 </div>
-
 
 <?php $this->endBody() ?>
 </body>

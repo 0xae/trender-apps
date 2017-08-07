@@ -32,6 +32,7 @@ class AppAsset extends AssetBundle {
         "static/app/services/api.js",
         "static/app/controllers/post.controller.js",
         "static/app/controllers/home.controller.js",
+        "static/app/controllers/channel.controller.js",
         "static/app/directives/steemit.js",
         "static/app/directives/media.js",
     ];

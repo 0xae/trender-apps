@@ -2,7 +2,7 @@
 $this->title = 'Trender Home';
 ?>
 
-<div ng-controller="HomeController">
+<div ng-controller="ChannelController">
     <div class="row tr-header" style="">
 
         <div class="col-md-12" style="">
@@ -31,9 +31,31 @@ $this->title = 'Trender Home';
                             </div>
                             <div class="col-md-4"> </div>
                         </div>
-                        <div class="col-md-12" style="margin:0px;";>
-                            <h2 class="tr-top-title">{{search_topic}}</h2>
+
+                        <div class="col-md-12" style="margin-left:10px;margin-bottom:5px;">
+                            <div class="media">
+                              <div class="media-left" style="padding-right:0px;">
+                                    <a href="javascript:void(0)">
+                                          <img style="border:2px solid #fff;border-radius:4px" 
+                                            class="media-object" src="static/img/VR.jpg" 
+                                            alt="Foto of {{p.authorName}}" 
+                                            width="35" height="35"
+                                          />
+                                    </a>
+                              </div>
+
+                              <div class="media-body">
+                                <h4 class="tr-top-title">
+                                    My Channel
+                                </h4>
+                                <p class="tr-outdoor-content">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                    07 Aug 2017
+                                </p>
+                              </div>
+                            </div>
                         </div>
+
                         <div class="col-md-12" style="background-color:rgba(0,0,0,.6);padding-top:0px;">
                             <ul class="nav nav-pills tr-top-menu">
 
@@ -43,6 +65,7 @@ $this->title = 'Trender Home';
                                 </a>
                               </li>
 
+                             <!-- 
                               <li ng-repeat="c in top_categories track by $index" 
                                   ng-click="searchByCategory(c)" 
                                   role="presentation" class="">
@@ -51,6 +74,44 @@ $this->title = 'Trender Home';
                                     <span class="badge-primary"
                                         style=""><strong>{{c.value}}</strong></span>
                                 </a>
+                              </li>
+                              -->
+
+                              <li role="presentation">
+                                    <a class="top-link" href="#">
+                                        <span class="badge-primary" style=""><strong>
+                                            <span style="color: #fff;font-weight:bold;font:verdana; background-color: #000;font-size:11px;padding-left:3px;padding-right:3px;display:inline;">
+                                            B B <span style="color:orangered;">C</span>
+                                            </span>
+                                        </strong></span>
+                                    </a>
+                              </li>
+
+                              <li role="presentation">
+                                    <a class="top-link" href="#">
+                                        <img src="static/img/youtube-medium.png" style="display:inline;margin-right:2px;width:18px;height:18px;" />
+                                        <span class="badge-primary" style=""><strong>
+                                            Youtube
+                                        </strong></span>
+                                    </a>
+                              </li>
+
+                              <li role="presentation">
+                                    <a class="top-link" href="#">
+                                        <img src="static/img/twitter-192x192.png" style="display:inline;width:18px;height:18px;" />
+                                        <span class="badge-primary" style=""><strong>
+                                            twitter
+                                        </strong></span>
+                                    </a>
+                              </li>
+
+                              <li role="presentation">
+                                    <a class="top-link" href="#">
+                                        <img src="static/img/steemit-196x196.png" style="display:inline;width:18px;height:18px;" />
+                                        <span class="badge-primary" style=""><strong>
+                                            steemit
+                                        </strong></span>
+                                    </a>
                               </li>
 
                               <li role="presentation" class="pull-right">
@@ -113,12 +174,6 @@ $this->title = 'Trender Home';
 
             <div class="pull-right" style="margin-right:35px;">
 
-                <img src="static/img/steemit-196x196.png" style="display:inline;width:25px;height:25px;" />
-                <img src="static/img/twitter-192x192.png" style="display:inline;width:25px;height:25px;" />
-                <img src="static/img/youtube-medium.png" style="display:inline;width:25px;height:25px;" />
-                <span style="color: #fff;font-weight:bold;font:verdana; background-color: #000;padding-left:3px;padding-right:3px;display:inline;">
-                B B <span style="color:orangered;">C</span>
-                </span>
 
             </div>
         </div>
