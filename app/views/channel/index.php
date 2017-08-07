@@ -2,7 +2,7 @@
 $this->title = 'Trender Home';
 ?>
 
-<div ng-controller="ChannelController">
+<div ng-controller="HomeController">
     <div class="row tr-header" style="">
 
         <div class="col-md-12" style="">
@@ -19,7 +19,7 @@ $this->title = 'Trender Home';
                                                      ng-model="query"
                                                      accesskey="s"
                                                      ng-submit="search(query)"
-                                                     placeholder="What's happening?" 
+                                                     placeholder="Search on My Channel" 
                                                      aria-describedby="sizing-addon2" />
                                               <span ng-click="search(query)" class="input-group-addon search-btn" style="" id="sizing-addon2">
                                                     <a href="#">
@@ -130,58 +130,55 @@ $this->title = 'Trender Home';
 
 
     <div class="row">
+        <!-- 
         <div class="col-lg-2">
-                <div class="2" style="padding-left: 20px;padding-top:0px;">
-                    <h2 class="tr-section-title">categories</h2>
-                    <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;padding-right:0px;">
-                        <div ng-repeat="cat in remain_categories" class="tr-category">
-                            <a ng-click="searchByCategory(cat)" href="javascript:void(0)" class="category-link">
-                               {{cat.key}}
-                            </a>
+            <div class="" style="padding-left: 20px;padding-top:0px;">
+                <h2 class="tr-section-title">categories</h2>
+                <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;padding-right:0px;">
+                    <div ng-repeat="cat in remain_categories" class="tr-category">
+                        <a ng-click="searchByCategory(cat)" href="javascript:void(0)" class="category-link">
+                           {{cat.key}}
+                        </a>
 
-                            <span class="pull-right tr-category-stats">{{cat.value}} posts {{ cat.percent }}</span>
+                        <span class="pull-right tr-category-stats">{{cat.value}} posts {{ cat.percent }}</span>
 
-                            <div class="progress" style="height: 3px;margin-top:7px;">
-                              <div class="progress-bar progress-bar-striped active" 
-                                  role="progressbar" 
-                                  aria-valuenow="0" 
-                                  aria-valuemin="0" 
-                                  aria-valuemax="100" style="width: {{cat.value}}%">
-                              </div>
-                            </div>
+                        <div class="progress" style="height: 3px;margin-top:7px;">
+                          <div class="progress-bar progress-bar-striped active" 
+                              role="progressbar" 
+                              aria-valuenow="0" 
+                              aria-valuemin="0" 
+                              aria-valuemax="100" style="width: {{cat.value}}%">
+                          </div>
                         </div>
+                    </div>
 
-                        <p>
-                            <a class="tr-category-loadmore" href="http://www.yiiframework.com/extensions/">
-                                Load More
-                            </a>
-                        </p>
+                    <p>
+                        <a class="tr-category-loadmore" href="http://www.yiiframework.com/extensions/">
+                            Load More
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        -->
+
+
+        <div class="col-lg-9" >
+            <div class="row">
+                <div class="col-lg-12" style="margin:15px;">
+                    <div style="display:inline-table;margin-bottom:1px;padding:4px;" ng-repeat="cat in remain_categories" class="">
+                            <div class="btn-group" data-toggle="buttons">
+                              <label class="btn btn-primary cat-btn">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> {{cat.key}}
+                              </label>
+                              <label class="btn btn-primary active cat-btn">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> {{cat.value}}
+                              </label>
+                            </div>
                     </div>
                 </div>
 
-        </div>
-        <div class="col-lg-10" style="margin-top:10px;padding:0px">
-            <div ng-if="total_found"  class="pull-left tr-search-results-count">
-                About {{total_found}} results found
-                <br/>
-                Showing {{total_fetched}} 
-                <br/>
-                <!-- 
-                Popularity <span style="padding-bottom:-4px;font-size:10px" class="glyphicon glyphicon-signal text-success"></span>
-                <br/>
-                -->
-            </div>
-
-            <div class="pull-right" style="margin-right:35px;">
-
-
-            </div>
-        </div>
-
-        <div class="col-lg-9" style="margin-top:10px;">
-
-            <div class="row">
-                <div class="col-md-4" ng-switch on="post.type"
+                <div class="col-lg-4" ng-switch on="post.type"
                     style="padding:0px;padding-bottom:0px;" 
                     ng-repeat="post in posts" >
                     <div ng-switch-when="twitter-post">
@@ -198,6 +195,29 @@ $this->title = 'Trender Home';
                         <trender-post p="post">
                         </trender-post>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 pull-right" style="margin-top:10px;padding:0px">
+            <!-- 
+            <div ng-if="total_found"  class="pull-left tr-search-results-count">
+                About {{total_found}} results found
+                <br/>
+                Showing {{total_fetched}} 
+                <br/>
+            </div>
+            -->
+
+            <div class="" style="width:320px;">
+                <h2 class="tr-section-title" style="margin-top:4px;">
+                    <span class="glyphicon glyphicon-star" style="color:#ef9c0c"></span>
+                    Featured video
+                </h2>
+                <div style="padding:12px;border-radius:4px;background-color:#000;">
+                    <iframe id="ytplayer" type="text/html" width="300" height="200"
+                      src="https://www.youtube.com/embed/TGfk_gWIzF0?autoplay=0&origin=http://example.com"
+                      frameborder="0"></iframe>
                 </div>
             </div>
         </div>

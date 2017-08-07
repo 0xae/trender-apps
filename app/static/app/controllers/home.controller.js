@@ -36,7 +36,7 @@ function ($scope, service, $api){
 
             $scope.top_categories = sorted.slice(0, 10);
             $scope.search_topic = query;
-            $scope.remain_categories = sorted.slice(10, sorted.length);
+            $scope.remain_categories = sorted.slice(10, 30);
             $scope.type_result = _.sortBy(postTypes, function (p) {
                 return p.value;
             });

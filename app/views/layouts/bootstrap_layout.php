@@ -113,8 +113,17 @@ p.tr-outdoor-content {
     margin-bottom:50px;
 }
 
+.cat-btn {
+    font-size: 12px;
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: bold;
+}
+
 .category-link {
     font-weight: bold;
+    color: #fff;
 }
 a.category-link:hover,
 a.category-link:focus,
@@ -131,7 +140,8 @@ a.category-link:visited {
     font-size: 12px;
 }
 .tr-section-title {
-    font-size:16px;
+    font-size:12px;
+    color: dimgrey;
     font-weight: bold;
 }
 .tr-category-loadmore {
