@@ -70,7 +70,7 @@ $this->title = 'Trender Home';
 
     <div class="row">
         <div class="col-lg-2">
-                <div class="2" style="padding-left: 20px;padding-top:0px;">
+                <div class="2" style="padding-left: 20px;padding-top:0px;padding-right:50px;">
                     <h2 class="tr-section-title">categories</h2>
                     <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;padding-right:0px;">
                         <div ng-repeat="cat in remain_categories" class="tr-category">
@@ -123,11 +123,11 @@ $this->title = 'Trender Home';
             </div>
         </div>
 
-        <div class="col-lg-9" style="margin-top:10px;">
+        <div class="col-lg-9" style="margin-top:10px;padding:40px;padding-top:0px;">
 
             <div class="row">
                 <div class="col-md-4" ng-switch on="post.type"
-                    style="padding:0px;padding-bottom:0px;" 
+                    style="" 
                     ng-repeat="post in posts" >
                     <div ng-switch-when="twitter-post">
                         <twitter-post p="post">
@@ -147,6 +147,5 @@ $this->title = 'Trender Home';
             </div>
         </div>
     </div>
-
 
 </div>

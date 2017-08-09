@@ -123,7 +123,6 @@ p.tr-outdoor-content {
 
 .category-link {
     font-weight: bold;
-    color: #fff;
 }
 a.category-link:hover,
 a.category-link:focus,
