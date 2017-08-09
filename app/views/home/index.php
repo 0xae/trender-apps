@@ -12,7 +12,7 @@ $this->title = 'Trender Home';
                         <div class="col-md-12 search-area" style="">
                             <div class="col-md-4"> </div>
                             <div class="col-md-4" style="background:transparent;">
-                                <h2 class="tr-top-title">#Welcome to Trender</h2>
+                                <h2 class="tr-top-title">Welcome to Trender</h2>
                                 <form ng-submit="search(query)" name="searchForm" id="searchFormId">
                                         <div class="input-group search-btn">
                                               <input type="text" class="form-control" 
@@ -127,8 +127,7 @@ $this->title = 'Trender Home';
 
             <div class="row">
                 <div class="col-md-4" ng-switch on="post.type"
-                    style="" 
-                    ng-repeat="post in posts" >
+                    ng-repeat="post in posts">
                     <div ng-switch-when="twitter-post">
                         <twitter-post p="post">
                         </twitter-post>
