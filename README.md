@@ -31,7 +31,7 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
 - [ ] Markets tracking (stock, crypto, finance)
 - [ ] Trending topics
 - [ ] Trending channels
-- [ ] filters (order, post-type, load-more)
+- [ ] filters (sort by, order by, post type, load-more)
 - [ ] channel browser/crud
 - [ ] Mail reader
 - [ ] My Wallet
