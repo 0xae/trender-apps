@@ -8,7 +8,7 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     crypto markets,stock market, breaking news, trending topics, 
     trending channels, coinmarketcap tracking, gold/silver market trends, 
     tv broadcast, korean tv broadcast, bittorrent network
-    
+
 ### tv 
     streamming tv shows, movies, anime, cartoon, weird comercials and south korean stuff
     smart/exquisite youtube video browsing (bring old cinema to my laptop)
@@ -23,17 +23,29 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     finance, stock market, crypto market, news, breaking news
     
 
-
 ## Tasks
 
-- [ ] rich multimedia design  (music, videos, images, links, etc)
-- [X] jquery/javascript modularized architecture
-- [X] adopt a framework for php ? (yii 2)
+### platform
+- [ ] Top Menu
+- [ ] Timeline
+- [ ] Markets tracking (stock, crypto, finance)
+- [ ] Trending topics
+- [ ] Trending channels
+- [ ] filters (order, post-type, load-more)
+- [ ] channel browser/crud
+- [ ] Mail reader
+- [ ] My Wallet
+- [ ] My diary
+
+### tv
+- [ ] task 1
+
+### search
+- [ ] task 1
 
 ### Crawlers
-- [ ] batch posts
-- [ ] modularize the code
-- [ ] link tracking code
+- [X] batch posts
+- [X] modularize the code
 
 ## Ideas for timeline/searching/design
 
