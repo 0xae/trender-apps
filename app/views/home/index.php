@@ -103,7 +103,7 @@ $this->title = 'Trender Home';
         </div>
         -->
 
-        <div class="col-lg-8" style="margin-top:10px;padding:40px;padding-top:0px;">
+        <div class="col-lg-8" style="margin-top:0px;padding:40px;padding-top:15px;border:1px solid #e1e6ea;">
             <div class="row">
                 <div class="col-md-6" ng-switch on="post.type"
                     ng-repeat="post in posts">
