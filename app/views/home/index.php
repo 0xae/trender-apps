@@ -29,7 +29,8 @@ $this->title = 'Trender Home';
                                         </div>
                                 </form>
                             </div>
-                            <div class="col-md-4"> </div>
+                        </div>
+                        <div class="col-md-12">
                         </div>
                         <div class="col-md-12" style="margin:0px;";>
                             <h2 class="tr-top-title">{{search_topic}}</h2>
@@ -101,29 +102,8 @@ $this->title = 'Trender Home';
 
         </div>
         -->
-        <div class="col-lg-10" style="margin-top:10px;padding:0px">
-            <div ng-if="total_found"  class="pull-left tr-search-results-count">
-                About {{total_found}} results found
-                <br/>
-                Showing {{total_fetched}} 
-                <br/>
-            </div>
 
-            <!-- 
-            <div class="pull-right" style="margin-right:35px;">
-
-                <img src="static/img/steemit-196x196.png" style="display:inline;width:25px;height:25px;" />
-                <img src="static/img/twitter-192x192.png" style="display:inline;width:25px;height:25px;" />
-                <img src="static/img/youtube-medium.png" style="display:inline;width:25px;height:25px;" />
-                <span style="color: #fff;font-weight:bold;font:verdana; background-color: #000;padding-left:3px;padding-right:3px;display:inline;">
-                B B <span style="color:orangered;">C</span>
-                </span>
-
-            </div>
-            -->
-        </div>
-
-        <div class="col-lg-9" style="margin-top:10px;padding:40px;padding-top:0px;">
+        <div class="col-lg-8" style="margin-top:10px;padding:40px;padding-top:0px;">
             <div class="row">
                 <div class="col-md-4" ng-switch on="post.type"
                     ng-repeat="post in posts">
@@ -142,6 +122,21 @@ $this->title = 'Trender Home';
                         </trender-post>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" style="padding: 10px;">
+            <h3 style="margin-top:2px;">Markets</h3>
+            <div class="col-md-12" style="margin-bottom: 30px;margin-left:30px;">
+                <?php 
+                    echo \Yii::$app->view->renderFile('@app/views/plugins/coins_widget.php', []); 
+                ?>
+            </div>
+
+            <div class="col-md-10" style="margin-bottom: 30px;margin-left:20px;">
+                <?php 
+                    echo \Yii::$app->view->renderFile('@app/views/plugins/bitcoin_newsfeed.php', []); 
+                ?>
             </div>
         </div>
     </div>
