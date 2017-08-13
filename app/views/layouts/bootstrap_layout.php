@@ -26,6 +26,9 @@ AppAsset::register($this);
     background-position: 89% 58%;
     background-size: cover;
 }
+.tr-sec-title {
+    font-size: 18px;
+}
 
 .tr-top-title {
     color: #fff;

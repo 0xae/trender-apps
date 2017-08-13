@@ -126,14 +126,12 @@ $this->title = 'Trender Home';
         </div>
 
         <div class="col-md-4" style="padding: 10px;padding-right:0px;">
-            <h3 style="margin-top:2px;">Broadcast</h3>
             <div class="col-md-12" style="margin-bottom: 20px;">
                 <?php 
                     echo \Yii::$app->view->renderFile('@app/views/plugins/yahoofivd_widget.php', []); 
                 ?>
             </div>
 
-            <h3 style="margin-top:2px;">Markets</h3>
             <div class="col-md-12" style="margin-bottom: 20px;">
                 <?php 
                     echo \Yii::$app->view->renderFile('@app/views/plugins/coins_widget.php', []); 
