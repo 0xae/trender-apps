@@ -15,6 +15,7 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     youtube live watching
     youtube live events video agg (like #UBIE3)
     youtube home cinema ?
+    twitch streamming and chat
     steemit video, dtube video
     
 ### search 
