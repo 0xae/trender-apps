@@ -69,6 +69,7 @@ $this->title = 'Trender Home';
 
 
     <div class="row">
+        <!-- 
         <div class="col-lg-2">
                 <div class="2" style="padding-left: 20px;padding-top:0px;padding-right:50px;">
                     <h2 class="tr-section-title">categories</h2>
@@ -99,18 +100,16 @@ $this->title = 'Trender Home';
                 </div>
 
         </div>
+        -->
         <div class="col-lg-10" style="margin-top:10px;padding:0px">
             <div ng-if="total_found"  class="pull-left tr-search-results-count">
                 About {{total_found}} results found
                 <br/>
                 Showing {{total_fetched}} 
                 <br/>
-                <!-- 
-                Popularity <span style="padding-bottom:-4px;font-size:10px" class="glyphicon glyphicon-signal text-success"></span>
-                <br/>
-                -->
             </div>
 
+            <!-- 
             <div class="pull-right" style="margin-right:35px;">
 
                 <img src="static/img/steemit-196x196.png" style="display:inline;width:25px;height:25px;" />
@@ -121,10 +120,10 @@ $this->title = 'Trender Home';
                 </span>
 
             </div>
+            -->
         </div>
 
         <div class="col-lg-9" style="margin-top:10px;padding:40px;padding-top:0px;">
-
             <div class="row">
                 <div class="col-md-4" ng-switch on="post.type"
                     ng-repeat="post in posts">

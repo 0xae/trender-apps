@@ -18,5 +18,16 @@ class HomeController extends Controller {
     public function actionIndex() {
         return $this->render('index', []);
     }
+
+    public function actionTest() {
+        $q = isset($_GET['q']) ? $_GET['q'] : 'bitcoin';
+        $query = urlencode($q);
+        $result = file_get_contents("http://localhost:8983/solr/trender/select?q={$query}&wt=phps");
+        $data = unserialize($result);
+
+        return $this->renderPartial('test', [
+            'model' => $data
+        ]);
+    }
 }
 
