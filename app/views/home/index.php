@@ -105,7 +105,7 @@ $this->title = 'Trender Home';
 
         <div class="col-lg-8" style="margin-top:10px;padding:40px;padding-top:0px;">
             <div class="row">
-                <div class="col-md-4" ng-switch on="post.type"
+                <div class="col-md-6" ng-switch on="post.type"
                     ng-repeat="post in posts">
                     <div ng-switch-when="twitter-post">
                         <twitter-post p="post">
@@ -125,15 +125,22 @@ $this->title = 'Trender Home';
             </div>
         </div>
 
-        <div class="col-md-4" style="padding: 10px;">
+        <div class="col-md-4" style="padding: 10px;padding-right:0px;">
+            <h3 style="margin-top:2px;">Broadcast</h3>
+            <div class="col-md-12" style="margin-bottom: 20px;margin-left:10px;">
+                <?php 
+                    echo \Yii::$app->view->renderFile('@app/views/plugins/twitch_widget.php', []); 
+                ?>
+            </div>
+
             <h3 style="margin-top:2px;">Markets</h3>
-            <div class="col-md-12" style="margin-bottom: 30px;margin-left:30px;">
+            <div class="col-md-12" style="margin-bottom: 20px;margin-left:10px;">
                 <?php 
                     echo \Yii::$app->view->renderFile('@app/views/plugins/coins_widget.php', []); 
                 ?>
             </div>
 
-            <div class="col-md-10" style="margin-bottom: 30px;margin-left:20px;">
+            <div class="col-md-10" style="margin-bottom: 30px;">
                 <?php 
                     echo \Yii::$app->view->renderFile('@app/views/plugins/bitcoin_newsfeed.php', []); 
                 ?>
