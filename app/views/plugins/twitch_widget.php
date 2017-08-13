@@ -1,13 +1,14 @@
 <!-- 
 src="http://player.twitch.tv/?channel=plyasm&muted=true" 
 src="http://player.twitch.tv/?channel=litchi_2525&muted=true"
+src="http://player.twitch.tv/?channel=yoda&muted=true"
 -->
-  <iframe
-      src="http://player.twitch.tv/?channel=plyasm&muted=true" 
-      height="230"
-      width="340"
-      border="0"
-      style="border:0px"
-      scrolling="no"
-      allowfullscreen="true">
-  </iframe>
+<iframe
+  src="http://player.twitch.tv/?channel=litchi_2525&muted=true&autoplay=0" 
+  height="230"
+  width="340"
+  border="0"
+  style="border:0px"
+  scrolling="no"
+  allowfullscreen="true">
+</iframe>
