@@ -18,7 +18,8 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     twitch streamming and chat
     steemit video, dtube video
     yahoo tv, yahoo view
-    
+    cnbc.com/video
+    
 ### search 
     timeline, realtime search, trending topics, trending channels
     google, wikipedia, reddit, twitter, youtube, steemit, bbc,
