@@ -55,6 +55,8 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     stream videos, music, shows, cartoons from the bittorrent tv
     adapt to fluctuating network speeds
 
+[DDNet, flavor of DDRace, a Teeworlds mod.](https://github.com/ddnet/ddnet)
+
 [BitTorrent TV](https://btlive.tv/)
 
 [#UbiE3 pirate](https://twitter.com/search?q=%23UbiE3%20pirate&src=typd)
