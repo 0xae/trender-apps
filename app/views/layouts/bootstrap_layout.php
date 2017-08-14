@@ -192,13 +192,14 @@ margin-right:inherit;
 </style>
 </head>
 <body>
-<?php $this->beginBody() ?>
+<?php $this->beginBody(); ?>
 
+<?php require_once "navbar.php"; ?>
 <div class="" style="">
      <?= $content ?>
 </div>
 
-<?php $this->endBody() ?>
+<?php $this->endBody();?>
 </body>
 </html>
-<?php $this->endPage() ?>
+<?php $this->endPage(); ?>

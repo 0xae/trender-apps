@@ -5,14 +5,14 @@ $this->title = 'Trender Home';
 <div ng-controller="HomeController">
     <div class="row tr-header" style="">
 
-        <div class="col-md-12" style="">
+        <div class="col-md-12">
              <div class="tr-outside tr-header" style="height:0px">
                 <div class="tr-inside" style="height:0px;">
                     <div class="row" style="">
                         <div class="col-md-12 search-area" style="">
                             <div class="col-md-4"> </div>
                             <div class="col-md-4" style="background:transparent;">
-                                <h2 class="tr-top-title">Welcome to Trender</h2>
+                                <h2 class="tr-top-title">#Welcome</h2>
                                 <form ng-submit="search(query)" name="searchForm" id="searchFormId">
                                         <div class="input-group search-btn">
                                               <input type="text" class="form-control" 
@@ -103,7 +103,7 @@ $this->title = 'Trender Home';
         </div>
         -->
 
-        <div class="col-lg-8" style="margin-top:0px;padding:40px;padding-top:15px;border:1px solid #e1e6ea;">
+        <div class="col-lg-8" style="min-height:800px;margin-top:0px;padding:40px;padding-top:15px;border:1px solid #e1e6ea;">
             <div class="row">
                 <div class="col-md-6" ng-switch on="post.type"
                     ng-repeat="post in posts">
@@ -128,7 +128,7 @@ $this->title = 'Trender Home';
         <div class="col-md-4" style="padding: 10px;padding-right:0px;">
             <div class="col-md-12" style="margin-bottom: 20px;">
                 <?php 
-                    echo \Yii::$app->view->renderFile('@app/views/plugins/yahoofivd_widget.php', []); 
+                    echo \Yii::$app->view->renderFile('@app/views/plugins/twitch_widget.php', []); 
                 ?>
             </div>
 
