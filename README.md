@@ -56,6 +56,9 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     stream videos, music, shows, cartoons from the bittorrent tv
     adapt to fluctuating network speeds
     
+    
+
+[CNBC live tv](http://www.cnbc.com/live-tv/prime)
 
 [Onion Studios](http://www.onionstudios.com/)
 
