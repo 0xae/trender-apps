@@ -55,6 +55,9 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
 ### bittorrent network
     stream videos, music, shows, cartoons from the bittorrent tv
     adapt to fluctuating network speeds
+    
+
+[Onion Studios](http://www.onionstudios.com/)
 
 [DDNet, flavor of DDRace, a Teeworlds mod.](https://github.com/ddnet/ddnet)
 
