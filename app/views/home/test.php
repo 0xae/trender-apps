@@ -2,8 +2,4 @@
 $this->title = 'Trender Home';
 ?>
 
-<?php
-
-print_r($model);
-
-?>
+<?php print_r($model); ?>

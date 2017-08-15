@@ -1,5 +1,13 @@
 <?php
 $this->title = 'Trender Home';
+
+function renderPlugin($plugin, $params=[]) {
+    echo \Yii::$app->view->renderFile(
+        "@app/views/plugins/$plugin.php",
+        $params
+    ); 
+}
+
 ?>
 
 <div ng-controller="HomeController">
@@ -70,58 +78,24 @@ $this->title = 'Trender Home';
 
 
     <div class="row">
-        <!-- 
-        <div class="col-lg-2">
-                <div class="2" style="padding-left: 20px;padding-top:0px;padding-right:50px;">
-                    <h2 class="tr-section-title">categories</h2>
-                    <div style="margin:0px;padding:14px;padding-left:5px;padding-top:0px;padding-right:0px;">
-                        <div ng-repeat="cat in remain_categories" class="tr-category">
-                            <a ng-click="searchByCategory(cat)" href="javascript:void(0)" class="category-link">
-                               {{cat.key}}
-                            </a>
-
-                            <span class="pull-right tr-category-stats">{{cat.value}} posts {{ cat.percent }}</span>
-
-                            <div class="progress" style="height: 3px;margin-top:7px;">
-                              <div class="progress-bar progress-bar-striped active" 
-                                  role="progressbar" 
-                                  aria-valuenow="0" 
-                                  aria-valuemin="0" 
-                                  aria-valuemax="100" style="width: {{cat.value}}%">
-                              </div>
-                            </div>
-                        </div>
-
-                        <p>
-                            <a class="tr-category-loadmore" href="http://www.yiiframework.com/extensions/">
-                                Load More
-                            </a>
-                        </p>
-                    </div>
-                </div>
-
-        </div>
-        -->
-
         <div class="col-lg-8" style="min-height:800px;margin-top:0px;padding:40px;padding-top:15px;border:1px solid #e1e6ea;">
-            <div class="row">
-                <div class="col-md-6" ng-switch on="post.type"
-                    ng-repeat="post in posts">
-                    <div ng-switch-when="twitter-post">
-                        <twitter-post p="post">
-                        </twitter-post>
+            <div class="row" id="trender_timeline">
+                <?php foreach ($posts as $post): ?>
+                    <div class="col-md-6">
+                        <?php 
+                            $param = ['post' => $post];
+                            if ($post["type"] == "youtube-post"):
+                                renderPlugin('youtube_post', $param);
+                            elseif ($post["type"] == "twitter-post"): 
+                                renderPlugin('twitter_post', $param);
+                            elseif ($post["type"] == "steemit-post"):
+                                renderPlugin('steemit_post', $param);
+                            else: 
+                                renderPlugin('trender_post', $param);
+                            endif; 
+                        ?>
                     </div>
-
-                    <div ng-switch-when="youtube-post">
-                        <youtube-post p="post">
-                        </youtube-post>
-                    </div>
-
-                    <div ng-switch-default>
-                        <trender-post p="post">
-                        </trender-post>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
 
