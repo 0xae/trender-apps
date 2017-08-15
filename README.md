@@ -18,7 +18,8 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     twitch streamming and chat
     steemit video, dtube video
     yahoo tv, yahoo view
-    
+    cnbc.com/video
+    
 ### search 
     timeline, realtime search, trending topics, trending channels
     google, wikipedia, reddit, twitter, youtube, steemit, bbc,
@@ -54,6 +55,12 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
 ### bittorrent network
     stream videos, music, shows, cartoons from the bittorrent tv
     adapt to fluctuating network speeds
+    
+    
+
+[CNBC live tv](http://www.cnbc.com/live-tv/prime)
+
+[Onion Studios](http://www.onionstudios.com/)
 
 [DDNet, flavor of DDRace, a Teeworlds mod.](https://github.com/ddnet/ddnet)
 
