@@ -11,17 +11,19 @@ div.ccc-widget {
 }
 </style>
 
-<h3 style="margin-top:2px;margin-bottom:0px" class="tr-sec-title">
-    <span class="glyphicon glyphicon-bitcoin" style="font-size:14px;"></span>
-    markets
-</h3>
-<p style="color: #666;font-size:11px;">
-    <strong>
-    bitcoin, ethereum, dash
-    </strong>
-</p>
+<div style="padding:10px;margin-bottom:10px;padding-bottom:0px;border-bottom: 1px solid #f5eeee;">
+    <h3 style="margin-bottom:0px;margin-top:0px;padding-top:0px;" class="tr-sec-title">
+        <span class="glyphicon glyphicon-bitcoin" style="font-size:14px;"></span>
+        markets
+    </h3>
+    <p style="color: #666;font-size:11px;">
+        <strong>
+        bitcoin, ethereum, dash
+        </strong>
+    </p>
+</div>
 
-<div id="coins_widget">
+<div id="coins_widget" style="padding:30px;padding-top:2px;display:table;">
 </div>
 
 <script type="text/javascript">
