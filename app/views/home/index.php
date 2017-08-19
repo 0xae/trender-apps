@@ -84,7 +84,7 @@ function renderPlugin($plugin, $params=[]) {
             </div>
         </div>
 
-        <div class="col-lg-5" style="min-height:800px;background-color: #fff;padding-top:15px;border:1px solid #e1e6ea;">
+        <div class="col-lg-5" style="margin-top: 10px;min-height:800px;background-color: #fff;padding-top:15px;border:1px solid #e1e6ea;border-top: 0px;">
             <div class="row" id="trender_timeline">
                 <?php foreach ($posts as $post): ?>
                     <div class="" style="border-bottom: 1px solid #f5eeee;padding:15px;padding-top:10px;">

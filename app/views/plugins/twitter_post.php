@@ -6,10 +6,10 @@ $hasImages = !empty($images);
 <div class="media">
     <div class="media-left">
         <a href="#">
-            <img style="border-radius:88px" class="media-object" 
+            <img style="" class="media-object" 
                  src="<?= $post["picture"]; ?>"
                  alt="Foto of <?= $post["authorName"]; ?>" 
-                 width="50" height="50" 
+                 width="70" height="50"
             />
         </a>
     </div>
