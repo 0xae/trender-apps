@@ -8,7 +8,6 @@
       <div class="media-body">
         <img src="static/img/steemit-196x196.png" style="display:inline;width:15px;height:15px;" /> 
         <h4 class="st-post-author" style="display: inline;">
-            <span style="color: #999;">· </span>
             <?=  $post["authorName"]; ?>
             <span style="color: #999;">· </span>
             <a href="#" title="<?= $post['timestamp'] ?>" style="font-size:11px;padding: 0px;padding-right:3px;color:#777;text-decoration:none;font-weight:normal;">

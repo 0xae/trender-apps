@@ -22,8 +22,8 @@
             </a>
         </li>
 
-        <li>
-            <a href="index.php?r=diary/index" style="font-size: 13px;">
+        <li class="">
+            <a href="index.php?r=home/index" style="font-size: 13px;">
                <span class="fa fa-newspaper-o"></span>
                <strong>Diary</strong>
             </a>

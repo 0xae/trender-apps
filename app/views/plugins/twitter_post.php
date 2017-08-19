@@ -16,14 +16,11 @@ $hasImages = !empty($images);
 
     <div class="media-body">
         <h4 class="st-post-author ng-binding" style="display: inherit;">
-            <span style="padding:2px;padding-right:4px;padding-bottom:4px;border-radius:3px;">
-                <img src="static/img/twitter-192x192.png" style="display:inline;width:18px;height:18px;">
-            </span>
-             <span style="color: #999;">· </span>
-             @<?= $post["json"]["username"]; ?>           
+             <img src="static/img/twitter-192x192.png" style="display:inline;width:18px;height:18px;">
+             <?= $post["json"]["username"]; ?>           
              <span style="color: #999;">· </span>
              <a href="#" title="" style="font-size:11px;padding: 0px;padding-right:3px;color:#777;text-decoration:none;font-weight:normal;" class="ng-binding">
-             <?= $post["timestamp"]; ?>
+                 <?= $post["timestamp"]; ?>
              </a>
         </h4>
 

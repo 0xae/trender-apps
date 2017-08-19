@@ -11,7 +11,8 @@
     </div>
 
     <div class="media-body">
-        <h4 class="st-post-author ng-binding" style="display: inherit;">
+        <img src="static/img/youtube-medium.png" style="display:inline;width:15px;height:15px;">
+        <h4 class="st-post-author ng-binding" style="display: inline;">
             <?= $post["authorName"] ?>
             <a href="#" title="" style="font-size:11px;padding: 0px;padding-right:3px;color:#777;text-decoration:none;font-weight:normal;" class="ng-binding">
                · <?= $post["timestamp"]; ?>
@@ -44,8 +45,6 @@
             <a target="__blank" href="<?= $post["link"]; ?>" style="color:#777;font-size:12px;padding: 4px;padding-right:3px;">
                     ·  
                     <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">
-                        <img src="static/img/youtube-medium.png" 
-                             style="display:inline;width:15px;height:15px;">youtube
                     </span>
                 </a>
             </li>
