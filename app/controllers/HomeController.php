@@ -17,7 +17,7 @@ class HomeController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $data = Post::search('news');
+        $data = Post::search('news', 20);
         return $this->render('index', [
             'posts' => $data["posts"]
         ]);

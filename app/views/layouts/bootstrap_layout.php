@@ -34,14 +34,21 @@ body {
     padding-bottom: 14px;
     border-bottom: 1px solid #f5eeee;
 }
+
 .trender-post:hover {
     background-color: rgba(0,0,0,.05);
 }
+
 .tr-header {
     background: url(static/img/satelite.png) no-repeat;
     background-position: 89% 58%;
     background-size: cover;
 }
+
+.alert-new-posts {
+    background-color: #E8FAF2;
+}
+
 .tr-welcome {
     color: #c8e1ff;
 }

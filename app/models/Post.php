@@ -22,8 +22,8 @@ class Post extends \yii\base\Object {
         return unserialize($result);
     }
 
-    public static function search($q) {
-        $results = self::query($q);
+    public static function search($q, $lim) {
+        $results = self::query($q, $lim);
         $docs = $results['response']['docs'];
 
         $posts = [];

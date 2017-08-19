@@ -3,7 +3,7 @@ src="http://player.twitch.tv/?channel=plyasm&muted=true"
 src="http://player.twitch.tv/?channel=litchi_2525&muted=true"
 src="http://player.twitch.tv/?channel=yoda&muted=true"
 -->
-<div style="padding-top:0px;padding:10px;margin-bottom:10px;padding-bottom:8px;border-bottom: 1px solid #f5eeee;">
+<div style="padding-top:0px;padding:10px;margin-bottom:10px;padding-bottom:16px;border-bottom: 1px solid #f5eeee;">
     <h3 style="margin-bottom:0px;margin-top:0px;" class="tr-sec-title">
         Trending  
         <small class="special-link" style="display:inline;font-weight:bold;font-size:11px;">

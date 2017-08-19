@@ -37,6 +37,11 @@ function renderPlugin($plugin, $params=[]) {
 
         <div class="col-lg-5" style="margin-top: 10px;min-height:800px;background-color: #fff;border:1px solid #e1e6ea;border-top: 0px;">
             <div class="row" id="trender_timeline">
+                <div class="alert alert-success alert-new-posts" style="margin-bottom:0px;border-radius:0px;" role="alert">
+                    <center>
+                    View 12 new posts
+                    </center>
+                </div>
                 <?php 
                     foreach ($posts as $post): 
                         $param = ['post' => $post];
