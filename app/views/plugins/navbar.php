@@ -45,12 +45,17 @@
       </ul>
 
       <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
+            <div class="input-group">
+                  <input type="text" 
+                        style="border-bottom-left-radius: 40px;border-top-left-radius: 40px;font-size:12px;border:1px solid #19CF86;"
+                        class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                        <button class="btn btn-default" style="border-bottom-right-radius: 40px; border:1px solid #19CF86;border-top-right-radius: 40px;border-left: 0px" type="button">
+                            <span class="glyphicon glyphicon-search">
+                            </span>
+                        </button>
+                  </span>
+            </div><!-- /input-group -->
       </form>
 
 <!--

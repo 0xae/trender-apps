@@ -26,12 +26,12 @@ function renderPlugin($plugin, $params=[]) {
 
     <div class="row" style="background-color: #f1f0f0">
         <div class="col-lg-3" style="padding:10px;margin-bottom: 20px;">
-            <div style="background-color: #fff;">
-                <?php renderPlugin('trending_widget'); ?>
+            <div class="" style="margin-bottom: 20px;background-color: #fff;">
+                <?php renderPlugin('twitch_widget'); ?>
             </div>
 
-            <div class="" style="margin-top:20px;margin-bottom: 20px;background-color: #fff;">
-                <?php renderPlugin('twitch_widget'); ?>
+            <div style="background-color: #fff;">
+                <?php renderPlugin('trending_widget'); ?>
             </div>
         </div>
 
@@ -58,7 +58,7 @@ function renderPlugin($plugin, $params=[]) {
 
         <div class="col-md-3" style="padding: 10px;padding-right:0px;">
             <div class="" style="background-color: #fff;margin-bottom:10px;">
-                <?php renderPlugin('coins_widget'); ?>
+                <?php renderPlugin('coins_widget', ['showTitle' => true]); ?>
             </div>
 
             <div class="" style="margin-bottom: 30px;">

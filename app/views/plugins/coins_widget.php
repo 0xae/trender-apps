@@ -11,16 +11,18 @@ div.ccc-widget {
 }
 </style>
 
-<div style="padding:10px;margin-bottom:10px;padding-bottom:0px;border-bottom: 1px solid #f5eeee;">
-    <h3 style="margin-bottom:0px;margin-top:0px;padding-top:0px;" class="tr-sec-title">
-        markets
-    </h3>
-    <p style="color: #666;font-size:11px;">
-        <strong>
-        bitcoin, ethereum, dash
-        </strong>
-    </p>
-</div>
+<?php if (isset($showTitle)): ?>
+    <div style="padding:10px;margin-bottom:10px;padding-bottom:0px;border-bottom: 1px solid #f5eeee;">
+        <h3 style="margin-bottom:0px;margin-top:0px;padding-top:0px;" class="tr-sec-title">
+            markets
+        </h3>
+        <p style="color: #666;font-size:11px;">
+            <strong>
+            bitcoin, ethereum, dash
+            </strong>
+        </p>
+    </div>
+<?php endif; ?>
 
 <div id="coins_widget" style="padding:30px;padding-top:2px;display:table;">
 </div>
