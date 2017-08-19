@@ -17,8 +17,7 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     youtube home cinema ?
     twitch streamming and chat
     steemit video, dtube video
-    yahoo tv, yahoo view
-    cnbc.com/video
+    yahoo tv, cnbc.com/video
     
 ### search 
     timeline, realtime search, trending topics, trending channels
