@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" style="border-radius: 0px;margin-bottom:5px;min-height:40px;">
+<nav class="navbar navbar-default navbar-fixed-top" style="border-color: #fff;border-radius: 0px;margin-bottom:5px;min-height:40px;">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
