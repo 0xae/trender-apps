@@ -24,7 +24,7 @@
                 <a href="#" style="font-size:12px;padding: 0px;padding-right:3px;">
                     <img style="display:inline-block;padding:0px;" 
                          src="static/img/like.png" width="13" height="13" class="o">
-                    {{ p.postReaction.countLikes }} 
+                    0
                 </a>
             </li>
 

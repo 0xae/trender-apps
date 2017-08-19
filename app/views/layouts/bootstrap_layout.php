@@ -13,7 +13,7 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" ng-app="trender">
+<html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,9 +22,12 @@ AppAsset::register($this);
     <?php $this->head() ?>
 <style>
 .tr-header {
-    background: url(static/img/marketplace.webp) no-repeat;
+    background: url(static/img/satelite.png) no-repeat;
     background-position: 89% 58%;
     background-size: cover;
+}
+.tr-welcome {
+    color: #c8e1ff;
 }
 .tr-sec-title {
     font-size: 18px;

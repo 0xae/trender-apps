@@ -10,19 +10,19 @@ function renderPlugin($plugin, $params=[]) {
 
 ?>
 
-<div ng-controller="HomeController">
+<div>
+    <div class="col-md-12">
+        <?php renderPlugin('navbar'); ?>
+    </div>
+
     <div class="row tr-header" style="">
         <div class="col-md-12">
-             <div class="tr-outside tr-header" style="height:250px">
+             <div class="tr-outside tr-header" style="height:200px">
                 <div class="tr-inside" style="height:150px;">
                 </div>
             </div>
         </div>
     </div><!-- /.row -->
-
-    <div class="col-md-12">
-        <?php renderPlugin('navbar'); ?>
-    </div>
 
     <div class="row" style="background-color: #f1f0f0">
         <div class="col-lg-3" style="padding:10px;margin-bottom: 20px;">
