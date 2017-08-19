@@ -29,7 +29,22 @@ AppAsset::register($this);
 .tr-sec-title {
     font-size: 18px;
     font-weight: bold;
+    color: #444;
+}
+
+.special-link {
     color: #19CF86;
+}
+
+h3.special-link {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+h3.special-link small {
+    font-size: 11px;
 }
 
 .tr-top-title {

@@ -21,15 +21,16 @@ function renderPlugin($plugin, $params=[]) {
     </div><!-- /.row -->
 
     <div class="col-md-12">
-        <?php echo \Yii::$app->view->renderFile(
-                "@app/views/plugins/navbar.php", []
-            ); 
-        ?>
+        <?php renderPlugin('navbar'); ?>
     </div>
 
     <div class="row" style="background-color: #f1f0f0">
-        <div class="col-lg-3" style="padding:10px;">
-            <div class="" style="margin-bottom: 20px;background-color: #fff;">
+        <div class="col-lg-3" style="padding:10px;margin-bottom: 20px;">
+            <div style="background-color: #fff;">
+                <?php renderPlugin('trending_widget'); ?>
+            </div>
+
+            <div class="" style="margin-top:20px;margin-bottom: 20px;background-color: #fff;">
                 <?php renderPlugin('twitch_widget'); ?>
             </div>
         </div>
