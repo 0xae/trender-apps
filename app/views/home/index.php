@@ -35,13 +35,14 @@ function renderPlugin($plugin, $params=[]) {
             </div>
         </div>
 
-        <div class="col-lg-5" style="margin-top: 10px;min-height:800px;background-color: #fff;border:1px solid #e1e6ea;border-top: 0px;">
-            <div class="row" id="trender_timeline">
-                <div class="alert alert-success alert-new-posts" style="margin-bottom:0px;border-radius:0px;" role="alert">
-                    <center>
-                    View 12 new posts
-                    </center>
+        <div class="col-lg-5" style="margin-top: 10px;border-radius:4px;min-height:800px;background-color: #fff;border:1px solid #e1e6ea;border-top: 0px;">
+            <div class="row" id="trender_timeline" style="">
+                <div class="alert alert-success alert-new-posts" style="margin-bottom:0px;border-radius:0px;border-color:#fff;" role="alert">
+                    <a href="javascript:void(0)" class="new_posts">
+                        <center>View <span id="new_post_count">12 new posts</center>
+                    </a>
                 </div>
+
                 <?php 
                     foreach ($posts as $post): 
                         $param = ['post' => $post];

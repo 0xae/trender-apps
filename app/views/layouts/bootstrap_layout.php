@@ -45,6 +45,14 @@ body {
     background-size: cover;
 }
 
+div.entry-box {
+background-color: #E8FAF2;
+padding: 20px;
+}
+a.new_posts {
+    color: inherit;
+}
+
 .alert-new-posts {
     background-color: #E8FAF2;
 }
