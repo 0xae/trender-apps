@@ -120,4 +120,5 @@ function renderPlugin($plugin, $params=[]) {
         </div>
     </div>
 
+    <?= renderPlugin('webpage_plugin'); ?>
 </div>

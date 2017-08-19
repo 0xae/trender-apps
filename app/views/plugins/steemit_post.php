@@ -6,9 +6,13 @@
       </div>
 
       <div class="media-body">
-      <h4 class="st-post-author" style="display: inherit;"><?=  $post["authorName"]; ?>
+        <img src="static/img/steemit-196x196.png" style="display:inline;width:15px;height:15px;" /> 
+        <h4 class="st-post-author" style="display: inline;">
+            <span style="color: #999;">· </span>
+            <?=  $post["authorName"]; ?>
+            <span style="color: #999;">· </span>
             <a href="#" title="<?= $post['timestamp'] ?>" style="font-size:11px;padding: 0px;padding-right:3px;color:#777;text-decoration:none;font-weight:normal;">
-            · <?= $post["timestamp"] ?>
+                <?= $post["timestamp"] ?>
             </a>
         </h4>
 
@@ -39,15 +43,14 @@
 
             <li role="presentation" class="color: #777">
                 <a target="__blank" href="<?= $post['source'] ?>" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
-                 ·  <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">full story</span>'+
+                 ·  <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">full story</span>
                 </a>
             </li>
 
-            <li role="presentation" class="color: #777">
-                <a target="__blank" href="<?= $post['source'] ?>" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
-                     ·  <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">
-                           <img src="static/img/steemit-196x196.png" style="display:inline;width:15px;height:15px;" /> steemit
-                     </span>
+            <li role="" ng-click="openWebpage('<?= $post['source'] ?>')" class="">
+                <a target="__blank" href="javascript:void(0)" 
+                     style="margin-left:5px;color:#777;font-size:12px;padding: 0px;padding-right:3px;">
+                     <span class="glyphicon glyphicon-fullscreen" style="font-size:10px;color: #0a7b0a;"></span>
                 </a>
             </li>
         </ul>

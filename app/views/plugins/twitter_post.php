@@ -19,7 +19,9 @@ $hasImages = !empty($images);
             <span style="padding:2px;padding-right:4px;padding-bottom:4px;border-radius:3px;">
                 <img src="static/img/twitter-192x192.png" style="display:inline;width:18px;height:18px;">
             </span>
+             <span style="color: #999;">· </span>
              @<?= $post["json"]["username"]; ?>           
+             <span style="color: #999;">· </span>
              <a href="#" title="" style="font-size:11px;padding: 0px;padding-right:3px;color:#777;text-decoration:none;font-weight:normal;" class="ng-binding">
              <?= $post["timestamp"]; ?>
              </a>
@@ -62,17 +64,15 @@ $hasImages = !empty($images);
                 <li role="presentation" class="">
                     <a href="#" style="font-size:12px;padding-right:2px;" class="ng-binding">
                         <span style="margin-right:5px;" class="glyphicon glyphicon-heart-empty"></span>
-                        <strong>
-                            <?= $post["json"]["love"] ?>
-                        </strong>
+                        <strong> <?= $post["json"]["love"] ?> </strong>
                     </a>
                 </li>
 
                 <li role="presentation" class="color: #000;margin-left:0px;padding-left:0px;">
                     <strong>
-                    <a href="<?= $post["link"]; ?>" target="__blank" 
-                       style="padding-left:0px;font-size:12px;">
-                    </a>
+                        <a href="<?= $post["link"]; ?>" target="__blank" 
+                           style="padding-left:0px;font-size:12px;">
+                        </a>
                     </strong>
                 </li>
             </ul>

@@ -27,7 +27,6 @@ class Post extends \yii\base\Object {
         $docs = $results['response']['docs'];
 
         $posts = [];
-        $cats = [];
         foreach ($docs as $p) {
             $p['json'] = json_decode($p['data'], true);
             $posts[] = $p;
@@ -35,7 +34,7 @@ class Post extends \yii\base\Object {
 
         return [
             "posts" => $posts,
-            "categories" => $cats,
+            "categories" => $results["facet_counts"]["facet_fields"],
             "_q" => $results
         ];
     }
