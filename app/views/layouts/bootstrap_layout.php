@@ -21,6 +21,9 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 <style>
+body {
+    padding-top: 50px;
+}
 .tr-header {
     background: url(static/img/satelite.png) no-repeat;
     background-position: 89% 58%;
