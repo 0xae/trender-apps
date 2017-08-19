@@ -77,11 +77,17 @@ function renderPlugin($plugin, $params=[]) {
     </div><!-- /.row -->
 
 
-    <div class="row">
-        <div class="col-lg-8" style="min-height:800px;margin-top:0px;padding:40px;padding-top:15px;border:1px solid #e1e6ea;">
+    <div class="row" style="background-color: #f1f0f0">
+        <div class="col-lg-3" style="padding:10px;">
+            <div class="" style="margin-bottom: 20px;background-color: #fff;">
+                <?php renderPlugin('twitch_widget'); ?>
+            </div>
+        </div>
+
+        <div class="col-lg-5" style="min-height:800px;background-color: #fff;padding-top:15px;border:1px solid #e1e6ea;">
             <div class="row" id="trender_timeline">
                 <?php foreach ($posts as $post): ?>
-                    <div class="col-md-6">
+                    <div class="" style="border-bottom: 1px solid #f5eeee;padding:15px;padding-top:10px;">
                         <?php 
                             $param = ['post' => $post];
                             if ($post["type"] == "youtube-post"):
@@ -100,22 +106,12 @@ function renderPlugin($plugin, $params=[]) {
         </div>
 
         <div class="col-md-4" style="padding: 10px;padding-right:0px;">
-            <div class="col-md-12" style="margin-bottom: 20px;">
-                <?php 
-                    echo \Yii::$app->view->renderFile('@app/views/plugins/twitch_widget.php', []); 
-                ?>
-            </div>
-
-            <div class="col-md-12" style="margin-bottom: 20px;">
-                <?php 
-                    echo \Yii::$app->view->renderFile('@app/views/plugins/coins_widget.php', []); 
-                ?>
+            <div class="" style="margin-bottom: 20px;">
+                <?php renderPlugin('coins_widget'); ?>
             </div>
 
             <div class="col-md-10" style="margin-bottom: 30px;">
-                <?php 
-                    echo \Yii::$app->view->renderFile('@app/views/plugins/bitcoin_newsfeed.php', []); 
-                ?>
+                <?php renderPlugin('bitcoin_newsfeed'); ?>
             </div>
         </div>
     </div>

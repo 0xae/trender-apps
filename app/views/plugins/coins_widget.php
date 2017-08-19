@@ -1,6 +1,7 @@
 <style >
 div.ccc-coin-container {
     margin-right: 25px !important;
+    background-color: #fff;
 }
 div.currencyMenuContainer {
     display: none;
@@ -33,7 +34,7 @@ if(appName==""){appName="local";}
 var s = document.createElement("script");
 s.type = "text/javascript";
 s.async = true;
-var theUrl = baseUrl+'serve/v2/coin/header?fsyms=BTC,ETH,DASH&tsyms=USD,EUR,CNY,GBP';
+var theUrl = baseUrl+'serve/v2/coin/header?fsyms=BCH,LTC,DASH,XMR,BTC,ETH,DASH&tsyms=USD,EUR,CNY,GBP';
 s.src = theUrl + ( theUrl.indexOf("?") >= 0 ? "&" : "?") + "app=" + appName;
 // embedder.parentNode.appendChild(s);
 document.getElementById("coins_widget").appendChild(s);

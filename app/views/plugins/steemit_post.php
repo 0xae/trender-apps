@@ -30,19 +30,19 @@
             </li>
 
             <li role="presentation" class="">
-                <a target="__blank" href="<?= $post['source'] ?>" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
+                <a target="__blank" href="<?= $post['link'] ?>" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
                 · <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">like</span>
                 </a>
             </li>
 
             <li role="presentation" class="">
-                <a target="__blank" href="<?= $post['source'] ?>" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
+                <a target="__blank" href="<?= $post['link'] ?>" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
                  · <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">comment</span>
                 </a>
             </li>
 
             <li role="presentation" class="color: #777">
-                <a target="__blank" href="<?= $post['source'] ?>" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
+                <a target="__blank" href="<?= $post['link'] ?>" style="color:#777;font-size:12px;padding: 0px;padding-right:3px;">
                  ·  <span style="background-color: #eee;padding:1px;padding-left:3px;padding-right:3px;border-radius:3px;">full story</span>
                 </a>
             </li>

@@ -4,7 +4,8 @@
             <img style="border-radius:88px" class="media-object" 
                 src="<?= $post["picture"] ?>" 
                 alt="Foto of <?= $post["authorName"] ?>" 
-                width="50" height="50" 
+                width="50" 
+                height="50" 
             />
         </a>
     </div>
