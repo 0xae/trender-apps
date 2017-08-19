@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default " style="border-radius: 0px;margin-bottom:5px;">
+<nav class="navbar navbar-default " style="border-radius: 0px;margin-bottom:5px;min-height:40px;">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -26,12 +26,6 @@
             <a href="index.php?r=diary/index" style="font-size: 13px;">
                <span class="fa fa-newspaper-o"></span>
                <strong>Diary</strong>
-            </a>
-        </li>
-
-        <li>
-            <a href="index.php?r=news/index" style="font-size: 13px;">
-               <strong>News</strong>
             </a>
         </li>
 

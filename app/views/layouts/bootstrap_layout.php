@@ -176,6 +176,16 @@ margin-left:inherit;
 margin-right:inherit;
 }
 
+ul.navbar-nav li.active a {
+    color:  #19CF86 !important;
+    background-color: transparent !important;
+    border-bottom: 2px solid #19CF86;
+}
+
+ul.navbar-nav li a:hover {
+    color:  #19CF86 !important;
+}
+
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, 
 .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, 
 .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, 
