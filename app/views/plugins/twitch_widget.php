@@ -5,7 +5,6 @@ src="http://player.twitch.tv/?channel=yoda&muted=true"
 -->
 <div style="padding-top:0px;padding:10px;margin-bottom:10px;padding-bottom:0px;border-bottom: 1px solid #f5eeee;">
     <h3 style="margin-bottom:0px;margin-top:0px;" class="tr-sec-title">
-        <span class="glyphicon glyphicon-play-circle" style="font-size:14px;"></span>
         twitch
     </h3>
     <p style="color: #666;font-size:11px;">

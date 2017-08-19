@@ -28,6 +28,8 @@ AppAsset::register($this);
 }
 .tr-sec-title {
     font-size: 18px;
+    font-weight: bold;
+    color: #19CF86;
 }
 
 .tr-top-title {
@@ -194,9 +196,6 @@ margin-right:inherit;
 <body>
 <?php $this->beginBody(); ?>
 
-<?php 
-# require_once "navbar.php";
-?>
 <?= $content ?>
 
 <?php $this->endBody();?>
