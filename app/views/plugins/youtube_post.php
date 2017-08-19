@@ -1,4 +1,4 @@
-<div class="media">
+<div class="media trender-post">
     <div class="media-left">
         <a href="#">
             <img style="border-radius:88px" class="media-object" 

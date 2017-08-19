@@ -1,7 +1,7 @@
-<div class="media">
+<div class="media trender-post">
       <div class="media-left">
         <a href="#">
-        <img class="media-object" src="<?= $post["picture"] ?>" alt="Foto of <?= $post["authorName"] ?>" width="70" height="50"/>
+            <img class="media-object" src="<?= $post["picture"] ?>" alt="Foto of <?= $post["authorName"] ?>" width="70" height="50"/>
         </a>
       </div>
 
@@ -46,12 +46,14 @@
                 </a>
             </li>
 
+            <!-- 
             <li role="" ng-click="openWebpage('<?= $post['source'] ?>')" class="">
                 <a target="__blank" href="javascript:void(0)" 
                      style="margin-left:5px;color:#777;font-size:12px;padding: 0px;padding-right:3px;">
                      <span class="glyphicon glyphicon-fullscreen" style="font-size:10px;color: #0a7b0a;"></span>
                 </a>
             </li>
+            -->
         </ul>
       </div>
 </div>

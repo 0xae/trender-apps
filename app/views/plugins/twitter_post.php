@@ -3,7 +3,7 @@ $images = $post["json"]["images"];
 $hasImages = !empty($images);
 ?>
 
-<div class="media">
+<div class="media trender-post trender-tweet">
     <div class="media-left">
         <a href="#">
             <img style="" class="media-object" 

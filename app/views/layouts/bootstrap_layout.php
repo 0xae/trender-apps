@@ -24,6 +24,19 @@ AppAsset::register($this);
 body {
     padding-top: 50px;
 }
+.media {
+    margin-top: 0px;
+}
+.trender-post {
+    cursor: pointer;
+    padding-left: 10px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f5eeee;
+}
+.trender-post:hover {
+    background-color: rgba(0,0,0,.05);
+}
 .tr-header {
     background: url(static/img/satelite.png) no-repeat;
     background-position: 89% 58%;

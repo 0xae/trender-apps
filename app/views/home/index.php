@@ -35,24 +35,22 @@ function renderPlugin($plugin, $params=[]) {
             </div>
         </div>
 
-        <div class="col-lg-5" style="margin-top: 10px;min-height:800px;background-color: #fff;padding-top:15px;border:1px solid #e1e6ea;border-top: 0px;">
+        <div class="col-lg-5" style="margin-top: 10px;min-height:800px;background-color: #fff;border:1px solid #e1e6ea;border-top: 0px;">
             <div class="row" id="trender_timeline">
-                <?php foreach ($posts as $post): ?>
-                    <div class="" style="border-bottom: 1px solid #f5eeee;padding:15px;padding-top:10px;">
-                        <?php 
-                            $param = ['post' => $post];
-                            if ($post["type"] == "youtube-post"):
-                                renderPlugin('youtube_post', $param);
-                            elseif ($post["type"] == "twitter-post"): 
-                                renderPlugin('twitter_post', $param);
-                            elseif ($post["type"] == "steemit-post"):
-                                renderPlugin('steemit_post', $param);
-                            else: 
-                                renderPlugin('trender_post', $param);
-                            endif; 
-                        ?>
-                    </div>
-                <?php endforeach; ?>
+                <?php 
+                    foreach ($posts as $post): 
+                        $param = ['post' => $post];
+                        if ($post["type"] == "youtube-post"):
+                            renderPlugin('youtube_post', $param);
+                        elseif ($post["type"] == "twitter-post"): 
+                            renderPlugin('twitter_post', $param);
+                        elseif ($post["type"] == "steemit-post"):
+                            renderPlugin('steemit_post', $param);
+                        else: 
+                            renderPlugin('trender_post', $param);
+                        endif; 
+                    endforeach;
+                ?>
             </div>
         </div>
 

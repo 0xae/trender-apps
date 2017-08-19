@@ -1,14 +1,13 @@
-<div class="media">
-
+<div class="media trender-post">
   <div class="media-left">
-    <a href="#">
-        <img class="media-object" 
-             src="<?= $post["picture"] ?>" 
-             alt="Foto of <?= $post["authorName"] ?>" 
-             width="70" height="50"
-        />
-    </a>
-  <!-- .media-left -->
+      <a href="#">
+          <img class="media-object" 
+               src="<?= $post["picture"] ?>" 
+               alt="Foto of <?= $post["authorName"] ?>" 
+               width="70" height="50"
+          />
+      </a>
+      <!-- .media-left -->
   </div>
 
   <div class="media-body">
