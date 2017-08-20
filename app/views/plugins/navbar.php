@@ -15,29 +15,29 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="menu-link active">
+        <li class="menu-link <?= (Yii::$app->controller->id == 'home')? 'active': '' ?>">
             <a href="index.php?r=home/index">
                <span class="fa fa-home"></span>
                <strong>Home</strong>
             </a>
         </li>
 
-        <li class="menu-link">
-            <a href="index.php?r=home/index">
+        <li class="menu-link <?= (Yii::$app->controller->id == 'diary')? 'active': '' ?>">
+            <a href="index.php?r=diary/index">
                <span class="fa fa-newspaper-o"></span>
                <strong>Diary</strong>
             </a>
         </li>
 
-        <li class="menu-link">
+        <li class="menu-link <?= (Yii::$app->controller->id == 'tv')? 'active': '' ?>">
             <a href="index.php?r=tv/index">
                <span class="fa fa-tv"></span>
                <strong>Live Tv</strong>
             </a>
         </li>
 
-        <li class="menu-link">
-            <a href="index.php?r=markets/index">
+        <li class="menu-link <?= (Yii::$app->controller->id == 'market')? 'active': '' ?>">
+            <a href="index.php?r=market/index">
                <span class="fa fa-balance-scale"></span>
                <strong>Markets</strong>
             </a>

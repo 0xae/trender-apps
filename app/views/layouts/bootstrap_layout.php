@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -260,7 +261,26 @@ ul.navbar-nav li a:hover {
 </style>
 </head>
 <body>
-<?php $this->beginBody(); ?>
+<?php 
+$this->beginBody(); 
+?>
+
+<div class="col-md-12">
+<?php 
+    echo \Yii::$app->view->renderFile(
+        "@app/views/plugins/navbar.php"
+    ); 
+?>
+</div>
+
+<div class="row tr-header" style="">
+    <div class="col-md-12">
+         <div class="tr-outside tr-header" style="height:200px">
+            <div class="tr-inside" style="height:150px;">
+            </div>
+        </div>
+    </div>
+</div><!-- /.row -->
 
 <?= $content ?>
 
