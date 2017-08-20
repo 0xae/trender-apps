@@ -45,9 +45,17 @@ body {
     background-size: cover;
 }
 
+li.menu-link a {
+    font-size: 16px;
+}
+
+li.menu-link a strong {
+    font-size: 13px;
+}
+
 div.entry-box {
-background-color: #E8FAF2;
-padding: 20px;
+    background-color: #E8FAF2;
+    padding: 20px;
 }
 a.new_posts {
     color: inherit;
@@ -228,7 +236,6 @@ margin-right:inherit;
 ul.navbar-nav li.active a {
     color:  #19CF86 !important;
     background-color: transparent !important;
-    border-bottom: 2px solid #19CF86;
 }
 
 ul.navbar-nav li a:hover {
