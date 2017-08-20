@@ -11,12 +11,12 @@ function renderPlugin($plugin, $params=[]) {
 <div>
     <div class="row" style="background-color: #f1f0f0">
         <div class="col-lg-3" style="padding:10px;margin-bottom: 20px;">
-            <div class="" style="margin-bottom: 20px;background-color: #fff;">
-                <?php renderPlugin('twitch_widget'); ?>
+            <div style="background-color: #fff;">
+                <?php renderPlugin('channels_widget'); ?>
             </div>
 
-            <div style="background-color: #fff;">
-                <?php renderPlugin('trending_widget'); ?>
+            <div class="" style="background-color: #fff;margin-top:10px;margin-bottom:10px;">
+                <?php renderPlugin('coins_widget', ['showTitle' => true]); ?>
             </div>
         </div>
 
@@ -48,13 +48,6 @@ function renderPlugin($plugin, $params=[]) {
         </div>
 
         <div class="col-md-3" style="padding: 10px;padding-right:0px;">
-            <div class="" style="background-color: #fff;margin-bottom:10px;">
-                <?php renderPlugin('coins_widget', ['showTitle' => true]); ?>
-            </div>
-
-            <div class="" style="margin-bottom: 30px;">
-                <?php renderPlugin('bitcoin_newsfeed'); ?>
-            </div>
         </div>
     </div>
 

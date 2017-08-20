@@ -41,8 +41,8 @@ body {
 }
 
 .tr-header {
-    background: url(static/img/satelite.png) no-repeat;
-    background-position: 89% 58%;
+    background: url(static/img/weibotv_banner.jpg) no-repeat;
+    background-position: 50% 50%;
     background-size: cover;
 }
 
