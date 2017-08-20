@@ -35,6 +35,9 @@ body {
     padding-bottom: 14px;
     border-bottom: 1px solid #f5eeee;
 }
+.trender-post .media-body p {
+    width: 450px;
+}
 
 .trender-post:hover {
     background-color: rgba(0,0,0,.05);
