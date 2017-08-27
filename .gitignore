@@ -5,3 +5,7 @@
 *.swk
 *.swo
 
+dbs/
+eggs/
+logs/
+twistd.pid
