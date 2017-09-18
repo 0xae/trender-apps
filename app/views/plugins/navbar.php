@@ -23,7 +23,7 @@
         </li>
 
         <li class="menu-link <?= (Yii::$app->controller->id == 'diary')? 'active': '' ?>">
-            <a href="index.php?r=diary/index">
+            <a href="index.php?r=journal/index">
                <span class="fa fa-newspaper-o"></span>
                <strong>Journal</strong>
             </a>
