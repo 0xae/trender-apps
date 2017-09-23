@@ -17,7 +17,7 @@ class HomeController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $data = Post::search('news', 20);
+        $data = Post::search('news', 50);
         return $this->render('index', [
             'posts' => $data["posts"]
         ]);
@@ -25,7 +25,7 @@ class HomeController extends Controller {
 
     public function actionTimeline() {
         $query = isset($_GET['q']) ? $_GET['q'] : 'news';
-        $data = Post::search($query);
+        $data = Post::search($query, 50);
 
         return $this->renderPartial('timeline', [
             'posts' => $data["posts"]
