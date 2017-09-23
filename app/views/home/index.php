@@ -8,51 +8,39 @@ function renderPlugin($plugin, $params=[]) {
 }
 ?>
 
-<div>
-    <div class="row" style="background-color: #f1f0f0">
-        <div class="col-lg-3" style="padding:10px;margin-bottom: 20px;">
-            <div style="background-color: #fff;">
-                <?php renderPlugin('channels_widget'); ?>
-            </div>
-
-            <div class="" style="background-color: #fff;margin-top:10px;margin-bottom:10px;">
-                <?php renderPlugin('coins_widget', ['showTitle' => true]); ?>
-            </div>
+<div class="row tr-page-section tr-page-header">
+    <div class="container">
+        <div class="col-md-1">
+            <h1 class="tr-logo">Trender</h1>
         </div>
 
-        <div class="col-lg-5" style="margin-top: 10px;border-radius:4px;min-height:800px;background-color: #fff;border:1px solid #e1e6ea;border-top: 0px;">
-            <div class="row" id="trender_timeline" style="">
-                <!-- 
-                <div class="alert alert-success alert-new-posts" style="margin-bottom:0px;border-radius:0px;border-color:#fff;" role="alert">
-                    <a href="javascript:void(0)" class="new_posts">
-                        <center>View <span id="new_post_count">12 new posts</center>
-                    </a>
-                </div>
-                -->
+        <div class="col-md-3">
+          <ul class="nav navbar-nav">
+            <li class="menu-link <?= (Yii::$app->controller->id == 'home')? 'active__': '' ?>">
+                <a href="index.php?r=journal/index">
+                   <strong>Home</strong>
+                </a>
+            </li>
 
-                <?php 
-                    foreach ($posts as $post): 
-                        $param = ['post' => $post];
-                        if ($post["type"] == "youtube-post"):
-                            renderPlugin('youtube_post', $param);
-                        elseif ($post["type"] == "twitter-post"): 
-                            renderPlugin('twitter_post', $param);
-                        elseif ($post["type"] == "steemit-post"):
-                            renderPlugin('steemit_post', $param);
-                        else: 
-                            renderPlugin('trender_post', $param);
-                        endif; 
-                    endforeach;
-                ?>
-            </div>
+            <li class="menu-link <?= (Yii::$app->controller->id == 'tv')? 'active': '' ?>">
+                <a href="index.php?r=tv/index">
+                   <strong>Live Tv</strong>
+                </a>
+            </li>
+
+            <li class="menu-link <?= (Yii::$app->controller->id == 'market')? 'active': '' ?>">
+                <a href="index.php?r=market/index">
+                   <strong>Markets</strong>
+                </a>
+            </li>
+          </ul>         
         </div>
 
-        <div class="col-md-3" style="padding: 10px;padding-right:0px;">
-            <div style="background-color: #fff;">
-                <?php renderPlugin('twitch_widget'); ?>
-            </div>
-        </div>
+        <div class="col-md-4"></div>
     </div>
-
-    <?= renderPlugin('webpage_plugin'); ?>
 </div>
+
+<div class="row tr-page-content">
+</div>
+
+

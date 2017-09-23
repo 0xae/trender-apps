@@ -23,8 +23,40 @@ AppAsset::register($this);
     <?php $this->head() ?>
 <style>
 body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #f6f5f3;
 }
+
+h1.tr-logo,
+h2.tr-logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #dc854a;
+    margin:0px;
+    padding: 0px;
+}
+
+div.tr-page-content {
+    background-color: #fff;
+    min-height: 500px;
+}
+
+
+div.tr-page-section {
+ /*   border-bottom: 1px solid #f5eeee; */
+    border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+div.tr-page-header {
+    background-color: #fff;
+}
+
+div.tr-page-header h1.tr-logo {
+    margin-top: 10px;
+}
+
 .media {
     margin-top: 0px;
 }
@@ -267,23 +299,6 @@ ul.navbar-nav li a:hover {
 <?php 
 $this->beginBody(); 
 ?>
-
-<div class="col-md-12">
-<?php 
-    echo \Yii::$app->view->renderFile(
-        "@app/views/plugins/navbar.php"
-    ); 
-?>
-</div>
-
-<div class="row tr-header" style="">
-    <div class="col-md-12">
-         <div class="tr-outside tr-header" style="height:200px">
-            <div class="tr-inside" style="height:150px;">
-            </div>
-        </div>
-    </div>
-</div><!-- /.row -->
 
 <?= $content ?>
 
