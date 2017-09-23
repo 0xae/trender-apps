@@ -33,7 +33,7 @@ h1.tr-logo,
 h2.tr-logo {
     font-size: 25px;
     font-weight: bold;
-    color: #dc854a;
+    color: #ff4e00;
     margin:0px;
     padding: 0px;
 }
