@@ -16,7 +16,7 @@ $this->title = 'Trender Home';
                                 <p style="text-align: center"> <span id="post_count">0</span> new posts comming... </p>
                             </a>
                         </div>
-
+                        
                         <?php
                             foreach ($posts as $post) {
                                 echo \Yii::$app->view->renderFile(
