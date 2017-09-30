@@ -121,9 +121,18 @@ AppAsset::register($this);
         </form>
 
         <div role="navigation" class="bm" style="clear:both">
-            <a class="bn bo bp" href="javascript:void(0)" aria-current="page">Trending Now <sup> <span class="alarm-syrene"></span></sup></a>
-            <a class="bn bp" href="javascript:void(0)">Live Tv</a>
-            <a class="bn bp" href="javascript:void(0)">Markets</a>
+            <a class="bn <?=(Yii::$app->controller->id == 'home')?'bo':''?> bp" href="index.php?r=home/index" aria-current="page">
+                Home
+            </a>
+            <a class="bn <?=(Yii::$app->controller->id == 'trending')?'bo':''?>  bp" href="index.php?r=trending/index">
+                Trending Now <sup> <span class="alarm-syrene"></span></sup>
+            </a>
+            <a class="bn <?=(Yii::$app->controller->id == 'live')?'bo':''?> bp" href="index.php?r=live/index">
+                Live Tv
+            </a>
+            <a class="bn <?=(Yii::$app->controller->id == 'market')?'bo':''?> bp" href="index.php?r=market/index">
+                Markets
+            </a>
         </div>
     </div>
         
