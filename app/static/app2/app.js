@@ -14,6 +14,4 @@ _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
 };
 
-$(document).ready(function (){
-    $("#posts_loader").hide();
-});
+angular.module('trender', []);

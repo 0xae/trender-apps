@@ -22,19 +22,11 @@ class AppAsset extends AssetBundle {
     ];
 
     public $js = [
+        "static/lib/jquery/jquery-2.1.4.min.js",
         "static/lib/lodash/lodash.js",
         "static/lib/moment/moment.min.js",
-        "static/lib/moment-duration-format/moment-duration-format.js",
-        "static/lib/angularjs/angular.min.js",
         "static/app/app.js",
-        "static/app/services/post.service.js",
-        "static/app/services/media.service.js",
-        "static/app/services/api.js",
-        "static/app/controllers/post.controller.js",
-        "static/app/controllers/home.controller.js",
-        "static/app/controllers/channel.controller.js",
-        "static/app/directives/steemit.js",
-        "static/app/directives/media.js",
+        "static/app/timeline.js",
     ];
 
     public $depends = [

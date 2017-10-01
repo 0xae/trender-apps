@@ -35,7 +35,7 @@
         <div class="k cv">
             <a class="" aria-label="" href="<?= $post["link"]; ?>">
                 <img style="display:inline-block;padding:0px;" src="https://z-m-static.xx.fbcdn.net/rsrc.php/v3/yC/r/9RmeZ1lDDHz.png" width="13" height="13" class="o">
-                {{ post.postReaction.countLikes }} 
+                <?= 10 + (int)$post['id']; ?>
             </a>
             <span aria-hidden="true">· </span>
             <a href="<?= $post["link"]; ?>">Like</a>

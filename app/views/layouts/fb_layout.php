@@ -10,7 +10,10 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
+
+$timelineId = @$_GET['id'] ? $_GET['id'] : '1';
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -68,10 +71,10 @@ AppAsset::register($this);
             height: 500px;
         }
     </style>
-    <?php $this->head() ?>
+    <?php $this->head(); ?>
 </head>
 
-<body tabindex="0" class="b c d e" ng-app="trender">
+<body tabindex="0" class="b c d e">
 <!-- Menu Area -->
 <div class="g" id="toggleHeader">
     <div id="toggleHeaderContent" class="h">
@@ -121,8 +124,10 @@ AppAsset::register($this);
         </form>
 
         <div role="navigation" class="bm" style="clear:both">
-            <a class="bn <?=(Yii::$app->controller->id == 'home')?'bo':''?> bp" href="index.php?r=home/index" aria-current="page">
-                Home
+            <a class="bn <?=(Yii::$app->controller->id == 'timeline')?'bo':''?> bp" href="index.php?r=timeline/index&id=<?= $timelineId ?>" aria-current="page">
+                <span class="fa fa-newspaper-o"
+                      style="background-color:transparent;border:0px;"></span>
+                News
             </a>
             <a class="bn <?=(Yii::$app->controller->id == 'trending')?'bo':''?>  bp" href="index.php?r=trending/index">
                 Trending Now <sup> <span class="alarm-syrene"></span></sup>
@@ -135,7 +140,8 @@ AppAsset::register($this);
             </a>
         </div>
     </div>
-        
+
+    <!--
     <div class="col-md-12" 
          ng-if="show_search_res"
          style="position:absolute;margin-left:13px;padding:0px;z-index:400;box-shadow:0px 0px 2px rgba(0,0,0,.3);height:400px;;margin-bottom:4px;width:90%;background-color: #fff"
@@ -150,6 +156,8 @@ AppAsset::register($this);
             </div>
          </div>
     </div>
+    -->
+    <!-- .col-md-12 -->
 </div>
 
 
@@ -158,21 +166,7 @@ AppAsset::register($this);
 <?php $this->endBody() ?>
 
 
-<!-- lib -->
-<script src="static/lib/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
-<script src="static/lib/moment/min/moment.min.js" type="text/javascript"></script>
-<script src="static/lib/lodash/lodash.js" type="text/javascript"></script>
-<script src="static/lib/angularjs/angular.min.js" type="text/javascript"></script>
-
-<!-- trender angular app -->
-<script src="static/app/app.js" type="text/javascript"></script>
-<script src="static/app/services/PostService.js" type="text/javascript"></script>
-<script src="static/app/services/ProfileService.js" type="text/javascript"></script>
-<script src="static/app/controllers/homeController.js" type="text/javascript"></script>
-<script src="static/app/controllers/brandController.js" type="text/javascript"></script>
-<script src="static/app/controllers/searchController.js" type="text/javascript"></script>
 </body>
 
 </html>
 <?php $this->endPage() ?>
-
