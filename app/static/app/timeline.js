@@ -1,14 +1,15 @@
 (function (){
     var totalInPage = 0;
     var MAX_POSTS_PER_PAGE=5;
+    var STREAM_INTERVAL = 10*1000; // every 10 seconds
 
-    function stream(limit) {
+    function stream() {
         // extract the timeline id from the url
         var id = /id=(\d+)/.exec(location.href)[1];
+        var limit = _.random(3, 5);
         if (!id) {
             return;
         }
-        var limit = limit || _.random(3, 5);
 
         console.info('[INFO] stream ('+limit+') posts from timeline ', id);
         fetch('./index.php?r=timeline/stream&id='+id+"&limit="+limit)
@@ -16,17 +17,13 @@
             data.json()
             .then(function (data) {
                 if (!data.stream.count) return;
-                $("#posts_loader").slideDown(821);
+                $("#posts_loader").show();
                 var containerId = 'cont_'+data.stream.posts[0]['id'];
                 totalInPage += data.stream.count;
                 $("#post_count").text(data.stream.count);
                 var html ='<div class="post-container" id="'+containerId+'" style="display:none">'+data.html+'</div>';
 
                 setTimeout(function (){
-                    if (totalInPage > MAX_POSTS_PER_PAGE) {
-
-                    }
-
                     $("#stream_start").prepend(html);
                     $("#"+containerId).slideDown(759.123);
                     setTimeout(function(){
@@ -37,5 +34,5 @@
         });
     }
     
-    setInterval(stream, 20*1000);
+    setInterval(stream, STREAM_INTERVAL);
 })();

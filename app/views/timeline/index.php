@@ -11,7 +11,7 @@ $this->title = 'Trender Home';
                 <div id="m_newsfeed_stream" style="background-color: #fff;">
                     <div id="m-top-of-feed"></div>
                     <div id="posts_container" class="dp dq dr" style="padding:0px;">
-                        <div class="ds di" id="posts_loader" style="background-color: rgba(114, 143, 204, 0.15);">
+                        <div class="ds di" id="posts_loader" style="">
                             <div >
                                 <a href="javascript:void(0)" id="load_more_posts">
                                     <p style="text-align: center"> 
