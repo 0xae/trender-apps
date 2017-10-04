@@ -19,7 +19,7 @@ $this->title = 'Trender Home';
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div id="stream_start"></div>
 
                         <?php
