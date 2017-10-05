@@ -2,10 +2,8 @@
 
 namespace app\controllers;
 
-class MarketController extends \yii\web\Controller
-{
-    public function actionIndex()
-    {
+class MarketController extends \yii\web\Controller {
+    public function actionIndex() {
         return $this->render('index');
     }
 
