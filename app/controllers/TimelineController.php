@@ -6,9 +6,22 @@ class TimelineController extends \yii\web\Controller {
     public function actionIndex($id) {
         $limit = @$_GET['limit'] ? $_GET['limit'] : 50;
         $req = Timeline::stream($id, $limit);
+        $all = Timeline::all();
+        $posts = [];
+        $videos = [];
+
+        foreach($req->posts as $p) {
+            if ($p->type=='youtube-post')
+                $videos[] = $p;
+            else
+                $posts[] = $p;
+        }
+
         return $this->render('index', [
             'timeline' => $req->timeline,
-            'posts' => $req->posts
+            'timeline_list' => $all,
+            'posts' => $posts,
+            'videos' => $videos
         ]);
     }
 
@@ -18,6 +31,16 @@ class TimelineController extends \yii\web\Controller {
         $html = $this->renderPartial('stream', [
             'posts' => $req->posts
         ]);
+
+        $posts = [];
+        $videos = [];
+
+        foreach($req->posts as $p) {
+            if ($p->type=='youtube-post')
+                $videos[] = $p;
+            else
+                $posts[] = $p;
+        }
 
         return json_encode([
             'html' => $html,

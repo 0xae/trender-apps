@@ -2,8 +2,10 @@
     var totalInPage = 0;
     var MAX_POSTS_PER_PAGE=5;
     var STREAM_INTERVAL = 11*1000; // every 10 seconds
+    var stoped = false;
 
-    function stream() {
+    function stream(showLoader) {
+        if (stoped) return;
         // extract the timeline id from the url
         var id = /id=(\d+)/.exec(location.href)[1];
         var limit = _.random(3, 5);
@@ -22,7 +24,7 @@
                 totalInPage += data.stream.count;
                 $("#post_count").text(data.stream.count);
                 var html ='<div class="post-container" id="'+containerId+'" style="display:none">'+data.html+'</div>';
-
+                
                 setTimeout(function (){
                     $("#stream_start").prepend(html);
                     $("#"+containerId).slideDown(759.123);
@@ -33,6 +35,8 @@
             });
         });
     }
+    
+    
 
     setInterval(stream, STREAM_INTERVAL);
 })();

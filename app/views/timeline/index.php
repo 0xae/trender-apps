@@ -6,6 +6,14 @@ $this->title = 'Trender Home';
 <div class="f">
 
     <div id="app-left-col" class="">
+            <?php
+                echo \Yii::$app->view->renderFile(
+                    "@app/views/timeline/appbar.php",
+                    ["timeline" => $timeline, 
+                    "timeline_list"=>$timeline_list
+                    ]
+                );
+            ?>
     </div>
 
     <div id="viewport">
@@ -40,7 +48,26 @@ $this->title = 'Trender Home';
         </div>
     </div> <!-- .viewport -->
     
-    
-
+    <div id="app-video-stream" class="dp dq dr">
+        <?php if (!empty($videos)):
+                echo \Yii::$app->view->renderFile(
+                    "@app/views/timeline/youtube_featured_post.php",
+                    ["post" => $videos[0]]
+                );
+                unset($videos[0]);
+        ?>
+        <div class="tr-up-next">
+        <?php
+                foreach ($videos as $post) {
+                    echo \Yii::$app->view->renderFile(
+                        "@app/views/timeline/youtube_post.php",
+                        ["post" => $post]
+                    );
+                }
+                
+                endif;
+        ?>
+        </div>
+    </div>
 </div> <!-- .f -->
 
