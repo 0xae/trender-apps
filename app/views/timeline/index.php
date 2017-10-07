@@ -4,6 +4,10 @@ $this->title = 'Trender Home';
 
 <!-- Feed Area -->
 <div class="f">
+
+    <div id="app-left-col" class="">
+    </div>
+
     <div id="viewport">
         <div id="objects_container" style="" ng-controller="HomeController">
             <div class="bq e" id="root" role="main">
@@ -34,7 +38,9 @@ $this->title = 'Trender Home';
                 </div>
             </div>
         </div>
-
     </div> <!-- .viewport -->
+    
+    
+
 </div> <!-- .f -->
 

@@ -1,7 +1,7 @@
 (function (){
     var totalInPage = 0;
     var MAX_POSTS_PER_PAGE=5;
-    var STREAM_INTERVAL = 10*1000; // every 10 seconds
+    var STREAM_INTERVAL = 11*1000; // every 10 seconds
 
     function stream() {
         // extract the timeline id from the url

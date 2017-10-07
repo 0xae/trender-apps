@@ -70,6 +70,9 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
             padding: 10px;
             height: 500px;
         }
+        
+        #app-left-col {
+        }
     </style>
     <?php $this->head(); ?>
 </head>
