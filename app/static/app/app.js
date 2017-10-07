@@ -17,3 +17,5 @@ _.templateSettings = {
 $(document).ready(function (){
     $("#posts_loader").hide();
 });
+
+

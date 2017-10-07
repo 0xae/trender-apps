@@ -1,12 +1,23 @@
 <?php
 namespace app\controllers;
 use app\models\Timeline;
+use app\models\Log;
 
 class TimelineController extends \yii\web\Controller {
     public function actionIndex($id) {
         $limit = @$_GET['limit'] ? $_GET['limit'] : 50;
-        $req = Timeline::stream($id, $limit);
         $all = Timeline::all();
+        $start = false;
+        foreach ($all as $k) {
+            if ($k->id == $id) {
+                // retrieve the last N
+                $index = (int)$k->index;
+                $start = max(0,$index - 50);
+                break;
+            }
+        }
+
+        $req = Timeline::stream($id, $limit, $start);
         $posts = [];
         $videos = [];
 

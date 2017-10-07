@@ -166,6 +166,15 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
         .tr-up-next{
             opacity: .7;
         }
+        
+        .tr-img-loader {
+        }
+        
+        .tr-loading-ellipsis {
+            position: absolute;
+            margin-top: 15px;
+            margin-left: 12px;
+        }
     </style>
     <?php $this->head(); ?>
 </head>

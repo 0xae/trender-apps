@@ -1,11 +1,14 @@
 <?php
 use app\models\DateUtils;
 $json = json_decode($post->data);
+$pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
 ?>
 
 <div role="article" class="dg di ds">
 <div>
-    <div style="width:100%;height:200px;background:url(https://img.youtube.com/vi/<?= $json->video_id ?>/0.jpg) 10px -57px;margin-bottom: 10px;">
+    <div id="tr-outdoor-img" style="width:100%;height:200px;margin-bottom: 10px;"
+         v-tx-img-cache="{post: post, link: link, done: done}"
+    >
         <div class="tr-shadow">
         <center>
         <!--<img width="350px" src="https://img.youtube.com/vi/<?= $json->video_id ?>/0.jpg" />-->
@@ -31,31 +34,47 @@ $json = json_decode($post->data);
             <span> <p> <?= $post->description ?> </p> </span>
         </div>
 
-    <ul class="tr-menu featured-youtube-post">
-        <li>
-            <span class="fa fa-thumbs-up"></span>
-            <?= $json->likes ?>
-        </li>
+        <ul class="tr-menu featured-youtube-post">
+            <li>
+                <span class="fa fa-thumbs-up"></span>
+                <?= $json->likes ?>
+            </li>
 
-        <li>
-            <span class="fa fa-street-view"></span>
-            <?= $json->views ?>
-        </li>
+            <li>
+                <span class="fa fa-street-view"></span>
+                <?= $json->views ?>
+            </li>
 
-        <li>
-            <span class="fa fa-clock-o"></span>
-            <span style="font-size: 11px;">
-            <strong>
-                <?= DateUtils::formatToHuman($post->timestampFmt) ?>            
-            </strong>
-            </span>
-        </li>
-    </ul>
-
-
-
+            <li>
+                <span class="fa fa-clock-o"></span>
+                <span style="font-size: 11px;">
+                <strong>
+                    <?= DateUtils::formatToHuman($post->timestampFmt) ?>            
+                </strong>
+                </span>
+            </li>
+        </ul>
     </div>
 
+</div>
+</div>
 
-</div>
-</div>
+<?php
+$json = json_encode($post);
+$scrip = <<<JS
+
+new Vue({
+    el: "#tr-outdoor-img", 
+    data:{
+        post: $json,
+        link: '$pic',
+        done: function (node, src) {
+            var tpl = 'url('+src+') 10px -57px'
+            node.elm.style['background'] = tpl;
+        }
+    }
+});
+
+JS;
+
+$this->registerJs($scrip);

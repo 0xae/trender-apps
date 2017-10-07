@@ -25,8 +25,10 @@ class AppAsset extends AssetBundle {
         "static/lib/jquery/jquery-2.1.4.min.js",
         "static/lib/lodash/lodash.js",
         "static/lib/moment/moment.min.js",
+        "static/lib/vuew/vue.js",
         "static/app/app.js",
         "static/app/timeline.js",
+        "static/app/components.js",
     ];
 
     public $depends = [

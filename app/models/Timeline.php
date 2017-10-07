@@ -10,8 +10,12 @@ class Timeline extends \yii\base\Object {
         return $json;
     }
 
-    public static function stream($id, $limit) {
-        $query = 'http://127.0.0.1:5000/api/timeline/' . $id . '/stream?limit='.$limit;
+    public static function stream($id, $limit, $start=false) {
+        $query = 'http://127.0.0.1:5000/api/timeline/' . $id 
+                        . '/stream?limit='.$limit;
+        if ($start) {
+            $query .=  '&start=' . $start;
+        }
         $json = self::get($query);
         return $json;
     }
@@ -22,10 +26,10 @@ class Timeline extends \yii\base\Object {
     }
 
     private static function get($query) {
-        $json = json_decode(@file_get_contents($query));
-        if (!$json) {
-            throw new HttpException(400, $query);
-        }
+        $json = json_decode(file_get_contents($query));
+        # if (!$json) {
+        #     throw new HttpException(400, $query);
+        # }
 
         return $json;
     }

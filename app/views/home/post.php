@@ -1,36 +1,28 @@
 <?php
 use app\models\DateUtils;
-
-
-$picture = ($post->cached == "none") ?  '' : $post->cached;
-$from = "cache";
-if ($post->cached == "none")  {
-    $from = "web";
-} else {
-    $data = json_decode($post->cached);
-    $picture = '../downloads/' . $data[0];
-}
+$picture = $post->cached;
 ?>
 
 <div role="article" class="dg di ds">
 <div>
-    <!--
-   <span class="" style="background-color: #dddfe2 !important;padding: 3px;border-radius:7px;padding-bottom:1px;padding-top:1px;color: #999;">
-            <a href="javascript:void(0)"> <?= $from ?>  </a>
-    </span>
-    -->
     <div>
-        <div class="by bz ca" style="width:50px;float: left; margin-right: 5px;margin-top:5px;">
+        <div class="tr-img-loader by bz ca" style="width:50px;float: left; margin-right: 5px;margin-top:5px;">
+            <center>
             <a class="cb" 
                href="<?= $post->link; ?>" 
                style="width:50px; height: 50px;"
                title="Profile picture of <?= $post->authorName ?>">
-                <img src="<?= $picture ?>" 
-                     width="50" 
-                     height="50" 
-                     class="" 
-                     alt="Post Picture">
+
+                <img src="" 
+                     id="img-<?= $post->id ?>"
+                     width="50"
+                     height="50"
+                     style="font-size: 9px"
+                     v-tx-img-cache="{post: post}"
+                     alt="loading..."
+                />
             </a>
+            </center>            
         </div>
         <div style="">
             <h3 class="dt dm" style="display: inline-block">
@@ -69,3 +61,11 @@ if ($post->cached == "none")  {
     </div>
 </div>
 </div>
+
+<?php
+$json = json_encode($post);
+$scrip = <<<JS
+new Vue({el: "#img-{$post->id}", data:{post: $json}});
+JS;
+
+$this->registerJs($scrip);

@@ -1,8 +1,9 @@
 (function (){
     var totalInPage = 0;
     var MAX_POSTS_PER_PAGE=5;
-    var STREAM_INTERVAL = 11*1000; // every 10 seconds
+    var STREAM_INTERVAL = 5*1000; // every 10 seconds
     var stoped = false;
+    var outdoorNode = null;
 
     function stream(showLoader) {
         if (stoped) return;
@@ -13,7 +14,6 @@
             return;
         }
 
-        console.info('[INFO] stream ('+limit+') posts from timeline ', id);
         fetch('./index.php?r=timeline/stream&id='+id+"&limit="+limit)
         .then(function (data) {
             data.json()
@@ -28,6 +28,10 @@
                 setTimeout(function (){
                     $("#stream_start").prepend(html);
                     $("#"+containerId).slideDown(759.123);
+                    data.stream.posts.forEach(function (p) {
+                        if (p.type != 'youtube-post')
+                            new Vue({el: "#img-"+p.id, data:{post: p}});
+                    });
                     setTimeout(function(){
                         $("#posts_loader").hide();
                     }, 500);                   
