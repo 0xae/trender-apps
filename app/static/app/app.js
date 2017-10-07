@@ -18,4 +18,6 @@ $(document).ready(function (){
     $("#posts_loader").hide();
 });
 
+define('tx-app', ['require', '$'], function (require, $){
+});
 
