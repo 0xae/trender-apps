@@ -175,11 +175,13 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
             margin-top: 15px;
             margin-left: 12px;
         }
+
     </style>
+
     <?php $this->head(); ?>
 </head>
 
-<body tabindex="0" class="b c d e">
+<body tabindex="0" class="b c d e" ng-app="trender">
 
 <div class="t" id="app-header-menu">
     <div class="g" id="app-header-ads">

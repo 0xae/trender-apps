@@ -17,22 +17,24 @@ $this->title = 'Trender Home';
     </div>
 
     <div id="viewport">
-        <div id="objects_container" style="" ng-controller="HomeController">
+        <div id="objects_container" ng-controller="TimelineController">
             <div class="bq e" id="root" role="main">
                 <div id="m_home_notice"></div>
                 <div id="m_newsfeed_stream" style="background-color: #fff;">
-                    <div id="m-top-of-feed"></div>
-                    <div id="posts_container" class="dp dq dr" style="padding:0px;">
-                        <div class="ds di" id="posts_loader" style="">
+                    <div id="posts_container" 
+                         v-tx-post-stream:stream="obj" 
+                         class="dp dq dr" 
+                         style="padding:0px;">
+                        <div class="ds di" class="posts_loader" style="">
                             <div >
                                 <a href="javascript:void(0)" id="load_more_posts">
                                     <p style="text-align: center"> 
-                                     <span id="post_count">0</span> new posts comming... </p>
+                                     <span class="post_count">0</span> new posts comming... </p>
                                 </a>
                             </div>
                         </div>
 
-                        <div id="stream_start"></div>
+                        <div class="stream_start"></div>
 
                         <?php
                             foreach ($posts as $post) {

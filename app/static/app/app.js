@@ -1,23 +1,21 @@
-function promisify(prms) {
-    return new Promise(function (resolve, reject){
-        prms.then(resolve, reject);
-    });
-}
-
-// log success for promises
-function _logS(i) { console.info(i); }
-
-// log error for promises
-function _logE(i) { console.error(i); }
-
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
 };
 
-$(document).ready(function (){
-    $("#posts_loader").hide();
-});
+angular.module('trender', [])
+.factory('app', function () {
+    function promisify(prms) {
+        return new Promise(function (resolve, reject){
+            prms.then(resolve, reject);
+        });
+    }
 
-define('tx-app', ['require', '$'], function (require, $){
+    var server = {
+        api: 'http://127.0.0.1:5000/api/'
+    };
+
+    return {
+        server: server
+    };
 });
 

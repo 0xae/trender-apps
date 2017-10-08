@@ -1,43 +1,55 @@
-define('tx-timeline', ['require', '$'], function (require, $){
+angular.module('trender')
+.factory('Timeline',['app', function (app){
     const MAX_POSTS_PER_PAGE=5;
     const STREAM_INTERVAL = 5*1000; // every 10 seconds
+    const api = app.server.api;
 
-    return function (timelineConf){
-        var id = timelineConf.id;
-        var limit = timelineConf.limit || _.random(3, 5);
-
-        function stream(showLoader) {
-            // extract the timeline id from the url
-            // var id = /id=(\d+)/.exec(location.href)[1];
-            // var limit = _.random(3, 5);
-            // if (!id) {
-            //     return;
-            // }
-
+    function stream(conf) {
+        var limit = conf.limit || _.random(3, 5);
+        var id = conf.id;
+        var q = new Promise(function (resolve, reject){
             fetch('./index.php?r=timeline/stream&id='+id+"&limit="+limit)
             .then(function (data) {
                 data.json()
                 .then(function (data) {
-                    if (!data.stream.count) return;
-                    $("#posts_loader").show();
-                    var containerId = 'cont_'+data.stream.posts[0]['id'];
-                    $("#post_count").text(data.stream.count);
-                    var html ='<div class="post-container" id="'+containerId+'" style="display:none">'+data.html+'</div>';
-
-                    setTimeout(function (){
-                        $("#stream_start").prepend(html);
-                        $("#"+containerId).slideDown(759.123);
-                        data.stream.posts.forEach(function (p) {
-                            new Vue({el: "#img-"+p.id, data:{post: p}});
-                        });
-                        setTimeout(function(){
-                            $("#posts_loader").hide();
-                        }, 500);                   
-                    }, 1500);
+                    resolve(data);
+                }, function (err) {
+                    reject(err);
                 });
             });
-        }
-
-        setInterval(stream, STREAM_INTERVAL);
+        });
+        return q;
     }
-});
+    
+    function default_fetch(url) {
+        return new Promise(function (resolve, reject){
+            fetch(url)
+            .then(function (data) {
+                data.json()
+                .then(resolve, reject);
+            });
+        });
+    }
+
+    function getById(id) {
+        return default_fetch(api + 'timeline/'+id);
+    }
+
+    function getByName(name) {
+        var namef = encodeURIComponent(name);
+        var url = api + 'timeline/'+namef+'/stream_name';
+        return default_fetch(url);
+    }
+    
+    function getAll() {
+        var url = api + 'timeline/';
+        return default_fetch(url);
+    }
+    
+    return {
+        getById: getById,
+        getAll: getAll,
+        getByName: getByName,
+        stream: stream
+    };
+}]);
