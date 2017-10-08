@@ -14,7 +14,7 @@ class Timeline extends \yii\base\Object {
         $query = 'http://127.0.0.1:5000/api/timeline/' . $id 
                         . '/stream?limit='.$limit;
         if ($start) {
-            $query .=  '&start=' . $start;
+            $query .= '&start=' . $start;
         }
         $json = self::get($query);
         return $json;
@@ -30,7 +30,6 @@ class Timeline extends \yii\base\Object {
         # if (!$json) {
         #     throw new HttpException(400, $query);
         # }
-
         return $json;
     }
 }

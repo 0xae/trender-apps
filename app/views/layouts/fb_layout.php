@@ -163,17 +163,32 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
     height: 200px;
         }
         
-        .tr-up-next{
-            opacity: .7;
+        .tr-up-next {
         }
-        
+
         .tr-img-loader {
         }
-        
+
         .tr-loading-ellipsis {
             position: absolute;
             margin-top: 15px;
             margin-left: 12px;
+        }
+
+        .tr-up-next {
+            /*
+            max-height: 400px;
+            overflow-y: scroll;
+            */
+        }
+
+        .youtube-post {
+            cursor: pointer;
+            opacity: .7;
+        }
+
+        .youtube-post:hover {
+            opacity: 1;
         }
 
     </style>

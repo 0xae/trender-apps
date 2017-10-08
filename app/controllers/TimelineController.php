@@ -12,7 +12,7 @@ class TimelineController extends \yii\web\Controller {
             if ($k->id == $id) {
                 // retrieve the last N
                 $index = (int)$k->index;
-                $start = max(0,$index - 50);
+                $start = max(0, $index - 50);
                 break;
             }
         }

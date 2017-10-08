@@ -33,12 +33,28 @@ angular.module('trender', [])
                         'style="display:none">'+
             data.html+
         '</div>';
+        
+        var ary = [
+            '22d66e8c741c3573d9bcdb3176d5ec3b.jpg',
+            'c72b679283d5fdf4e198fe18b5461437.jpg',
+            'e33bfe546673f7f4151003b17b162b48.jpg',
+            '30fe705c1b9e5e43ebe5c56e5b02b1e4.jpg',
+            '2b8d78185b85ae21610b14dc25f88ce8.jpg',
+            '8df4fbeaf573ddd4458d3977a03dcbce.jpg'
+        ];
+        
+        var idx = _.random(0, ary.length-1);
 
         setTimeout(function (){
             $(stream_start).prepend(html);
             $("#"+containerId).slideDown(783.123);
             data.stream.posts.forEach(function (p) {
-                new Vue({el: "#img-"+p.id, data:{post: p}});
+                console.info("Type: ", p.type);
+                if (p.type == 'youtube-post') {
+                    console.info("youtube:  ", p);
+                } else {
+                    new Vue({el: "#img-"+p.id, data:{post: p}});
+                }
             });
 
             if (showLoader === true) {
