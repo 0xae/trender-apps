@@ -58,48 +58,15 @@ angular.module('trender')
         }
       }
     });
-    
-    function updatePostStream(data, id) {
-        if (!data.stream.count)
-            return;
-            
-        var posts_loader = "#"+id+" .posts_loader";
-        var posts_count = "#"+id+" .post_count";
-        var stream_start = "#"+id+" .stream_start";
-        var containerId = 'cont_'+data.stream.posts[0]['id'];
-
-        $(posts_loader).show();
-        $(post_count).text(data.stream.count);
-        var html ='<div class="post-container" '+
-                        'id="'+containerId+'" '+
-                        'style="display:none">'+
-            data.html+
-        '</div>';
-
-        setTimeout(function (){
-            $(stream_start).prepend(html);
-            $("#"+containerId).slideDown(759.123);
-            data.stream.posts.forEach(function (p) {
-                new Vue({el: "#img-"+p.id, data:{post: p}});
-            });
-            setTimeout(function(){
-                $(posts_loader).hide();
-            }, 500);                   
-        }, 1500);
-    }
 
     Vue.directive('tx-post-stream', {
         bind: function (el, b, vnode) {
             var data = b.value;
-            var id = vnode.elm.id;
-            updatePostStream(data, id);
-            this.id = id;
-        },
-
-        methods: {
-            update: function (stream) {
-                console.info('stream ', stream);
-                updatePostStream(stream, this.id);
+            var id = '#'+vnode.elm.id;
+            
+            if (b.value.onUpdate) {  
+            } else {
+                app.updatePostStream(data, b.modifiers.showLoader, id);
             }
         }
     });

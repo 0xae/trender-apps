@@ -1,6 +1,6 @@
 angular.module('trender')
-.controller('TimelineController', ['Timeline', function (Timeline){
-    var STREAM_INTERVAL = 5*1000;
+.controller('TimelineController', ['Timeline', 'app', function (Timeline, app){
+    var STREAM_INTERVAL = 8*1000;
     // every N seconds
     var MAX_POSTS_PER_PAGE=5;
     var main = null;
@@ -12,20 +12,23 @@ angular.module('trender')
         Timeline.stream({id:id, limit:limit})
         .then(function (data){
             console.info(data);
-            if (!main) {            
-                main=new Vue({
-                    el: "#posts_container", 
-                    data:{obj: data},
+            if (!main) {
+                var id = "#posts_container";            
+                main = new Vue({
+                    el: id, 
+                    data:{stream: data},
                     methods: {
                         update: function (stream) {
-                            console.info('stream ', stream);
+                            app.updatePostStream(stream, true, id);
                         }
                     }
                 });
-            }            
-            main.update(data);
+            } else {
+                main.update(data);
+            }
         });
     }
 
     stream();
+    setInterval(stream, STREAM_INTERVAL);
 }]);
