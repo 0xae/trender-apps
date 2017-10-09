@@ -50,11 +50,11 @@ $this->title = 'Trender Home';
             </div>
         </div>
     </div> <!-- .viewport -->
-    
+
     <div id="app-video-stream" class="dp dq dr">
         <?php
             if (!empty($videos)) {
-                echo \Yii::$app->view->renderFile(
+                echo \Yii::$app->view->renderFile (
                     "@app/views/plugins/youtube_featured/index.php",
                     ["post" => $videos[0]]
                 );
@@ -65,9 +65,8 @@ $this->title = 'Trender Home';
         <div class="tr-up-next"
              id="vidStream"
              v-tx-post-stream:stream="stream">     
-   
+
             <div id="vidStream_stream_start"></div>
-            
             <?php
                 echo \Yii::$app->view->renderFile (
                     "@app/views/plugins/youtube_stream/index.php",

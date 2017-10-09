@@ -196,7 +196,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
 
     </style>
     
-    <script data-main="scripts/main" src="static/lib/require.js"></script>
+    <script src="static/lib/require.js"></script>
     <?php $this->head(); ?>
 </head>
 

@@ -67,7 +67,7 @@ $picture = $post->cached;
 <?php
 $json = json_encode($post);
 $scrip = <<<JS
-new Vue({el: "#img-{$post->id}", data:{post: $json}});
+// new Vue({el: "#img-{$post->id}", data:{post: $json}});
 JS;
 
 $this->registerJs($scrip);
