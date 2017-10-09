@@ -1,5 +1,5 @@
 angular.module('trender')
-.run(['app', function (app) {
+.run(['app','Timeline', function (app, Timeline) {
     var api = app.server.api;
     
     // tx-img-cache
@@ -57,18 +57,6 @@ angular.module('trender')
             updateImage('../' + href);
         }
       }
-    });
-
-    Vue.directive('tx-post-stream', {
-        bind: function (el, b, vnode) {
-            var data = b.value;
-            var id = '#'+vnode.elm.id;
-            
-            if (b.value.onUpdate) {  
-            } else {
-                app.updatePostStream(data, b.modifiers.showLoader, id);
-            }
-        }
     });
 }]);
 

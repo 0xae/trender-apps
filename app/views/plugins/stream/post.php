@@ -34,6 +34,15 @@ $picture = $post->cached;
                     </strong>
                 </span>
             </h3>
+            <div style="color: gray;display:inline;">
+                <span style="font-size: 11px;">
+                    <strong>
+                        · <?= 
+                            DateUtils::youtubeFmt($post->timestampFmt) 
+                        ?>   
+                    </strong>
+                </span>
+            </div>
         </div>
     </div>
     <div class="du" style="">
@@ -50,13 +59,6 @@ $picture = $post->cached;
             <a href="<?= $post->link; ?>">Like</a>
             <span aria-hidden="true">· </span>
             <a href="<?= $post->link; ?>">Full Story</a>
-            <span aria-hidden="true">· </span>
-            <span class="fa fa-clock-o"></span>
-            <span style="font-size: 11px;">
-            <strong>
-                <?= DateUtils::formatToHuman($post->timestampFmt) ?>            
-            </strong>
-            </span>
         </div>
     </div>
 </div>

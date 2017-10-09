@@ -22,29 +22,28 @@ $this->title = 'Trender Home';
                 <div id="m_newsfeed_stream" style="background-color: #fff;">
                     <div id="posts_container" 
                          v-tx-post-stream:stream.showLoader="stream"
-                         class="dp dq dr" 
+                         class="dp dq dr"
                          style="padding:0px;">
                          
-                        <div class="ds di" class="posts_loader" style="">
+                        <div class="ds di" id="posts_container_posts_loader" style="">
                             <div>
                                 <a href="javascript:void(0)">
                                     <p style="text-align: center"> 
-                                     <span class="posts_count">0</span>
-                                     new posts.
+                                     <span id="posts_container_posts_count">
+                                        0
+                                     </span> new posts
                                     </p>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="stream_start"></div>
+                        <div id="posts_container_stream_start"></div>
 
                         <?php
-                            foreach ($posts as $post) {
-                                echo \Yii::$app->view->renderFile(
-                                    "@app/views/timeline/post.php",
-                                    ["post" => $post]
-                                );
-                            }
+                            echo \Yii::$app->view->renderFile(
+                                "@app/views/plugins/stream/index.php",
+                                ["posts" => $posts]
+                            );
                         ?>
                     </div>
                 </div>
@@ -56,21 +55,24 @@ $this->title = 'Trender Home';
         <?php
             if (!empty($videos)) {
                 echo \Yii::$app->view->renderFile(
-                    "@app/views/timeline/youtube_featured_post.php",
+                    "@app/views/plugins/youtube_featured/index.php",
                     ["post" => $videos[0]]
                 );
                 unset($videos[0]);
            }
         ?>
 
-        <div class="tr-up-next">
+        <div class="tr-up-next"
+             id="vidStream"
+             v-tx-post-stream:stream="stream">     
+   
+            <div id="vidStream_stream_start"></div>
+            
             <?php
-                foreach ($videos as $post) {
-                    echo \Yii::$app->view->renderFile(
-                        "@app/views/timeline/youtube_post.php",
-                        ["post" => $post]
-                    );
-                }
+                echo \Yii::$app->view->renderFile (
+                    "@app/views/plugins/youtube_stream/index.php",
+                    ["posts" => $videos]
+                );
             ?>
         </div>
     </div>

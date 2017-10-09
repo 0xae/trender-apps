@@ -23,7 +23,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="static/css/fb.main.css"  />
-<link rel="stylesheet" href="static/fonts/font-awesome.min.css"> 
+    <link rel="stylesheet" href="static/fonts/font-awesome.min.css"> 
     <style type="text/css">
         .good-syrene {
             padding: 3px;
@@ -184,15 +184,19 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
 
         .youtube-post {
             cursor: pointer;
+        }
+
+        .tr-up-next .youtube-post {
             opacity: .7;
         }
 
-        .youtube-post:hover {
+        .tr-up-next .youtube-post:hover {
             opacity: 1;
         }
 
     </style>
-
+    
+    <script data-main="scripts/main" src="static/lib/require.js"></script>
     <?php $this->head(); ?>
 </head>
 

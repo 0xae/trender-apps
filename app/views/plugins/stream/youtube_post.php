@@ -20,7 +20,7 @@ $ary = [
                style="height: 35px;width:35px;"
                title="Profile picture of <?= $post->authorName ?>">
 
-                <img src="" 
+                <img src=""
                      id="img-<?= $post->id ?>"
                      width="35"
                      height="35"
@@ -94,30 +94,13 @@ $ary = [
             </div>    
         </div>
     </div>
-
-
-        <!--
-    <ul class="tr-menu normal-youtube-post" style="padding-left: 45px;padding-right: 25px;">
-        <li>
-            <span class="fa fa-thumbs-up"></span>
-            <?= $json->likes ?>
-        </li>
-
-        <li>
-            <span class="fa fa-street-view"></span>
-            <?= $json->views ?>
-        </li>
-
-        <li style="float: right">
-            <span class="fa fa-clock-o"></span>
-            <span style="font-size: 11px;">
-            <strong>
-                <?= DateUtils::formatToHuman($post->timestampFmt) ?>            
-            </strong>
-            </span>
-        </li>
-    </ul>
-        -->
-
 </div>
 </div>
+
+<?php
+$json = json_encode($post);
+$scrip = <<<JS
+new Vue({el: "#img-{$post->id}", data:{post: $json}});
+JS;
+
+$this->registerJs($scrip);

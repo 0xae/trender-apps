@@ -39,9 +39,6 @@ class TimelineController extends \yii\web\Controller {
     public function actionStream($id) {
         $limit = @$_GET['limit'] ? $_GET['limit'] : 10;
         $req = Timeline::stream($id, $limit);
-        $html = $this->renderPartial('stream', [
-            'posts' => $req->posts
-        ]);
 
         $posts = [];
         $videos = [];
@@ -53,8 +50,19 @@ class TimelineController extends \yii\web\Controller {
                 $posts[] = $p;
         }
 
+        $html = $this->renderPartial(
+            '@app/views/plugins/stream/index', [
+            'posts' => $posts
+        ]);
+
+        $html_video = $this->renderPartial(
+            '@app/views/plugins/youtube_stream/index', [
+            'posts' => $videos
+        ]);
+
         return json_encode([
             'html' => $html,
+            'html_video' => $html_video,
             'stream' => $req
         ]);
     }
