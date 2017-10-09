@@ -1,5 +1,4 @@
-angular.module('trender')
-.factory('Timeline',['app', function (app){
+define("trender/timeline", ['trender/app'], function (app){
     const MAX_POSTS_PER_PAGE=5;
     const STREAM_INTERVAL = 5*1000; // every 10 seconds
     const api = app.server.api;
@@ -118,4 +117,4 @@ angular.module('trender')
         stream: stream,
         component: component
     };
-}]);
+});

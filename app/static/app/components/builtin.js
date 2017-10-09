@@ -1,5 +1,4 @@
-angular.module('trender')
-.run(['app','Timeline', function (app, Timeline) {
+requirejs(['trender/app','trender/timeline'], function (app, Timeline) {
     var api = app.server.api;
     
     // tx-img-cache
@@ -58,5 +57,5 @@ angular.module('trender')
         }
       }
     });
-}]);
+});
 
