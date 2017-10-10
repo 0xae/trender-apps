@@ -9,6 +9,10 @@ $ary = [
     '2b8d78185b85ae21610b14dc25f88ce8.jpg',
     '8df4fbeaf573ddd4458d3977a03dcbce.jpg'
 ];
+
+/*
+background:url('../downloads/media/<?= $ary[rand(0, count($ary)-1)] ?>') no-repeat 0px 0px;
+*/
 ?>
 
 <div role="article" class="dg di ds youtube-post">
@@ -53,14 +57,16 @@ $ary = [
                 </div>
             </h3>
         </div>
-
     </div>
     
     <div class="du" style="padding-left: 40px;">
-        <span> <p> <?= $post->description ?> </p> </span>
+        <span>
+            <p> <?= $post->description ?> </p> 
+        </span>
 
-        <div style="width:246px;height:138px;background:url('../downloads/media/<?= $ary[rand(0, count($ary)-1)] ?>') no-repeat 0px 0px;border-radius:3px;"
-        >
+        <div style="width:246px;height:138px;border-radius:1px;"
+             id="yt-<?= $post->id ?>"
+             v-tx-img-cache="{post: post, link: link, done: done}">
             <div class="tr-shadow" style="margin-top:6px;height:10px">
                 <center>
                 <!--<img width="350px" 
@@ -98,9 +104,4 @@ $ary = [
 </div>
 
 <?php
-$json = json_encode($post);
-$scrip = <<<JS
-// new Vue({el: "#img-{$post->id}", data:{post: $json}});
-JS;
-
 $this->registerJs($scrip);

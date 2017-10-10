@@ -65,34 +65,56 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
             _html+
         '</div>';
 
-        var ary = [
-            '22d66e8c741c3573d9bcdb3176d5ec3b.jpg',
-            'c72b679283d5fdf4e198fe18b5461437.jpg',
-            'e33bfe546673f7f4151003b17b162b48.jpg',
-            '30fe705c1b9e5e43ebe5c56e5b02b1e4.jpg',
-            '2b8d78185b85ae21610b14dc25f88ce8.jpg',
-            '8df4fbeaf573ddd4458d3977a03dcbce.jpg'
-        ];
-        var idx = _.random(0, ary.length-1);
-
         setTimeout(function (){
             $(stream_start).prepend(html);
             $("#"+containerId).slideDown(783.123);
+            
+            setTimeout(function() {
+                posts.forEach(function (p) {
+                    if (p.type == 'youtube-post') {
+                        var json = JSON.parse(p.data);
+                        
+                        var picture = "https://img.youtube.com/vi/"+
+                                      json['video_id'] + 
+                                      "/0.jpg";
+                        new Vue({
+                            el: "#yt-" + p.id,
+                            data:{
+                                post: p,
+                                link: picture,
+                                done: function (node, src) {
+                                    var tpl = 'url('+src+') 10px -57px'
+                                    node.elm.style['background'] = tpl;
+                                }
+                            }
+                        });
+                    } else {
+                        new Vue({el: "#img-"+p.id, data:{post: p}});
+                    }
+                });
 
-            posts.forEach(function (p) {
-                if (p.type == 'youtube-post') {
-                } else {
-                    new Vue({el: "#img-"+p.id, data:{post: p}});
+                if (showLoader === true) {
+                    setTimeout(function(){
+                        $(posts_loader).hide();
+                        $(posts_count).text('0');                
+                    }, 500);
                 }
             });
-
-            if (showLoader === true) {
-                setTimeout(function(){
-                    $(posts_loader).hide();
-                    $(posts_count).text('0');                
-                }, 500);
-            }
         }, 1500);
+    }
+    
+    function featureYoutubePost(youtubePost, picture) {
+        return new Vue({
+            el: "#tr-outdoor-img",
+            data:{
+                post: youtubePost,
+                link: picture,
+                done: function (node, src) {
+                    var tpl = 'url('+src+') 10px -57px'
+                    node.elm.style['background'] = tpl;
+                }
+            }
+        });
     }
 
     function component(elementId, data) {
@@ -112,6 +134,7 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
         getAll: getAll,
         getByName: getByName,
         stream: stream,
-        component: component
+        component: component,
+        featureYoutubePost: featureYoutubePost
     };
 });

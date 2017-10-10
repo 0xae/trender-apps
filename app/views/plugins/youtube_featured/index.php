@@ -62,19 +62,8 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
 <?php
 $json = json_encode($post);
 $scrip = <<<JS
-
-requirejs(['vue'], function (Vue){
-    new Vue({
-        el: "#tr-outdoor-img", 
-        data:{
-            post: $json,
-            link: '$pic',
-            done: function (node, src) {
-                var tpl = 'url('+src+') 10px -57px'
-                node.elm.style['background'] = tpl;
-            }
-        }
-    });
+requirejs(['trender/timeline'], function (Timeline){
+    Timeline.featureYoutubePost($json, '$pic');
 });
 JS;
 

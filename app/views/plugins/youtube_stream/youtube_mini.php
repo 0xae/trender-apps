@@ -16,8 +16,10 @@ $ary = [
     <div>
         <div class="tr-img-loader by bz ca" style="width:146px;float:left;margin-right: 5px;">
 
-        <div style="width:146px;height:78px;background:url('../downloads/media/<?= $ary[rand(0, count($ary)-1)] ?>') no-repeat 0px 0px;border-radius:3px;"
-        >
+        <div style="width:146px;height:78px;border-radius:3px;"
+             id="yt-<?= $post->id ?>"
+             v-tx-img-cache="{post: post, link: link, done: done}">
+
             <div class="tr-shadow" style="height:10px">
                 <center>
                     <div class="" 
@@ -26,19 +28,18 @@ $ary = [
                     </div>
                 </center>
 
-            <div style="color: #fff;margin-top:6px;background-color: rgba(0,0,0,.7);">
-                <span style="margin-left:5px;">
-                </span>
-                <span style="float: right;margin-right:5px;">
-                    <strong>
-                        <span class="fa fa-clock-o" style="font-size:12px"></span>
-                        <?= min($post->id + 0, 35) ?>:00
-                    </strong>
-                </span>
-            </div>
+                <div style="color: #fff;margin-top:6px;background-color: rgba(0,0,0,.7);">
+                    <span style="margin-left:5px;">
+                    </span>
+                    <span style="float: right;margin-right:5px;">
+                        <strong>
+                            <span class="fa fa-clock-o" style="font-size:12px"></span>
+                            <?= min($post->id + 0, 35) ?>:00
+                        </strong>
+                    </span>
+                </div>
             </div>    
-        </div>
-        
+        </div>        
 
         </div>
 
@@ -72,11 +73,3 @@ $ary = [
     </div>
 </div>
 </div>
-
-<?php
-$json = json_encode($post);
-$scrip = <<<JS
-// new Vue({el: "#img-{$post->id}", data:{post: $json}});
-JS;
-
-$this->registerJs($scrip);
