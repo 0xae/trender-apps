@@ -1,4 +1,4 @@
-requirejs(["trender/app"], function (app) {
+requirejs(["trender/app", 'vue'], function (app, Vue) {
     Vue.directive('tx-post-stream', {
         bind: function (el, b, vnode) {
             /*

@@ -200,7 +200,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
     <?php $this->head(); ?>
 </head>
 
-<body tabindex="0" class="b c d e" ng-app="trender">
+<body tabindex="0" class="b c d e">
 
 <div class="t" id="app-header-menu">
     <div class="g" id="app-header-ads">
@@ -289,7 +289,6 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
 <?php $this->beginBody() ?>
     <?= $content ?>
 <?php $this->endBody() ?>
-
 
 </body>
 

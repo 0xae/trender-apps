@@ -19,6 +19,6 @@ requirejs(['jquery', '_', 'trender/app'], function ($, _, app) {
         interpolate: /\{\{(.+?)\}\}/g
     };
 
-    console.info("app server is at", app);
+    console.info("app config: ", app);
 });
 

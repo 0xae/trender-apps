@@ -16,7 +16,7 @@ $this->title = 'Trender Home';
     </div>
 
     <div id="viewport">
-        <div id="objects_container" ng-controller="TimelineController">
+        <div id="objects_container">
             <div class="bq e" id="root" role="main">
                 <div id="m_home_notice"></div>
                 <div id="m_newsfeed_stream" style="background-color: #fff;">

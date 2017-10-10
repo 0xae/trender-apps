@@ -1,4 +1,4 @@
-define("trender/timeline", ['trender/app'], function (app){
+define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
     const MAX_POSTS_PER_PAGE=5;
     const STREAM_INTERVAL = 5*1000; // every 10 seconds
     const api = app.server.api;
@@ -101,9 +101,6 @@ define("trender/timeline", ['trender/app'], function (app){
             data: data,
             methods: {
                 update: function (stream) {
-                    if (elementId == "#vidStream") {
-                        console.info(elementId + " update ", stream);
-                    }
                     updateStream(stream.html, stream.posts, true, elementId);
                 }
             }

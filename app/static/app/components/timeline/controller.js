@@ -1,9 +1,8 @@
-angular.module('trender')
-.controller('TimelineController', ['Timeline', 'app', 
-function (Timeline, app){
+requirejs(['trender/app', 'trender/timeline', '_'], 
+function (app, Timeline, _){
     // every N seconds
     var MAX_POSTS_PER_PAGE=5;
-    var STREAM_INTERVAL = 8*1000;
+    var STREAM_INTERVAL = 6*1000;
     var main = null, vids = null;
 
     function stream() {
@@ -16,7 +15,7 @@ function (Timeline, app){
                 main = Timeline.component("#posts_container", {stream:{posts:[]}});
                 vids = Timeline.component("#vidStream", {stream: {posts:[]}});
             }
-
+            
             main.update({
                 html: data.html,
                 posts: data.stream.posts
@@ -27,13 +26,11 @@ function (Timeline, app){
                 posts: data.stream.posts.filter(function (x){
                     return x.type == 'youtube-post';
                 })
-           });
+            });
         });
     }
 
     stream();
     setInterval(stream, STREAM_INTERVAL);
-}]);
-
-
+});
 

@@ -1,20 +1,21 @@
-requirejs(['trender/app','trender/timeline'], function (app, Timeline) {
+requirejs(['trender/app','trender/timeline', 'vue'], function (app, Timeline, Vue) {
     var api = app.server.api;
-    
     // tx-img-cache
     // @params post
     // @description fetches/caches the post image
-    //                or just sets the image it's already cached
+    //                or just sets the image if it's already cached
     Vue.directive('tx-img-cache', {
       bind: function (el, b, vnode) {
         var post = b.value.post;
+        if (!post) return;
         var cached = post.cached;
         var url = api + 'post/media/'+post.id+'/download';
 
         function updateImage(src) {
-            if (b.value.done)
-                b.value.done(vnode, src);
             vnode.elm.src = src;
+            if (b.value.done) {            
+                b.value.done(vnode, src);
+            }
         }    
 
         if (b.value.link && post.picture != b.value.link) {
