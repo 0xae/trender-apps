@@ -1,5 +1,5 @@
-requirejs(['trender/app', 'trender/timeline', '_'], 
-function (app, Timeline, _){
+requirejs(['trender/app', 'trender/timeline', '_', 'Vue'], 
+function (app, Timeline, _, Vue){
     // every N seconds
     var MAX_POSTS_PER_PAGE=5;
     var STREAM_INTERVAL = 6*1000;
@@ -8,6 +8,17 @@ function (app, Timeline, _){
     function stream() {
         var id = /id=(\d+)/.exec(location.href)[1];
         var limit = _.random(3, 5);
+
+        /*
+        new Vue({
+            el: ".youtube-mini-post",
+            data: {
+                log: function (id) {
+                    console.info("mini-post ", id);
+                }
+            }
+        });
+        */
 
         Timeline.stream({id:id, limit:limit})
         .then(function (data){

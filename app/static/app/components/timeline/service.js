@@ -78,7 +78,7 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
                                       json['video_id'] + 
                                       "/0.jpg";
                         new Vue({
-                            el: "#yt-" + p.id,
+                            el: "#yt-img-" + p.id,
                             data:{
                                 post: p,
                                 link: picture,

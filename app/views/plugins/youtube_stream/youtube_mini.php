@@ -11,30 +11,34 @@ $ary = [
 ];
 ?>
 
-<div role="article" class="dg di ds youtube-post">
+<div role="article" class="dg di ds youtube-post youtube-mini-post" 
+     id="tr-post-<?= $post->id ?>" 
+     v-on:click="log('<?= $post->id ?>')">
 <div>
     <div>
-        <div class="tr-img-loader by bz ca" style="width:146px;float:left;margin-right: 5px;">
+        <div class="tr-img-loader by bz ca" 
+             style="width:146px;float:left;margin-right: 5px;">
 
         <div style="width:146px;height:78px;border-radius:3px;"
-             id="yt-<?= $post->id ?>"
-             v-tx-img-cache="{post: post, link: link, done: done}">
+             id="yt-img-<?= $post->id ?>"
+             
+             >
 
             <div class="tr-shadow" style="height:10px">
                 <center>
                     <div class="" 
-                         style="padding-top:25px;color:red;font-size: 25px;">
+                         style="padding-top:20px;color:red;font-size: 25px;">
                         <span class="fa fa-play" title="Play"></span>
                     </div>
                 </center>
 
-                <div style="color: #fff;margin-top:6px;background-color: rgba(0,0,0,.7);">
+                <div style="color: #fff;margin-top:11px;background-color: rgba(0,0,0,.7);">
                     <span style="margin-left:5px;">
                     </span>
                     <span style="float: right;margin-right:5px;">
                         <strong>
                             <span class="fa fa-clock-o" style="font-size:12px"></span>
-                            <?= min($post->id + 0, 35) ?>:00
+                            00:00
                         </strong>
                     </span>
                 </div>

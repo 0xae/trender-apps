@@ -15,7 +15,7 @@ background:url('../downloads/media/<?= $ary[rand(0, count($ary)-1)] ?>') no-repe
 */
 ?>
 
-<div role="article" class="dg di ds youtube-post">
+<div role="article" class="dg di ds youtube-post" id="tr-post-<?= $post->id ?>">
 <div>
     <div>
         <div class="tr-img-loader by bz ca" style="width:35px;float: left;margin-right: 5px;">

@@ -3,7 +3,7 @@ use app\models\DateUtils;
 $picture = $post->cached;
 ?>
 
-<div role="article" class="dg di ds">
+<div role="article" class="dg di ds" id="tr-post-<?= $post->id ?>">
 <div>
     <div>
         <div class="tr-img-loader by bz ca" style="width:50px;float: left; margin-right: 5px;margin-top:5px;">
