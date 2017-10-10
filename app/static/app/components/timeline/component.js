@@ -1,5 +1,4 @@
-angular.module('trender')
-.run(['app', 'Timeline', function (app, Timeline) {
+requirejs(["trender/app"], function (app) {
     Vue.directive('tx-post-stream', {
         bind: function (el, b, vnode) {
             /*
@@ -12,5 +11,5 @@ angular.module('trender')
             */
         }
     });
-}]);
+});
 

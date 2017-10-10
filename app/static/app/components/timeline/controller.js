@@ -1,9 +1,9 @@
 angular.module('trender')
 .controller('TimelineController', ['Timeline', 'app', 
 function (Timeline, app){
-    var STREAM_INTERVAL = 8*1000;
     // every N seconds
     var MAX_POSTS_PER_PAGE=5;
+    var STREAM_INTERVAL = 8*1000;
     var main = null, vids = null;
 
     function stream() {
