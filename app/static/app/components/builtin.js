@@ -10,8 +10,6 @@ requirejs(['trender/app','trender/timeline', 'vue'], function (app, Timeline, Vu
         if (!post) return;
         var cached = post.cached;
         var url = api + 'post/media/'+post.id+'/download';
-        
-        console.log(api);
 
         function updateImage(src) {
             vnode.elm.src = src;

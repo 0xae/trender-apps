@@ -24,10 +24,10 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
                     </div>
                 </center>
 
-                <div style="color: #fff;margin-top:11px;background-color: rgba(0,0,0,.7);">
+                <div style="color: #fff;margin-top:7px;">
                     <span style="margin-left:5px;">
                     </span>
-                    <span style="float: right;margin-right:5px;">
+                    <span style="float: right;font-size:12px;margin-right:5px;background-color: rgb(0,0,0);border-radius:2px;padding-right:5px;padding-left:4px;">
                         <strong>
                             <span class="fa fa-clock-o" style="font-size:12px"></span>
                             00:00

@@ -58,6 +58,9 @@ $this->title = 'Trender Home';
                     "@app/views/plugins/youtube_featured/index.php",
                     ["post" => $videos[0]]
                 );
+
+                // XXX
+                $videos = [];
                 unset($videos[0]);
            }
         ?>

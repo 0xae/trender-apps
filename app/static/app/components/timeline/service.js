@@ -61,39 +61,48 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
 
         var html ='<div class="post-container" '+
                         'id="'+containerId+'" '+
-                        'style="display: none">'+
+                        'style="">'+
             _html+
         '</div>';
 
-        setTimeout(function (){
+        setTimeout(function (){            
             $(stream_start).prepend(html);
             $("#"+containerId).slideDown(783.123);
             
-            setTimeout(function() {
-                posts.forEach(function (p) {
-                    if (p.type == 'youtube-post') {
-                        var id = "#yt-img-" + p.id;
-                        var json = JSON.parse(p.data);                        
-                        var picture = "https://img.youtube.com/vi/"+
-                                      json['video_id'] + 
-                                            "/0.jpg";                                      
-                        miniYoutube(id, p, picture);
-                    } else {
-                        new Vue({el: "#img-"+p.id, data:{post: p}});
+            var last = false;
+            posts.forEach(function (p) {
+                if (p.type == 'youtube-post') {
+                    var id = "#yt-img-" + p.id;
+                    var json = JSON.parse(p.data);                        
+                    var picture = "https://img.youtube.com/vi/"+
+                                  json['video_id'] + 
+                                        "/0.jpg";                                      
+                    miniYoutube(id, p, picture);
+                    if (!last) {
+                        p.picture = picture;
+                        last = p;
                     }
-                });
-
-                if (showLoader === true) {
-                    setTimeout(function(){
-                        $(posts_loader).hide();
-                        $(posts_count).text('0');                
-                    }, 500);
+                } else {
+                    new Vue({el: "#img-"+p.id, data:{post: p}});
                 }
             });
+
+            if (last) {
+                featureYoutubePost(last, last.picture);
+            }
+
+            if (showLoader === true) {
+                setTimeout(function(){
+                    $(posts_loader).hide();
+                    $(posts_count).text('0');                
+                }, 500);
+            }
         }, 1500);
     }
-    
+
     function featureYoutubePost(youtubePost, picture) {
+        console.info("featureYoutubePost: ", youtubePost);
+
         return new Vue({
             el: "#tr-outdoor-img",
             data:{
@@ -129,11 +138,10 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
                 post: p,
                 link: picture,
                 done: function (node, src) {
-                    var tpl = 'url('+src+') 10px -57px'
+                    var tpl = 'url('+src+') no-repeat 0px';
                     node.elm.style['background'] = tpl;
                 },
                 logNode: function() {                                    
-                    console.info(elementId);
                 }
             }
         });
