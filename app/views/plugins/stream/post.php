@@ -19,6 +19,7 @@ $picture = $post->cached;
                      height="50"
                      alt="loading..."
                      style="font-size: 9px"
+                     v-tx-img-cache="{post: post}"
                 />
             </a>
             </center>            

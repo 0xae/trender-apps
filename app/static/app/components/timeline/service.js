@@ -72,22 +72,12 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
             setTimeout(function() {
                 posts.forEach(function (p) {
                     if (p.type == 'youtube-post') {
-                        var json = JSON.parse(p.data);
-                        
+                        var id = "#yt-img-" + p.id;
+                        var json = JSON.parse(p.data);                        
                         var picture = "https://img.youtube.com/vi/"+
                                       json['video_id'] + 
-                                      "/0.jpg";
-                        new Vue({
-                            el: "#yt-img-" + p.id,
-                            data:{
-                                post: p,
-                                link: picture,
-                                done: function (node, src) {
-                                    var tpl = 'url('+src+') 10px -57px'
-                                    node.elm.style['background'] = tpl;
-                                }
-                            }
-                        });
+                                            "/0.jpg";                                      
+                        miniYoutube(id, p, picture);
                     } else {
                         new Vue({el: "#img-"+p.id, data:{post: p}});
                     }
@@ -112,6 +102,9 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
                 done: function (node, src) {
                     var tpl = 'url('+src+') 10px -57px'
                     node.elm.style['background'] = tpl;
+                },
+                logNode: function() {
+                    console.info(picture);
                 }
             }
         });
@@ -128,6 +121,23 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
             }
         });
     }
+    
+    function miniYoutube(el, p, picture) {        
+        return new Vue({
+            el: el,
+            data:{
+                post: p,
+                link: picture,
+                done: function (node, src) {
+                    var tpl = 'url('+src+') 10px -57px'
+                    node.elm.style['background'] = tpl;
+                },
+                logNode: function() {                                    
+                    console.info(elementId);
+                }
+            }
+        });
+    }
 
     return {
         getById: getById,
@@ -135,6 +145,7 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
         getByName: getByName,
         stream: stream,
         component: component,
-        featureYoutubePost: featureYoutubePost
+        featureYoutubePost: featureYoutubePost,
+        miniYoutube: miniYoutube
     };
 });

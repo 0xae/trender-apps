@@ -4,9 +4,11 @@ define("trender/app", function () {
             prms.then(resolve, reject);
         });
     }
+    
+    var idx = location.href.substr(7).indexOf("/");
 
     var server = {
-        api: 'http://127.0.0.1:5000/api/'
+        api: location.href.substr(0, idx+7) + ':5000' + '/api/'
     };
 
     return {

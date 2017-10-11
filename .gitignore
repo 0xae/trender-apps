@@ -9,4 +9,5 @@ dbs/
 eggs/
 logs/
 downloads/
+media/
 twistd.pid

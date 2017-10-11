@@ -6,12 +6,13 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
 
 <div role="article" class="dg di ds">
 <div>
-    <div id="tr-outdoor-img" style="width:100%;height:200px;margin-bottom: 10px;"
+    <div id="tr-outdoor-img"
+         style="width:100%;height:200px;margin-bottom: 10px;background-color: #000;"
          v-tx-img-cache="{post: post, link: link, done: done}"
-    >
+         v-on:click="logNode"
+         >
         <div class="tr-shadow">
         <center>
-        <!--<img width="350px" src="https://img.youtube.com/vi/<?= $json->video_id ?>/0.jpg" />-->
             <div class="tr-main-badge" style="margin-top: 100px;">
              <span class="fa fa-play"></span> Play video
             </div>
@@ -66,5 +67,5 @@ requirejs(['trender/timeline'], function (Timeline){
     Timeline.featureYoutubePost($json, '$pic');
 });
 JS;
-
 $this->registerJs($scrip);
+?>

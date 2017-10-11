@@ -10,6 +10,8 @@ requirejs(['trender/app','trender/timeline', 'vue'], function (app, Timeline, Vu
         if (!post) return;
         var cached = post.cached;
         var url = api + 'post/media/'+post.id+'/download';
+        
+        console.log(api);
 
         function updateImage(src) {
             vnode.elm.src = src;
@@ -20,11 +22,11 @@ requirejs(['trender/app','trender/timeline', 'vue'], function (app, Timeline, Vu
 
         if (b.value.link && post.picture != b.value.link) {
             var link = encodeURIComponent(b.value.link);
-            url = url + "?link=" + link; 
+            url = url + "?link=" + link;
             cached = false;
         }
 
-        if (post.picture.startsWith('data:')) {
+        if (post.picture && post.picture.startsWith('data:')) {
             var coma = post.picture.indexOf(';');
             var img = post.picture.substr(0, coma) +
                         ';charset=utf-8' +
