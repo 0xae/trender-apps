@@ -24,7 +24,6 @@ class AppAsset extends AssetBundle {
         "static/app/components/timeline/controller.js"
     ];
 
-
     public $depends = [
     ];
 }

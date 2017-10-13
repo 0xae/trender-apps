@@ -1,8 +1,5 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $content string */
-
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -10,7 +7,6 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
-
 $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
 ?>
 
@@ -48,7 +44,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
 
         .d #viewport {
             margin: 0px;
-            margin-left: 20px;
+            margin-left: 10px;
             max-width: initial;
             display: inline-flex;
         }
@@ -112,7 +108,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
         #app-video-stream {
             width: 430px;
             float: right;
-            margin-left: 15px;
+            margin-left: 8px;
         }
         
         .tr-main-badge {
@@ -196,11 +192,11 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
         .tr-up-next .youtube-post:hover {
             opacity: 1;
         }
-        
+
         .tr-video-time {
             opacity: .7 !important;
         }
-        
+
         .v1-btn {
             font-size: 11px;
             border-color: #3b5998;
@@ -212,7 +208,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
             background-color: #fff !important;
             font-weight: bold;
         }
-        
+
         .v1-btn:hover {
             background-color: #fff !important;
             border-color: #3b5998;

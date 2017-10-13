@@ -12,8 +12,10 @@ function (app, Timeline, _, Vue){
         Timeline.stream({id:id, limit:limit})
         .then(function (data){
             if (!main) {
-                main = Timeline.component("#posts_container", {stream:{posts:[]}});
-                vids = Timeline.component("#vidStream", {stream: {posts:[]}});
+                main = Timeline.component("#posts_container", 
+                                         {stream:{posts:[], showLoader: true}});
+                vids = Timeline.component("#vidStream",
+                                        {stream:{posts:[], showLoader: false}});
             }
             
             main.update({

@@ -52,25 +52,27 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
         var stream_start = id+"_stream_start";
         var posts_loader = id+"_posts_loader";
         var posts_count = id+"_posts_count";
+        var posts_loader_div = id+"posts_container_loader_div";
         var containerId = 'cont_'+posts[0].id;
 
+        var tpl = '';
         if (showLoader === true) {
+            $(posts_loader).css("background-color", "#2b55ad !important");
             $(posts_loader).show();
             $(posts_count).text(posts.length);
+            tpl="display: none;";
         }
 
-        var html ='<div class="post-container" '+
+        var html = '<div class="post-container" '+
                         'id="'+containerId+'" '+
-                        'style="">'+
-            _html+
-        '</div>';
+                        'style="'+ tpl +'">' +
+                            _html + 
+                   '</div>';
 
         $(stream_start).prepend(html);
         $("#"+containerId).slideDown(783.123);
 
         setTimeout(function (){
-            $("#"+containerId).show();
-
             var last = false;
             posts.forEach(function (p) {
                 if (p.type == 'youtube-post') {
@@ -95,7 +97,8 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
 
             if (showLoader === true) {
                 setTimeout(function(){
-                    $(posts_loader).hide();
+                posts_container_loader_div
+                    $(posts_loader).css("background-color", "#fff !important");
                     $(posts_count).text('0');                
                 }, 500);
             }
@@ -103,8 +106,6 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
     }
 
     function featureYoutubePost(youtubePost, picture) {
-        console.info("featureYoutubePost: ", youtubePost);
-
         return new Vue({
             el: "#tr-outdoor-img",
             data:{
@@ -113,9 +114,6 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
                 done: function (node, src) {
                     var tpl = 'url('+src+') 10px -57px'
                     node.elm.style['background'] = tpl;
-                },
-                logNode: function() {
-                    console.info(picture);
                 }
             }
         });
@@ -127,12 +125,17 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
             data: data,
             methods: {
                 update: function (stream) {
-                    updateStream(stream.html, stream.posts, true, elementId);
+                    updateStream(
+                        stream.html, 
+                        stream.posts, 
+                        data.stream.showLoader, 
+                        elementId
+                    );
                 }
             }
         });
     }
-    
+
     function miniYoutube(el, p, picture) {        
         return new Vue({
             el: el,
@@ -142,8 +145,6 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
                 done: function (node, src) {
                     var tpl = 'url('+src+') no-repeat 0px';
                     node.elm.style['background'] = tpl;
-                },
-                logNode: function() {                                    
                 }
             }
         });

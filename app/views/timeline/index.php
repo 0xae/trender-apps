@@ -27,7 +27,7 @@ $this->title = 'Trender Home';
                          
                         <div class="ds di" id="posts_container_posts_loader" style="">
                             <div>
-                                <a href="javascript:void(0)">
+                                <a href="javascript:void(0)" id="posts_container_loader_div">
                                     <p style="text-align: center"> 
                                      <span id="posts_container_posts_count">
                                         0
