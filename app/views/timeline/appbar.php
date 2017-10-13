@@ -27,12 +27,15 @@ use app\models\DateUtils;
 </div>
 
 <div class="tr-section">
-    <h3>
-        <a href="javascript:void(0)" id="">
-            timelines
-        </a>
-    </h3>
-    
+    <a href="javascript:void(0)" style="float: right;" class="v1-btn">
+        create
+        <span class="tr-btn-log fa fa-plus"></span>
+    </a>
+
+    <a href="javascript:void(0)" id="">
+        <h3>timelines</h3>
+    </a>
+
     <ul style="padding: 10px;padding-top: 3px;">
         <?php foreach ($timeline_list as $t): ?>
             <li>

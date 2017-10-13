@@ -112,6 +112,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
         #app-video-stream {
             width: 430px;
             float: right;
+            margin-left: 15px;
         }
         
         .tr-main-badge {
@@ -195,7 +196,33 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
         .tr-up-next .youtube-post:hover {
             opacity: 1;
         }
+        
+        .tr-video-time {
+            opacity: .7 !important;
+        }
+        
+        .v1-btn {
+            font-size: 11px;
+            border-color: #3b5998;
+            border: 1px solid;
+            border-radius: 2px;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-bottom: 1px;
+            background-color: #fff !important;
+            font-weight: bold;
+        }
+        
+        .v1-btn:hover {
+            background-color: #fff !important;
+            border-color: #3b5998;
+            color: #3b5998 !important;
+            border-style: dashed;
+        }
 
+        .v1-btn .tr-btn-log {           
+            font-size: 10px;            
+        }
     </style>
     
     <script src="static/lib/require.js"></script>

@@ -15,6 +15,7 @@ class AppAsset extends AssetBundle {
     ];
 
     public $js = [
+        "static/lib/bootstrap/js/bootstrap.min.js",
         "static/app/config.js",
         "static/app/app.js",
         "static/app/components/builtin.js",
@@ -22,6 +23,7 @@ class AppAsset extends AssetBundle {
         "static/app/components/timeline/service.js",
         "static/app/components/timeline/controller.js"
     ];
+
 
     public $depends = [
     ];

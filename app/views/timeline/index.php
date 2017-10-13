@@ -49,7 +49,7 @@ $this->title = 'Trender Home';
                 </div>
             </div>
         </div>
-    </div> <!-- .viewport -->
+
 
     <div id="app-video-stream" class="dp dq dr">
         <?php
@@ -78,5 +78,8 @@ $this->title = 'Trender Home';
             ?>
         </div>
     </div>
+
+    </div> <!-- .viewport -->
+
 </div> <!-- .f -->
 

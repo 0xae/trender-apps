@@ -65,10 +65,12 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
             _html+
         '</div>';
 
-        setTimeout(function (){            
-            $(stream_start).prepend(html);
-            $("#"+containerId).slideDown(783.123);
-            
+        $(stream_start).prepend(html);
+        $("#"+containerId).slideDown(783.123);
+
+        setTimeout(function (){
+            $("#"+containerId).show();
+
             var last = false;
             posts.forEach(function (p) {
                 if (p.type == 'youtube-post') {
