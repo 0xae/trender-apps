@@ -1,5 +1,5 @@
 <?php
-$this->title = 'Trender Home';
+$this->title = "Trending in {$timeline->name}";
 ?>
 
 <!-- Feed Area -->

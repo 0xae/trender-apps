@@ -1,4 +1,5 @@
-define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
+define("trender/timeline", ['trender/app', 'vue', 'jquery'], 
+function (app, Vue, $){
     const MAX_POSTS_PER_PAGE=5;
     const STREAM_INTERVAL = 5*1000; // every 10 seconds
     const api = app.server.api;
@@ -44,10 +45,34 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
         var url = api + 'timeline/';
         return default_fetch(url);
     }
+    
+    function create(data) {
+        var url = api + "timeline/new";
+        return $.ajax({
+            url: url,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(data)
+        });
+    }
+    
+    function deleteTimeline(id) {
+        var url = api + "timeline/"+id;
+        return $.ajax({
+            url: url,
+            method: 'DELETE'
+        });
+    }
 
-    function updateStream(_html, posts, showLoader, id) {
-        if (!posts.length)
+    function updateStream(stream, showLoader, id) {
+        var posts = stream.posts;
+        var _html = stream.html;
+    
+        if (!posts.length) {
             return;
+        }
 
         var stream_start = id+"_stream_start";
         var posts_loader = id+"_posts_loader";
@@ -126,8 +151,7 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
             methods: {
                 update: function (stream) {
                     updateStream(
-                        stream.html, 
-                        stream.posts, 
+                        stream,
                         data.stream.showLoader, 
                         elementId
                     );
@@ -157,6 +181,8 @@ define("trender/timeline", ['trender/app', 'vue'], function (app, Vue){
         stream: stream,
         component: component,
         featureYoutubePost: featureYoutubePost,
-        miniYoutube: miniYoutube
+        miniYoutube: miniYoutube,
+        create: create,
+        delete: deleteTimeline
     };
 });

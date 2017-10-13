@@ -204,20 +204,49 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
             border-radius: 2px;
             padding-left: 4px;
             padding-right: 4px;
-            padding-bottom: 1px;
+            padding-bottom: 2px;
+            padding-top: 2px;            
             background-color: #fff !important;
             font-weight: bold;
+            color: #3b5998;
         }
 
-        .v1-btn:hover {
+        .v1-btn:hover,
+        .v1-btn:active,
+        .v1-btn:focus {
             background-color: #fff !important;
             border-color: #3b5998;
             color: #3b5998 !important;
-            border-style: dashed;
+            cursor: pointer;
         }
 
         .v1-btn .tr-btn-log {           
             font-size: 10px;            
+        }
+
+        .v1-input {
+            font-size: 12px;
+            border-radius: 2px;
+            border-color: gray;
+            border-width: 1px;
+            border-style: solid;
+            padding-left: 4px;
+        }
+        
+        .tr-section h3 {
+            font-size: .86em;
+        }
+        
+        .tr-link-opts {
+            color:gray !important;
+            font-size:11px !important;
+            float:right !important;
+            padding-top: 2px;
+            text-decoration: underline !important;
+        }
+        
+        .tr-link-opts:hover {
+            background-color: transparent !important;
         }
     </style>
     
