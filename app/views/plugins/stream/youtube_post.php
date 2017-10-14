@@ -1,18 +1,6 @@
 <?php
 use app\models\DateUtils;
 $json = json_decode($post->data);
-$ary = [
-    '22d66e8c741c3573d9bcdb3176d5ec3b.jpg',
-    'c72b679283d5fdf4e198fe18b5461437.jpg',
-    'e33bfe546673f7f4151003b17b162b48.jpg',
-    '30fe705c1b9e5e43ebe5c56e5b02b1e4.jpg',
-    '2b8d78185b85ae21610b14dc25f88ce8.jpg',
-    '8df4fbeaf573ddd4458d3977a03dcbce.jpg'
-];
-
-/*
-background:url('../downloads/media/<?= $ary[rand(0, count($ary)-1)] ?>') no-repeat 0px 0px;
-*/
 ?>
 
 <div role="article" class="dg di ds youtube-post" id="tr-post-<?= $post->id ?>">
@@ -103,5 +91,3 @@ background:url('../downloads/media/<?= $ary[rand(0, count($ary)-1)] ?>') no-repe
 </div>
 </div>
 
-<?php
-$this->registerJs($scrip);

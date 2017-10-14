@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -238,7 +237,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
         }
         
         .tr-link-opts {
-            color:gray !important;
+            color: orange !important;
             font-size:11px !important;
             float:right !important;
             padding-top: 2px;
@@ -247,6 +246,32 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
         
         .tr-link-opts:hover {
             background-color: transparent !important;
+        }
+        
+        #tr-outdoor-img {
+            width:100%;
+            height:200px;
+            margin-bottom: 10px;
+            /*sbackground-color: #000;*/
+        }
+        
+        .tr-up-next-label {
+            margin: 0px;
+            background-color:#fff;
+            width:100%;
+            display:block;  
+            height: 20px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            opacity: .7;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tr-up-next-label h1 {
+            float: right;
+            color: gray;
+            font-size: 14px;
+            padding-right: 15px;
         }
     </style>
     

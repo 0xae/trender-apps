@@ -65,6 +65,8 @@ function (app, Vue, $){
             method: 'DELETE'
         });
     }
+    
+    var posts = [];
 
     function updateStream(stream, showLoader, id) {
         var posts = stream.posts;
@@ -100,19 +102,22 @@ function (app, Vue, $){
         setTimeout(function (){
             var last = false;
             posts.forEach(function (p) {
-                if (p.type == 'youtube-post') {
-                    var id = "#yt-img-" + p.id;
+                var id = "#tr-post-" + p.id;
+                if (p.type == 'youtube-post') {                    
                     var json = JSON.parse(p.data);                        
                     var picture = "https://img.youtube.com/vi/"+
-                                  json['video_id'] + 
-                                        "/0.jpg";                                      
-                    miniYoutube(id, p, picture);
+                                  json['video_id'] +  "/0.jpg";
                     if (!last) {
                         p.picture = picture;
                         last = p;
                     }
+
+                    posts.push(miniYoutube(id, p, picture));
                 } else {
-                    new Vue({el: "#img-"+p.id, data:{post: p}});
+                    new Vue({
+                        el: id, 
+                        data:{post: p}
+                    });
                 }
             });
 
@@ -130,18 +135,32 @@ function (app, Vue, $){
         }, 1500);
     }
 
-    function featureYoutubePost(youtubePost, picture) {
-        return new Vue({
-            el: "#tr-outdoor-img",
-            data:{
-                post: youtubePost,
+    var node = null, data = null;
+    function featureYoutubePost(post, picture) {        
+        post.json = JSON.parse(post.data);
+        if (!node) {
+            data = {
+                post: post,
                 link: picture,
                 done: function (node, src) {
-                    var tpl = 'url('+src+') 10px -57px'
+                    var tpl = 'url('+src+') no-repeat 10px -57px'
                     node.elm.style['background'] = tpl;
                 }
-            }
-        });
+            };
+
+            node = new Vue({
+                el: "#tr-youtube-featured",
+                data: data,
+                methods: {
+                    playVideo: function (post) {
+                        console.info("playing: " + post.description);
+                    }
+                }
+            });
+        } else {
+            data.post = post;
+            data.link = picture;        
+        }
     }
 
     function component(elementId, data) {
@@ -155,20 +174,23 @@ function (app, Vue, $){
                         data.stream.showLoader, 
                         elementId
                     );
-                }
+                },
             }
         });
     }
 
-    function miniYoutube(el, p, picture) {        
+    function miniYoutube(el, p, picture) {
         return new Vue({
             el: el,
-            data:{
+            data: {
                 post: p,
                 link: picture,
                 done: function (node, src) {
                     var tpl = 'url('+src+') no-repeat 0px';
                     node.elm.style['background'] = tpl;
+                },
+                select: function (post) {
+                    console.info(post);
                 }
             }
         });

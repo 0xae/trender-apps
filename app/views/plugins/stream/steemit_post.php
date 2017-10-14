@@ -63,12 +63,3 @@ $picture = $post->cached;
     </div>
 </div>
 </div>
-
-<?php
-# XXX: must redo this shit
-$json = json_encode($post);
-$scrip = <<<JS
-// new Vue({el: "#img-{$post->id}", data:{post: $json}});
-JS;
-
-$this->registerJs($scrip);

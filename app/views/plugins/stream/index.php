@@ -2,7 +2,7 @@
     foreach ($posts as $post) {
         if ($post->type == "youtube-post") {
             $tpl = "@app/views/plugins/stream/youtube_post.php";
-        }else{
+        } else {
             $tpl = "@app/views/plugins/stream/post.php";
         }
 

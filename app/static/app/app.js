@@ -20,7 +20,5 @@ requirejs(['jquery', '_', 'trender/app'], function ($, _, app) {
     _.templateSettings = {
         interpolate: /\{\{(.+?)\}\}/g
     };
-
-    console.info("app config: ", app);
 });
 

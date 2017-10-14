@@ -5,7 +5,7 @@ use app\models\DateUtils;
 <div class="tr-section">
     <h3>
         <a href="javascript:void(0)" id="">
-            /t/<?= $timeline->name ?>
+            <?= $timeline->name ?>
         </a>
     </h3>
 

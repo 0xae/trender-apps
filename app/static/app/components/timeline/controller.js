@@ -79,7 +79,7 @@ function (app, Timeline, _, Vue, $){
         data: timelineData,
         methods: {
             deleteTimeline: function (id, index) {
-                if (!confirm("Delete this timeline?")) {
+                if (!confirm("Are you sure?")) {
                     return;
                 }
                 

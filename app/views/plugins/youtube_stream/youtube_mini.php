@@ -12,9 +12,8 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
              style="width:146px;float:left;margin-right: 5px;">
 
         <div style="width:146px;height:78px;border-radius:3px;"
-             id="yt-img-<?= $post->id ?>"
              v-tx-img-cache="{post: post, link: link, done: done}"
-             v-on:click="logNode"
+             v-on:click="done"
              class="youtube-mini-post">
 
             <div class="tr-shadow" style="height:10px">
@@ -67,16 +66,17 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
     </div>
     
     <div class="du" style="padding-left: 40px;">
-        <span> <p> <?= $post->description ?> </p> </span>
+        <p> <?= $post->description ?> </p>
     </div>
+
 </div>
 </div>
 
 <?php
 $scrip = <<<JS
 requirejs(['trender/timeline'], function (Timeline){
-    Timeline.miniYoutube('#yt-img-{$post->id}', {$post->data}, '$pic');
+    Timeline.miniYoutube
 });
 JS;
+
 $this->registerJs($scrip);
-?>

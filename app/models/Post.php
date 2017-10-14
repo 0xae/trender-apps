@@ -2,6 +2,11 @@
 namespace app\models;
 
 class Post extends \yii\base\Object {
+    public $data;
+    public $authorName;
+    public $description;
+    public $timestampFmt;
+
     public static function search($q, $lim) {
         $results = Solr::query($q, $lim, false);
         $docs = $results['response']['docs'];
