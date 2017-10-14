@@ -1,4 +1,4 @@
-define("trender/app", function () {
+define("trender/app", function () {    
     function promisify(prms) {
         return new Promise(function (resolve, reject){
             prms.then(resolve, reject);
@@ -14,11 +14,5 @@ define("trender/app", function () {
     return {
         server: server
     }
-});
-
-requirejs(['jquery', '_', 'trender/app'], function ($, _, app) {
-    _.templateSettings = {
-        interpolate: /\{\{(.+?)\}\}/g
-    };
 });
 

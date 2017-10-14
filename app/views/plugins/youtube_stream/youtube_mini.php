@@ -1,10 +1,11 @@
 <?php
 use app\models\DateUtils;
 $json = json_decode($post->data);
-$pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
 ?>
 
-<div role="article" class="dg di ds youtube-post " 
+<div role="article" 
+     class="dg di ds youtube-post " 
+     v-on:click="select(post)"
      id="tr-post-<?= $post->id ?>">
 <div>
     <div>
@@ -13,7 +14,6 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
 
         <div style="width:146px;height:78px;border-radius:3px;"
              v-tx-img-cache="{post: post, link: link, done: done}"
-             v-on:click="done"
              class="youtube-mini-post">
 
             <div class="tr-shadow" style="height:10px">
@@ -68,15 +68,6 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
     <div class="du" style="padding-left: 40px;">
         <p> <?= $post->description ?> </p>
     </div>
-
 </div>
 </div>
 
-<?php
-$scrip = <<<JS
-requirejs(['trender/timeline'], function (Timeline){
-    Timeline.miniYoutube
-});
-JS;
-
-$this->registerJs($scrip);

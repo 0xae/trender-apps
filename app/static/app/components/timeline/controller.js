@@ -1,8 +1,8 @@
-requirejs(['trender/app', 'trender/timeline', '_', 'vue', 'jquery'], 
-function (app, Timeline, _, Vue, $){
+requirejs(['trender/app', 'trender/timeline', 'trender/builtins', '_', 'vue', 'jquery'], 
+function (app, Timeline, builtins, _, Vue, $){
     // every N seconds
     var MAX_POSTS_PER_PAGE=5;
-    var STREAM_INTERVAL = 6*1000;
+    var STREAM_INTERVAL = 8*1000;
     var main = null, vids = null;
 
     function stream() {
@@ -33,7 +33,6 @@ function (app, Timeline, _, Vue, $){
             });
         });
     }
-
 
     var timelineData = {
         name: "",
@@ -82,7 +81,7 @@ function (app, Timeline, _, Vue, $){
                 if (!confirm("Are you sure?")) {
                     return;
                 }
-                
+
                 Timeline.delete(id)
                 .then(function (){
                     $("#tl-"+id).remove();
@@ -91,7 +90,7 @@ function (app, Timeline, _, Vue, $){
         }
     });
 
-    stream();
-    setInterval(stream, STREAM_INTERVAL);
+   // stream();
+   // setInterval(stream, STREAM_INTERVAL);
 });
 

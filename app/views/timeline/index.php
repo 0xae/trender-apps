@@ -1,8 +1,8 @@
 <?php
 use app\models\Post;
 $this->title = "Trending in {$timeline->name}";
-$posts = [];
-$videos = [];
+// $videos = [];
+// $posts = [];
 ?>
 
 <!-- Feed Area -->
@@ -29,9 +29,12 @@ $videos = [];
                          class="dp dq dr"
                          style="padding:0px;">
                          
-                        <div class="ds di" id="posts_container_posts_loader" style="">
+                        <div class="ds di" 
+                             id="posts_container_posts_loader" 
+                             style="">
                             <div>
-                                <a href="javascript:void(0)" id="posts_container_loader_div">
+                                <a href="javascript:void(0)" 
+                                   id="posts_container_loader_div">
                                     <p style="text-align: center"> 
                                      <span id="posts_container_posts_count">
                                         0
@@ -46,7 +49,7 @@ $videos = [];
                         <?php
                             echo \Yii::$app->view->renderFile(
                                 "@app/views/plugins/stream/index.php",
-                                ["posts" => []]
+                                ["posts" => $posts]
                             );
                         ?>
                     </div>
@@ -57,9 +60,15 @@ $videos = [];
 
         <div id="app-video-stream" class="dp dq dr">
             <?php
+                $post = new Post;
+                if (!empty($videos)) {
+                    $post = $videos[0];
+                    unset($videos[0]);
+                }
+
                 echo \Yii::$app->view->renderFile (
                     "@app/views/plugins/youtube_featured/index.php",
-                    ["post" => new Post]
+                    ["post" => $post]
                 );
             ?>
 

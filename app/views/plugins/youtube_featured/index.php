@@ -17,11 +17,11 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
          v-tx-img-cache="{post: post, link: link, done: done}"
          v-on:click="playVideo(post)">
         <div class="tr-shadow">
-        <center>
-            <div class="tr-main-badge" style="margin-top: 100px;">
-             <span class="fa fa-play"></span> Play video
-            </div>
-        </center>    
+            <center>
+                <div class="tr-main-badge" style="margin-top: 100px;">
+                 <span class="fa fa-play"></span> Play video
+                </div>
+            </center>    
         </div>
     </div>
     <div style="padding: 10px;padding-top:2px;">

@@ -297,7 +297,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
     </div>
 
     <div class="u v" role="banner" id="header">
-        <form method="get" action="#" class="w" novalidate>
+        <form method="get" action="index.php?r=timeline/search" class="w" novalidate>
             <table class="y" role="presentation">
                 <tbody>
                     <tr>
@@ -305,13 +305,11 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
                         </td>
                         <td class="be bf">
                             <input class="bg bh bi" 
-                                   name="query" 
-                                   ng-model="query"
+                                   name="q" 
                                    placeholder="Search news, posts, videos, markets, ..." 
                                    autocomplete="off" 
                                    autocorrect="off" 
                                    spellcheck="false" 
-                                   ng-focus="startedSearch()"
                                    type="text" 
                             />
                         </td>

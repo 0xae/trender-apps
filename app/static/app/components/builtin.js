@@ -1,4 +1,5 @@
-requirejs(['trender/app','trender/timeline', 'vue'], function (app, Timeline, Vue) {
+define("trender/builtins", ['trender/app','trender/timeline', 'vue'], 
+function (app, Timeline, Vue) {
     var api = app.server.api;
     // tx-img-cache
     // @params post
@@ -57,6 +58,11 @@ requirejs(['trender/app','trender/timeline', 'vue'], function (app, Timeline, Vu
             updateImage('../' + href);
         }
       }
+    });
+
+    Vue.directive('tx-post-stream', {
+        bind: function (el, b, vnode) {            
+        }
     });
 });
 

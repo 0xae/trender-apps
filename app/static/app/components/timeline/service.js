@@ -1,4 +1,4 @@
-define("trender/timeline", ['trender/app', 'vue', 'jquery'], 
+define("trender/timeline", ['trender/app', 'vue', 'jquery', 'trender/builtins'], 
 function (app, Vue, $){
     const MAX_POSTS_PER_PAGE=5;
     const STREAM_INTERVAL = 5*1000; // every 10 seconds
@@ -51,10 +51,10 @@ function (app, Vue, $){
         return $.ajax({
             url: url,
             method: 'POST',
+            data: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
             },
-            data: JSON.stringify(data)
         });
     }
     
@@ -66,8 +66,6 @@ function (app, Vue, $){
         });
     }
     
-    var posts = [];
-
     function updateStream(stream, showLoader, id) {
         var posts = stream.posts;
         var _html = stream.html;
@@ -112,7 +110,7 @@ function (app, Vue, $){
                         last = p;
                     }
 
-                    posts.push(miniYoutube(id, p, picture));
+                    miniYoutube(id, p, picture);
                 } else {
                     new Vue({
                         el: id, 
@@ -136,7 +134,7 @@ function (app, Vue, $){
     }
 
     var node = null, data = null;
-    function featureYoutubePost(post, picture) {        
+    function featureYoutubePost(post, picture) { 
         post.json = JSON.parse(post.data);
         if (!node) {
             data = {
@@ -189,8 +187,11 @@ function (app, Vue, $){
                     var tpl = 'url('+src+') no-repeat 0px';
                     node.elm.style['background'] = tpl;
                 },
+            },
+            methods: {
                 select: function (post) {
-                    console.info(post);
+                    console.info("set featureYoutubePost: ", post);
+                    featureYoutubePost(post, post.picture);
                 }
             }
         });

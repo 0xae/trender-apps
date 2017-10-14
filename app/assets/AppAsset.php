@@ -18,7 +18,6 @@ class AppAsset extends AssetBundle {
         "static/app/config.js",
         "static/app/app.js",
         "static/app/components/builtin.js",
-        "static/app/components/timeline/component.js",
         "static/app/components/timeline/service.js",
         "static/app/components/timeline/controller.js"
     ];
