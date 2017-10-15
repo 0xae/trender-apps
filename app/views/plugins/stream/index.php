@@ -1,32 +1,20 @@
 <?php
-    $buf = "";
     foreach ($posts as $post) {
         if ($post->type == "youtube-post") {
             $tpl = "@app/views/plugins/stream/youtube_post.php";
+        } else if ($post->type == "twitter-post") {
+            $tpl = "@app/views/plugins/stream/twitter_post.php";
+        } else if ($post->type == "steemit-post") {
+            $tpl = "@app/views/plugins/stream/steemit_post.php";
+        } else if ($post->type == "bbc-post") {
+            $tpl = "@app/views/plugins/stream/bbc_post.php";
         } else {
-            $tpl = "@app/views/plugins/stream/post.php";        
-            $json = json_encode($post);
-            $buf .= "
-                new Vue({
-                    el: '#tr-post-{$post->id}',
-                    data:{
-                        post: $json
-                    }
-                });
-            ";
+            $tpl = "@app/views/plugins/stream/generic_post.php";        
         }
 
         echo \Yii::$app->view->renderFile(
             $tpl, ["post" => $post]
         );
     }
-?>
-
-<?php
-$scrip = <<<JS
-requirejs(['trender/timeline', 'vue', 'trender/builtins'], 
-function (Timeline, Vue) {{$buf}});
-JS;
-$this->registerJs($scrip);
 ?>
 

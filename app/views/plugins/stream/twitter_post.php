@@ -1,6 +1,7 @@
 <?php
 use app\models\DateUtils;
 $picture = $post->cached;
+$data = json_decode($post->data);
 ?>
 
 <div role="article" class="dg di ds" id="tr-post-<?= $post->id ?>">
@@ -27,9 +28,13 @@ $picture = $post->cached;
         <div style="">
             <h3 class="dt dm" style="display: inline-block">
                 <span>
-                    <strong> 
-                        <a href="javascript:void(0)">
-                            <?= $post->authorName ?>
+                    <img src="static/img/twitter-192x192.png" 
+                       width="16" height="16"
+                       style="margin-bottom: -4px" /> 
+
+                    <strong>
+                        <a href="index.php?r=profile/index&username=<?= $data->username ?>">
+                            <?= $data->username ?>
                         </a>
                     </strong>
                 </span>
@@ -51,14 +56,19 @@ $picture = $post->cached;
 
     <div class="el">
         <div class="k cv">
-            <a class="" aria-label="" href="<?= $post->link; ?>">
-                <img style="display:inline-block;padding:0px;" src="static/img/like.png" width="13" height="13" class="o">
-                <?= 10 + (int)$post->id; ?>
+            <a href="javascript:void(0)" v-on:click="like(post)">
+                <img style="display:inline-block;padding:0px;" 
+                     src="static/img/like.png" 
+                     width="13" height="13" class="o"
+                />
+                <?= $data->love ?>
             </a>
             <span aria-hidden="true">· </span>
-            <a href="<?= $post->link; ?>">Like</a>
+            <a href="javascript:void(0)" v-on:click="like(post)">like</a>
             <span aria-hidden="true">· </span>
-            <a href="<?= $post->link; ?>">Full Story</a>
+            <a href="<?= $post->link; ?>" class="">
+                full story
+            </a>
         </div>
     </div>
 </div>

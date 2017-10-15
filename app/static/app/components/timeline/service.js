@@ -1,7 +1,5 @@
 define("trender/timeline", ['trender/app', 'vue', 'jquery', 'trender/builtins'], 
 function (app, Vue, $){
-    const MAX_POSTS_PER_PAGE=5;
-    const STREAM_INTERVAL = 5*1000; // every 10 seconds
     const api = app.server.api;
 
     function stream(conf) {
@@ -40,12 +38,12 @@ function (app, Vue, $){
         var url = api + 'timeline/'+namef+'/stream_name';
         return default_fetch(url);
     }
-    
+
     function getAll() {
         var url = api + 'timeline/';
         return default_fetch(url);
     }
-    
+
     function create(data) {
         var url = api + "timeline/new";
         return $.ajax({
@@ -54,10 +52,10 @@ function (app, Vue, $){
             data: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
-            },
+            }
         });
     }
-    
+
     function deleteTimeline(id) {
         var url = api + "timeline/"+id;
         return $.ajax({
@@ -65,11 +63,11 @@ function (app, Vue, $){
             method: 'DELETE'
         });
     }
-    
+
     function updateStream(stream, showLoader, id) {
         var posts = stream.posts;
         var _html = stream.html;
-    
+
         if (!posts.length) {
             return;
         }
@@ -101,27 +99,17 @@ function (app, Vue, $){
             var last = false;
             posts.forEach(function (p) {
                 var id = "#tr-post-" + p.id;
-                if (p.type == 'youtube-post') {                    
+                if (p.type == 'youtube-post') {
+                    // XXX: remove this later
                     var json = JSON.parse(p.data);                        
                     var picture = "https://img.youtube.com/vi/"+
                                   json['video_id'] +  "/0.jpg";
-                    if (!last) {
-                        p.picture = picture;
-                        last = p;
-                    }
 
                     miniYoutube(id, p, picture);
                 } else {
-                    new Vue({
-                        el: id, 
-                        data:{post: p}
-                    });
+                    postComponent(id, p);
                 }
             });
-
-            if (last) {
-                featureYoutubePost(last, last.picture);
-            }
 
             if (showLoader === true) {
                 setTimeout(function(){
@@ -197,6 +185,20 @@ function (app, Vue, $){
         });
     }
 
+    function postComponent(el, post) {
+        return new Vue({
+            el: el,
+            data:{
+                post: post
+            },
+            methods: {
+                like: function (post) {
+                    console.info("post liked: ", post);
+                }
+            }
+        });
+    }
+
     return {
         getById: getById,
         getAll: getAll,
@@ -206,6 +208,7 @@ function (app, Vue, $){
         featureYoutubePost: featureYoutubePost,
         miniYoutube: miniYoutube,
         create: create,
-        delete: deleteTimeline
+        delete: deleteTimeline,
+        post: postComponent
     };
 });

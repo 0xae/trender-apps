@@ -1,10 +1,12 @@
 <?php
 use app\models\DateUtils;
 $picture = $post->cached;
+$data = json_decode($post->data);
 ?>
 
-<div role="article" class="dg di ds" id="tr-post-<?= $post->id ?>">
-<div>
+<div role="article" 
+     class="dg di ds" 
+     id="tr-post-<?= $post->id ?>">
     <div>
         <div class="tr-img-loader by bz ca" style="width:50px;float: left; margin-right: 5px;margin-top:5px;">
             <center>
@@ -24,11 +26,16 @@ $picture = $post->cached;
             </a>
             </center>            
         </div>
+
         <div style="">
             <h3 class="dt dm" style="display: inline-block">
                 <span>
+                    <img src="static/img/steemit-196x196.png" 
+                       width="16" height="16"
+                       style="margin-bottom: -4px" /> 
+
                     <strong> 
-                        <a href="javascript:void(0)">
+                        <a href="index.php?r=profile/index&username=<?=$post->authorName?>">
                             <?= $post->authorName ?>
                         </a>
                     </strong>
@@ -39,7 +46,7 @@ $picture = $post->cached;
                     <strong>
                         · <?= 
                             DateUtils::youtubeFmt($post->timestampFmt) 
-                        ?>   
+                        ?>
                     </strong>
                 </span>
             </div>
@@ -48,18 +55,22 @@ $picture = $post->cached;
     <div class="du" style="">
         <span> <p> <?= $post->description ?> </p> </span>
     </div>
-
+    
     <div class="el">
         <div class="k cv">
-            <a class="" aria-label="" href="<?= $post->link; ?>">
-                <img style="display:inline-block;padding:0px;" src="static/img/like.png" width="13" height="13" class="o">
-                <?= 10 + (int)$post->id; ?>
+            <a href="javascript:void(0)" @click="like(post)">
+                <img 
+                    style="display:inline-block;padding:0px;" 
+                    src="static/img/like.png" 
+                    width="13" 
+                    height="13" 
+                    class="o" />
+                <?= $data->votes ?>
             </a>
             <span aria-hidden="true">· </span>
-            <a href="<?= $post->link; ?>">Like</a>
+            <a href="javascript:void(0)"  @click="like(post)">like</a>
             <span aria-hidden="true">· </span>
-            <a href="<?= $post->link; ?>">Full Story</a>
+            <a href="<?= $post->link; ?>">full Story</a>
         </div>
     </div>
-</div>
 </div>

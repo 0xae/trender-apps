@@ -59,10 +59,5 @@ function (app, Timeline, Vue) {
         }
       }
     });
-
-    Vue.directive('tx-post-stream', {
-        bind: function (el, b, vnode) {            
-        }
-    });
 });
 

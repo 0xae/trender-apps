@@ -150,21 +150,23 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
         }
         
         .tr-shadow {
-        /*
-    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4) 100%);
-    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(0,0,0,0.4) 100%);
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.4) 100%);
-    */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#66000000',GradientType=0 );
-    opacity: 1;
-    width: 100%;
-    height: 200px;
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#66000000',GradientType=0 );
+            opacity: 1;
+            width: 100%;
+            height: 200px;
+            height:10px
         }
         
-        .tr-up-next {
+        .tr-shadow center div.tr-mini-play {
+            padding-top:20px;
+            color:red;
+            font-size: 25px;
         }
-
+        
         .tr-img-loader {
+            width:146px;
+            float:left;
+            margin-right: 5px;
         }
 
         .tr-loading-ellipsis {
@@ -194,6 +196,13 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
 
         .tr-video-time {
             opacity: .7 !important;
+            float: right;
+            font-size:12px;
+            margin-right:5px;
+            background-color: rgb(0,0,0);
+            border-radius:2px;
+            padding-right:5px;
+            padding-left:4px;
         }
 
         .v1-btn {
@@ -273,6 +282,22 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
             font-size: 14px;
             padding-right: 15px;
         }
+        
+        .tr-ref {
+            float: right;
+            font-size: 11px;
+            color: gray;
+            padding: 2px;
+            padding-top: 0px;
+            border-radius: 2px;
+            padding-right: 4px;
+        }
+        
+        .youtube-mini-post {
+            width:146px;
+            height:78px;
+            border-radius:3px;        
+        }
     </style>
     
     <script src="static/lib/require.js"></script>
@@ -342,24 +367,6 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
             </a>
         </div>
     </div>
-
-    <!--
-    <div class="col-md-12" 
-         ng-if="show_search_res"
-         style="position:absolute;margin-left:13px;padding:0px;z-index:400;box-shadow:0px 0px 2px rgba(0,0,0,.3);height:400px;;margin-bottom:4px;width:90%;background-color: #fff"
-         id="search_results">
-        <div style="width:50%;float:left;display:block;padding: 10px;height:100%;">
-            <h1></h1>
-         </div>
-
-        <div style="width:40%;float:right;display:block;padding: 10px;margin-right: 5px;" >
-            <div class="cr cs" ng-click="dismissSearch()" style="float: right">
-                <a href="javascript:void(0)" style="font-size: 13px"> <span class="j ct">close</span> </a>
-            </div>
-         </div>
-    </div>
-    -->
-    <!-- .col-md-12 -->
 </div>
 
 

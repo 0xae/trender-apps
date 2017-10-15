@@ -19,7 +19,7 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
         <div class="tr-shadow">
             <center>
                 <div class="tr-main-badge" style="margin-top: 100px;">
-                 <span class="fa fa-play"></span> Play video
+                    <span class="fa fa-play"></span> Play video
                 </div>
             </center>    
         </div>
@@ -58,7 +58,9 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
                 <span class="fa fa-clock-o"></span>
                 <span style="font-size: 11px;">
                 <strong>
-                    <?= DateUtils::formatToHuman($post->timestampFmt) ?>            
+                    <?= 
+                        DateUtils::formatToHuman($post->timestampFmt) 
+                    ?>            
                 </strong>
                 </span>
             </li>

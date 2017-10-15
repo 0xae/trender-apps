@@ -90,7 +90,7 @@ function (app, Timeline, builtins, _, Vue, $){
         }
     });
 
-   // stream();
-   // setInterval(stream, STREAM_INTERVAL);
+   stream();
+   setInterval(stream, STREAM_INTERVAL);
 });
 

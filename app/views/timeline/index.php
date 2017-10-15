@@ -1,8 +1,6 @@
 <?php
 use app\models\Post;
 $this->title = "Trending in {$timeline->name}";
-// $videos = [];
-// $posts = [];
 ?>
 
 <!-- Feed Area -->
@@ -13,7 +11,7 @@ $this->title = "Trending in {$timeline->name}";
                 "@app/views/timeline/appbar.php", 
                 [
                     "timeline" => $timeline, 
-                    "timeline_list"=>$timeline_list
+                    "timeline_list" => $timeline_list
                 ]
             );
         ?>
@@ -25,7 +23,6 @@ $this->title = "Trending in {$timeline->name}";
                 <div id="m_home_notice"></div>
                 <div id="m_newsfeed_stream" style="background-color: #fff;">
                     <div id="posts_container" 
-                         v-tx-post-stream:stream.showLoader="stream"
                          class="dp dq dr"
                          style="padding:0px;">
                          
@@ -49,7 +46,7 @@ $this->title = "Trending in {$timeline->name}";
                         <?php
                             echo \Yii::$app->view->renderFile(
                                 "@app/views/plugins/stream/index.php",
-                                ["posts" => $posts]
+                                ["posts" => []]
                             );
                         ?>
                     </div>
@@ -60,33 +57,23 @@ $this->title = "Trending in {$timeline->name}";
 
         <div id="app-video-stream" class="dp dq dr">
             <?php
-                $post = new Post;
-                if (!empty($videos)) {
-                    $post = $videos[0];
-                    unset($videos[0]);
-                }
-
-                echo \Yii::$app->view->renderFile (
+                echo \Yii::$app->view->renderFile(
                     "@app/views/plugins/youtube_featured/index.php",
-                    ["post" => $post]
+                    ["post" => new Post]
                 );
             ?>
 
             <div class="tr-up-next-label" style="">
-                <h1 style="">
-                    up next
-                </h1>
+                <h1 style="">up next</h1>
             </div>
-            
-            <div class="tr-up-next"
-                 id="vidStream"
-                 v-tx-post-stream:stream="stream">     
 
+            <div id="vidStream" class="tr-up-next">
                 <div id="vidStream_stream_start"></div>
+
                 <?php
                     echo \Yii::$app->view->renderFile (
                         "@app/views/plugins/youtube_stream/index.php",
-                        ["posts" => $videos]
+                        ["posts" => []]
                     );
                 ?>
             </div>

@@ -12,8 +12,8 @@ $picture = $post->cached;
                href="<?= $post->link; ?>" 
                style="width:50px; height: 50px;"
                title="Profile picture of <?= $post->authorName ?>">
-               
-                <img src="" 
+
+                <img src=""
                      id="img-<?= $post->id ?>"
                      width="50"
                      height="50"
@@ -25,14 +25,8 @@ $picture = $post->cached;
             </center>            
         </div>
         <div style="">
-            <h3 class="dt dm" style="display: inline-block">
-                <span>
-                    <strong> 
-                        <a href="javascript:void(0)">
-                            <?= $post->authorName ?>
-                        </a>
-                    </strong>
-                </span>
+            <h3 class="dt dm" style="display: inline-block;letter-spacing: 2px">
+                BBC
             </h3>
             <div style="color: gray;display:inline;">
                 <span style="font-size: 11px;">
@@ -48,19 +42,24 @@ $picture = $post->cached;
     <div class="du" style="">
         <span> <p> <?= $post->description ?> </p> </span>
     </div>
+</div>
 
-    <div class="el">
-        <div class="k cv">
-            <a class="" aria-label="" href="<?= $post->link; ?>">
-                <img style="display:inline-block;padding:0px;" src="static/img/like.png" width="13" height="13" class="o">
-                <?= 10 + (int)$post->id; ?>
-            </a>
-            <span aria-hidden="true">· </span>
-            <a href="<?= $post->link; ?>">Like</a>
-            <span aria-hidden="true">· </span>
-            <a href="<?= $post->link; ?>">Full Story</a>
-        </div>
+
+<div class="el">
+    <div class="k cv">
+        <a href="javascript:void(0)" v-on:click="like(post)">
+            <img style="display:inline-block;padding:0px;" 
+                 src="static/img/like.png" 
+                 width="13" 
+                 height="13" 
+                 class="o"
+            />                
+        </a>
+        <a href="javascript:void(0)" v-on:click="like(post)">like</a>
+        <span aria-hidden="true">· </span>
+        <a href="<?= $post->link; ?>">full Story</a>
     </div>
 </div>
+
 </div>
 
