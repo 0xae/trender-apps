@@ -39,15 +39,16 @@ use app\models\DateUtils;
                    class="v1-input" 
                    v-model="topic"
                    placeholder="topic" />
-
+            <!--
             <input type="text"
                    class="v1-input" 
                    style="margin-top: 4px"
                    v-model="name"
                    placeholder="name (optional)" />
+            -->
 
             <button type="button"
-                    v-on:click="submit({topic: topic, name: name})"
+                    v-on:click="submit({topic: topic})"
                     class="v1-btn">
                     save
             </button>

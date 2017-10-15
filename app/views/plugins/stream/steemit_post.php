@@ -70,7 +70,7 @@ $data = json_decode($post->data);
             <span aria-hidden="true">· </span>
             <a href="javascript:void(0)"  @click="like(post)">like</a>
             <span aria-hidden="true">· </span>
-            <a href="<?= $post->link; ?>">full Story</a>
+            <a href="<?= $post->link; ?>">full story</a>
         </div>
     </div>
 </div>
