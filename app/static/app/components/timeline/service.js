@@ -77,8 +77,8 @@ function (app, Vue, $){
         var posts_count = id+"_posts_count";
         var posts_loader_div = id+"posts_container_loader_div";
         var containerId = 'cont_'+posts[0].id;
-
         var tpl = '';
+
         if (showLoader === true) {
             $(posts_loader).css("background-color", "#2b55ad !important");
             $(posts_loader).show();
@@ -106,6 +106,7 @@ function (app, Vue, $){
                                   json['video_id'] +  "/0.jpg";
 
                     miniYoutube(id, p, picture);
+                    featureYoutubePost(p, picture);
                 } else {
                     postComponent(id, p);
                 }
@@ -113,7 +114,6 @@ function (app, Vue, $){
 
             if (showLoader === true) {
                 setTimeout(function(){
-                posts_container_loader_div
                     $(posts_loader).css("background-color", "#fff !important");
                     $(posts_count).text('0');                
                 }, 500);
