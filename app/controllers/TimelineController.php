@@ -1,7 +1,6 @@
 <?php
 namespace app\controllers;
 use app\models\Timeline;
-use app\models\Log;
 
 class TimelineController extends \yii\web\Controller {
     public function actionIndex($id) {
@@ -10,7 +9,6 @@ class TimelineController extends \yii\web\Controller {
 
         foreach ($all as $k) {
             if ($k->id == $id) {
-                // retrieve the last N
                 $timeline = $k;
                 break;
             }

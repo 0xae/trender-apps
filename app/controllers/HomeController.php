@@ -1,6 +1,5 @@
 <?php
 namespace app\controllers;
-
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -17,19 +16,7 @@ class HomeController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $data = Post::search('news', 50);
-        return $this->render('index', [
-            'posts' => $data["posts"]
-        ]);
-    }
-
-    public function actionTimeline() {
-        $query = isset($_GET['q']) ? $_GET['q'] : 'news';
-        $data = Post::search($query, 50);
-
-        return $this->renderPartial('timeline', [
-            'posts' => $data["posts"]
-        ]);
+        return $this->redirect(['timeline/index', 'id'=>1]);
     }
 
     public function actionTest() {
@@ -37,11 +24,6 @@ class HomeController extends Controller {
         # $query = urlencode($q);
         # $result = file_get_contents("http://localhost:8983/solr/trender/select?q={$query}&wt=phps");
         # $data = unserialize($result);
-
-        $data = Post::search('news');
-        return $this->renderPartial('test', [
-            'model' => $data["posts"]
-        ]);
     }
 }
 
