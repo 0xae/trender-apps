@@ -299,7 +299,8 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
             border-radius:3px;        
         }
     </style>
-    
+
+    <!-- <script src="static/lib/vue.js"></script>   -->
     <script src="static/lib/require.js"></script>
     <?php $this->head(); ?>
 </head>

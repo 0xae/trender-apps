@@ -9,17 +9,14 @@ use yii\web\AssetBundle;
 class AppAsset extends AssetBundle {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
+
     public $css = [
         'static/css/site.css',
         'static/css/font-awesome.min.css',
     ];
 
     public $js = [
-        "static/app/config.js",
-        "static/app/app.js",
-        "static/app/components/builtin.js",
-        "static/app/components/timeline/service.js",
-        "static/app/components/timeline/controller.js"
+        "static/config.js",
     ];
 
     public $depends = [

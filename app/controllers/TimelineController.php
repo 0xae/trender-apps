@@ -50,5 +50,33 @@ class TimelineController extends \yii\web\Controller {
             'stream' => $req
         ]);
     }
+
+    public function actionTest() {
+        return $this->render('test');
+    }
+
+    public function actionData() {
+        $id = 'dummy-'.time();
+$HTML = <<<HTML
+<div class="dummy"  id="$id">
+    <h1>This is the heading</h1>
+    <p>
+       <!--
+        Cras justo odio, dapibus ac facilisis in, 
+        egestas eget quam. Donec id elit non mi porta 
+        gravida at eget metus. Nullam id dolor id 
+        nibh ultricies vehicula ut id elit.
+        -->
+        {{ content }}
+    </p>
+    <a v-on:click="log(123)" href="#">read more</a>
+</div>
+HTML;
+        header('Content-Type: application/json');
+        return json_encode([
+            'id' => $id,
+            'html' => $HTML
+        ]);
+    }
 }
 

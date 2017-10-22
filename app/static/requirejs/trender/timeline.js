@@ -99,7 +99,6 @@ function (app, Vue, $){
             var last = false;
             posts.forEach(function (p) {
                 if (p.type == 'youtube-post') {
-                    // XXX: remove this later
                     var json = JSON.parse(p.data);                        
                     var picture = "https://img.youtube.com/vi/"+
                                   json['video_id'] +  "/0.jpg";
@@ -148,22 +147,6 @@ function (app, Vue, $){
         }
     }
 
-    function component(elementId, data) {
-        return new Vue({
-            el: elementId, 
-            data: data,
-            methods: {
-                update: function (stream) {
-                    updateStream(
-                        stream,
-                        data.stream.showLoader, 
-                        elementId
-                    );
-                },
-            }
-        });
-    }
-
     function miniYoutube(el, p, picture) {
         return new Vue({
             el: el,
@@ -180,6 +163,22 @@ function (app, Vue, $){
                     console.info("set featureYoutubePost: ", post);
                     featureYoutubePost(post, post.picture);
                 }
+            }
+        });
+    }
+
+    function component(elementId, data) {
+        return new Vue({
+            el: elementId, 
+            data: data,
+            methods: {
+                update: function (stream) {
+                    updateStream(
+                        stream,
+                        data.stream.showLoader, 
+                        elementId
+                    );
+                },
             }
         });
     }

@@ -5,11 +5,11 @@ $json = json_decode($post->data);
 
 <div role="article" 
      class="dg di ds youtube-post"
+     v-on:click="select(post)"
      id="tr-post-<?= $post->id ?>">
 
     <div class="tr-img-loader by bz ca">
         <div class="youtube-mini-post"
-             v-on:click="select(post)"
              v-tx-img-cache="{post: post, link: link, done: done}">
             <div class="tr-shadow" style="">
                 <center>
