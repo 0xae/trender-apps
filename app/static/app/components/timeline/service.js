@@ -98,17 +98,16 @@ function (app, Vue, $){
         setTimeout(function (){
             var last = false;
             posts.forEach(function (p) {
-                var id = "#tr-post-" + p.id;
                 if (p.type == 'youtube-post') {
                     // XXX: remove this later
                     var json = JSON.parse(p.data);                        
                     var picture = "https://img.youtube.com/vi/"+
                                   json['video_id'] +  "/0.jpg";
 
-                    miniYoutube(id, p, picture);
+                    miniYoutube("#tr-post-" + p.id, p, picture);
                     featureYoutubePost(p, picture);
                 } else {
-                    postComponent(id, p);
+                    postComponent("#tr-post-" + p.id, p);
                 }
             });
 

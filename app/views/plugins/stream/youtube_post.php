@@ -6,7 +6,8 @@ $json = json_decode($post->data);
 <div role="article" class="dg di ds youtube-post" id="tr-post-<?= $post->id ?>">
 <div>
     <div>
-        <div class="tr-img-loader by bz ca" style="width:35px;float: left;margin-right: 5px;">
+        <div class="tr-img-loader by bz ca" 
+             style="width:35px;float: left;margin-right: 5px;">
             <a class="cb" 
                href="<?= $post->link; ?>" 
                style="height: 35px;width:35px;"
@@ -37,9 +38,7 @@ $json = json_decode($post->data);
                     <span style="font-size:10px" class="fa fa-clock-o"></span>
                     <span style="font-size: 11px;">
                         <strong>
-                            <?= 
-                                DateUtils::youtubeFmt($post->timestampFmt) 
-                            ?>   
+                            <?= DateUtils::youtubeFmt($post->timestampFmt) ?>   
                         </strong>
                     </span>
                 </div>
@@ -63,12 +62,12 @@ $json = json_decode($post->data);
                     -->
 
                     <div class="" 
-                         style="color:darkorange;font-size: 40px;padding-top:40px;margin-bottom: 27px;">
+                         style="color:red;font-size: 25px;padding-top:40px;margin-bottom: 43px;">
                         <span class="fa fa-play" title="Play"></span>
                     </div>
                 </center>
 
-            <div style="color: #fff;padding-top:6px;padding-bottom:5px;background-color: rgba(0,0,0,.7);border-radius:3px;">
+            <div style="color: #fff;padding-top:6px;padding-bottom:5px;background-color: rgba(0,0,0,.7);">
                 <span style="margin-left:5px;">
                     <img src="static/img/youtube-small.ico" style="float:left;margin-left:4px" />
                     <strong>

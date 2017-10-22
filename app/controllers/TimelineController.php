@@ -28,10 +28,10 @@ class TimelineController extends \yii\web\Controller {
         $videos = [];
 
         foreach($req->posts as $p) {
-            if ($p->type=='youtube-post')
-                $videos[] = $p;
-            else
-                $posts[] = $p;
+             if ($p->type=='youtube-post')
+                 $videos[] = $p;
+             else
+                 $posts[] = $p;
         }
 
         $html = $this->renderPartial(
