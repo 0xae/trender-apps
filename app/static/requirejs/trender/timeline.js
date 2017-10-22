@@ -120,7 +120,8 @@ function (app, Vue, $){
     }
 
     var node = null, data = null;
-    function featureYoutubePost(post, picture) { 
+    function featureYoutubePost(post, picture) {         
+        console.debug(post);
         post.json = JSON.parse(post.data);
         if (!node) {
             data = {

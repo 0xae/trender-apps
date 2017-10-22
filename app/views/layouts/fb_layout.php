@@ -261,7 +261,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
             width:100%;
             height:200px;
             margin-bottom: 10px;
-            /*sbackground-color: #000;*/
+            /*background-color: #000;*/
         }
         
         .tr-up-next-label {

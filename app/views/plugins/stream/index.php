@@ -1,4 +1,5 @@
 <?php
+    $buf = '';
     foreach ($posts as $post) {
         if ($post->type == "youtube-post") {
             $tpl = "@app/views/plugins/stream/youtube_post.php";
@@ -15,6 +16,16 @@
         echo \Yii::$app->view->renderFile(
             $tpl, ["post" => $post]
         );
+        
+        $json = json_encode($post);
+        $buf .= "Timeline.post('#tr-post-{$post->id}', $json);";
     }
-?>
 
+$scrip = <<<JS
+requirejs(['trender/timeline','vue'], function (Timeline, Vue){
+$buf
+});
+JS;
+
+$this->registerJs($scrip);
+?>

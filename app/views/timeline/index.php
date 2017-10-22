@@ -8,9 +8,8 @@ $this->title = "Trending in {$timeline->name}";
     <div id="app-left-col" class="">
         <?php
             echo \Yii::$app->view->renderFile(
-                "@app/views/timeline/appbar.php", 
-                [
-                    "timeline" => $timeline, 
+                "@app/views/timeline/appbar.php", [
+                    "timeline" => $timeline,
                     "timeline_list" => $timeline_list
                 ]
             );
@@ -46,7 +45,7 @@ $this->title = "Trending in {$timeline->name}";
                         <?php
                             echo \Yii::$app->view->renderFile(
                                 "@app/views/plugins/stream/index.php",
-                                ["posts" => []]
+                                ["posts" => $posts]
                             );
                         ?>
                     </div>
@@ -69,11 +68,10 @@ $this->title = "Trending in {$timeline->name}";
 
             <div id="vidStream" class="tr-up-next">
                 <div id="vidStream_stream_start"></div>
-
                 <?php
                     echo \Yii::$app->view->renderFile (
                         "@app/views/plugins/youtube_stream/index.php",
-                        ["posts" => []]
+                        ["posts" => $videos]
                     );
                 ?>
             </div>
@@ -82,7 +80,6 @@ $this->title = "Trending in {$timeline->name}";
 
     </div> <!-- #viewport -->
 </div> <!-- .f -->
-
 
 <script>
 requirejs(['trender/app', 'trender/timeline', 
@@ -166,9 +163,8 @@ function (app, Timeline, builtins, _, Vue, $){
         data: timelineData,
         methods: {
             deleteTimeline: function (id, index) {
-                if (!confirm("Are you sure?")) {
+                if (!confirm("Are you sure?"))
                     return;
-                }
 
                 Timeline.delete(id)
                 .then(function (){
@@ -178,7 +174,7 @@ function (app, Timeline, builtins, _, Vue, $){
         }
     });
 
-   stream();
+   // stream();
    setInterval(stream, STREAM_INTERVAL);
 });
 </script>

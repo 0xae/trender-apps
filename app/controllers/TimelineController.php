@@ -6,6 +6,8 @@ class TimelineController extends \yii\web\Controller {
     public function actionIndex($id) {
         $all = Timeline::all();
         $timeline = false;
+        $posts = [];
+        $videos = [];
 
         foreach ($all as $k) {
             if ($k->id == $id) {
@@ -14,9 +16,21 @@ class TimelineController extends \yii\web\Controller {
             }
         }
 
+        $limit = 10;
+        $req = Timeline::stream($id, $limit);
+
+        foreach($req->posts as $p) {
+             if ($p->type=='youtube-post')
+                 $videos[] = $p;
+             else
+                 $posts[] = $p;
+        }
+
         return $this->render('index', [
             'timeline' => $timeline,
-            'timeline_list' => $all
+            'timeline_list' => $all,
+            'posts' => $posts,
+            'videos' => $videos
         ]);
     }
 
