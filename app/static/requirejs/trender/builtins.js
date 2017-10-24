@@ -1,6 +1,7 @@
 define("trender/builtins", ['trender/app','trender/timeline', 'vue'], 
 function (app, Timeline, Vue) {
-    var api = app.server.api;
+    var api = app.apiHost();
+    var media = app.mediaHost();
     // tx-img-cache
     // @params post
     // @description fetches/caches the post image
@@ -55,7 +56,7 @@ function (app, Timeline, Vue) {
 
             // XXX: remove this
             href = href.replace('/opt/lampp/htdocs', '');
-            updateImage('../' + href);
+            updateImage(media + href);
         }
       }
     });

@@ -5,14 +5,16 @@ use yii\web\HttpException;
 
 class Timeline extends \yii\base\Object {
     public static function byId($id) {
-        $query = 'http://127.0.0.1:5000/api/timeline/' . $id;
+        $host = Trender::apiHost();
+        $query = "http://{$host}/api/timeline/$id";
         $json = self::get($query);
         return $json;
     }
 
     public static function stream($id, $limit, $start=false) {
-        $query = 'http://127.0.0.1:5000/api/timeline/' . $id 
-                        . '/stream?limit='.$limit;
+        $host = Trender::apiHost();
+        $query = "http://{$host}/api/timeline/$id/stream"
+                 . "?limit=$limit";
         if ($start) {
             $query .= '&start=' . $start;
         }
@@ -21,13 +23,15 @@ class Timeline extends \yii\base\Object {
     }
 
     public static function search($topic, $limit=40) {
-        $query = "http://127.0.0.1:5000/api/timeline/topic/$topic"
+        $host = Trender::apiHost();
+        $query = "http://{$host}/api/timeline/topic/$topic"
                     . '?limit=' . $limit;
         return self::get($query);
     }
 
     public static function all($state='*') {
-        $query = 'http://127.0.0.1:5000/api/timeline?state=' . $state;
+        $host = Trender::apiHost();
+        $query = "http://{$host}/api/timeline?state=" . $state;
         return self::get($query);
     }
 

@@ -370,6 +370,12 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
             <a class="bn <?=(Yii::$app->controller->id == 'market')?'bo':''?> bp" href="index.php?r=market/index">
                 Markets
             </a>
+
+            <a style="float: right;"
+               class="bn <?=(Yii::$app->controller->id == 'infra')?'bo':''?> bp" 
+               href="index.php?r=infra/index">
+                <strong>Infraestructure (0)</strong>
+            </a>
         </div>
     </div>
 </div>

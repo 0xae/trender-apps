@@ -1,6 +1,6 @@
 define("trender/timeline", ['trender/app', 'vue', 'jquery', 'trender/builtins'], 
 function (app, Vue, $){
-    const api = app.server.api;
+    const api = app.apiHost();
 
     function stream(conf) {
         var limit = conf.limit || _.random(3, 5);
