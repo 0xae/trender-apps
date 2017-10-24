@@ -13,11 +13,12 @@ class Timeline extends \yii\base\Object {
 
     public static function stream($id, $limit, $start=false) {
         $host = Trender::apiHost();
-        $query = "http://{$host}/api/timeline/$id/stream"
-                 . "?limit=$limit";
+        $query = "http://{$host}/api/timeline/$id/stream?limit=$limit";
+
         if ($start) {
             $query .= '&start=' . $start;
         }
+
         $json = self::get($query);
         return $json;
     }
