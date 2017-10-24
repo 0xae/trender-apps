@@ -12,8 +12,7 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
 ?>
 
 <div role="article" class="dg di ds" id="tr-youtube-featured">
-<div>
-    <div id="tr-outdoor-img"
+    <div id="tr-outdoor-img" v-if="!isPlaying"
          v-tx-img-cache="{post: post, link: link, done: done}"
          v-on:click="playVideo(post)">
         <div class="tr-shadow">
@@ -24,6 +23,14 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
             </center>    
         </div>
     </div>
+
+    <iframe id="ytplayer" type="text/html" 
+          width="406" height="200"
+          v-if="isPlaying"
+          v-bind:src="playUrl"
+          frameborder="0">        
+    </iframe>
+
     <div style="padding: 10px;padding-top:2px;">
         <div style="">
             <h3 class="dt dm" style="display: inline-block">
@@ -37,6 +44,7 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
                 </span>
             </h3>
         </div>
+
         <div class="du" style="">
             <span> <p> <?= $post->description ?> {{post.description}} </p> </span>
         </div>
@@ -66,6 +74,4 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
             </li>
         </ul>
     </div>
-
-</div>
 </div>

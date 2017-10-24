@@ -64,6 +64,7 @@ function (app, Vue, $){
         });
     }
 
+    var featured = false;
     function updateStream(stream, showLoader, id) {
         var posts = stream.posts;
         var _html = stream.html;
@@ -96,19 +97,24 @@ function (app, Vue, $){
         $("#"+containerId).slideDown(783.123);
 
         setTimeout(function (){
-            var last = false;
+            var last = null;
             posts.forEach(function (p) {
                 if (p.type == 'youtube-post') {
                     var json = JSON.parse(p.data);                        
                     var picture = "https://img.youtube.com/vi/"+
-                                  json['video_id'] +  "/0.jpg";
-
+                                  json['video_id'] + 
+                                  "/0.jpg";
+                    p.picture = picture;
                     miniYoutube("#tr-post-" + p.id, p, picture);
-                    featureYoutubePost(p, picture);
                 } else {
                     postComponent("#tr-post-" + p.id, p);
                 }
             });
+
+            if (!featured) {
+                featureYoutubePost(posts[0], posts[0].picture);
+                featured = true;
+            }
 
             if (showLoader === true) {
                 setTimeout(function(){
@@ -127,6 +133,8 @@ function (app, Vue, $){
             data = {
                 post: post,
                 link: picture,
+                isPlaying: false,
+                playUrl: false,
                 done: function (node, src) {
                     var tpl = 'url('+src+') no-repeat 10px -57px'
                     node.elm.style['background'] = tpl;
@@ -138,7 +146,13 @@ function (app, Vue, $){
                 data: data,
                 methods: {
                     playVideo: function (post) {
-                        console.info("playing: " + post.description);
+                        console.info("playing: ", post);
+                        var vid = JSON.parse(post.data);
+                        var videoId = vid.video_id;
+                        var url = "https://www.youtube.com/embed/" + videoId + 
+                                  "?autoplay=1&origin=http://example.com";
+                        data.playUrl = url;
+                        data.isPlaying = true;
                     }
                 }
             });
