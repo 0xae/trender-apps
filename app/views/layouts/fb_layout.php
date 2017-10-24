@@ -4,6 +4,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\widgets\ActiveForm;
 
 AppAsset::register($this);
 $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
@@ -323,7 +324,10 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
     </div>
 
     <div class="u v" role="banner" id="header">
-        <form method="get" action="index.php?r=timeline/search" class="w" novalidate>
+        <?php $form = ActiveForm::begin(['action' => 'index.php?r=timeline/search', 
+                                         'method' => 'get',
+                                         'options' => ['class' => 'w']
+                                         ]); ?>
             <table class="y" role="presentation">
                 <tbody>
                     <tr>
@@ -349,7 +353,7 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
                     </tr>
                 </tbody>
             </table>
-        </form>
+        <?php ActiveForm::end(); ?>
 
         <div role="navigation" class="bm" style="clear:both">
             <a class="bn <?=(Yii::$app->controller->id == 'timeline')?'bo':''?> bp" href="index.php?r=timeline/index&id=<?= $timelineId ?>" aria-current="page">

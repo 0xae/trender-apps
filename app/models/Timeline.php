@@ -20,6 +20,12 @@ class Timeline extends \yii\base\Object {
         return $json;
     }
 
+    public static function search($topic, $limit=40) {
+        $query = "http://127.0.0.1:5000/api/timeline/topic/$topic"
+                    . '?limit=' . $limit;
+        return self::get($query);
+    }
+
     public static function all($state='*') {
         $query = 'http://127.0.0.1:5000/api/timeline?state=' . $state;
         return self::get($query);

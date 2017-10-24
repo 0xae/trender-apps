@@ -1,8 +1,36 @@
 <?php
 namespace app\controllers;
 use app\models\Timeline;
+use yii\web\HttpException;
 
 class TimelineController extends \yii\web\Controller {
+    public function actionSearch() {
+        $q = @$_GET['q'];
+        if (!$q) {
+            throw new HttpException(400, "q paramater missing");
+        }
+
+        $req = Timeline::search($q);
+        $timeline = $req->timeline;
+        $all = Timeline::all();
+        $posts = [];
+        $videos = [];
+
+        foreach($req->posts as $p) {
+             if ($p->type=='youtube-post')
+                 $videos[] = $p;
+             else
+                 $posts[] = $p;
+        }
+
+        return $this->render('index', [
+            'timeline' => $timeline,
+            'timeline_list' => $all,
+            'posts' => $posts,
+            'videos' => $videos
+        ]);
+    }
+
     public function actionIndex($id) {
         $all = Timeline::all();
         $timeline = false;

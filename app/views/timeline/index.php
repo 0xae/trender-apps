@@ -174,7 +174,7 @@ function (app, Timeline, builtins, _, Vue, $){
         }
     });
 
-   // stream();
+   stream();
    setInterval(stream, STREAM_INTERVAL);
 });
 </script>
