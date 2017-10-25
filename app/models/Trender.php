@@ -3,10 +3,14 @@ namespace app\models;
 
 class Trender {
     public static function apiHost() {
-        $api = getenv("TRENDER_API");
-        if (!$api) {
-            $api = "192.168.1.85:5000";
-        }
-        return $api;
+        $json = file_get_contents('trender.conf');
+        $conf = json_decode($json);
+        return $conf->trender_api;
+    }
+
+    public static function mediaHost() {
+        $json = file_get_contents('trender.conf');
+        $conf = json_decode($json);
+        return $conf->trender_host;
     }
 }

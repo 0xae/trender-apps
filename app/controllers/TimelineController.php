@@ -16,7 +16,7 @@ class TimelineController extends \yii\web\Controller {
         $posts = [];
         $videos = [];
 
-        foreach($req->posts as $p) {
+        foreach ($req->posts as $p) {
              if ($p->type=='youtube-post')
                  $videos[] = $p;
              else
