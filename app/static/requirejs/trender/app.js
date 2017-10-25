@@ -7,12 +7,12 @@ define("trender/app", function () {
             // };
             // 192.168.1.85
             var api = localStorage.getItem("trender_api");
-            return api || "127.0.0.1:5000/";
+            return api || "http://127.0.0.1:5000/";
         },
 
         mediaHost: function() {
-            var host = localStorage.getItem("trender_host") || '127.0.0.1';
-            return "http://"+ host + "/trender/";
+            var host = localStorage.getItem("trender_host") || 'http://127.0.0.1';
+            return host + "/trender/";
         }
     }
 });

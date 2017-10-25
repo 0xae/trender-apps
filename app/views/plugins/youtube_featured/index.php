@@ -65,9 +65,11 @@ $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
             <li>
                 <span class="fa fa-clock-o"></span>
                 <span style="font-size: 11px;">
-                <strong>
-                    <?= 
-                        DateUtils::formatToHuman($post->timestampFmt) 
+                <strong >
+                    {{post.timestampFmt}}
+                    <?php 
+                       #  if ($post->timestampFmt) 
+                       #      DateUtils::formatToHuman($post->timestampFmt);
                     ?>            
                 </strong>
                 </span>
