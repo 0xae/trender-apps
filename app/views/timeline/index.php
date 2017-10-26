@@ -163,8 +163,9 @@ function (app, Timeline, builtins, _, Vue, $){
         data: timelineData,
         methods: {
             deleteTimeline: function (id, index) {
-                if (!confirm("Are you sure?"))
+                if (!confirm("Are you sure?")){
                     return;
+                }
 
                 Timeline.delete(id)
                 .then(function (){
