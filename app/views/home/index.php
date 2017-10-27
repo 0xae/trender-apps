@@ -82,16 +82,18 @@ for ($i=0; $i<6; $i++){
                 Trending topics
             </h4>
             
+            <div class="tr-section-content">
             <ul class="list-unstyled">
-            <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): ?>
-                <li>
-                    <a href="#">
-                        <?= $trendingCats[$trend] ?>
-                        (<?= $trendingCats[$trend+1] ?>)
-                    </a>
-                </li>
-            <?php endfor; ?>
+                <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): ?>
+                    <li>
+                        <a href="#" class="tr-trend-item">
+                            <?= $trendingCats[$trend] ?>
+                            (<?= $trendingCats[$trend+1] ?>)
+                        </a>
+                    </li>
+                <?php endfor; ?>
             </ul>
+            </div>
         </div>
 
         <div class="tr-section">
@@ -102,16 +104,19 @@ for ($i=0; $i<6; $i++){
                     </span>
                 -->
             </h4>
+
+            <div class="tr-section-content">
             <ul class="list-unstyled">
-            <?php for ($i=0; $i<15; $i+=2,$trend+=2): ?>
-                <li>
-                    <a href="#">
-                        <?= $trendingCats[$trend] ?>
-                        (<?= $trendingCats[$trend+1] ?>)
-                    </a>
-                </li>
-            <?php endfor; ?>
+                <?php for ($i=0; $i<15; $i+=2,$trend+=2): ?>
+                    <li>
+                        <a href="#" class="tr-more-item">
+                            <?= $trendingCats[$trend] ?>
+                            (<?= $trendingCats[$trend+1] ?>)
+                        </a>
+                    </li>
+                <?php endfor; ?>
             </ul>
+            </div>
         </div>
 
         <div class="tr-section">
@@ -124,7 +129,6 @@ for ($i=0; $i<6; $i++){
 
         <div class="tr-section">
         </div>
-
     </div>
 
     <div class="col-md-9">
