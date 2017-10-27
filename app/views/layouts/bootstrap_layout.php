@@ -73,6 +73,31 @@ a.tr-trend-item {
 a.tr-more-item {
 }
 
+ul.tr-settings {
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+ul.tr-settings li {
+    margin-bottom: 20px;
+}
+
+ul.tr-settings li a {
+    font-weight: bold;
+    color: gray;
+    font-size: 13px;
+}
+
+ul.tr-settings li a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+ul.tr-settings li a span.fa {
+    margin-right: 10px;
+}
+
+
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, 
 .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, 
 .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, 

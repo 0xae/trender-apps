@@ -75,7 +75,7 @@ for ($i=0; $i<6; $i++){
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2" style="">
         <div class="tr-section">
             <h4 class="tr-section-title">
                 <span class="glyphicon glyphicon-flash" style="color: darkorange"></span>
@@ -119,6 +119,7 @@ for ($i=0; $i<6; $i++){
             </div>
         </div>
 
+        <!--
         <div class="tr-section">
             <h4 class="tr-section-title">
                 <span class="glyphicon glyphicon-th-list">
@@ -126,12 +127,44 @@ for ($i=0; $i<6; $i++){
                 My Channels
             </h4>
         </div>
+        -->
 
         <div class="tr-section">
+            <ul class="list-unstyled tr-settings">
+                <li>
+                    <a href="#">
+                        <span style="color: #337ab7" class="fa fa-thumbs-up"></span>Likes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span style="color:orange" class="fa fa-star"></span>Favorites
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-archive"></span>History
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-play"></span>Playlist
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-cog"></span>Settings
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-9" style="border-left:1px solid #c5c4c4;padding-left:20px;">
             <div id="posts_container" 
                  class="dp dq dr"
                  style="padding:0px;">
