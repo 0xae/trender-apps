@@ -10,7 +10,7 @@ for ($i=0; $i<6; $i++){
         // XXX: remove this later
         do {
             $vid = $videos[$k++];
-        } while(!@$vid['cached']);
+        } while(!@$vid->cached);
         $data[] = $vid;
     }
     
@@ -52,35 +52,88 @@ for ($i=0; $i<6; $i++){
     <div class="col-md-12 tr-header">
         <?php foreach ($imgs as $img): ?>
             <div class="col-md-2 tr-img-display">
-            <?php foreach ($img as $vid): ?>
+                <?php foreach ($img as $vid): ?>
+                    <div class="tr-img-container">
+                        <small>
+                        <img src="static/img/youtube-small.ico" width="15px" />
 
-                <div class="tr-img-container">
-                    <small>
-                    <img src="static/img/youtube-small.ico" width="15px" />
-
-                     <?php 
-                        echo (strlen($vid['description']) >= $MAX) ? 
-                            substr($vid['description'], 0, $MAX) . '...' : 
-                            $vid['description'];
-                     ?>
-                    </small>
-                    <img class="tr-cover" src="../<?= $vid['cached'] ?>" />
-                </div>
-            <?php endforeach; ?>
+                         <?php 
+                            echo (strlen($vid->description) >= $MAX) ? 
+                                substr($vid->description, 0, $MAX) . '...' : 
+                                $vid->description;
+                         ?>
+                        </small>
+                        <img class="tr-cover" src="../<?= $vid->cached ?>" />
+                    </div>
+                <?php endforeach; ?>
             </div>
         <?php endforeach; ?>
+        
+        <div class="col-md-12">
+            <h2>Trender</h2>
+        </div>
     </div>
 
     <div class="col-md-2">
-        <h1>div1</h1>
+        <div class="tr-section">
+            <h4 class="tr-section-title">
+                Trending topics
+                <span class="glyphicon glyphicon-flash" style="color: darkorange"></span>
+            </h4>
+        </div>
+
+        <div class="tr-section">
+            <h4 class="tr-section-title">
+                More
+                <!--
+                    <span class="glyphicon glyphicon-flash">
+                    </span>
+                -->
+            </h4>
+        </div>
+
+        <div class="tr-section">
+            <h4 class="tr-section-title">
+                My Channels
+                <span class="glyphicon glyphicon-th-list">
+                </span>
+            </h4>
+        </div>
+
+        <div class="tr-section">
+        </div>
+
     </div>
 
-    <div class="col-md-8">
-        <h1>div2</h1>
-    </div>
+    <div class="col-md-9">
+            <div id="posts_container" 
+                 class="dp dq dr"
+                 style="padding:0px;">
+                 
+                <div class="ds di" 
+                     id="posts_container_posts_loader" 
+                     style="">
+                    <div>
+                        <a href="javascript:void(0)" 
+                           id="posts_container_loader_div">
+                            <p style="text-align: center"> 
+                             <span id="posts_container_posts_count">
+                                0
+                             </span> new posts
+                            </p>
+                        </a>
+                    </div>
+                </div>
 
-    <div class="col-md-2">
-        <h1>div3</h1>
+                <div id="posts_container_stream_start"></div>
+
+                <?php
+                    echo \Yii::$app->view->renderFile(
+                        "@app/views/plugins/stream/index.php",
+                        ["posts" => $posts]
+                    );
+                ?>
+            </div>
     </div>
 </div>
 </div>

@@ -19,12 +19,17 @@ class HomeController extends Controller {
      */
     public function actionIndex() {
         $start = rand(0, 1000);
-        $videos = Solr::query("*", $start, 20, "type:youtube-post")["response"]["docs"];
-        $posts = Solr::query("*", $start, 20, "!type:youtube-post")["response"]["docs"];
+        $videos = Solr::query("*", $start, 20, "type:youtube-post")->response->docs;
+        $posts = Solr::query("*", $start, 40, false)->response->docs;
+        
+        foreach ($posts as $p) {
+            $p->timestampFmt = '123';
+            $p->picture = $p->cached;
+        }
 
         return $this->render('index', [
             "videos" => $videos,
-            "posts" => $posts            
+            "posts" => $posts
         ]);
     }
 

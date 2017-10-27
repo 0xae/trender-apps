@@ -12,7 +12,7 @@ class Solr {
         $query .= "&rows={$limit}";
         $query .= "&start={$start}";
         $query .= "&sort=timestamp+desc";
-        $query .= "&wt=phps";
+        $query .= "&wt=json";
 
         if ($facetq) {
             $facet_query = urlencode($facetq);
@@ -20,7 +20,7 @@ class Solr {
         }
 
         $result = file_get_contents($query);
-        return unserialize($result);
+        return json_decode($result);
     }
 }
 
