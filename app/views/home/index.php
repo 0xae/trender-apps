@@ -21,6 +21,8 @@ for ($i=0; $i<6; $i++){
 <style>
 .tr-header {
     background-color: #000;
+    min-height: 300px;
+    padding: 5px;
 }
 
 .tr-img-container {
@@ -32,16 +34,13 @@ for ($i=0; $i<6; $i++){
 .tr-img-container img.tr-cover {
     width: 183px;
     height: 129px;
+    margin-bottom: 10px;
 }
 
 .tr-img-container small {
     font-size: 12px;
     color: #fff;
     font-weight: bold;
-    position: absolute;
-    padding-top:4px;
-    padding-bottom:4px;
-
 }
 
 .tr-img-display {
