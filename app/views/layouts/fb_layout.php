@@ -19,7 +19,6 @@ $timelineId = @$_GET['id'] ? $_GET['id'] : '1';
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="static/css/fb.main.css"  />
-    <link rel="stylesheet" href="static/fonts/font-awesome.min.css"> 
     <style type="text/css">
         .good-syrene {
             padding: 3px;

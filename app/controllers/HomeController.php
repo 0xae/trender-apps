@@ -1,5 +1,6 @@
 <?php
 namespace app\controllers;
+
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -16,7 +17,8 @@ class HomeController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        return $this->redirect(['timeline/index', 'id'=>1]);
+        return $this->render('index', [
+        ]);
     }
 
     public function actionTest() {

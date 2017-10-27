@@ -2,9 +2,9 @@
 $this->title = 'Trender Home';
 ?>
 
-<div class="container tr-container">
+<div class="container">
 <div class="row">
-    <div class="col-md-12 tr-header">
+    <div class="col-md-12">
         <p>photos get here</p>
     </div>
 

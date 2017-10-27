@@ -16,9 +16,9 @@ class AppAsset extends AssetBundle {
     ];
 
     public $js = [
+        "static/lib/require.js",
         "static/config.js",
     ];
 
-    public $depends = [
-    ];
+    public $depends = [];
 }
