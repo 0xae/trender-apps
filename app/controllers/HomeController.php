@@ -19,9 +19,15 @@ class HomeController extends Controller {
      */
     public function actionIndex() {
         $start = rand(0, 1000);
-        $videos = Solr::query("*", $start, 20, "type:youtube-post")->response->docs;
-        $posts = Solr::query("*", $start, 40, false)->response->docs;
+        $vidReq = Solr::query("*", $start, 20, "type:youtube-post");
+        $postReq = Solr::query("*", $start, 40, false);
+        $videos = $vidReq->response->docs;
+        $posts = $postReq->response->docs;
         
+        $trendingCats = $postReq->facet_counts->facet_fields->category;
+        $trendingTypes = $postReq->facet_counts->facet_fields->type;
+
+        // XXX
         foreach ($posts as $p) {
             $p->timestampFmt = '123';
             $p->picture = $p->cached;
@@ -29,7 +35,8 @@ class HomeController extends Controller {
 
         return $this->render('index', [
             "videos" => $videos,
-            "posts" => $posts
+            "posts" => $posts,
+            "trendingCats" => $trendingCats
         ]);
     }
 

@@ -45,10 +45,11 @@ body {
 .tr-section-title {
     color: dimgrey;
     font-weight: bold;
+    font-size: 15px;
 }
 
 .tr-section-title .glyphicon{
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, 

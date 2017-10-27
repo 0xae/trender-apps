@@ -4,6 +4,7 @@ $imgs = [];
 $perBlock = 2;
 $k = 0;
 $MAX=22;
+$trend = 0;
 for ($i=0; $i<6; $i++){
     $data = [];
     for ($j=0; $j<$perBlock; $j++){
@@ -74,12 +75,23 @@ for ($i=0; $i<6; $i++){
         </div>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-3">
         <div class="tr-section">
             <h4 class="tr-section-title">
-                Trending topics
                 <span class="glyphicon glyphicon-flash" style="color: darkorange"></span>
+                Trending topics
             </h4>
+            
+            <ul class="list-unstyled">
+            <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): ?>
+                <li>
+                    <a href="#">
+                        <?= $trendingCats[$trend] ?>
+                        (<?= $trendingCats[$trend+1] ?>)
+                    </a>
+                </li>
+            <?php endfor; ?>
+            </ul>
         </div>
 
         <div class="tr-section">
@@ -90,13 +102,23 @@ for ($i=0; $i<6; $i++){
                     </span>
                 -->
             </h4>
+            <ul class="list-unstyled">
+            <?php for ($i=0; $i<15; $i+=2,$trend+=2): ?>
+                <li>
+                    <a href="#">
+                        <?= $trendingCats[$trend] ?>
+                        (<?= $trendingCats[$trend+1] ?>)
+                    </a>
+                </li>
+            <?php endfor; ?>
+            </ul>
         </div>
 
         <div class="tr-section">
             <h4 class="tr-section-title">
-                My Channels
                 <span class="glyphicon glyphicon-th-list">
                 </span>
+                My Channels
             </h4>
         </div>
 
