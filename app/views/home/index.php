@@ -29,7 +29,7 @@ for ($i=0; $i<6; $i++){
     max-width: 195px;
 }
 
-.tr-img-container img {
+.tr-img-container img.tr-cover {
     width: 183px;
     height: 129px;
 }
@@ -39,7 +39,9 @@ for ($i=0; $i<6; $i++){
     color: #fff;
     font-weight: bold;
     position: absolute;
-    padding: 4px;
+    padding-top:4px;
+    padding-bottom:4px;
+
 }
 
 .tr-img-display {
@@ -52,15 +54,18 @@ for ($i=0; $i<6; $i++){
         <?php foreach ($imgs as $img): ?>
             <div class="col-md-2 tr-img-display">
             <?php foreach ($img as $vid): ?>
+
                 <div class="tr-img-container">
                     <small>
+                    <img src="static/img/youtube-small.ico" width="15px" />
+
                      <?php 
                         echo (strlen($vid['description']) >= $MAX) ? 
                             substr($vid['description'], 0, $MAX) . '...' : 
                             $vid['description'];
                      ?>
                     </small>
-                    <img src="../<?= $vid['cached'] ?>" />
+                    <img class="tr-cover" src="../<?= $vid['cached'] ?>" />
                 </div>
             <?php endforeach; ?>
             </div>
