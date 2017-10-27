@@ -133,13 +133,13 @@ for ($i=0; $i<6; $i++){
             <ul class="list-unstyled tr-settings">
                 <li>
                     <a href="#">
-                        <span style="color: #337ab7" class="fa fa-thumbs-up"></span>Likes
+                        <span class="fa fa-thumbs-up"></span>Likes
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
-                        <span style="color:orange" class="fa fa-star"></span>Favorites
+                        <span class="fa fa-star"></span>Favorites
                     </a>
                 </li>
 
