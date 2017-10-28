@@ -23,15 +23,66 @@ if (is_array($cached)) {
 
 $picture = $post->cached;
 $data = json_decode($post->data);
+
+if (count($post->category)) {
+    $category = $post->category[0];
+    $category = str_replace('%2b', ' ', $category);
+    $category = str_replace('%2522', '', $category);
+    $category = str_replace('+', ' ', $category);
+}
 ?>
 
 <div class="col-md-12">
-    <div class="">
-        <h4 class="">
+    <div style="margin-bottom:5px;margin-top:10px;">
+        <h4 class="" style="display: inline;">
             <span style="color: crimson;" 
                  class="glyphicon glyphicon-facetime-video"></span>&nbsp;
             Featured video
         </h4>
+
+        <?php if ($category) : ?>
+        <div class="dropdown pull-right">
+            <span class="tr-link tr-badge-k dropdown-toggle badge"
+                  data-toggle="dropdown" aria-expanded="true"
+                  id="dropdownMenu1">
+
+                <?= $category ?>
+
+                <span style="font-size:9px;" 
+                     class="glyphicon glyphicon-cog"></span>
+            </span>
+
+            <ul class="dropdown-menu" style="font-size: 12px;" role="menu" 
+                 aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">option 1</a>
+                </li>
+
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">option 2</a>
+                </li>
+
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">option 3</a>
+                </li>
+                
+                <li role="presentation" class="divider"
+                    style="margin-bottom: 4px;">
+                </li>
+
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" 
+                        href="./index.php?r=home/index&q=<?=$category?>"
+                        title="Search for '<?= $category; ?>'">
+                        <span class="fa fa-search"></span>
+                        &nbsp;
+                        <strong><?= $category; ?></strong>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <?php endif; ?>
     </div>
 
     <div id="tr-outdoor-img">

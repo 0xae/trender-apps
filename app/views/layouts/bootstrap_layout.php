@@ -282,14 +282,16 @@ p {
     box-shadow: 0px 0px 2px rgba(0,0,0,.6);
 }
 
+.tr-badge-k {
+    font-size: 11px;
+    background-color: #3a5a9c;
+}
+
 .tr-main-badge:hover {
     color: #fff;
 }
 
 #page_right_col {
-/*
-    margin-top: 10px;
-*/
 }
 
 .tr-img-block {
@@ -306,6 +308,10 @@ p {
 .rs-row {
     margin-right: 0px;
     margin-left: 0px;
+}
+
+.tr-link {
+    cursor: pointer;
 }
 
 /*

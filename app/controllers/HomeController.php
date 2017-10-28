@@ -25,7 +25,7 @@ class HomeController extends Controller {
         $c = (@$_GET['c']) ? "&category={$_GET['c']}" : '';
         $t = (@$_GET['t']) ? $_GET['t'] : "!type:youtube-post$c";
         # $start = (@$_GET['s']) ? $_GET['s'] : 0;
-        $start = rand(10, 1000);
+        $start = rand(0, 1000);
 
         $vidReq = Solr::query($q, $start, 20, "type:youtube-post");
         $postReq = Solr::query($q, $start, 70, $t);
