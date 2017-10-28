@@ -51,6 +51,7 @@ for ($i=0; $i<$postsCount; $i++) {
     $len = strlen($href);
     $text = $href;
     $text = substr($href, 0, $LINK_TEXT_MAX);
+
     if ($len > $LINK_TEXT_MAX) {
         $text .= '...';
     }
@@ -79,7 +80,8 @@ for ($i=0,$j=0; $i<$postsCount; $i++) {
 
 for ($i=0; $i<$videosCount; $i++) {
     $vid = $videos[$i];
-    if ($vid->cached != 'none' && $vid->cached != '') {
+    if (isset($vid->cached) && $vid->cached != 'none' 
+              && $vid->cached != '') {
         $featuredVideo = $vid;
     }
 }
@@ -312,7 +314,7 @@ for ($i=0; $i<$videosCount; $i++) {
                 ?>
 
                 <div class="tr-img-block">
-                    <img title="<?= $p->authorName . ': <p></p>' . $p->description ?>"
+                    <img title="<?= "@{$p->authorName}: {$p->description}" ?>"
                          alt="<?= $p->authorName ?>"
                          src="../<?= $url ?>" 
                     />
