@@ -297,11 +297,11 @@ for ($i=0; $i<$videosCount; $i++) {
                 }
             ?>
 
-            <div class="col-md-12 pull-right">
+            <div class="col-md-10">
                 <h4 class="">
                     Top Profiles
                 </h4>
-                
+
                 <?php foreach ($profiles as $p):
                     $cached = json_decode($p->cached);
                     if (is_array($cached)) {
@@ -312,16 +312,16 @@ for ($i=0; $i<$videosCount; $i++) {
                 ?>
 
                 <div class="tr-img-block">
-                    <img 
-                        title="<?= $p->authorName ?>"
-                        src="../<?= $url ?>" 
+                    <img title="<?= $p->authorName . ': <p></p>' . $p->description ?>"
+                         alt="<?= $p->authorName ?>"
+                         src="../<?= $url ?>" 
                     />
                 </div>
                 <?php endforeach; ?>
             </div>
 
             
-            <div class="col-md-12 pull-right">
+            <div class="col-md-10">
                 <h4 class="">
                     Links on this page
                 </h4>
