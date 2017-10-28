@@ -26,6 +26,13 @@ $data = json_decode($post->data);
 ?>
 
 <div class="col-md-12">
+    <div class="">
+        <h4 class="">
+            <span style="color: crimson;" class="glyphicon glyphicon-facetime-video"></span>&nbsp;
+            Featured video
+        </h4>
+    </div>
+
     <div id="tr-outdoor-img">
         <div class="tr-main-badge" style="position: absolute;top: 40%;left: 40%;">
             <span class="fa fa-play"></span> Play video

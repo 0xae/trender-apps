@@ -227,8 +227,6 @@ p {
     /*background-color: #000;*/
     border-radius: 3px;
     padding: 1px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
 }
 
 #tr-featured-content {
@@ -241,8 +239,6 @@ p {
     width: 350px;
     height: 230px;
     border-radius: 3px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
 }
 
 .tr-main-badge {
@@ -265,6 +261,17 @@ p {
 
 #page_right_col {
     margin-top: 10px;
+}
+
+.tr-img-block {
+    display:inline;
+}
+
+.tr-img-block img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 3px;
+    border-radius: 4px;
 }
 
 /*

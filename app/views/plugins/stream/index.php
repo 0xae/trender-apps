@@ -23,7 +23,7 @@
 
 $scrip = <<<JS
 requirejs(['trender/timeline','vue'], function (Timeline, Vue){
-$buf
+    console.info("init the stuff");
 });
 JS;
 

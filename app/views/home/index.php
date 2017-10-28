@@ -1,16 +1,17 @@
 <?php
 use app\models\Post;
 $this->title = 'Trender Home';
+
 $imgs = [];
 $perBlock = 2;
 $k = 0;
 $MAX=22;
 $trend = 0;
-$len = count($videos);
+$videosCount = count($videos);
 
 for ($i=0; $i<6; $i++){
-    if ($i >= $len) {
-        continue;
+    if ($i >= $videosCount) {
+        break;
     }
 
     $data = [];
@@ -18,11 +19,71 @@ for ($i=0; $i<6; $i++){
         // XXX: remove this later
         do {
             $vid = $videos[$k++];
-        } while(!@$vid->cached);
+        } while (!@$vid->cached);
         $data[] = $vid;
     }
     $imgs[] = $data;
 }
+
+$links = [];
+$postsCount = count($posts);
+$LINK_TEXT_MAX = 40;
+$MAX_LINKS_COUNT = 20;
+
+for ($i=0; $i<$postsCount; $i++) {
+    $post = $posts[$i];
+    if ($i >= $MAX_LINKS_COUNT) {
+        break;
+    }
+
+    $icon = '';
+    if ($post->type == 'steemit-post') {
+        $icon = 'static/img/steemit-196x196.png';
+    } else if ($post->type == 'twitter-post') {
+        $icon = 'static/img/twitter-192x192.png';
+    } else if ($post->type == 'youtube-post'){
+        $icon = 'youtube-medium.png';
+    } else {
+        $icon = '';
+    }
+
+    $href = $post->link;
+    $len = strlen($href);
+    $text = $href;
+    $text = substr($href, 0, $LINK_TEXT_MAX);
+    if ($len > $LINK_TEXT_MAX) {
+        $text .= '...';
+    }
+        
+    $links[] = [
+        "href" => $href,
+        "icon" => $icon,
+        "text" => $text
+    ];
+}
+
+$profiles = [];
+$MAX_PROFILES_COUNT=20;
+for ($i=0,$j=0; $i<$postsCount; $i++) {
+    if ($j >= $MAX_PROFILES_COUNT) {
+        break;
+    }
+
+    $post = $posts[$i];
+    
+    if ($post->cached != 'none' && $post->cached != '') {
+        $j++;
+        $profiles[] = $post;
+    }
+}
+
+for ($i=0; $i<$videosCount; $i++) {
+    $vid = $videos[$i];
+    if ($vid->cached != 'none' && $vid->cached != '') {
+        $featuredVideo = $vid;
+    }
+}
+
 ?>
 
 <div class="container tr-container">
@@ -119,7 +180,7 @@ for ($i=0; $i<6; $i++){
             <ul class="list-unstyled">
                 <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): ?>
                     <li>
-                        <a href="./index.php?r=home/index&q=<?= $trendingCats[$trend] ?>" 
+                        <a href="./index.php?r=home/index&c=<?= $trendingCats[$trend] ?>" 
                            class="tr-trend-item">
                             <?= $trendingCats[$trend] ?>
                             (<?= $trendingCats[$trend+1] ?>)
@@ -143,7 +204,7 @@ for ($i=0; $i<6; $i++){
             <ul class="list-unstyled">
                 <?php for ($i=0; $i<15; $i+=2,$trend+=2): ?>
                     <li>
-                        <a href="./index.php?r=home/index&q=<?= $trendingCats[$trend] ?>" 
+                        <a href="./index.php?r=home/index&c=<?= $trendingCats[$trend] ?>" 
                            class="tr-more-item">
                             <?= $trendingCats[$trend] ?>
                             (<?= $trendingCats[$trend+1] ?>)
@@ -228,18 +289,57 @@ for ($i=0; $i<6; $i++){
     <div class="col-md-4" id="page_right_col">
         <div class="row">
             <?php
-                if ($len)
+                if (isset($featuredVideo)) {
                     echo \Yii::$app->view->renderFile (
                         "@app/views/plugins/youtube_featured/index.php",
-                        ["post" => $videos[0]]
+                        ["post" => $featuredVideo]
                     );
+                }
             ?>
-            
-            <div class="col-md-12">
-                <div class="tr-section">
-                    
+
+            <div class="col-md-12 pull-right">
+                <h4 class="">
+                    Top Profiles
+                </h4>
+                
+                <?php foreach ($profiles as $p):
+                    $cached = json_decode($p->cached);
+                    if (is_array($cached)) {
+                        $url = 'downloads/' . $cached[0];
+                    } else if (!$cached) {
+                        $url = $p->cached;
+                    }
+                ?>
+
+                <div class="tr-img-block">
+                    <img 
+                        title="<?= $p->authorName ?>"
+                        src="../<?= $url ?>" 
+                    />
                 </div>
+                <?php endforeach; ?>
             </div>
+
+            
+            <div class="col-md-12 pull-right">
+                <h4 class="">
+                    Links on this page
+                </h4>
+
+                <ul class="list-unstyled">
+                    <?php foreach($links as $link): ?>
+                        <li>
+                            <a href="<?= $link['href'] ?>" style="font-size: 12px;">
+                                <img src="<?= $link['icon'] ?>" 
+                                   width="16" height="16"
+                                   style="" /> 
+                                <?= $link['text']; ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            
         </div>
     </div>
 </div>
