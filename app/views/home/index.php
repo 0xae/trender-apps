@@ -252,7 +252,6 @@ for ($i=0; $i<$videosCount; $i++) {
     </div>
 
     <div class="col-md-6" id="posts_container">
-        <!--
         <div id="posts_loader" style="">
             <div>
                 <a href="javascript:void(0)" 
@@ -265,15 +264,17 @@ for ($i=0; $i<$videosCount; $i++) {
                 </a>
             </div>
         </div>
-        -->
+
         <div id="posts_container_stream_start"></div>
 
-        <?php
-            echo \Yii::$app->view->renderFile(
-                "@app/views/plugins/stream/index.php",
-                ["posts" => $posts]
-            );
-        ?>
+        <div id="posts_container_stream">
+            <?php
+                echo \Yii::$app->view->renderFile(
+                    "@app/views/plugins/stream/index.php",
+                    ["posts" => $posts]
+                );
+            ?>
+        </div>
      <!-- #posts_container -->
     </div>
     

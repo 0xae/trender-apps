@@ -28,8 +28,7 @@ $data = json_decode($post->data);
             <h4 class="tr-author">
                 <span>
                     <img src="static/img/steemit-196x196.png" 
-                       width="16" height="16"
-                       style="" /> 
+                       width="16" height="16" /> 
 
                     <strong> 
                         <a href="index.php?r=profile/index&username=<?=$post->authorName?>">

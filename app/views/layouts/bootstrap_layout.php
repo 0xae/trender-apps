@@ -142,6 +142,7 @@ p {
 
 .tr-post-description p {
     margin-bottom: 4px;
+    font-size: 12px;
 }
 
 .tr-img-container {
@@ -171,10 +172,26 @@ p {
     padding-bottom: 0px;
 }
 
+#posts_container_stream {
+    padding-left: 10px;
+    padding-top: 6px;
+}
+
 #posts_container {
     border-left: 1px solid #c5c4c4;
-    padding-left: 10px;
-    padding-top: 10px;
+    padding-left: 0px;
+    padding-top: 0px;    
+    padding-right: 0px;
+    background-color: #efefef;
+}
+
+#posts_container .tr-post {    
+    margin-bottom: 10px;
+}
+
+#posts_loader {
+    background-color: #fff;
+    padding: 4px;
 }
 
 #page_left_menu {
@@ -262,7 +279,9 @@ p {
 }
 
 #page_right_col {
+/*
     margin-top: 10px;
+*/
 }
 
 .tr-img-block {
