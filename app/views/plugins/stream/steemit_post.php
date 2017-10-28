@@ -17,13 +17,13 @@ $data = json_decode($post->data);
                  width="50"
                  height="50"
                  alt="loading..."
-                 style="font-size: 9px"
+                 style="font-size: 8px"
             />
         </a>
         </center>            
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-7">
         <div class="tr-post-info">
             <h4 class="tr-author">
                 <span>

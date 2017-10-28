@@ -20,17 +20,18 @@ class HomeController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $start = 0;
+        # $start = 0;
         $q = (@$_GET['q']) ? $_GET['q'] : '*';
         $t = (@$_GET['t']) ? $_GET['t'] : '!type:youtube-post';
+        $start = (@$_GET['s']) ? $_GET['s'] : 0;
+
         $vidReq = Solr::query($q, $start, 20, "type:youtube-post");
         $postReq = Solr::query($q, $start, 40, $t);
-
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;
         
         $trendingCats = $postReq->facet_counts->facet_fields->category;
-        $trendingTypes = $postReq->facet_counts->facet_fields->type;
+        # $trendingTypes = $postReq->facet_counts->facet_fields->type;
 
         // XXX
         foreach ($posts as $p) {

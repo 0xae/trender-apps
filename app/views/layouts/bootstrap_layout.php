@@ -48,7 +48,7 @@ body {
     font-size: 15px;
 }
 
-.tr-section-title .glyphicon{
+.tr-section-title .glyphicon {
     font-size: 12px;
 }
 
@@ -134,19 +134,12 @@ p {
 
 .tr-post-image {
     width:50px;
-    float: left; 
     margin-right: 5px;
     margin-top:5px;
 }
 
 .tr-post-description p {
     margin-bottom: 4px;
-}
-
-.tr-header {
-    background-color: #000;
-    height: 300px;
-    padding: 5px;
 }
 
 .tr-img-container {
@@ -170,21 +163,58 @@ p {
 .tr-img-display {
 }
 
+.tr-header {
+    background-color: #000;
+    padding: 5px;
+    padding-bottom: 0px;
+}
+
 #posts_container {
-    padding-left: 20px;
-    height: 100%;
+    border-left: 1px solid #c5c4c4;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
-#page_left_menu{
-    border-right: 1px solid #c5c4c4;
-    margin-left: 14px;
-    margin-right: 14px;
+#page_left_menu {
+    margin-right: 27px;
 }
 
-h2.tr-page-title {
+#page_tab_menu {
+    margin-top: 40px;
+    margin-bottom: 0px;
+    margin-left: 24px;
+}
+
+#page_tab_menu .nav-tabs {
+    border-bottom: 0px;
+}
+
+#page_tab_menu .nav-tabs li a {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#page_tab_menu .nav-tabs li.active a {
+    color: #3b5998;
+}
+
+.tr-page-title {
+    margin-left: 0px;
+    margin-top: 14px;
+}
+
+.tr-page-title h2 {
+    font-size: 21px;
     margin-top: 0px;
 }
 
+#page_container {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    box-shadow: 0px 0px 2px rgba(0,0,0,.2);
+}
+
+/*
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, 
 .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, 
 .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, 
@@ -200,6 +230,7 @@ h2.tr-page-title {
     padding-right: inherit;
     padding-left: inherit;
 }
+*/
 </style>
 </head>
 <body>
