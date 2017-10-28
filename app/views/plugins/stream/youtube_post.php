@@ -70,6 +70,7 @@ $json = json_decode($post->data);
             <div style="color: #fff;padding-top:6px;padding-bottom:5px;background-color: rgba(0,0,0,.7);">
                 <span style="margin-left:5px;">
                     <img src="static/img/youtube-small.ico" style="float:left;margin-left:4px" />
+
                     <strong>
                         <?php
                          $label= substr($post->authorName, 0, 19);

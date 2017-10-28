@@ -4,6 +4,8 @@ use app\models\Timeline;
 use yii\web\HttpException;
 
 class TimelineController extends \yii\web\Controller {
+    public $layout = 'fb_layout';
+
     public function actionSearch() {
         $q = @$_GET['q'];
         if (!$q) {

@@ -5,7 +5,13 @@ $perBlock = 2;
 $k = 0;
 $MAX=22;
 $trend = 0;
+$len = count($videos);
+
 for ($i=0; $i<6; $i++){
+    if ($i >= $len) {
+        continue;
+    }
+
     $data = [];
     for ($j=0; $j<$perBlock; $j++){
         // XXX: remove this later
@@ -14,39 +20,9 @@ for ($i=0; $i<6; $i++){
         } while(!@$vid->cached);
         $data[] = $vid;
     }
-    
     $imgs[] = $data;
 }
 ?>
-
-<style>
-.tr-header {
-    background-color: #000;
-    min-height: 300px;
-    padding: 5px;
-}
-
-.tr-img-container {
-    display: block;
-    max-height: 138px;
-    max-width: 195px;
-}
-
-.tr-img-container img.tr-cover {
-    width: 183px;
-    height: 129px;
-    margin-bottom: 10px;
-}
-
-.tr-img-container small {
-    font-size: 12px;
-    color: #fff;
-    font-weight: bold;
-}
-
-.tr-img-display {
-}
-</style>
 
 <div class="container tr-container">
 <div class="row">
@@ -68,14 +44,16 @@ for ($i=0; $i<6; $i++){
                     </div>
                 <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
-        
-        <div class="col-md-12">
-            <h2>Trender</h2>
-        </div>
+        <?php endforeach; ?>        
     </div>
 
-    <div class="col-md-2" style="">
+    <div class="col-md-2" id="page_left_menu">
+        <div class="tr-section">
+            <h2 class="tr-page-title"> 
+                <?= $label ?>
+            </h2>
+        </div>
+
         <div class="tr-section">
             <h4 class="tr-section-title">
                 <span class="glyphicon glyphicon-flash" style="color: darkorange"></span>
@@ -86,7 +64,8 @@ for ($i=0; $i<6; $i++){
             <ul class="list-unstyled">
                 <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): ?>
                     <li>
-                        <a href="#" class="tr-trend-item">
+                        <a href="./index.php?r=home/index&q=<?= $trendingCats[$trend] ?>" 
+                           class="tr-trend-item">
                             <?= $trendingCats[$trend] ?>
                             (<?= $trendingCats[$trend+1] ?>)
                         </a>
@@ -109,7 +88,8 @@ for ($i=0; $i<6; $i++){
             <ul class="list-unstyled">
                 <?php for ($i=0; $i<15; $i+=2,$trend+=2): ?>
                     <li>
-                        <a href="#" class="tr-more-item">
+                        <a href="./index.php?r=home/index&q=<?= $trendingCats[$trend] ?>" 
+                           class="tr-more-item">
                             <?= $trendingCats[$trend] ?>
                             (<?= $trendingCats[$trend+1] ?>)
                         </a>
@@ -164,14 +144,10 @@ for ($i=0; $i<6; $i++){
         </div>
     </div>
 
-    <div class="col-md-9" style="border-left:1px solid #c5c4c4;padding-left:20px;">
-            <div id="posts_container" 
-                 class="dp dq dr"
-                 style="padding:0px;">
-                 
-                <div class="ds di" 
-                     id="posts_container_posts_loader" 
-                     style="">
+    <div class="col-md-6" id="posts_container">
+            <div style="padding:0px;">
+                <!--
+                <div id="posts_loader" style="">
                     <div>
                         <a href="javascript:void(0)" 
                            id="posts_container_loader_div">
@@ -183,7 +159,7 @@ for ($i=0; $i<6; $i++){
                         </a>
                     </div>
                 </div>
-
+                -->
                 <div id="posts_container_stream_start"></div>
 
                 <?php

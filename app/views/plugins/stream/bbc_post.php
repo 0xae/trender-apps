@@ -1,65 +1,66 @@
 <?php
 use app\models\DateUtils;
 $picture = $post->cached;
+$data = json_decode($post->data);
 ?>
 
-<div role="article" class="dg di ds" id="tr-post-<?= $post->id ?>">
-<div>
-    <div>
-        <div class="tr-img-loader by bz ca" style="width:50px;float: left; margin-right: 5px;margin-top:5px;">
-            <center>
-            <a class="cb" 
-               href="<?= $post->link; ?>" 
-               style="width:50px; height: 50px;"
-               title="Profile picture of <?= $post->authorName ?>">
+<div class="tr-post row" id="tr-post-<?= $post->id ?>">
+    <div class="tr-post-image col-md-1">
+        <center>
+        <a class="cb" 
+           href="<?= $post->link; ?>" 
+           style="width:50px; height: 50px;"
+           title="Profile picture of <?= $post->authorName ?>">
 
-                <img src=""
-                     id="img-<?= $post->id ?>"
-                     width="50"
-                     height="50"
-                     alt="loading..."
-                     style="font-size: 9px"
-                     v-tx-img-cache="{post: post}"
-                />
-            </a>
-            </center>            
-        </div>
-        <div style="">
-            <h3 class="dt dm" style="display: inline-block;letter-spacing: 2px">
-                BBC
-            </h3>
+            <img src="../<?= $post->cached ?>" 
+                 id="img-<?= $post->id ?>"
+                 width="50"
+                 height="50"
+                 alt="loading..."
+                 style="font-size: 9px"
+            />
+        </a>
+        </center>            
+    </div>
+
+    <div class="col-md-5">
+        <div class="tr-post-info">
+            <h4 class="tr-author">
+                <span>
+                    <strong> 
+                        <a href="index.php?r=profile/index&username=<?=$post->authorName?>">
+                            <?= $post->authorName ?>
+                        </a>
+                    </strong>
+                </span>
+            </h4>
             <div style="color: gray;display:inline;">
                 <span style="font-size: 11px;">
                     <strong>
-                        · <?= 
-                            DateUtils::youtubeFmt($post->timestampFmt) 
-                        ?>   
+                        · <?=  $post->timestampFmt ?>
                     </strong>
                 </span>
             </div>
         </div>
-    </div>
-    <div class="du" style="">
-        <span> <p> <?= $post->description ?> </p> </span>
+
+        <div class="tr-post-description">
+            <p> <?= $post->description ?> </p>
+        </div>
+    
+        <div class="tr-post-details">
+            <a href="javascript:void(0)">
+                <img 
+                    style="display:inline-block;padding:0px;" 
+                    src="static/img/like.png" 
+                    width="13" 
+                    height="13" 
+                    class="o" />
+                  0
+            </a>
+            <span aria-hidden="true">· </span>
+            <a href="javascript:void(0)"  @click="like(post)">like</a>
+            <span aria-hidden="true">· </span>
+            <a href="<?= $post->link; ?>">full story</a>
+        </div>
     </div>
 </div>
-
-
-<div class="el">
-    <div class="k cv">
-        <a href="javascript:void(0)" v-on:click="like(post)">
-            <img style="display:inline-block;padding:0px;" 
-                 src="static/img/like.png" 
-                 width="13" 
-                 height="13" 
-                 class="o"
-            />                
-        </a>
-        <a href="javascript:void(0)" v-on:click="like(post)">like</a>
-        <span aria-hidden="true">· </span>
-        <a href="<?= $post->link; ?>">full Story</a>
-    </div>
-</div>
-
-</div>
-

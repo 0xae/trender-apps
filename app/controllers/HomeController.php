@@ -13,14 +13,19 @@ use app\models\Solr;
  * HomeController
  */
 class HomeController extends Controller {
+    public $layout = 'bootstrap_layout';
+
     /**
      * controller index
      * @return mixed
      */
     public function actionIndex() {
-        $start = rand(0, 1000);
-        $vidReq = Solr::query("*", $start, 20, "type:youtube-post");
-        $postReq = Solr::query("*", $start, 40, false);
+        $start = 0;
+        $q = (@$_GET['q']) ? $_GET['q'] : '*';
+        $t = (@$_GET['t']) ? $_GET['t'] : '!type:youtube-post';
+        $vidReq = Solr::query($q, $start, 20, "type:youtube-post");
+        $postReq = Solr::query($q, $start, 40, $t);
+
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;
         
@@ -29,14 +34,16 @@ class HomeController extends Controller {
 
         // XXX
         foreach ($posts as $p) {
-            $p->timestampFmt = '123';
+            $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
             $p->picture = $p->cached;
         }
 
+        $label = ($q == '*') ? 'Trender' : $q;
         return $this->render('index', [
             "videos" => $videos,
             "posts" => $posts,
-            "trendingCats" => $trendingCats
+            "trendingCats" => $trendingCats,
+            "label" => $label
         ]);
     }
 

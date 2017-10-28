@@ -9,5 +9,9 @@ class DateUtils {
     public static function youtubeFmt($date) {
         return date("Y-m-d H:i", strtotime($date));
     }
+    
+    public static function dateFmt($date) {
+        return date("Y-m-d H:i:s", strtotime($date));
+    }
 }
 

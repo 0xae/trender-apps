@@ -2,75 +2,73 @@
 use app\models\DateUtils;
 $picture = $post->cached;
 $data = json_decode($post->data);
+$cached = json_decode($post->cached);
+if (is_array($cached)) {
+    $cached = 'downloads/' . $cached[0];
+}
 ?>
 
-<div role="article" class="dg di ds" id="tr-post-<?= $post->id ?>">
-<div>
-    <div>
-        <div class="tr-img-loader by bz ca" style="width:50px;float: left; margin-right: 5px;margin-top:5px;">
-            <center>
-            <a class="cb" 
-               href="<?= $post->link; ?>" 
-               style="width:50px; height: 50px;"
-               title="Profile picture of <?= $post->authorName ?>">
-               
-                <img src="" 
-                     id="img-<?= $post->id ?>"
-                     width="50"
-                     height="50"
-                     alt="loading..."
-                     style="font-size: 9px"
-                     v-tx-img-cache="{post: post}"
-                />
-            </a>
-            </center>            
-        </div>
-        <div style="">
-            <h3 class="dt dm" style="display: inline-block">
+<div class="tr-post row" id="tr-post-<?= $post->id ?>">
+    <div class="tr-post-image col-md-1" title="Alt: <?= $cached ?>">
+        <center>
+        <a class="cb" 
+           href="<?= $post->link; ?>" 
+           style="width:50px; height: 50px;"
+           title="Profile picture of <?= $post->authorName ?>">
+
+            <img src="../<?= $cached ?>" 
+                 id="img-<?= $post->id ?>"
+                 width="50"
+                 height="50"
+                 alt="loading..."
+                 style="font-size: 9px"
+            />
+        </a>
+        </center>            
+    </div>
+
+    <div class="col-md-5">
+        <div class="tr-post-info">
+            <h4 class="tr-author">
                 <span>
                     <img src="static/img/twitter-192x192.png" 
-                       width="16" height="16"
-                       style="margin-bottom: -4px" /> 
+                       width="16" height="16" /> 
 
-                    <strong>
-                        <a href="index.php?r=profile/index&username=<?= $data->username ?>">
-                            <?= $data->username ?>
+                    <strong> 
+                        <a href="index.php?r=profile/index&username=<?=$post->authorName?>">
+                            <?= $post->authorName ?>
                         </a>
                     </strong>
                 </span>
-            </h3>
-            <div style="color: gray;display:inline;">
+            </h4>
+            <div style="color: gray;display:inline;"
+                 title="<?= $post->timestamp ?>">
                 <span style="font-size: 11px;">
                     <strong>
-                        · <?= 
-                            DateUtils::youtubeFmt($post->timestampFmt) 
-                        ?>   
+                        · <?= $post->timestampFmt ?>
                     </strong>
                 </span>
             </div>
         </div>
-    </div>
-    <div class="du" style="">
-        <span> <p> <?= $post->description ?> </p> </span>
-    </div>
 
-    <div class="el">
-        <div class="k cv">
-            <a href="javascript:void(0)" v-on:click="like(post)">
-                <img style="display:inline-block;padding:0px;" 
-                     src="static/img/like.png" 
-                     width="13" height="13" class="o"
-                />
+        <div class="tr-post-description">
+            <p> <?= $post->description ?> </p>
+        </div>
+    
+        <div class="tr-post-details">
+            <a href="javascript:void(0)" @click="like(post)">
+                <img
+                    style="display:inline-block;padding:0px;" 
+                    src="static/img/like.png" 
+                    width="13" 
+                    height="13"
+                    class="o" />
                 <?= $data->love ?>
             </a>
             <span aria-hidden="true">· </span>
-            <a href="javascript:void(0)" v-on:click="like(post)">like</a>
+            <a href="javascript:void(0)"  @click="like(post)">like</a>
             <span aria-hidden="true">· </span>
-            <a href="<?= $post->link; ?>" class="">
-                full story
-            </a>
+            <a href="<?= $post->link; ?>">full story</a>
         </div>
     </div>
 </div>
-</div>
-

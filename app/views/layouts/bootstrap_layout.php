@@ -97,6 +97,93 @@ ul.tr-settings li a span.fa {
     margin-right: 10px;
 }
 
+a {
+    color: #3b5998;
+}
+
+/*h1, h2, h3, */
+h4, h5, h6 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+p {
+    font-size: small;
+}
+
+.tr-post-info {
+    display: inline-block;
+}
+
+.tr-post-info h4.tr-author {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 0px;
+    margin: 0px;
+    margin-bottom: 4px;
+}
+
+.tr-post-details a,
+.tr-post-details span {
+    font-size: 12px;
+}
+
+.tr-post-description {
+    margin-left: 5px;
+}
+
+.tr-post-image {
+    width:50px;
+    float: left; 
+    margin-right: 5px;
+    margin-top:5px;
+}
+
+.tr-post-description p {
+    margin-bottom: 4px;
+}
+
+.tr-header {
+    background-color: #000;
+    height: 300px;
+    padding: 5px;
+}
+
+.tr-img-container {
+    display: block;
+    max-height: 138px;
+    max-width: 195px;
+}
+
+.tr-img-container img.tr-cover {
+    width: 183px;
+    height: 129px;
+    margin-bottom: 10px;
+}
+
+.tr-img-container small {
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.tr-img-display {
+}
+
+#posts_container {
+    padding-left: 20px;
+    height: 100%;
+}
+
+#page_left_menu{
+    border-right: 1px solid #c5c4c4;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+h2.tr-page-title {
+    margin-top: 0px;
+}
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, 
 .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, 
