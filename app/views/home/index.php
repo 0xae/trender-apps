@@ -37,20 +37,23 @@ for ($i=0; $i<$postsCount; $i++) {
     }
 
     $icon = '';
+    $text = $post->link;
     if ($post->type == 'steemit-post') {
         $icon = 'static/img/steemit-196x196.png';
+        $text = str_replace('https://steemit.com/', '', $post->link);
+
     } else if ($post->type == 'twitter-post') {
         $icon = 'static/img/twitter-192x192.png';
+        $text = str_replace('https://twitter.com/', '', $post->link);
+
     } else if ($post->type == 'youtube-post'){
         $icon = 'youtube-medium.png';
-    } else {
-        $icon = '';
+        $text = str_replace('https://youtube.com/', '', $post->link);
     }
 
     $href = $post->link;
     $len = strlen($href);
-    $text = $href;
-    $text = substr($href, 0, $LINK_TEXT_MAX);
+    $text = '/' . substr($text, 0, $LINK_TEXT_MAX);
 
     if ($len > $LINK_TEXT_MAX) {
         $text .= '...';
