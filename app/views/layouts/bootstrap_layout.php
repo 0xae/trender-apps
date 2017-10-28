@@ -190,8 +190,14 @@ p {
 }
 
 #posts_loader {
+    /*
     background-color: #fff;
     padding: 4px;
+    */
+}
+
+#posts_loader a p {
+    margin-top: 10px;
 }
 
 #page_left_menu {
@@ -265,13 +271,15 @@ p {
     border: 2px solid orange;
     border-radius: 2px;
     /*color: #b22ec0;*/
-    color: orange;
+    color: #fff;
+    background-color: orange;
     display: inline-block;
     font-size: 11px;
     font-weight: bold;
     line-height: 12px;
     padding: 5px;
     cursor: pointer;
+    box-shadow: 0px 0px 2px rgba(0,0,0,.6);
 }
 
 .tr-main-badge:hover {
@@ -293,6 +301,11 @@ p {
     height: 35px;
     margin-bottom: 3px;
     border-radius: 4px;
+}
+
+.rs-row {
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 /*

@@ -253,16 +253,14 @@ for ($i=0; $i<$videosCount; $i++) {
 
     <div class="col-md-6" id="posts_container">
         <div id="posts_loader" style="">
-            <div>
-                <a href="javascript:void(0)" 
-                   id="posts_container_loader_div">
-                    <p style="text-align: center"> 
-                     <span id="posts_container_posts_count">
-                        0
-                     </span> new posts
-                    </p>
-                </a>
-            </div>
+            <a href="javascript:void(0)" 
+               id="posts_container_loader_div">
+                <p style="text-align: center"> 
+                 <span id="posts_container_posts_count">
+                    0
+                 </span> new posts
+                </p>
+            </a>
         </div>
 
         <div id="posts_container_stream_start"></div>

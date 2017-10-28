@@ -4,7 +4,7 @@ $picture = $post->cached;
 $data = json_decode($post->data);
 ?>
 
-<div class="tr-post row" id="tr-post-<?= $post->id ?>">
+<div class="tr-post row rs-row" id="tr-post-<?= $post->id ?>">
     <div class="tr-post-image col-md-1">
         <center>
         <a class="cb" 
