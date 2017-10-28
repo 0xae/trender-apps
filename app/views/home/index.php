@@ -1,4 +1,5 @@
 <?php
+use app\models\Post;
 $this->title = 'Trender Home';
 $imgs = [];
 $perBlock = 2;
@@ -222,6 +223,24 @@ for ($i=0; $i<6; $i++){
             );
         ?>
      <!-- #posts_container -->
+    </div>
+    
+    <div class="col-md-4" id="page_right_col">
+        <div class="row">
+            <?php
+                if ($len)
+                    echo \Yii::$app->view->renderFile (
+                        "@app/views/plugins/youtube_featured/index.php",
+                        ["post" => $videos[0]]
+                    );
+            ?>
+            
+            <div class="col-md-12">
+                <div class="tr-section">
+                    
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </div>

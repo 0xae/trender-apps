@@ -56,9 +56,10 @@ $this->title = "Trending in {$timeline->name}";
 
         <div id="app-video-stream" class="dp dq dr">
             <?php
-                echo \Yii::$app->view->renderFile(
+                if (count($videos))
+                echo \Yii::$app->view->renderFile (
                     "@app/views/plugins/youtube_featured/index.php",
-                    ["post" => new Post]
+                    ["post" => $videos[0]]
                 );
             ?>
 

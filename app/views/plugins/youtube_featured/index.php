@@ -9,71 +9,102 @@ if ($post->data) {
     $json->video_id = "";
 }
 $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
+
+if (!isset($post->cached)) {
+    $post->cached = $post->picture;
+}
+
+$cached = json_decode($post->cached);
+if (is_array($cached)) {
+    $url = 'downloads/' . $cached[0];
+} else {
+    $url = $cached;
+}
+
+$picture = $post->cached;
+$data = json_decode($post->data);
 ?>
 
-<div role="article" class="dg di ds" id="tr-youtube-featured">
-    <div id="tr-outdoor-img" v-if="!isPlaying"
-         v-tx-img-cache="{post: post, link: link, done: done}"
-         v-on:click="playVideo(post)">
-        <div class="tr-shadow">
-            <center>
-                <div class="tr-main-badge" style="margin-top: 100px;">
-                    <span class="fa fa-play"></span> Play video
-                </div>
-            </center>    
+<div class="col-md-12">
+    <div id="tr-outdoor-img">
+        <div class="tr-main-badge" style="position: absolute;top: 40%;left: 40%;">
+            <span class="fa fa-play"></span> Play video
         </div>
+        <img src="../<?=$post->cached?>" />
     </div>
 
+    <!--
     <iframe id="ytplayer" type="text/html" 
           width="406" height="200"
           v-if="isPlaying"
           v-bind:src="playUrl"
           frameborder="0">        
     </iframe>
+    -->    
 
-    <div style="padding: 10px;padding-top:2px;">
+    <div id="tr-featured-content">
+        <div>
+            <h4 class="tr-author" style="display: inline;font-size: small">
+                <span>
+                    <img src="static/img/youtube-small.ico" width="15px" />
+                    
+                    <strong> 
+                        <a href="index.php?r=profile/index&username=<?=$post->authorName?>">
+                            <?= $post->authorName ?>
+                        </a>
+                    </strong>
+                </span>
+            </h4>
+
+            <div style="color: gray;display:inline;">
+                <span style="font-size: 11px;">
+                    <strong>
+                        · <?=  $post->timestamp ?>
+                    </strong>
+                </span>
+            </div>
+
+            <div class="tr-post-description" style="margin-left: 0px;">
+                <p style="font-size: 12px;"> <?= $post->description ?> </p>
+            </div>
+        </div>
+
+        <!--
         <div style="">
             <h3 class="dt dm" style="display: inline-block">
                 <span>
                     <strong> 
                         <a href="javascript:void(0)">
                             <?= $post->authorName ?>
-                            {{post.authorName}}
                         </a>
                     </strong>
                 </span>
             </h3>
         </div>
 
-        <div class="du" style="">
-            <span> <p> <?= $post->description ?> {{post.description}} </p> </span>
-        </div>
 
-        <ul class="tr-menu featured-youtube-post">
+        <ul class="list-unstyled featured-youtube-post">
             <li>
                 <span class="fa fa-thumbs-up"></span>
                 <?= $json->likes ?>
-                {{post.json.likes}}
             </li>
 
             <li>
                 <span class="fa fa-street-view"></span>
                 <?= $json->views ?>
-                {{post.json.views}}
             </li>
 
             <li>
                 <span class="fa fa-clock-o"></span>
                 <span style="font-size: 11px;">
                 <strong >
-                    {{post.timestampFmt}}
                     <?php 
-                       #  if ($post->timestampFmt) 
-                       #      DateUtils::formatToHuman($post->timestampFmt);
-                    ?>            
+                         DateUtils::formatToHuman($post->timestamp);
+                    ?>           
                 </strong>
                 </span>
             </li>
         </ul>
+        -->
     </div>
 </div>

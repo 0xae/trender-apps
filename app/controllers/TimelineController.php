@@ -46,7 +46,7 @@ class TimelineController extends \yii\web\Controller {
             }
         }
 
-        $limit = 10;
+        $limit = 50;
         $req = Timeline::stream($id, $limit);
 
         foreach($req->posts as $p) {
