@@ -173,6 +173,28 @@ for ($i=0; $i<$videosCount; $i++) {
         </div>
 
         <div class="tr-section">
+            <ul class="list-unstyled tr-settings">
+                <li>
+                    <a href="#">
+                        <span class="fa fa-thumbs-up"></span>Likes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-star"></span>Favorites
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-cog"></span>Settings
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tr-section">
             <h4 class="tr-section-title">
                 <span class="glyphicon glyphicon-flash" style="color: darkorange"></span>
                 Trending topics
@@ -227,39 +249,6 @@ for ($i=0; $i<$videosCount; $i++) {
         </div>
         -->
 
-        <div class="tr-section">
-            <ul class="list-unstyled tr-settings">
-                <li>
-                    <a href="#">
-                        <span class="fa fa-thumbs-up"></span>Likes
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fa-star"></span>Favorites
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fa-archive"></span>History
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fa-play"></span>Playlist
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="fa fa-cog"></span>Settings
-                    </a>
-                </li>
-            </ul>
-        </div>
     </div>
 
     <div class="col-md-6" id="posts_container">
@@ -321,7 +310,6 @@ for ($i=0; $i<$videosCount; $i++) {
                 </div>
                 <?php endforeach; ?>
             </div>
-
             
             <div class="col-md-10">
                 <h4 class="">

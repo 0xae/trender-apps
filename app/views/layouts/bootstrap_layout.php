@@ -74,12 +74,14 @@ a.tr-more-item {
 }
 
 ul.tr-settings {
+    /*
     margin-left: 10px;
     margin-top: 30px;
+    */
 }
 
 ul.tr-settings li {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 ul.tr-settings li a {
