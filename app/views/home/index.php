@@ -191,6 +191,12 @@ for ($i=0; $i<$videosCount; $i++) {
 
                 <li>
                     <a href="#">
+                        <span class="fa fa-trash"></span>Spam
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
                         <span class="fa fa-cog"></span>Settings
                     </a>
                 </li>
@@ -207,7 +213,7 @@ for ($i=0; $i<$videosCount; $i++) {
             <ul class="list-unstyled">
                 <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): ?>
                     <li>
-                        <a href="./index.php?r=home/index&c=<?= $trendingCats[$trend] ?>" 
+                        <a href="./index.php?r=home/index&c=<?= urlencode($trendingCats[$trend]) ?>" 
                            class="tr-trend-item">
                             <?= $trendingCats[$trend] ?>
                             (<?= $trendingCats[$trend+1] ?>)
@@ -231,7 +237,7 @@ for ($i=0; $i<$videosCount; $i++) {
             <ul class="list-unstyled">
                 <?php for ($i=0; $i<15; $i+=2,$trend+=2): ?>
                     <li>
-                        <a href="./index.php?r=home/index&c=<?= $trendingCats[$trend] ?>" 
+                        <a href="./index.php?r=home/index&c=<?= urlencode($trendingCats[$trend]) ?>" 
                            class="tr-more-item">
                             <?= $trendingCats[$trend] ?>
                             (<?= $trendingCats[$trend+1] ?>)
@@ -304,7 +310,7 @@ for ($i=0; $i<$videosCount; $i++) {
                     }
                 ?>
 
-                <div class="tr-img-block">
+                <div class="tr-link tr-img-block">
                     <img title="<?= "@{$p->authorName}: {$p->description}" ?>"
                          alt="<?= $p->authorName ?>"
                          src="../<?= $url ?>" 

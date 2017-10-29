@@ -22,13 +22,23 @@ class HomeController extends Controller {
     public function actionIndex() {
         # $start = 0;
         $q = (@$_GET['q']) ? $_GET['q'] : '*';
-        $c = (@$_GET['c']) ? "&category={$_GET['c']}" : '';
-        $t = (@$_GET['t']) ? $_GET['t'] : "!type:youtube-post$c";
+        $c = (@$_GET['c']) ? "category={$_GET['c']}" : false;
+        $t = (@$_GET['t']) ? $_GET['t'] : false;
         # $start = (@$_GET['s']) ? $_GET['s'] : 0;
         $start = rand(0, 1000);
 
-        $vidReq = Solr::query($q, $start, 20, "type:youtube-post");
-        $postReq = Solr::query($q, $start, 70, $t);
+        $vidReq = Solr::query($q, $start, 20, [
+            "!cached:none",
+            "type:youtube-post"
+        ]);
+
+        $postReq = Solr::query($q, $start, 70, [
+            '!type:youtube-post',
+            '!cached:none',
+            $c,
+            $t
+        ]);
+
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;
         

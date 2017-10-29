@@ -14,11 +14,17 @@ class Solr {
         $query .= "&sort=timestamp+desc";
         $query .= "&wt=json";
 
-        if ($facetq) {
-            $facet_query = urlencode($facetq);
-            $query = $query . "&fq={$facet_query}";
+        if ($facetq && is_array($facetq)) {
+            $buf = '';
+            foreach ($facetq as $fq) {
+                if ($fq && strlen($fq) > 0) {
+                    $buf .= "&fq=" . urlencode($fq);
+                }
+            }
+            $query .= $buf;
         }
 
+        // XXX: replace this thing
         $result = file_get_contents($query);
         return json_decode($result);
     }
