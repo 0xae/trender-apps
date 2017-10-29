@@ -304,7 +304,7 @@ p {
 
 #page_right_col {
     background-color: #fff;
-    margin-right: 30px;
+    /* margin-right: 30px; */
 }
 
 .tr-img-block {

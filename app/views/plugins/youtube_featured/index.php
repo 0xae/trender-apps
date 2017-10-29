@@ -77,7 +77,7 @@ if (count($post->category)) {
 
             <li role="presentation">
                 <a role="menuitem" tabindex="-1" 
-                    href="./index.php?r=home/index&q=<?=$category?>"
+                    href="./index.php?r=home/index&q=<?=urlencode($category)?>"
                     title="Search for '<?= $category; ?>'">
                     <span class="fa fa-search"></span>
                     &nbsp;

@@ -24,8 +24,7 @@ class HomeController extends Controller {
         $q = (@$_GET['q']) ? $_GET['q'] : '*';
         $c = (@$_GET['c']) ? "category={$_GET['c']}" : false;
         $t = (@$_GET['t']) ? $_GET['t'] : false;
-        # $start = (@$_GET['s']) ? $_GET['s'] : 0;
-        $start = rand(0, 1000);
+        $start = (@$_GET['s']) ? $_GET['s'] : 0;
 
         $vidReq = Solr::query($q, $start, 20, [
             "!cached:none",
@@ -35,8 +34,7 @@ class HomeController extends Controller {
         $postReq = Solr::query($q, $start, 70, [
             '!type:youtube-post',
             '!cached:none',
-            $c,
-            $t
+            $c, $t
         ]);
 
         $videos = $vidReq->response->docs;
