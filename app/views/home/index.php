@@ -91,7 +91,7 @@ for ($i=0; $i<$videosCount; $i++) {
 }
 ?>
 
-<div class="container tr-container">
+<div class=" tr-container">
 <div class="row" id="page_container">
     <div class="col-md-12 tr-header">
         <div class="col-md-12" style="padding: 0px;">
@@ -284,19 +284,23 @@ for ($i=0; $i<$videosCount; $i++) {
         </div>
      <!-- #posts_container -->
     </div>
-    
-    <div class="col-md-4" id="page_right_col">
-        <div class="row">
-            <?php
-                if (isset($featuredVideo)) {
-                    echo \Yii::$app->view->renderFile (
-                        "@app/views/plugins/youtube_featured/index.php",
-                        ["post" => $featuredVideo]
-                    );
-                }
-            ?>
 
-            <div class="col-md-10">
+    <div class="col-md-3 pull-right" id="page_right_col">
+        <div class="row">
+            <!-- featured video -->
+            <div class="col-md-11 tr-section">
+                <?php
+                    if (isset($featuredVideo)) {
+                        echo \Yii::$app->view->renderFile (
+                            "@app/views/plugins/youtube_featured/index.php",
+                            ["post" => $featuredVideo]
+                        );
+                    }
+                ?>
+            </div>
+
+            <!-- top profiles -->
+            <div class="col-md-10 tr-section">
                 <h4 class="">
                     Top Profiles
                 </h4>
@@ -318,10 +322,11 @@ for ($i=0; $i<$videosCount; $i++) {
                 </div>
                 <?php endforeach; ?>
             </div>
-            
-            <div class="col-md-10">
+
+            <!-- top links -->            
+            <div class="col-md-10 tr-section">
                 <h4 class="">
-                    Links on this page
+                    Top Links
                 </h4>
 
                 <ul class="list-unstyled">
