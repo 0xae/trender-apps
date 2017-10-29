@@ -27,7 +27,7 @@ for ($i=0; $i<6; $i++){
 
 $links = [];
 $postsCount = count($posts);
-$LINK_TEXT_MAX = 40;
+$LINK_TEXT_MAX = 45;
 $MAX_LINKS_COUNT = 20;
 
 for ($i=0; $i<$postsCount; $i++) {
@@ -45,11 +45,9 @@ for ($i=0; $i<$postsCount; $i++) {
     if ($post->type == 'steemit-post') {
         $icon = 'static/img/steemit-196x196.png';
         $text = str_replace('https://steemit.com/', '', $post->link);
-
     } else if ($post->type == 'twitter-post') {
         $icon = 'static/img/twitter-192x192.png';
         $text = str_replace('https://twitter.com/', '', $post->link);
-
     }
 
     $href = $post->link;
@@ -93,105 +91,117 @@ for ($i=0; $i<$videosCount; $i++) {
 
 <div class=" tr-container">
 <div class="row" id="page_container">
-    <div class="col-md-12 tr-header">
-        <div class="col-md-12" style="padding: 0px;">
-        <?php foreach ($imgs as $img): ?>
-            <div class="col-md-2 tr-img-display">
-                <?php foreach ($img as $vid): ?>
-                    <div class="tr-img-container">
-                        <small>
-                        <img src="static/img/youtube-small.ico" width="15px" />
+    <div class="tr-header">
+        <div class="row rs-row" style="padding: 0px;">
+            <?php foreach ($imgs as $img): ?>
+                <div class="col-md-2 tr-img-display">
+                    <?php foreach ($img as $vid): ?>
+                        <div class="tr-img-container">
+                            <small>
+                            <img src="static/img/youtube-small.ico" width="15px" />
 
-                         <?php 
-                            echo (strlen($vid->description) >= $MAX) ? 
-                                substr($vid->description, 0, $MAX) . '...' : 
-                                $vid->description;
-                         ?>
-                        </small>
-                        <img class="tr-cover" src="../<?= $vid->cached ?>" />
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        <?php endforeach; ?> 
+                             <?php 
+                                echo (strlen($vid->description) >= $MAX) ? 
+                                    substr($vid->description, 0, $MAX) . '...' : 
+                                    $vid->description;
+                             ?>
+                            </small>
+                            <img class="tr-cover" src="../<?= $vid->cached ?>" />
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?> 
         </div>
+
+        <div class="row rs-row" id="page_top_menu_container">
+            <div class="col-md-2">
+                <div class="tr-page-title">
+                    <h2>    
+                        <?= $label ?>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="col-md-7" id="page_tab_menu">
+                <div role="tabpanel">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#topStories" aria-controls="home" 
+                               role="tab" data-toggle="tab">
+                               Top Stories
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a href="#topStories" aria-controls="home" 
+                               role="tab" data-toggle="tab">
+                               Activity
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a href="#news" aria-controls="profile" 
+                               role="tab" data-toggle="tab">
+                               News
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a href="#media" aria-controls="messages" 
+                               role="tab" data-toggle="tab">
+                               Media
+                            </a>
+                        </li>
+                    <!-- Nav tabs -->
+                    </ul>
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="topStories">
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="news">
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="media">
+                        </div>
+                    <!-- Tab content -->
+                    </div>
+                <!-- tabpanel -->
+                </div>
+            <!-- #page_tab_menu -->
+            </div>
         
-        <div class="col-md-2">
         </div>
-
-        <div class="col-md-6" id="page_tab_menu" style="padding: 0px;">
-            <div role="tabpanel">
-
-              <!-- Nav tabs -->
-              <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <a href="#topStories" aria-controls="home" 
-                           role="tab" data-toggle="tab">
-                           Top Stories
-                        </a>
-                    </li>
-
-                    <li role="presentation">
-                        <a href="#topStories" aria-controls="home" 
-                           role="tab" data-toggle="tab">
-                           Activity
-                        </a>
-                    </li>
-
-                    <li role="presentation">
-                        <a href="#news" aria-controls="profile" 
-                           role="tab" data-toggle="tab">
-                           News
-                        </a>
-                    </li>
-
-                    <li role="presentation">
-                        <a href="#media" aria-controls="messages" 
-                           role="tab" data-toggle="tab">
-                           Media
-                        </a>
-                    </li>
-              </ul>
-
-              <!-- Tab panes -->
-              <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="topStories">
-                    </div>
-
-                    <div role="tabpanel" class="tab-pane" id="news">
-                    </div>
-
-                    <div role="tabpanel" class="tab-pane" id="media">
-                    </div>
-              </div>
-            </div>
-        </div>
-
     </div>
 
     <div class="col-md-2" id="page_left_menu">
-        <div class="tr-page-title">
-            <h2>    
-                <?= $label ?>
-            </h2>
-        </div>
-
         <div class="tr-section">
-            <ul class="list-unstyled tr-settings">
+            <ul class="list-unstyled tr-settings" style="margin-bottom: 25px;">
+                <li>
+                    <a href="./index.php?r=home/index" 
+                       class="tr-a" title="Go to index">
+                        <span class="fa fa-home"></span>Home
+                    </a>
+                </li>
+
                 <li>
                     <a href="#">
-                        <span class="fa fa-thumbs-up"></span>Likes
+                        <span class="fa fa-thumbs-up"></span>Likes 
+                        &nbsp;<strong>(12K)</strong>
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
                         <span class="fa fa-star"></span>Favorites
+                        <strong>(12)</strong>
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
                         <span class="fa fa-trash"></span>Spam
+                        <strong>(+200)</strong>
                     </a>
                 </li>
 
@@ -260,19 +270,9 @@ for ($i=0; $i<$videosCount; $i++) {
 
     </div>
 
-    <div class="col-md-6" id="posts_container">
-        <div id="posts_loader" style="">
-            <a href="javascript:void(0)" 
-               id="posts_container_loader_div">
-                <p style="text-align: center"> 
-                 <span id="posts_container_posts_count">
-                    0
-                 </span> new posts
-                </p>
-            </a>
+    <div class="col-md-7" id="posts_container">
+        <div id="posts_container_stream_start">
         </div>
-
-        <div id="posts_container_stream_start"></div>
 
         <div id="posts_container_stream">
             <?php
@@ -288,7 +288,7 @@ for ($i=0; $i<$videosCount; $i++) {
     <div class="col-md-3 pull-right" id="page_right_col">
         <div class="row">
             <!-- featured video -->
-            <div class="col-md-11 tr-section">
+            <div class="col-md-11">
                 <?php
                     if (isset($featuredVideo)) {
                         echo \Yii::$app->view->renderFile (
@@ -300,7 +300,7 @@ for ($i=0; $i<$videosCount; $i++) {
             </div>
 
             <!-- top profiles -->
-            <div class="col-md-10 tr-section">
+            <div class="col-md-10">
                 <h4 class="">
                     Top Profiles
                 </h4>
@@ -324,7 +324,7 @@ for ($i=0; $i<$videosCount; $i++) {
             </div>
 
             <!-- top links -->            
-            <div class="col-md-10 tr-section">
+            <div class="col-md-12">
                 <h4 class="">
                     Top Links
                 </h4>

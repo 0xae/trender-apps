@@ -49,7 +49,14 @@ class HomeController extends Controller {
             $p->picture = $p->cached;
         }
 
-        $label = ($q == '*') ? 'Trender' : $q;
+        if ($q != '*') {
+            $label = $q;
+        } else if ($c) {
+            $label = $_GET['c'];
+        } else {
+            $label = 'Trender';
+        }
+
         return $this->render('index', [
             "videos" => $videos,
             "posts" => $posts,
