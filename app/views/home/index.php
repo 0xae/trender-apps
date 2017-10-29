@@ -1,5 +1,6 @@
 <?php
 use app\models\Post;
+use app\models\Utils;
 $this->title = 'Trender Home';
 
 $imgs = [];
@@ -18,9 +19,11 @@ for ($i=0; $i<6; $i++){
     for ($j=0; $j<$perBlock; $j++){
         // XXX: remove this later
         do {
-            $vid = $videos[$k++];
+            $vid = @$videos[$k++];
+            if (!$vid) break;
         } while (!@$vid->cached);
-        $data[] = $vid;
+        if ($vid)
+            $data[] = $vid;
     }
     $imgs[] = $data;
 }
@@ -106,7 +109,8 @@ for ($i=0; $i<$videosCount; $i++) {
                                     $vid->description;
                              ?>
                             </small>
-                            <img class="tr-cover" src="../<?= $vid->cached ?>" />
+                            <img class="tr-cover" 
+                                src="<?= Utils::cached($vid) ?>" />
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -116,7 +120,7 @@ for ($i=0; $i<$videosCount; $i++) {
         <div class="row rs-row" id="page_top_menu_container">
             <div class="col-md-2">
                 <div class="tr-page-title">
-                    <h2>    
+                    <h2>   
                         <?= $label ?>
                     </h2>
                 </div>
@@ -274,7 +278,7 @@ for ($i=0; $i<$videosCount; $i++) {
         <div id="posts_container_stream_start">
         </div>
 
-        <div id="posts_container_stream">
+        <div class="rs-row row" id="posts_container_stream">
             <?php
                 echo \Yii::$app->view->renderFile(
                     "@app/views/plugins/stream/index.php",
@@ -305,19 +309,11 @@ for ($i=0; $i<$videosCount; $i++) {
                     Top Profiles
                 </h4>
 
-                <?php foreach ($profiles as $p):
-                    $cached = json_decode($p->cached);
-                    if (is_array($cached)) {
-                        $url = 'downloads/' . $cached[0];
-                    } else if (!$cached) {
-                        $url = $p->cached;
-                    }
-                ?>
-
+                <?php foreach ($profiles as $p): ?>
                 <div class="tr-link tr-img-block">
                     <img title="<?= "@{$p->authorName}: {$p->description}" ?>"
                          alt="<?= $p->authorName ?>"
-                         src="../<?= $url ?>" 
+                         src="<?= Utils::cached($p) ?>" 
                     />
                 </div>
                 <?php endforeach; ?>

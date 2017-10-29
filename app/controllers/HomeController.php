@@ -28,11 +28,13 @@ class HomeController extends Controller {
 
         $vidReq = Solr::query($q, $start, 20, [
             "!cached:none",
-            "type:youtube-post"
+            "type:youtube-post",
+            $c, $t
         ]);
 
         $postReq = Solr::query($q, $start, 70, [
-            '!type:youtube-post',
+            #'!type:youtube-post',
+            'type:youtube-post',
             '!cached:none',
             $c, $t
         ]);
@@ -46,7 +48,7 @@ class HomeController extends Controller {
         // XXX
         foreach ($posts as $p) {
             $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
-            $p->picture = $p->cached;
+            # $p->picture = $p->cached;
         }
 
         if ($q != '*') {

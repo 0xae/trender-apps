@@ -203,6 +203,12 @@ p {
 
 #posts_container .tr-post {    
     margin-bottom: 10px;
+    /*
+    background-color: #fff;
+    padding: 6px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    */
 }
 
 #posts_loader {
@@ -261,7 +267,7 @@ p {
     */
     width: 100%;
     /*height: 230px;*/
-    /*background-color: #000;*/
+    background-color: #000;
     border-radius: 3px;
     padding: 1px;
 }
@@ -273,6 +279,10 @@ p {
 #page_top_menu_container .tr-page-title h2 {
     margin-bottom: 0px;
     margin-top: -6px;
+}
+
+.no-underline:hover {
+    text-decoration: none;
 }
 
 #tr-outdoor-img img {
@@ -361,6 +371,57 @@ p {
     padding-left: inherit;
 }
 */
+
+.tr-youtube-preview {
+    padding-left: 0px;
+    margin-right: -15px;
+}
+
+.tr-youtube-preview img {
+    width: 105px;
+    height: 80px;
+}
+
+.tr-youtube-post {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #fff;
+}
+
+.tr-youtube-post .tr-post-description {
+    margin-left: 0px;
+}
+
+.tr-youtube-link {
+}
+
+.tr-video-miniplayer {
+    color: orange;
+    font-size: 31px;
+    position: absolute;
+    top: 30%;
+    left: 35%;
+}
+
+.tr-video-time {
+    font-size: 12px;
+    position: absolute;
+    right: 30px;
+    top: 56px;
+    color: #fff;
+    background-color: rgb(0,0,0);
+    opacity: .7 !important;
+    font-weight: bold;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.tr-youtube-link a p {
+    font-size: 11px;
+}
+
 </style>
 </head>
 <body>

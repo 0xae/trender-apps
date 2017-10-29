@@ -1,5 +1,6 @@
 <?php
 use app\models\DateUtils;
+use app\models\Utils;
 $picture = $post->cached;
 $data = json_decode($post->data);
 ?>
@@ -12,7 +13,7 @@ $data = json_decode($post->data);
            style="width:50px; height: 50px;"
            title="Profile picture of <?= $post->authorName ?>">
 
-            <img src="../<?= $post->cached ?>" 
+            <img src="<?= Utils::cached($post) ?>" 
                  id="img-<?= $post->id ?>"
                  width="50"
                  height="50"
@@ -48,7 +49,8 @@ $data = json_decode($post->data);
         </div>
     
         <div class="tr-post-details">
-            <a href="javascript:void(0)">
+            <a href="javascript:void(0)"
+               title="Like" class="no-underline">
                 <img 
                     style="display:inline-block;padding:0px;" 
                     src="static/img/like.png" 
