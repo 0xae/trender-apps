@@ -35,6 +35,10 @@ for ($i=0; $i<$postsCount; $i++) {
     if ($i >= $MAX_LINKS_COUNT) {
         break;
     }
+    
+    if ($post->type == 'youtube-post') {
+        continue;
+    }
 
     $icon = '';
     $text = $post->link;
@@ -46,9 +50,6 @@ for ($i=0; $i<$postsCount; $i++) {
         $icon = 'static/img/twitter-192x192.png';
         $text = str_replace('https://twitter.com/', '', $post->link);
 
-    } else if ($post->type == 'youtube-post'){
-        $icon = 'youtube-medium.png';
-        $text = str_replace('https://youtube.com/', '', $post->link);
     }
 
     $href = $post->link;
@@ -88,7 +89,6 @@ for ($i=0; $i<$videosCount; $i++) {
         $featuredVideo = $vid;
     }
 }
-
 ?>
 
 <div class="container tr-container">
