@@ -34,7 +34,7 @@ class HomeController extends Controller {
 
         $postReq = Solr::query($q, $start, 70, [
             #'!type:youtube-post',
-            'type:youtube-post',
+            #'type:youtube-post',
             '!cached:none',
             $c, $t
         ]);

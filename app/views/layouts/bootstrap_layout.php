@@ -374,12 +374,14 @@ p {
 
 .tr-youtube-preview {
     padding-left: 0px;
+    /*
     margin-right: -15px;
+*/
 }
 
 .tr-youtube-preview img {
-    width: 105px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
 }
 
 .tr-youtube-post {
@@ -401,15 +403,15 @@ p {
     color: orange;
     font-size: 31px;
     position: absolute;
-    top: 30%;
-    left: 35%;
+    top: 45%;
+    left: 45%;
 }
 
 .tr-video-time {
     font-size: 12px;
     position: absolute;
-    right: 30px;
-    top: 56px;
+    right: 13%;
+    top: 70%;
     color: #fff;
     background-color: rgb(0,0,0);
     opacity: .7 !important;
