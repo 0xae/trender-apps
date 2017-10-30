@@ -1,6 +1,8 @@
 <?php
 use app\models\Post;
 use app\models\Utils;
+use yii\widgets\ActiveForm;
+
 $this->title = 'Trender Home';
 
 $imgs = [];
@@ -79,7 +81,7 @@ for ($i=0,$j=0; $i<$postsCount; $i++) {
 
     $post = $posts[$i];
     
-    if ($post->cached != 'none' && $post->cached != '') {
+    if (isset($post->cached) && $post->cached != 'none' && $post->cached != '') {
         $j++;
         $profiles[] = $post;
     }
@@ -134,13 +136,18 @@ for ($i=0; $i<$videosCount; $i++) {
                         </li>
                     </ul>
 
-                    <div class="form-group">
-                        <!-- <label for="exampleInputEmail1">Email address</label> -->
-                        <input id="searchBox" type="text" 
-                               class="form-control" 
-                               placeholder="Search for anything"
-                         />
-                    </div>
+                <?php $form = ActiveForm::begin(['action' => 'index.php?r=home/index', 
+                                                     'method' => 'get',
+                                                     ]); ?>
+                                <div class="form-group">
+                                    <input id="searchBox" type="text" 
+                                           class="form-control"
+                                           name="q"
+                                           value="<?= $q=='*'?'':$q ?>"
+                                           placeholder="Search for anything"
+                                     />
+                                </div>
+                <?php ActiveForm::end(); ?>
                 </div>
                 
                 <div class="col-md-3 pull-right" style="margin-bottom: 10px">
@@ -305,7 +312,7 @@ for ($i=0; $i<$videosCount; $i++) {
             <ul class="list-unstyled">
                 <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): ?>
                     <li>
-                        <a href="./index.php?r=home/index&c=<?= urlencode($trendingCats[$trend]) ?>" 
+                        <a href="./index.php?r=home/index&q=<?=$q?>&c=<?= urlencode($trendingCats[$trend]) ?>" 
                            class="tr-trend-item">
                             <?= $trendingCats[$trend] ?>
                             (<?= $trendingCats[$trend+1] ?>)
@@ -329,7 +336,7 @@ for ($i=0; $i<$videosCount; $i++) {
             <ul class="list-unstyled">
                 <?php for ($i=0; $i<15; $i+=2,$trend+=2): ?>
                     <li>
-                        <a href="./index.php?r=home/index&c=<?= urlencode($trendingCats[$trend]) ?>" 
+                        <a href="./index.php?r=home/index&q=<?=$q?>&c=<?= urlencode($trendingCats[$trend]) ?>" 
                            class="tr-more-item">
                             <?= $trendingCats[$trend] ?>
                             (<?= $trendingCats[$trend+1] ?>)

@@ -63,7 +63,8 @@ class HomeController extends Controller {
             "videos" => $videos,
             "posts" => $posts,
             "trendingCats" => $trendingCats,
-            "label" => $label
+            "label" => $label,
+            'q'=> $q,
         ]);
     }
 

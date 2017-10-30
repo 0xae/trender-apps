@@ -3,6 +3,9 @@ namespace app\models;
 
 class Utils {
     public static function cached($post) {
+        if (!isset($post->cached))
+            return $post->picture;
+
         $cached = json_decode($post->cached);
         if ($post->cached == "none" || $post->cached == "" ||
                 !$post->cached) {
