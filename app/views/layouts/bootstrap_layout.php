@@ -424,6 +424,22 @@ p {
     font-size: 11px;
 }
 
+.tr-see-more {
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+.tr-txt-12 {
+    font-size: 12px;
+}
+
+.tr-txt-11 {
+    font-size: 11px;
+}
+
+.tr-txt-underline {
+    text-decoration: underline;
+}
 </style>
 </head>
 <body>

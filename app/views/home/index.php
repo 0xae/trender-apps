@@ -271,7 +271,6 @@ for ($i=0; $i<$videosCount; $i++) {
             </h4>
         </div>
         -->
-
     </div>
 
     <div class="col-md-7" id="posts_container">
@@ -291,20 +290,21 @@ for ($i=0; $i<$videosCount; $i++) {
 
     <div class="col-md-3 pull-right" id="page_right_col">
         <div class="row">
+            <?php if (isset($featuredVideo)): ?>
             <!-- featured video -->
             <div class="col-md-11">
                 <?php
-                    if (isset($featuredVideo)) {
-                        echo \Yii::$app->view->renderFile (
-                            "@app/views/plugins/youtube_featured/index.php",
-                            ["post" => $featuredVideo]
-                        );
-                    }
+                    echo \Yii::$app->view->renderFile (
+                        "@app/views/plugins/youtube_featured/index.php",
+                        ["post" => $featuredVideo]
+                    );
                 ?>
             </div>
+            <?php endif; ?>
 
+            <?php if (count($profiles)): ?>
             <!-- top profiles -->
-            <div class="col-md-10">
+            <div class="col-md-10" style="margin-bottom: 20px;">
                 <h4 class="">
                     Top Profiles
                 </h4>
@@ -317,8 +317,16 @@ for ($i=0; $i<$videosCount; $i++) {
                     />
                 </div>
                 <?php endforeach; ?>
-            </div>
 
+                <br/>
+                <a href="javascript:void(0)" 
+                   class="tr-txt-11 tr-txt-underline">
+                    See more
+                </a>
+            </div>
+            <?php endif; ?>
+
+            <?php if (count($links)): ?>
             <!-- top links -->            
             <div class="col-md-12">
                 <h4 class="">
@@ -328,7 +336,7 @@ for ($i=0; $i<$videosCount; $i++) {
                 <ul class="list-unstyled">
                     <?php foreach($links as $link): ?>
                         <li>
-                            <a href="<?= $link['href'] ?>" style="font-size: 12px;">
+                            <a href="<?= $link['href'] ?>" class="tr-text-12">
                                 <img src="<?= $link['icon'] ?>" 
                                    width="16" height="16"
                                    style="" /> 
@@ -338,7 +346,7 @@ for ($i=0; $i<$videosCount; $i++) {
                     <?php endforeach; ?>
                 </ul>
             </div>
-            
+            <?php endif; ?>            
         </div>
     </div>
 </div>
