@@ -442,14 +442,14 @@ p {
 }
 </style>
 </head>
+
 <body>
-<?php 
-$this->beginBody(); 
-?>
-
-<?= $content ?>
-
-<?php $this->endBody();?>
+    <?php 
+        $this->beginBody(); 
+        echo $content;
+        $this->endBody();
+    ?>
 </body>
+
 </html>
 <?php $this->endPage(); ?>

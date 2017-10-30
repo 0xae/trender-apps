@@ -336,7 +336,7 @@ for ($i=0; $i<$videosCount; $i++) {
                 <ul class="list-unstyled">
                     <?php foreach($links as $link): ?>
                         <li>
-                            <a href="<?= $link['href'] ?>" class="tr-text-12">
+                            <a href="<?= $link['href'] ?>" class="tr-txt-12">
                                 <img src="<?= $link['icon'] ?>" 
                                    width="16" height="16"
                                    style="" /> 
