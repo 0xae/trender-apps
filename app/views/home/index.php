@@ -17,7 +17,7 @@ for ($i=0; $i<$blockCount; $i++){
     }
 
     $data = [];
-    for ($j=0; $j<$perBlock; $j++){
+    for ($j=0; $j<$perBlock; $j++) {
         // XXX: remove this later
         do {
             $vid = @$videos[$k++];
@@ -26,6 +26,7 @@ for ($i=0; $i<$blockCount; $i++){
         if ($vid)
             $data[] = $vid;
     }
+
     $imgs[] = $data;
 }
 
@@ -93,28 +94,93 @@ for ($i=0; $i<$videosCount; $i++) {
 }
 ?>
 
-<div class=" tr-container">
+<div class="container tr-container">
 <div class="row" id="page_container">
     <div class="tr-header">
         <div class="row rs-row" style="padding: 0px;">
-            <?php foreach ($imgs as $img): ?>
-                <div class="col-md-2 tr-img-display">
-                    <?php foreach ($img as $vid): ?>
-                        <div class="tr-img-container">
-                            <small>
-                            <img src="static/img/youtube-small.ico" width="15px" />
+            <div class="col-md-12" id="tr-trender">
+                <div class="col-md-4" 
+                     style="padding-left: 0px;">
+                    <ul class="list-inline" id="tr-search-opts">
+                        <li class="active">
+                            <a href="#" class="no-underline" 
+                               title="Search for everything">
+                                All news
+                            </a>
+                            <span class="sep">|</span>
+                        </li>
 
-                             <?php 
-                                echo (strlen($vid->description) >= $MAX) ? 
-                                    substr($vid->description, 0, $MAX) . '...' : 
-                                    $vid->description;
-                             ?>
-                            </small>
-                            <img class="tr-cover" 
-                                src="<?= Utils::cached($vid) ?>" />
-                        </div>
-                    <?php endforeach; ?>
+                        <li>
+                            <a href="#" class="no-underline"
+                               title="Discover what's trending">
+                               Trending
+                            </a> 
+                            <span class="sep">|</span>
+                        </li>
+
+                        <li>
+                            <a href="#" class="no-underline"
+                               title="Videos, movies, cartoons, tv shows and more">
+                               Videos
+                            </a> 
+                            <span class="sep">|</span>
+                        </li>
+
+                        <li>
+                            <a href="#" class="no-underline"
+                               title="Track finance and crypto markets">
+                               Markets
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="form-group">
+                        <!-- <label for="exampleInputEmail1">Email address</label> -->
+                        <input id="searchBox" type="text" 
+                               class="form-control" 
+                               placeholder="Search for anything"
+                         />
+                    </div>
                 </div>
+                
+                <div class="col-md-3 pull-right" style="margin-bottom: 10px">
+                    <div class="pull-right">
+                        <h1 class="trender-title tr-text-orange">Trender</h1>
+
+                        <p class="trender-description">
+                            What's happening on the internet.
+                        </p>
+
+                        <p class="trender-description tr-text-gray">
+                            Trender was built by 
+                            <a href="https://github.com/0xae"
+                               class="tr-text-orange">0xae</a>
+                        </p>
+                    </div>
+                </div>                
+            <!-- #tr-trender -->
+            </div>
+
+            <?php foreach ($imgs as $img): ?>
+            <div class="col-md-2 tr-img-display">
+                <?php foreach ($img as $vid): ?>
+                    <div class="tr-img-container">
+                        <small>
+                        <img src="static/img/youtube-small.ico" 
+                             width="15px" 
+                         />
+
+                        <?php 
+                            echo (strlen($vid->description) >= $MAX) ? 
+                                substr($vid->description, 0, $MAX) . '...' : 
+                                $vid->description;
+                        ?>
+                        </small>
+                        <img class="tr-cover" 
+                             src="<?= Utils::cached($vid) ?>" />
+                    </div>
+                <?php endforeach; ?>
+            </div>
             <?php endforeach; ?> 
 
             <div class="col-md-4">
@@ -191,12 +257,14 @@ for ($i=0; $i<$videosCount; $i++) {
     <div class="col-md-2" id="page_left_menu">
         <div class="tr-section">
             <ul class="list-unstyled tr-settings" style="margin-bottom: 25px;">
+                <?php if ($label != 'Home'): ?>
                 <li>
                     <a href="./index.php?r=home/index" 
                        class="tr-a" title="Go to index">
                         <span class="fa fa-home"></span>Home
                     </a>
                 </li>
+                <?php endif; ?>
 
                 <li>
                     <a href="#">

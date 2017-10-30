@@ -56,7 +56,7 @@ class HomeController extends Controller {
         } else if ($c) {
             $label = $_GET['c'];
         } else {
-            $label = 'Trender';
+            $label = 'Home';
         }
 
         return $this->render('index', [

@@ -47,7 +47,7 @@ body {
 
 .tr-header {
     background-color: #000;
-    padding: 5px;
+    /* padding: 5px; */
     padding-bottom: 0px;
 }
 
@@ -273,13 +273,34 @@ p {
 }
 
 #page_top_menu_container {
-/*
-    margin-top: 40px;
-*/
+    margin-top: 3%;
 }
 
 .carousel-indicators {
     display: none;
+}
+
+#tr-search-opts {
+    margin-bottom: 3px;
+    margin-left: 2px;
+}
+
+#tr-search-opts li {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+#tr-search-opts li .sep {
+    color: gray;
+}
+
+#tr-search-opts li a {
+    font-size: 11px;
+    color: darkorange;
+}
+
+#tr-search-opts li.active a {
+    font-weight: bold;
 }
 
 .carousel-caption {
@@ -292,6 +313,19 @@ p {
     padding-left: 5px;
     text-align: left;
     bottom: 0px;
+}
+
+#searchBox {
+    border-radius: 2px;
+    padding: 0px;
+    padding-left: 4px;
+    border: 4px solid #ccc;
+    font-size: 18px;
+}
+
+#searchBox:active,
+#searchBox:focus {
+    /*border: 4px solid darkorange;*/
 }
 
 #page_top_menu_container .tr-page-title h2 {
@@ -458,15 +492,43 @@ p {
 .tr-txt-underline {
     text-decoration: underline;
 }
+
+#tr-trender {
+    background-color: #fff;
+    padding-top: 7px;
+}
+
+.trender-title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    /*
+    font-variant: small-caps;
+    */
+}
+
+.trender-description {
+    font-weight: bold;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+
+.tr-text-orange {
+    color: #F27405;
+}
+
+.tr-text-gray {
+    color: gray;
+}
 </style>
 </head>
 
 <body>
-    <?php 
-        $this->beginBody(); 
-        echo $content;
-        $this->endBody();
-    ?>
+<?php 
+    $this->beginBody(); 
+    echo $content;
+    $this->endBody();
+?>
 </body>
 
 </html>
