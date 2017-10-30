@@ -14,7 +14,7 @@ $time = "$minutes:$seconds";
         <div class="tr-youtube-preview col-md-3">
             <span class="fa fa-play tr-video-miniplayer"
                   style="top: 30%;left: 40%;"></span>
-            
+
             <img src="<?= Utils::cached($post) ?>" 
                  id="img-<?= $post->id ?>"
                  alt="loading..."

@@ -1,5 +1,7 @@
 <?php
 use app\models\DateUtils;
+use app\models\Utils;
+
 if ($post->data) {
     $json = json_decode($post->data);
 } else {
@@ -8,6 +10,7 @@ if ($post->data) {
     $json->views = "";
     $json->video_id = "";
 }
+
 $pic = "https://img.youtube.com/vi/{$json->video_id}/0.jpg";
 
 if (!isset($post->cached)) {
@@ -23,19 +26,7 @@ if (is_array($cached)) {
 
 $picture = $post->cached;
 $data = json_decode($post->data);
-$maxCategoryLen = 20;
-
-if (count($post->category)) {
-    $category = $post->category[0];
-    $category = str_replace('%2b', ' ', $category);
-    $category = str_replace('%2522', '', $category);
-    $category = str_replace('%2526', '&', $category);
-    $category = str_replace('+', ' ', $category);
-
-    if (strlen($category) > $maxCategoryLen) {
-        $category = substr($category, 0, $maxCategoryLen) . '...';
-    }
-}
+$category = Utils::category($post);
 ?>
 
 <div style="margin-bottom:5px;margin-top:10px;">

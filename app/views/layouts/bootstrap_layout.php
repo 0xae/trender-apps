@@ -273,7 +273,25 @@ p {
 }
 
 #page_top_menu_container {
+/*
     margin-top: 40px;
+*/
+}
+
+.carousel-indicators {
+    display: none;
+}
+
+.carousel-caption {
+    left: 0%;
+    right: 0%;
+    background-color: #000;
+    opacity: .7;
+    font-size: 12px;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: left;
+    bottom: 0px;
 }
 
 #page_top_menu_container .tr-page-title h2 {

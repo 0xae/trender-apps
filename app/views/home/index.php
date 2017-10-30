@@ -9,8 +9,9 @@ $k = 0;
 $MAX=22;
 $trend = 0;
 $videosCount = count($videos);
+$blockCount = 4;
 
-for ($i=0; $i<6; $i++){
+for ($i=0; $i<$blockCount; $i++){
     if ($i >= $videosCount) {
         break;
     }
@@ -115,6 +116,15 @@ for ($i=0; $i<$videosCount; $i++) {
                     <?php endforeach; ?>
                 </div>
             <?php endforeach; ?> 
+
+            <div class="col-md-4">
+            <?php
+                echo \Yii::$app->view->renderFile (
+                    "@app/views/plugins/youtube_slide/index.php",
+                    ["posts" => $videos]
+                );
+            ?>
+            </div>
         </div>
 
         <div class="row rs-row" id="page_top_menu_container">

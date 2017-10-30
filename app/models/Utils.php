@@ -15,4 +15,25 @@ class Utils {
 
         return $url;
     }
+
+    public static function category($post) {
+        $cat = false;
+        $maxCategoryLen = 20;
+
+        if (isset($post->category) && count($post->category)) {
+            $category = $post->category[0];
+            $category = str_replace('%2b', ' ', $category);
+            $category = str_replace('%2522', '', $category);
+            $category = str_replace('%2526', '&', $category);
+            $category = str_replace('+', ' ', $category);
+
+            if (strlen($category) > $maxCategoryLen) {
+                $category = substr($category, 0, $maxCategoryLen) . '...';
+            }
+
+            $cat = $category;
+        }
+
+        return $cat;
+    }
 }
