@@ -264,9 +264,9 @@ p {
     height:200px;
     margin-bottom: 10px;
     width: 350px;
+    height: 230px;
     */
     width: 100%;
-    /*height: 230px;*/
     background-color: #000;
     border-radius: 3px;
     padding: 1px;
@@ -338,11 +338,9 @@ p {
 }
 
 #tr-outdoor-img img {
-    /*
-    width: 350px;
-    */
+    /* width: 350px; */
     width: 100%;
-    min-height: 230px;
+    min-height: 190px;
     border-radius: 2px;
 }
 
@@ -368,7 +366,7 @@ p {
     box-shadow: 0px 0px 2px rgba(0,0,0,.6);
     /* hello there */
     position: absolute;
-    top: 45%;
+    top: 40%;
     left: 40%;    
 }
 
