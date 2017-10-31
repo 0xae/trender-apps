@@ -265,11 +265,11 @@ p {
     margin-bottom: 10px;
     width: 350px;
     height: 230px;
+    padding: 1px;
+    border-radius: 3px;
     */
     width: 100%;
     background-color: #000;
-    border-radius: 3px;
-    padding: 1px;
 }
 
 #page_top_menu_container {
@@ -338,10 +338,12 @@ p {
 }
 
 #tr-outdoor-img img {
-    /* width: 350px; */
+    /* 
+    width: 350px; 
+    border-radius: 2px;
+    */
     width: 100%;
     min-height: 190px;
-    border-radius: 2px;
 }
 
 #tr-featured-content {
@@ -367,7 +369,7 @@ p {
     /* hello there */
     position: absolute;
     top: 40%;
-    left: 40%;    
+    left: 37%;    
 }
 
 .tr-badge-k {

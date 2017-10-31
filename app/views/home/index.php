@@ -310,7 +310,11 @@ for ($i=0; $i<$videosCount; $i++) {
 
             <div class="tr-section-content">
             <ul class="list-unstyled">
-                <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): ?>
+                <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): 
+                        if ($trendingCats[$trend+1] <= 0) {
+                            continue;
+                        }
+                ?>
                     <li>
                         <a href="./index.php?r=home/index&q=<?=$q?>&c=<?= urlencode($trendingCats[$trend]) ?>" 
                            class="tr-trend-item">
@@ -334,7 +338,11 @@ for ($i=0; $i<$videosCount; $i++) {
 
             <div class="tr-section-content">
             <ul class="list-unstyled">
-                <?php for ($i=0; $i<15; $i+=2,$trend+=2): ?>
+                <?php for ($i=0; $i<15; $i+=2,$trend+=2): 
+                        if ($trendingCats[$trend+1] <= 0) {
+                            continue;
+                        }
+                ?>
                     <li>
                         <a href="./index.php?r=home/index&q=<?=$q?>&c=<?= urlencode($trendingCats[$trend]) ?>" 
                            class="tr-more-item">
@@ -377,7 +385,7 @@ for ($i=0; $i<$videosCount; $i++) {
         <div class="row">
             <?php if (isset($featuredVideo)): ?>
             <!-- featured video -->
-            <div class="col-md-11">
+            <div class="col-md-12">
                 <?php
                     echo \Yii::$app->view->renderFile (
                         "@app/views/plugins/youtube_featured/index.php",
@@ -389,7 +397,7 @@ for ($i=0; $i<$videosCount; $i++) {
 
             <?php if (count($profiles)): ?>
             <!-- top profiles -->
-            <div class="col-md-10" style="margin-bottom: 20px;">
+            <div class="col-md-11" style="margin-bottom: 20px;">
                 <h4 class="">
                     Top Profiles
                 </h4>
