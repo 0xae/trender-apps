@@ -2,11 +2,17 @@
 use app\models\Utils;
 
 $imgs = [];
-$perBlock = 2;
 $k = 0;
 $MAX=22;
 $videosCount = count($videos);
-$blockCount = 6;
+
+if (!isset($blockCount)){
+    $blockCount = 6;
+}
+
+if (!isset($perBlock)){
+    $perBlock = 2;
+}
 
 for ($i=0; $i<$blockCount; $i++){
     if ($i >= $videosCount) {

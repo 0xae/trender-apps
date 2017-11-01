@@ -148,23 +148,21 @@ for ($i=0; $i<$videosCount; $i++) {
             <?php
                 echo \Yii::$app->view->renderFile (
                     "@app/views/plugins/posts_slideshow/index.php",
-                    ["videos" => $videos]
+                    ["videos" => $videos,
+                     "blockCount" => 6]
                 );
             ?>
-            </div>
-
-            <!--
-            <div class="col-md-4">
+            
             <?php
-                /*
+                /*            
                 echo \Yii::$app->view->renderFile (
                     "@app/views/plugins/youtube_slide/index.php",
                     ["posts" => $videos]
                 );
                 */
             ?>
+
             </div>
-            -->
         </div>
 
         
