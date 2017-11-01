@@ -5,37 +5,12 @@ use yii\widgets\ActiveForm;
 
 $this->title = 'Trender Home';
 
-$imgs = [];
-$perBlock = 2;
-$k = 0;
-$MAX=22;
 $trend = 0;
-$videosCount = count($videos);
-$blockCount = 4;
-
-for ($i=0; $i<$blockCount; $i++){
-    if ($i >= $videosCount) {
-        break;
-    }
-
-    $data = [];
-    for ($j=0; $j<$perBlock; $j++) {
-        // XXX: remove this later
-        do {
-            $vid = @$videos[$k++];
-            if (!$vid) break;
-        } while (!@$vid->cached);
-        if ($vid)
-            $data[] = $vid;
-    }
-
-    $imgs[] = $data;
-}
-
 $links = [];
 $postsCount = count($posts);
 $LINK_TEXT_MAX = 45;
 $MAX_LINKS_COUNT = 20;
+$videosCount = count($videos);
 
 for ($i=0; $i<$postsCount; $i++) {
     $post = $posts[$i];
@@ -64,7 +39,7 @@ for ($i=0; $i<$postsCount; $i++) {
     if ($len > $LINK_TEXT_MAX) {
         $text .= '...';
     }
-        
+
     $links[] = [
         "href" => $href,
         "icon" => $icon,
@@ -168,36 +143,27 @@ for ($i=0; $i<$videosCount; $i++) {
             <!-- #tr-trender -->
             </div>
 
-            <?php foreach ($imgs as $img): ?>
-            <div class="col-md-2 tr-img-display">
-                <?php foreach ($img as $vid): ?>
-                    <div class="tr-img-container">
-                        <small>
-                        <img src="static/img/youtube-small.ico" 
-                             width="15px" 
-                         />
-
-                        <?php 
-                            echo (strlen($vid->description) >= $MAX) ? 
-                                substr($vid->description, 0, $MAX) . '...' : 
-                                $vid->description;
-                        ?>
-                        </small>
-                        <img class="tr-cover" 
-                             src="<?= Utils::cached($vid) ?>" />
-                    </div>
-                <?php endforeach; ?>
+            <div class="col-md-12" id="tr-slideshow-container">
+            <?php
+                echo \Yii::$app->view->renderFile (
+                    "@app/views/plugins/posts_slideshow/index.php",
+                    ["videos" => $videos]
+                );
+            ?>
             </div>
-            <?php endforeach; ?> 
 
+            <!--
             <div class="col-md-4">
             <?php
+                /*
                 echo \Yii::$app->view->renderFile (
                     "@app/views/plugins/youtube_slide/index.php",
                     ["posts" => $videos]
                 );
+                */
             ?>
             </div>
+            -->
         </div>
 
         <div class="row rs-row" id="page_top_menu_container">
@@ -403,7 +369,7 @@ for ($i=0; $i<$videosCount; $i++) {
                 </h4>
 
                 <?php foreach ($profiles as $p): ?>
-                <div class="tr-link tr-img-block">
+                <div class="tr-link tr-profile-img-block">
                     <img title="<?= "@{$p->authorName}: {$p->description}" ?>"
                          alt="<?= $p->authorName ?>"
                          src="<?= Utils::cached($p) ?>" 
