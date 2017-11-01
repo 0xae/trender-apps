@@ -28,6 +28,7 @@ for ($i=0; $i<$blockCount; $i++){
 }
 ?>
 
+
 <?php foreach ($imgs as $img): ?>
 <div class="tr-img-container">
     <?php foreach ($img as $vid): ?>

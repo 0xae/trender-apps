@@ -177,6 +177,7 @@ p {
 #tr-slideshow-container {
     padding: 0px;
     margin-top: 1px;
+    margin-bottom: -4px;
 }
 
 .tr-img-container .tr-img-instance {
