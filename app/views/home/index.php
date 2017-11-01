@@ -1,7 +1,7 @@
 <?php
+use yii\widgets\ActiveForm;
 use app\models\Post;
 use app\models\Utils;
-use yii\widgets\ActiveForm;
 
 $this->title = 'Trender Home';
 
@@ -71,80 +71,9 @@ for ($i=0; $i<$videosCount; $i++) {
 }
 ?>
 
-<div class="container tr-container">
-<div class="row" id="page_container">
-    <div class="tr-header">
-        <div class="row rs-row" style="padding: 0px;">
-            <div class="col-md-12" id="tr-trender">
-                <div class="col-md-4" 
-                     style="padding-left: 0px;">
-                    <ul class="list-inline" id="tr-search-opts">
-                        <li class="active">
-                            <a href="./index.php?r=home/index" 
-                               class="no-underline" 
-                               title="Search for everything">
-                                All news
-                            </a>
-                            <span class="sep">|</span>
-                        </li>
-
-                        <li>
-                            <a href="#" class="no-underline"
-                               title="Discover what's trending">
-                               Trending
-                            </a> 
-                            <span class="sep">|</span>
-                        </li>
-
-                        <li>
-                            <a href="#" class="no-underline"
-                               title="Videos, movies, cartoons, tv shows and more">
-                               Videos
-                            </a> 
-                            <span class="sep">|</span>
-                        </li>
-
-                        <li>
-                            <a href="#" class="no-underline"
-                               title="Track finance and crypto markets">
-                               Markets
-                            </a>
-                        </li>
-                    </ul>
-
-                <?php $form = ActiveForm::begin(['action' => 'index.php?r=home/index', 
-                                                     'method' => 'get',
-                                                     ]); ?>
-                                <div class="form-group">
-                                    <input id="searchBox" type="text" 
-                                           class="form-control"
-                                           name="q"
-                                           value="<?= $q=='*'?'':$q ?>"
-                                           placeholder="Search for anything"
-                                     />
-                                </div>
-                <?php ActiveForm::end(); ?>
-                </div>
-                
-                <div class="col-md-3 pull-right" style="margin-bottom: 10px">
-                    <div class="pull-right">
-                        <h1 class="trender-title tr-text-orange">Trender</h1>
-
-                        <p class="trender-description">
-                            What's happening on the internet.
-                        </p>
-
-                        <p class="trender-description tr-text-gray">
-                            Trender was built by 
-                            <a href="https://github.com/0xae"
-                               class="tr-text-orange">0xae</a>
-                        </p>
-                    </div>
-                </div>                
-            <!-- #tr-trender -->
-            </div>
-
-            <div class="col-md-12" id="tr-slideshow-container">
+<div class="tr-header">
+    <div class="row rs-row" style="padding: 0px;">
+        <div class="col-md-12" id="tr-slideshow-container">
             <?php
                 echo \Yii::$app->view->renderFile (
                     "@app/views/plugins/posts_slideshow/index.php",
@@ -152,7 +81,7 @@ for ($i=0; $i<$videosCount; $i++) {
                      "blockCount" => 6]
                 );
             ?>
-            
+
             <?php
                 /*            
                 echo \Yii::$app->view->renderFile (
@@ -161,204 +90,198 @@ for ($i=0; $i<$videosCount; $i++) {
                 );
                 */
             ?>
-
-            </div>
-        </div>
-
-        
-        <?php
-            /*
-            echo \Yii::$app->view->renderFile (
-                "@app/views/home/page_menu.php",
-                ["label" => $label]
-            );
-            */
-        ?>
-        
         </div>
     </div>
 
-    <div class="col-md-2" id="page_left_menu">
-        <div class="tr-section">
-            <ul class="list-unstyled tr-settings" style="margin-bottom: 25px;">
-                <?php if ($label != 'Home'): ?>
-                <li>
-                    <a href="./index.php?r=home/index" 
-                       class="tr-a" title="Go to index">
-                        <span class="fa fa-home"></span>Home
-                    </a>
-                </li>
-                <?php endif; ?>
+    <?php
+        /*
+        echo \Yii::$app->view->renderFile (
+            "@app/views/home/page_menu.php",
+            ["label" => $label]
+        );
+        */
+    ?>    
+    </div>
+</div>
 
-                <li>
-                    <a href="#">
-                        <span class="fa fa-thumbs-up"></span>Likes 
-                        &nbsp;<strong>(12K)</strong>
-                    </a>
-                </li>
+<div class="col-md-2" id="page_left_menu">
+    <div class="tr-section">
+        <ul class="list-unstyled tr-settings" style="margin-bottom: 25px;">
+            <?php if ($label != 'Home'): ?>
+            <li>
+                <a href="./index.php?r=home/index" 
+                   class="tr-a" title="Go to index">
+                    <span class="fa fa-home"></span>Home
+                </a>
+            </li>
+            <?php endif; ?>
 
-                <li>
-                    <a href="#">
-                        <span class="fa fa-star"></span>Favorites
-                        <strong>(12)</strong>
-                    </a>
-                </li>
+            <li>
+                <a href="#">
+                    <span class="fa fa-thumbs-up"></span>Likes 
+                    &nbsp;<strong>(12K)</strong>
+                </a>
+            </li>
 
-                <li>
-                    <a href="#">
-                        <span class="fa fa-trash"></span>Spam
-                        <strong>(+200)</strong>
-                    </a>
-                </li>
+            <li>
+                <a href="#">
+                    <span class="fa fa-star"></span>Favorites
+                    <strong>(12)</strong>
+                </a>
+            </li>
 
+            <li>
+                <a href="#">
+                    <span class="fa fa-trash"></span>Spam
+                    <strong>(+200)</strong>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="fa fa-cog"></span>Settings
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tr-section">
+        <h4 class="tr-section-title">
+            <span class="glyphicon glyphicon-flash" style="color: darkorange"></span>
+            Trending topics
+        </h4>
+
+        <div class="tr-section-content">
+        <ul class="list-unstyled">
+            <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): 
+                    if ($trendingCats[$trend+1] <= 0) {
+                        continue;
+                    }
+            ?>
                 <li>
-                    <a href="#">
-                        <span class="fa fa-cog"></span>Settings
+                    <a href="./index.php?r=home/index&q=<?=$q?>&c=<?= urlencode($trendingCats[$trend]) ?>" 
+                       class="tr-trend-item">
+                        <?= $trendingCats[$trend] ?>
+                        (<?= $trendingCats[$trend+1] ?>)
                     </a>
                 </li>
-            </ul>
+            <?php endfor; ?>
+        </ul>
         </div>
+    </div>
 
-        <div class="tr-section">
-            <h4 class="tr-section-title">
-                <span class="glyphicon glyphicon-flash" style="color: darkorange"></span>
-                Trending topics
-            </h4>
-
-            <div class="tr-section-content">
-            <ul class="list-unstyled">
-                <?php for ($i=0; $i<15*2; $i+=2,$trend+=2): 
-                        if ($trendingCats[$trend+1] <= 0) {
-                            continue;
-                        }
-                ?>
-                    <li>
-                        <a href="./index.php?r=home/index&q=<?=$q?>&c=<?= urlencode($trendingCats[$trend]) ?>" 
-                           class="tr-trend-item">
-                            <?= $trendingCats[$trend] ?>
-                            (<?= $trendingCats[$trend+1] ?>)
-                        </a>
-                    </li>
-                <?php endfor; ?>
-            </ul>
-            </div>
-        </div>
-
-        <div class="tr-section">
-            <h4 class="tr-section-title">
-                More
-                <!--
-                    <span class="glyphicon glyphicon-flash">
-                    </span>
-                -->
-            </h4>
-
-            <div class="tr-section-content">
-            <ul class="list-unstyled">
-                <?php for ($i=0; $i<15; $i+=2,$trend+=2): 
-                        if ($trendingCats[$trend+1] <= 0) {
-                            continue;
-                        }
-                ?>
-                    <li>
-                        <a href="./index.php?r=home/index&q=<?=$q?>&c=<?= urlencode($trendingCats[$trend]) ?>" 
-                           class="tr-more-item">
-                            <?= $trendingCats[$trend] ?>
-                            (<?= $trendingCats[$trend+1] ?>)
-                        </a>
-                    </li>
-                <?php endfor; ?>
-            </ul>
-            </div>
-        </div>
-
-        <!--
-        <div class="tr-section">
-            <h4 class="tr-section-title">
-                <span class="glyphicon glyphicon-th-list">
+    <div class="tr-section">
+        <h4 class="tr-section-title">
+            More
+            <!--
+                <span class="glyphicon glyphicon-flash">
                 </span>
-                My Channels
-            </h4>
+            -->
+        </h4>
+
+        <div class="tr-section-content">
+        <ul class="list-unstyled">
+            <?php for ($i=0; $i<15; $i+=2,$trend+=2): 
+                    if ($trendingCats[$trend+1] <= 0) {
+                        continue;
+                    }
+            ?>
+                <li>
+                    <a href="./index.php?r=home/index&q=<?=$q?>&c=<?= urlencode($trendingCats[$trend]) ?>" 
+                       class="tr-more-item">
+                        <?= $trendingCats[$trend] ?>
+                        (<?= $trendingCats[$trend+1] ?>)
+                    </a>
+                </li>
+            <?php endfor; ?>
+        </ul>
         </div>
-        -->
     </div>
 
-    <div class="col-md-7" id="posts_container">
-        <div id="posts_container_stream_start">
-        </div>
+    <!--
+    <div class="tr-section">
+        <h4 class="tr-section-title">
+            <span class="glyphicon glyphicon-th-list">
+            </span>
+            My Channels
+        </h4>
+    </div>
+    -->
+</div>
 
-        <div class="rs-row row" id="posts_container_stream">
+<div class="col-md-7" id="posts_container">
+    <div id="posts_container_stream_start">
+    </div>
+
+    <div class="rs-row row" id="posts_container_stream">
+        <?php
+            echo \Yii::$app->view->renderFile(
+                "@app/views/plugins/stream/index.php",
+                ["posts" => $posts]
+            );
+        ?>
+    </div>
+ <!-- #posts_container -->
+</div>
+
+<div class="col-md-3 pull-right" id="page_right_col">
+    <div class="row">
+        <?php if (isset($featuredVideo)): ?>
+        <!-- featured video -->
+        <div class="col-md-12">
             <?php
-                echo \Yii::$app->view->renderFile(
-                    "@app/views/plugins/stream/index.php",
-                    ["posts" => $posts]
+                echo \Yii::$app->view->renderFile (
+                    "@app/views/plugins/youtube_featured/index.php",
+                    ["post" => $featuredVideo]
                 );
             ?>
         </div>
-     <!-- #posts_container -->
-    </div>
+        <?php endif; ?>
 
-    <div class="col-md-3 pull-right" id="page_right_col">
-        <div class="row">
-            <?php if (isset($featuredVideo)): ?>
-            <!-- featured video -->
-            <div class="col-md-12">
-                <?php
-                    echo \Yii::$app->view->renderFile (
-                        "@app/views/plugins/youtube_featured/index.php",
-                        ["post" => $featuredVideo]
-                    );
-                ?>
+        <?php if (count($profiles)): ?>
+        <!-- top profiles -->
+        <div class="col-md-11" style="margin-bottom: 20px;">
+            <h4 class="">
+                Top Profiles
+            </h4>
+
+            <?php foreach ($profiles as $p): ?>
+            <div class="tr-link tr-profile-img-block">
+                <img title="<?= "@{$p->authorName}: {$p->description}" ?>"
+                     alt="<?= $p->authorName ?>"
+                     src="<?= Utils::cached($p) ?>" 
+                />
             </div>
-            <?php endif; ?>
+            <?php endforeach; ?>
 
-            <?php if (count($profiles)): ?>
-            <!-- top profiles -->
-            <div class="col-md-11" style="margin-bottom: 20px;">
-                <h4 class="">
-                    Top Profiles
-                </h4>
-
-                <?php foreach ($profiles as $p): ?>
-                <div class="tr-link tr-profile-img-block">
-                    <img title="<?= "@{$p->authorName}: {$p->description}" ?>"
-                         alt="<?= $p->authorName ?>"
-                         src="<?= Utils::cached($p) ?>" 
-                    />
-                </div>
-                <?php endforeach; ?>
-
-                <br/>
-                <a href="javascript:void(0)" 
-                   class="tr-txt-11 tr-txt-underline">
-                    See more
-                </a>
-            </div>
-            <?php endif; ?>
-
-            <?php if (count($links)): ?>
-            <!-- top links -->            
-            <div class="col-md-12">
-                <h4 class="">
-                    Top Links
-                </h4>
-
-                <ul class="list-unstyled">
-                    <?php foreach($links as $link): ?>
-                        <li>
-                            <a href="<?= $link['href'] ?>" class="tr-txt-12">
-                                <img src="<?= $link['icon'] ?>" 
-                                   width="16" height="16"
-                                   style="" /> 
-                                <?= $link['text']; ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-            <?php endif; ?>            
+            <br/>
+            <a href="javascript:void(0)" 
+               class="tr-txt-11 tr-txt-underline">
+                See more
+            </a>
         </div>
+        <?php endif; ?>
+
+        <?php if (count($links)): ?>
+        <!-- top links -->            
+        <div class="col-md-12">
+            <h4 class="">
+                Top Links
+            </h4>
+
+            <ul class="list-unstyled">
+                <?php foreach($links as $link): ?>
+                    <li>
+                        <a href="<?= $link['href'] ?>" class="tr-txt-12">
+                            <img src="<?= $link['icon'] ?>" 
+                               width="16" height="16"
+                               style="" /> 
+                            <?= $link['text']; ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php endif; ?>            
     </div>
 </div>
-</div>
-
