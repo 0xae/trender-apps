@@ -571,8 +571,8 @@ $controllerHref = "index.php?r=$controllerId/index";
                         <span class="sep">|</span>
                     </li>
 
-                    <li>
-                        <a href="<?= ($controllerId == 'videos') ? 'active' : '' ?>" 
+                    <li class="<?= ($controllerId == 'videos') ? 'active' : '' ?>">
+                        <a href="./index.php?r=tv/index" 
                            title="Videos, movies, cartoons, tv shows and more"
                            class="no-underline">
                            Videos
@@ -580,8 +580,8 @@ $controllerHref = "index.php?r=$controllerId/index";
                         <span class="sep">|</span>
                     </li>
 
-                    <li>
-                        <a href="<?= ($controllerId == 'markets') ? 'active' : '' ?>" 
+                    <li class="<?= ($controllerId == 'markets') ? 'active' : '' ?>">
+                        <a href="./index.php?r=markets/index" 
                            title="Track finance and crypto markets"
                            class="no-underline">
                            Markets
