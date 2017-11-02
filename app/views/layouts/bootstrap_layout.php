@@ -1,20 +1,16 @@
 <?php
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use yii\widgets\ActiveForm;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
-$this->beginPage();
 $controllerId = Yii::$app->controller->id;
 $controllerHref = "index.php?r=$controllerId/index";
+$this->beginPage();
 ?>
 
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
-
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
