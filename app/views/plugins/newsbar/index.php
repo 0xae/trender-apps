@@ -3,14 +3,13 @@
     margin: 0px;
     padding: 0px;
     font-size: 12px;
-    margin-bottom: 10px;
     border-bottom: 1px solid #f6f5f3;
     box-shadow: 0px 0px 2px rgba(0,0,0,.2);
 }
 .navbar-news #news-stream {
     background-color: beige;
     height: 25px;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 .navbar-news #news-stream div.news-entry {
     border-left: 1px solid gray;
@@ -55,12 +54,33 @@ $scrip = <<<JS
 requirejs(['trender/app', '_', 'jquery'],
 function (app, _, $) {
     console.info("component inited.");
-    var i  = 1;
-    
-    setInterval(function () {
-    //setTimeout(function () {
-        $("#news-stream").css("margin-left", i-=10);
-    }, 220);
+    var i=1, clearid=0, curr=0;
+
+    function updateNewsbar() {
+        if (curr >= $(".news-entry").length) {
+            curr=0, i=10;
+ 
+ /*       
+            $(".news-entry").each(function () {
+                if (this.offsetTop == 6) {
+                    $(this).css("margin-left", 0);
+                }
+            });
+            */
+        }
+
+        var node = $(".news-entry")[curr];
+        console.log("offsetTop: ", node.offsetTop);
+
+        if (node.offsetTop != 6) {
+            curr += 2;
+            node = $(".news-entry")[curr];
+        }
+        
+        $(node).css("margin-left", i-=10);
+   }
+   
+   // setInterval(updateNewsbar, 1000);
 });
 JS;
 $this->registerJs($scrip);

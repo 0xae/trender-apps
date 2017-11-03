@@ -546,12 +546,14 @@ $this->beginPage();
 
 <body>
 
-<?php if (isset($this->blocks['TrNewsBar'])): ?>
-    <?= $this->blocks['TrNewsBar'] ?>
-<?php endif; ?>
+
 
 <div class="container tr-container">
     <div class="row" id="page_container">
+        <?php if (isset($this->blocks['TrNewsBar'])): ?>
+        <?= $this->blocks['TrNewsBar'] ?>
+        <?php endif; ?>
+
         <div class="col-md-12" id="tr-trender">
             <div class="col-md-4" style="padding-left: 0px;">
                 <ul class="list-inline" id="tr-search-opts">
