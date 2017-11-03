@@ -545,6 +545,11 @@ $this->beginPage();
 </head>
 
 <body>
+
+<?php if (isset($this->blocks['TrNewsBar'])): ?>
+    <?= $this->blocks['TrNewsBar'] ?>
+<?php endif; ?>
+
 <div class="container tr-container">
     <div class="row" id="page_container">
         <div class="col-md-12" id="tr-trender">

@@ -70,7 +70,7 @@ requirejs(['trender/app', '_', 'jquery'],
 function (app, _, $) {
 
 function algo1() {
-    var i = 100;    
+    var i = 100;
 
     $(".tr-img-instance").each(function (node){
         var speed = _.random(1, 1989899);
