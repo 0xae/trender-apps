@@ -66,9 +66,34 @@ for ($i=0; $i<$blockCount; $i++){
 
 <?php
 $scrip = <<<JS
-requirejs(['trender/app', 'trender/timeline', 
-        'trender/builtins', '_',  'vue', 'jquery'],
-function (app, Timeline, builtins, _, Vue, $) {
+requirejs(['trender/app', '_', 'jquery'],
+function (app, _, $) {
+
+function algo1() {
+    var i = 100;    
+
+    $(".tr-img-instance").each(function (node){
+        var speed = _.random(1, 1989899);
+        var step = 100;
+        var url = $(this).attr("data-bimg");
+        var style ='background: '+url+
+                        'no-repeat 0px;'+
+                        'background-size: 120%;opacity:.7;';
+        var self = this;
+		setTimeout(function(){
+			$(self).attr("style", style);
+            $(self).css("opacity", ".8");
+            $(self).css("opacity", ".9");
+            $(self).css("opacity", "1");
+            setTimeout(function (){
+                $(self).css("opacity", ".7");				
+			}, (step+i/_.random(1,5))/speed);
+            i+=i;
+		}, 100+i);
+    });
+}
+
+function algo0de(){
     var i = 100;    
     $(".tr-img-instance").each(function (node){
         var url = $(this).attr("data-bimg");
@@ -78,9 +103,11 @@ function (app, Timeline, builtins, _, Vue, $) {
         var self = this;
 		setTimeout(function(){
 			$(self).attr("style", style);
-            i += 250;
-		}, 100+i);
+		}, _.random(1, 99) + 100);
     });
+}
+
+algo0de();
 });
 JS;
 
