@@ -45,6 +45,7 @@ for ($i=0; $i<$blockCount; $i++){
                 <img src="static/img/youtube-small.ico" 
                      width="15px" 
                  />
+                 
                  -->
 
                 <?php 
@@ -56,12 +57,33 @@ for ($i=0; $i<$blockCount; $i++){
             </span>
 
             <div class="tr-img-instance" 
-                 style="background: url(<?= Utils::cached($vid) ?>) 
-                            no-repeat 0px;
-                            background-size: 120%"></div>
+                 data-bimg="url(<?= Utils::cached($vid) ?>)"></div>
 
         </div>
     <?php endforeach; ?>
 </div>
 <?php endforeach; ?>
+
+<?php
+$scrip = <<<JS
+requirejs(['trender/app', 'trender/timeline', 
+        'trender/builtins', '_',  'vue', 'jquery'],
+function (app, Timeline, builtins, _, Vue, $) {
+    var i = 100;    
+    $(".tr-img-instance").each(function (node){
+        var url = $(this).attr("data-bimg");
+        var style ='background: '+url+
+                        'no-repeat 0px;'+
+                        'background-size: 120%';
+        var self = this;
+		setTimeout(function(){
+			$(self).attr("style", style);
+            i += 250;
+		}, 100+i);
+    });
+});
+JS;
+
+$this->registerJs($scrip);
+
 
