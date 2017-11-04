@@ -18,9 +18,9 @@ class ChannelController extends \yii\web\Controller {
     }
 
     public function actionUpdate($id) {
-        $model = new Channel;
+        $model = Channel::byId($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['channel/index']);
+            return $this->redirect(['channel/public']);
         } else {
             return $this->render('save_channel', [
                 'model' => $model

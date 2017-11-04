@@ -32,7 +32,7 @@ $left = 48 - $count;
                         <div class="tr-channel-panel tr-link" style="height:100px">
                             <span class="tr-channel-name"><?= $c->name ?></span> <br/>
                             <span style="font-size: 12px;">
-                                <a style="text-decoration:underline;" href="./index.php?r=channel/view&id=<?= $c->id ?>">View</a>
+                                <a style="text-decoration:underline;" href="./index.php?r=channel/update&id=<?= $c->id ?>">View</a>
                                 <a style="text-decoration:underline;" href="./index.php?r=channel/update&id=<?= $c->id ?>">Edit</a>
                             </span>
                         </div>

@@ -1,6 +1,10 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+$action='index.php?r=channel/create';
+if ($model->id > 0) {
+    $action='index.php?r=channel/update&id=' . $model->id;
+}
 ?>
 
 <div class="row rs-row tr-header-panel">
@@ -29,7 +33,7 @@ use yii\widgets\ActiveForm;
                 <div class="panel panel-default">
                     <div class="panel-heading">Create a channel</div>
                     <div class="panel-body">
-                        <?php $form = ActiveForm::begin(['action' => 'index.php?r=channel/create']);  ?>
+                        <?php $form = ActiveForm::begin(['action' => $action]);  ?>
                         <?= $form->field($model, 'name')->textInput() ?>
                         <?php
                         echo $form->field($model, 'internal')->dropdownList([
