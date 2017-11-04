@@ -83,7 +83,6 @@ $left = 48 - $count;
         <li><a href="#"><strong>Activity</strong></a></li>
         <li><a href="#"><strong>Size</strong></a></li>
     </ul>
-
 </div>
 
 <div class="col-md-10" style="padding: 0px;">
@@ -100,8 +99,9 @@ $left = 48 - $count;
 	<?php endforeach; ?>
 
 	<?php for ($i=0; $i < $left; $i++): ?>
-		<div class="col-md-2" style="margin:0px;padding:0px;">
-			<div class="tr-channel-panel tr-link" style="height:100px">
+		<div class="col-md-2 tr-channel-panel-unactive" 
+             style="margin:0px;padding:0px;">
+			<div class="tr-channel-panel tr-link" style="height:100px;background-color: #f7f3f3">
 				<span class="glyphicon glyphicon-picture"></span>
 			</div>
 		</div>

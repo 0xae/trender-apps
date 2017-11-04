@@ -570,9 +570,6 @@ $this->beginPage();
         .tr-header-panel .tr-header-inner {
             padding: 0px;
         }
-
-
-
     </style>
 </head>
 
