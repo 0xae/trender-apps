@@ -39,7 +39,7 @@ $this->beginPage();
 
         .tr-container {
             background-color: #fff;
-            min-height: 100%;
+            /*min-height: 100%;*/
             border-left: 1px solid #ccc;
             border-right: 1px solid #ccc;
             box-shadow: 0px 0px 2px rgba(0,0,0,.2);
@@ -510,6 +510,10 @@ $this->beginPage();
             font-size: 11px;
         }
 
+        .tr-txt-13 {
+            font-size: 13px;
+        }
+
         .tr-txt-underline {
             text-decoration: underline;
         }
@@ -541,6 +545,34 @@ $this->beginPage();
         .tr-text-gray {
             color: gray;
         }
+
+        .tr-header-panel {
+            /*height: 190px;*/
+            background-color: darkred;
+            padding: 0px;
+        }
+
+        .tr-header-panel h1 {
+            margin: 0px;
+            padding: 0px;
+            /*
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            */
+            font-weight: bold;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            color: #fefefe;
+            text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+        }
+
+        .tr-header-panel .tr-header-inner {
+            padding: 0px;
+        }
+
+
+
     </style>
 </head>
 
@@ -554,6 +586,9 @@ $this->beginPage();
         <?= $this->blocks['TrNewsBar'] ?>
         <?php endif; ?>
 
+        <?php if (isset($this->blocks['TrHeader'])): ?>
+        <?= $this->blocks['TrHeader']; ?>
+        <?php else: ?>
         <div class="col-md-12" id="tr-trender">
             <div class="col-md-4" style="padding-left: 0px;">
                 <ul class="list-inline" id="tr-search-opts">
@@ -621,6 +656,7 @@ $this->beginPage();
             </div>                
         <!-- #tr-trender -->
         </div>
+        <?php endif; ?>
 
         <?php 
             $this->beginBody(); 
