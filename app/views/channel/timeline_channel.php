@@ -13,7 +13,12 @@
     <div class="col-md-2">
     <?php
         echo \Yii::$app->view->renderFile (
-            "@app/views/channel/menu_channel.php", []
+            "@app/views/channel/menu_channel.php", [
+                "menuConf" => [
+                    "label" => "Timeline",
+                    "descr" => "Discover, explore and learn about people, nations, topics and things."
+                ]
+            ]
         );
     ?>
     </div>

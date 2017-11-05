@@ -1,6 +1,9 @@
 <?php
 $count = count($data);
 $left = 48 - $count;
+$title = $audience . " channels";
+$descr = "";
+$this->title = $title;
 ?>
 
 <div class="row rs-row tr-header-panel">
@@ -18,7 +21,12 @@ $left = 48 - $count;
     <div class="col-md-2">
     <?php
         echo \Yii::$app->view->renderFile (
-            "@app/views/channel/menu_channel.php", []
+            "@app/views/channel/menu_channel.php", [
+                "menuConf" => [
+                    "label" => $title,
+                    "descr" => $descr
+                ]
+            ]
         );
     ?>
     </div>

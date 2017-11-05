@@ -14,8 +14,9 @@ class Channel extends Model {
     public $curation=0;
     public $rank=-1;
     public $intel='{}';
-    public $internal=true;
+    public $audience='private';
     public $createdAt;
+    public $lastUpdate;
 
     public function rules() {
         return [
@@ -23,15 +24,29 @@ class Channel extends Model {
             ['name', 'filter', 'filter' => 'trim'],
             ['name', 'string', 'min' => 3],
             ['id', 'integer'],
-            ['internal', 'boolean']
         ];
+    }
+
+    private static function convert_to($i) {
+        $c = new Channel;
+        $c->id = $i->id;
+        $c->rank = $i->rank;
+        $c->queryConf = $i->queryConf ;
+        $c->picture = $i->picture ;
+        $c->name = $i->name ;
+        $c->audience = $i->audience ;
+        $c->intel = $i->intel ;
+        $c->curation = $i->curation ;
+        $c->createdAt = $i->createdAt ;
+        $c->lastUpdate = $i->lastUpdate ;
+        return $c;
     }
 
     public function save() {
         $host = Trender::apiHost();
         $data = [                
             "name" => $this->name,
-            "internal" => $this->internal ? 'true' : 'false'
+            "audience" => $this->audience 
         ];
 
         if ($this->id > 0) {
@@ -59,19 +74,6 @@ class Channel extends Model {
         return HttpReq::get($query);
     }
 
-    private static function convert_to($i) {
-        $c = new Channel;
-        $c->id = $i->id;
-        $c->rank = $i->rank;
-        $c->queryConf = $i->queryConf ;
-        $c->picture = $i->picture ;
-        $c->name = $i->name ;
-        $c->internal = $i->internal ;
-        $c->intel = $i->intel ;
-        $c->curation = $i->curation ;
-        $c->createdAt = $i->createdAt ;
-        return $c;
-    }
 
     public static function find($audience='public') {
         $host = Trender::apiHost();

@@ -1,5 +1,7 @@
-<h4>My Channels</h4>
-<p>Discover, explore and learn about people, nations, topics and things.</p>
+<?php if (isset($menuConf)): ?>
+<h4><?= $menuConf['label'] ?></h4>
+<p><?= @$menuConf['descr'] ?></p>
+<?php endif; ?>
 
 <ul class="list-unstyled">
     <li>
@@ -23,6 +25,12 @@
     <li>
         <a href="index.php?r=channel/statistics" class="tr-txt-underline tr-txt-13">
             <strong>Statistics</strong> 
+            <span class="glyphicon glyphicon-share-alt"></span> 
+        </a>
+    </li>
+    <li>
+        <a href="index.php?r=channel/new" class="tr-txt-underline tr-txt-13">
+            <strong>Create channel</strong> 
             <span class="glyphicon glyphicon-share-alt"></span> 
         </a>
     </li>
