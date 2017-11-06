@@ -74,10 +74,12 @@ for ($i=0; $i<$videosCount; $i++) {
 <?php $this->beginBlock('TrNewsBar'); ?>
 <div class="row rs-row">
     <?php
+    /*
         echo \Yii::$app->view->renderFile (
             "@app/views/plugins/newsbar/index.php",
             ["posts" => $posts]
         );
+    */
     ?>
 </div>
 <?php $this->endBlock(); ?>

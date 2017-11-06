@@ -2,17 +2,11 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$title = "Create a channel";
+$action='index.php?r=channel/update&id=' . $model->id;
+$title = "#<a href='#'>" . $model->name . '</a>';
 $descr = "Create channels to organize things, create stuff exploring the trender network";
-$action='index.php?r=channel/create';
-$this->title = $title;
-if ($model->id > 0) {
-    $action='index.php?r=channel/update&id=' . $model->id;
-    $title = "#<a href='#'>" . $model->name . '</a>';
-    $descr = "editing a channel";
-    $this->title = "Update {$model->name}";
-}
 
+$this->title = "Watching {$model->name}";
 ?>
 
 <div class="row rs-row tr-header-panel">
@@ -20,7 +14,7 @@ if ($model->id > 0) {
         <h1>
             <center>
             <span class="glyphicon glyphicon-random"></span>
-            Channels
+            <?= $model->name ?>
             </center>
         </h1>
     </div>
@@ -28,21 +22,16 @@ if ($model->id > 0) {
 
 <div class="row rs-row" style="height: 400px;">
     <div class="col-md-2">
-    <?php
-        echo \Yii::$app->view->renderFile (
-            "@app/views/channel/menu_channel.php", [
-                "menuConf" => [
-                    "label" => $title,
-                    "descr" => $descr
-                ]
-            ]
-        );
-    ?>
+        <h4>
+            <span class="fa fa-lock <?= ($model->audience=='public') ? 'text-warning' : 'text-success' ?> "></span>
+            Watching a <?= $model->audience ?> channel
+        </h4>
+        <p>you are watching <strong><a href="#"><?= $model->name ?></a>.</strong></p>
     </div>
 
     <div class="col-md-10" style="padding: 0px;min-height: 600px;background-color: #f7f3f3;">
-        <div class="row rs-row" style="height: 400px;margin-top: 30px;">
-            <div class="col-md-6 col-md-push-3">
+        <div class="row rs-row" style="height: 400px;">
+            <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:12px;color:gray">
                         <strong><?= $title ?></strong>
@@ -69,3 +58,6 @@ if ($model->id > 0) {
         </div>
     </div>
 </div>
+
+<?php
+$scrip = '';

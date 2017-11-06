@@ -20,8 +20,7 @@ class HttpReq extends \yii\base\Object {
               }
             }
 
-            if ($body) $json=json_decode($body);
-            if (!$json) return $body;
+            $json=json_decode($body);
     	} finally {
     		if ($ch) curl_close($ch);
     	}

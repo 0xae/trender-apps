@@ -1,5 +1,5 @@
 define("trender/app", function () {
-    return {
+    var service={
         apiHost: function() {
             // var idx = location.href.substr(7).indexOf("/");
             // var server = {
@@ -10,10 +10,17 @@ define("trender/app", function () {
             return api || "http://127.0.0.1:5000/";
         },
 
+        api: function() {
+            var host = service.apiHost();
+            return host + 'api/';
+        },
+
         mediaHost: function() {
             var host = localStorage.getItem("trender_host") || 'http://127.0.0.1';
             return host + "/trender/";
         }
-    }
+    };
+
+    return service;
 });
 

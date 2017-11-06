@@ -28,6 +28,9 @@ class ChannelController extends \yii\web\Controller {
         }
     }
 
+    public function actionDelete($id) {
+    }
+
     public function actionIndex() {
         return $this->redirect(['channel/public']);
     }
@@ -35,6 +38,14 @@ class ChannelController extends \yii\web\Controller {
     public function actionNew(){
         return $this->render('save_channel', [
             'model' => new Channel
+        ]);
+    }
+
+    public function actionConfig($id) {
+        $model = Channel::byId($id);
+        return $this->render('config_channel', [
+            'model' => $model,
+            'posts' => []
         ]);
     }
 

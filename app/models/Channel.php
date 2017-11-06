@@ -17,6 +17,7 @@ class Channel extends Model {
     public $audience='private';
     public $createdAt;
     public $lastUpdate;
+    public $lastUpdateFmt;
 
     public function rules() {
         return [
@@ -39,6 +40,7 @@ class Channel extends Model {
         $c->curation = $i->curation ;
         $c->createdAt = $i->createdAt ;
         $c->lastUpdate = $i->lastUpdate ;
+        $c->lastUpdateFmt = $i->lastUpdateFmt;
         return $c;
     }
 
@@ -74,11 +76,11 @@ class Channel extends Model {
         return HttpReq::get($query);
     }
 
-
     public static function find($audience='public') {
         $host = Trender::apiHost();
         $query = "http://{$host}/api/channel/find?audience=$audience";
-        return HttpReq::get($query);
+        $ret= HttpReq::get($query);
+        return $ret;
     }
     //TODO: create & update
 }
