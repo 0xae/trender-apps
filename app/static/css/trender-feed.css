@@ -1,5 +1,5 @@
 #tr-trender {
-    padding:0px;
+    padding: 0px;
     background-color: transparent;
 }
 
@@ -24,8 +24,7 @@ body {
     margin-top: 4px;
 }
 
-.tr-navbar ul.nav li {
-}
+.tr-navbar ul.nav li { }
 
 .tr-navbar ul.nav li a {
     color: #fff;
@@ -46,4 +45,27 @@ body {
 .tr-author {
 	margin-bottom: 0px;
 	line-height: 0;
+}
+
+.tr-post {
+    padding: 5px;
+    padding-top: 3px;
+    border: 1px solid gainsboro;
+}
+
+.tr-post-details {
+    margin-top: 4px;
+}
+
+.tr-post-description p {
+    margin:0px;
+}
+
+.tr-post-details p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.tr-cat-link {
+    color: gray;
 }

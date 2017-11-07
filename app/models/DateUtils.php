@@ -11,7 +11,7 @@ class DateUtils {
     }
     
     public static function dateFmt($date) {
-        return date("Y-m-d H:i:s", strtotime($date));
+        return date("Y-m-d", strtotime($date));
     }
 }
 

@@ -22,6 +22,7 @@ $this->beginPage();
     <?php $this->head() ?>
     <link rel="stylesheet" href="static/css/trender-app.css" />
     <link rel="stylesheet" href="static/css/trender-feed.css" />
+
 </head>
 
 <body>
