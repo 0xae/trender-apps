@@ -92,7 +92,7 @@ $this->beginPage();
                     </div>
                 <?php ActiveForm::end(); ?>
             </div>
-            
+
             <div class="col-md-3 pull-right" style="margin-bottom: 10px">
                 <div class="pull-right">
                     <h1 class="trender-title tr-text-orange">Trender</h1>

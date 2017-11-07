@@ -4,7 +4,7 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     */
-    background-color: #f6f5f3;
+    background-color: #efefef;
 }
 
 #page_container {
@@ -202,12 +202,14 @@ p {
 }
 
 #posts_container {
+    /*
     border-left: 1px solid #c5c4c4;
     border-top: 4px solid #fff;
     padding-left: 0px;
     padding-top: 0px;    
     padding-right: 0px;
     background-color: #efefef;
+    */
 }
 
 #posts_container .tr-post {    
@@ -579,3 +581,4 @@ p {
     height: 29px;
     padding-left: 8px;
 }
+

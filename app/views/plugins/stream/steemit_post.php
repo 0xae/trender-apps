@@ -6,7 +6,7 @@ $data = json_decode($post->data);
 
 <div class="tr-post col-md-8" id="tr-post-<?= $post->id ?>">
     <div class="row">
-        <div class="tr-post-image col-md-1">
+         <div class="tr-post-image col-md-1">
             <a class="cb" 
                href="<?= $post->link; ?>" 
                style="width:50px; height: 50px;"
@@ -36,13 +36,12 @@ $data = json_decode($post->data);
                         </strong>
                     </span>
                 </h4>
-                <div style="color: gray;display:inline;">
-                    <span style="font-size: 11px;">
-                        <strong>
-                            · <?=  $post->timestampFmt ?>
-                        </strong>
-                    </span>
-                </div>
+                <span style="color: gray;font-size:13px;display:block" title="<?= $post->timestampFmt ?>">
+                    <span class="fa fa-clock-o"></span>
+                    <strong>
+                        <?=  $post->timestampFmt ?>
+                    </strong>
+                </span>
             </div>
 
             <div class="tr-post-description">

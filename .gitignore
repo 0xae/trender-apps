@@ -11,3 +11,4 @@ logs/
 downloads/
 media/
 twistd.pid
+composer.lock
