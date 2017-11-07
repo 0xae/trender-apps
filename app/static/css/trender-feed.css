@@ -82,8 +82,15 @@ body {
 
 .tr-chan-menu {
     background-color: #fff;
+    padding: 2px;
 }
 
 .nav-pills ul {
     display: inline;
+}
+
+.tr-chan-menu ul.nav-pills > li > a {
+    padding: 0px;
+    margin-left: 15px;
+    padding: 3px;
 }
