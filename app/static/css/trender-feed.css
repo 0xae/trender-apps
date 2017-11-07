@@ -10,6 +10,7 @@ body {
     border-color: transparent;
     border-radius: 0px;
     background-color: #880c88;
+    margin-bottom: 0px;
 }
 
 .tr-navbar a.navbar-brand {
@@ -68,4 +69,13 @@ body {
 
 .tr-cat-link {
     color: gray;
+}
+
+.rs-pad {
+    padding: 0px;
+}
+
+.thumbnail-chan-info {
+    border-radius:0px;
+    padding:0px;
 }

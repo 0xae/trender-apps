@@ -39,7 +39,6 @@ $category = Utils::category($post);
                 <p> <?= $post->description ?> </p>
             </div>
         </div>
-
     </div>
 
     <div class="row tr-post-details">
@@ -69,13 +68,13 @@ $category = Utils::category($post);
                 <span aria-hidden="true">· </span>
                 <a href="javascript:void(0)">0 likes</a>
                 <span aria-hidden="true">· </span>
-                <a href="javascript:void(0)">more</a>
+                <a href="./index.php?r=feed/more">more</a>
                 <span aria-hidden="true">· </span>
                 <a href="<?= $post->link; ?>">full story</a>
 
                 <a href="<?= $post->link; ?>" class="pull-right tr-cat-link">
                     <strong>
-                    <?= $post->category[1] ?>
+                    <?= $category ?>
                     </strong>
                 </a>
                 </p>

@@ -33,6 +33,9 @@ $controllerHref = "index.php?r=$controllerId/index";
             <li class="<?= ($controllerId == 'market') ? 'active' : '' ?>">
                 <a href="./index.php?r=market/index">Markets</a>
             </li>
+            <li class="<?= ($controllerId == 'channel') ? 'active' : '' ?>">
+                <a href="./index.php?r=channel/index">Explore</a>
+            </li>
         </ul>
 
         <form class="navbar-form navbar-right" role="search">

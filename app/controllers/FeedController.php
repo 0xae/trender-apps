@@ -13,8 +13,8 @@ class FeedController extends \yii\web\Controller {
     public $layout = 'feed_layout';
 
     public function actionIndex() {
-    	$q = '*';
-    	$start = rand(0, 1000);
+    	$q = (@$_GET['q']) ? $_GET['q'] : '*';
+    	$start = rand(0, 50);
         $vidReq = Solr::query($q, $start, 20, [
             "!cached:none",
             "type:youtube-post"
@@ -27,6 +27,17 @@ class FeedController extends \yii\web\Controller {
 
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;
+        $data = $postReq->facet_counts->facet_fields->category;
+        $trending = [];
+        for ($i=0; $i<count($data) / 2;$i+=2) {
+            $score = $data[$i+1];
+            if ($score == 0)
+                continue;
+            $trending[] = [
+                "label" => $data[$i],
+                "score" => $score
+            ];
+        }
 
         foreach ($posts as $p) {
             $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
@@ -40,7 +51,9 @@ class FeedController extends \yii\web\Controller {
 
         return $this->render('index', [
         	'videos' => $videos,
-        	'posts' => $posts
+            'posts' => $posts,
+            'trending' => $trending,
+            'channel_name' => ($q=='*') ? 'Newsfeed' : $q
         ]);
     }
 }
