@@ -79,3 +79,11 @@ body {
     border-radius:0px;
     padding:0px;
 }
+
+.tr-chan-menu {
+    background-color: #fff;
+}
+
+.nav-pills ul {
+    display: inline;
+}
