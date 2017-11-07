@@ -46,7 +46,7 @@ else
 
 			            <li>
 			                <a href="#">
-			                    <span style="margin-right:10px;" class="glyphicon glyphicon-unchecked"></span>
+			                    <span style="margin-right:7px;" class="glyphicon glyphicon-unchecked"></span>
 			                    Collections
 			                    <strong>(10)</strong>
 			                </a>

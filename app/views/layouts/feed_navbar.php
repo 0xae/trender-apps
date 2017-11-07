@@ -1,4 +1,5 @@
 <?php
+use yii\widgets\ActiveForm;
 $controllerId = Yii::$app->controller->id;
 $controllerHref = "index.php?r=$controllerId/index";
 ?>
@@ -33,15 +34,24 @@ $controllerHref = "index.php?r=$controllerId/index";
             <li class="<?= ($controllerId == 'market') ? 'active' : '' ?>">
                 <a href="./index.php?r=market/index">Markets</a>
             </li>
-            <li class="<?= ($controllerId == 'channel') ? 'active' : '' ?>">
-                <a href="./index.php?r=channel/index">Explore</a>
+            <li class="<?= ($controllerId == 'explore') ? 'active' : '' ?>">
+                <a href="./index.php?r=explore/index">Explore</a>
             </li>
         </ul>
 
-        <form class="navbar-form navbar-right" role="search">
-            <input type="text" class="form-control tr-search-input" 
-                  placeholder="Search for anything" /> 
-        </form>
+        <?php $form = ActiveForm::begin(['action' => $controllerHref, 
+                                         'method' => 'get',
+                                         'options' => [
+                                         'role' => 'search',
+                                         'class' => 'navbar-form navbar-right'
+                                         ]]); ?>
+                <input type="text" 
+                       class="form-control tr-search-input"
+                       name="q"
+                       value="<?= @$_GET['q'] ?>"
+                       placeholder="Search for anything"
+                 />
+        <?php ActiveForm::end(); ?>
     </div><!-- /.navbar-collapse -->
 
 </div><!-- /.container-fluid -->
