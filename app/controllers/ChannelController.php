@@ -69,7 +69,7 @@ class ChannelController extends \yii\web\Controller {
             $queryConf->fq[] = $f;
         }
         $feed = Feed::create($queryConf);
-        $channels = Channel::all();
+        $channels = Channel::find();
 
         return $this->render('watch',[
             'channel' => $chan,

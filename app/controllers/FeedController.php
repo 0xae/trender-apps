@@ -5,6 +5,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\BaseHtml;
 use app\models\Post;
 use app\models\Solr;
 
@@ -53,7 +54,7 @@ class FeedController extends \yii\web\Controller {
             'posts' => $posts,
             'trending' => $trending,
             'channel_name' => ($q=='*') ? 'Newsfeed' : $q,
-            'q' => $q
+            'q' => BaseHtml::encode($q)
         ]);
     }
 }

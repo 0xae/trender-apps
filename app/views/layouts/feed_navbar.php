@@ -1,5 +1,7 @@
 <?php
 use yii\widgets\ActiveForm;
+use yii\helpers\BaseHtml;
+
 $controllerId = Yii::$app->controller->id;
 $controllerHref = "index.php?r=feed/index";
 ?>
@@ -48,7 +50,7 @@ $controllerHref = "index.php?r=feed/index";
                 <input type="text" 
                        class="form-control tr-search-input"
                        name="q"
-                       value="<?= @$_GET['q'] ?>"
+                       value="<?= BaseHtml::encode(@$_GET['q']) ?>"
                        placeholder="Search for anything"
                  />
         <?php ActiveForm::end(); ?>
