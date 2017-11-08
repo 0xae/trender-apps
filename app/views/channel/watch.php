@@ -2,7 +2,7 @@
 use yii\widgets\ActiveForm;
 use app\models\Post;
 use app\models\Utils;
-
+// Yii::$app->security->generateRandomString();
 if (!empty($posts))
 	$picture = Utils::cached($posts[0]);
 else
@@ -99,7 +99,7 @@ else
 		</ul>
 	</div>
 
-	<div class="col-md-6" id="posts_container">
+	<div class="col-md-4" id="posts_container">
 	   <div id="posts_container_stream_start">
 	    </div>
 
@@ -113,10 +113,10 @@ else
 	    </div>
 	</div>
 
-	<div class="col-md-2 pull-right rs-pad" style="background-color: lightgray;">
+	<div class="col-md-2 pull-right rs-pad">
 	    <div class="tr-section">
 	        <h4 class="tr-section-title">
-	            Collections
+	            Conversations
 	            <!--
 	                <span class="glyphicon glyphicon-flash">
 	                </span>

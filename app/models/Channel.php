@@ -96,5 +96,4 @@ class Channel extends Model {
         $ret= HttpReq::get($query);
         return $ret;
     }
-    //TODO: create & update
 }

@@ -1,6 +1,5 @@
 <?php
 namespace app\models;
-
 use Yii;
 use app\models\Channel;
 use app\models\HttpReq;
@@ -10,9 +9,6 @@ use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 class Feed {
-    public static function collections($queryConf) {
-    }
-
     public static function create($queryConf) {
         $q = $queryConf->q;
         $fq = $queryConf->fq;

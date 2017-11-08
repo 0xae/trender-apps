@@ -78,7 +78,7 @@ else
 		</div>
 	</div>
 
-	<div class="col-md-6" id="posts_container">
+	<div class="col-md-5" id="posts_container">
 	   <div id="posts_container_stream_start">
 	    </div>
 

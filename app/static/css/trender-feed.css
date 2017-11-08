@@ -4,6 +4,7 @@
 }
 
 body {
+    background-color: lightgrey;
 }
 
 .tr-navbar {
@@ -54,6 +55,7 @@ body {
     padding: 5px;
     padding-top: 3px;
     border: 1px solid gainsboro;
+    border: 1px solid lightgray;
 }
 
 .tr-post-details {
