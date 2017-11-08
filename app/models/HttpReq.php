@@ -49,13 +49,17 @@ class HttpReq extends \yii\base\Object {
             $body = curl_exec($ch);
 
             if (!curl_errno($ch)) {
-              switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
-                case 200:  # OK
-                  break;
-                default:
+                switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
+                    case 200:  # OK
+                    break;
+                    default:
                     // XXX
-                    throw new HttpException($http_code, '('.$data.')Error accessing: ' . $url . '  Details: ' . $body. '<br/>-------<br/>' . curl_error($ch));
-              }
+                        throw new HttpException(
+                            $http_code, 
+                            '('.$data.')Error accessing: ' . $url 
+                            . '  Details: ' . $body
+                            . '<br/>-------<br/>' . curl_error($ch));
+                }
             }
             $json=json_decode($body);
         } finally {

@@ -2,10 +2,13 @@
 namespace app\models;
 
 class Solr {
-    public static function query($q, $start, $lim, $facetq) {
-        $query = urlencode($q);
+    public static function query($q, $start, $lim, $facetq) {        
+        $qFmt = urlencode($q);
+        $serverHost = Trender::serverHost();
         $limit = (int)$lim;
-        $query = "http://localhost:8983/solr/trender/query?q={$query}";
+
+        $query = "http://$serverHost:8983/solr/trender/query?";
+        $query .= "q={$qFmt}";
         $query .= "&facet=true";
         $query .= "&facet.field=category";
         $query .= "&facet.field=type";

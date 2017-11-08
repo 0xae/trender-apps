@@ -8,11 +8,13 @@ class Utils {
             throw new HttpException(400, "Parameter $name is mandatory.");
         return $_GET[$name];
     }
+
     public static function queryParam($name, $val) {
         return (@$_GET[$name]) ? $_GET[$name]: $val;
     }
 
     public static function cached($post) {
+        $mediaHost = Trender::mediaHost();
         if (!isset($post->cached))
             return $post->picture;
 
@@ -21,9 +23,9 @@ class Utils {
                 !$post->cached) {
             $url = $post->picture;
         } else if (is_array($cached)) {
-            $url = '../downloads/' . $cached[0];
+            $url = "$mediaHost/downloads/{$cached[0]}";
         } else if (!$cached) {
-            $url = '../' . $post->cached;
+            $url = "$mediaHost/{$post->cached}";
         }
 
         return $url;
