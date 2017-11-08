@@ -52,7 +52,8 @@ class FeedController extends \yii\web\Controller {
         	'videos' => $videos,
             'posts' => $posts,
             'trending' => $trending,
-            'channel_name' => ($q=='*') ? 'Newsfeed' : $q
+            'channel_name' => ($q=='*') ? 'Newsfeed' : $q,
+            'q' => $q
         ]);
     }
 }

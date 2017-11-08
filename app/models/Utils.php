@@ -1,7 +1,17 @@
 <?php
 namespace app\models;
+use yii\web\HttpException;
 
 class Utils {
+    public static function param($name) {
+        if(!@$_GET[$name])
+            throw new HttpException(400, "Parameter $name is mandatory.");
+        return $_GET[$name];
+    }
+    public static function queryParam($name, $val) {
+        return (@$_GET[$name]) ? $_GET[$name]: $val;
+    }
+
     public static function cached($post) {
         if (!isset($post->cached))
             return $post->picture;

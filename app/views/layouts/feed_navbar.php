@@ -1,7 +1,7 @@
 <?php
 use yii\widgets\ActiveForm;
 $controllerId = Yii::$app->controller->id;
-$controllerHref = "index.php?r=$controllerId/index";
+$controllerHref = "index.php?r=feed/index";
 ?>
 
 <nav class="navbar navbar-inverse tr-navbar">

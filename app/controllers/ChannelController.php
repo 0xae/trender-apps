@@ -3,11 +3,22 @@ namespace app\controllers;
 use Yii;
 use app\models\Channel;
 use app\models\HttpReq;
+use app\models\Utils;
+use app\models\Solr;
+use app\models\Feed;
+use yii\web\HttpException;
+use yii\web\NotFoundHttpException;
 
 class ChannelController extends \yii\web\Controller {
     public function actionTest() {
-        $url = "http://127.0.0.1:5000/api/channeil";
-        var_dump(HttpReq::get($url));
+        $name = 'bitcoin, ethereum, ripple';
+        var_dump(explode(',', $name));
+    }
+
+    public function actionNew(){
+        return $this->render('save_channel', [
+            'model' => new Channel
+        ]);
     }
 
     public function actionCreate() {
@@ -20,7 +31,7 @@ class ChannelController extends \yii\web\Controller {
     public function actionUpdate($id) {
         $model = Channel::byId($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['channel/public']);
+            return $this->redirect(['channel/watch' , 'id' => $model->id]);
         } else {
             return $this->render('save_channel', [
                 'model' => $model
@@ -28,59 +39,45 @@ class ChannelController extends \yii\web\Controller {
         }
     }
 
-    public function actionDelete($id) {
-    }
+    public function actionWatch($id=false) {
+        $name = Utils::queryParam('name', false);
+        if ($id) {
+            $chan = Channel::byId($id);
+        } else if ($name) {
+            try {
+                $chan = Channel::byName($name);
+            } catch (NotFoundHttpException $e) {
+                $fq=Utils::queryParam('fq', '');
+                $o = new Channel;
+                $o->name = $name;
+                $o->audience = 'public';
+                $o->queryConf = json_encode([
+                    #q is mandatory
+                    #no, i wont assuming its the same as $name
+                    'q' => Utils::param('q'),
+                    'fq' => explode(',', $fq)
+                ]);
+                $chan = $o->save();
+            }
+        } else {
+            throw new HttpException(400, 'query param id or name are mandatory');
+        }
 
-    public function actionIndex() {
-        return $this->redirect(['channel/public']);
-    }
+        $queryConf = json_decode($chan->queryConf);
+        $fq = explode(',', Utils::queryParam('fq', ''));
+        foreach ($fq as $f) {
+            $queryConf->fq[] = $f;
+        }
+        $feed = Feed::create($queryConf);
+        $channels = Channel::all();
 
-    public function actionNew(){
-        return $this->render('save_channel', [
-            'model' => new Channel
-        ]);
-    }
-
-    public function actionConfig($id) {
-        $model = Channel::byId($id);
-        return $this->render('config_channel', [
-            'model' => $model,
-            'posts' => []
-        ]);
-    }
-
-    public function actionPrivate(){
-        return $this->render('list_channel', [
-            'data' => Channel::find('private'),
-            'audience'=> 'private'
-        ]);
-    }
-
-    public function actionPublic(){
-        return $this->render('list_channel', [
-            'data' => Channel::find(),
-            'audience'=> 'public'
-        ]);
-    }
-
-    public function actionTimeline(){
-        return $this->render('timeline_channel', [
-            'data' => []
-        ]);
-    }
-
-    public function actionRecent(){
-        return $this->render('recent_channel', [
-        ]);
-    }
-
-    public function actionActivity(){
-        return $this->render('activity_channel', [
-        ]);
-    }
-
-    public function actionStatistics(){
-        return $this->render('statistics_channel', [
+        return $this->render('watch',[
+            'channel' => $chan,
+        	'videos' => $feed['videos'],
+            'posts' => $feed['posts'],
+            'collections' => $feed['collections'],
+            'channels' => $channels,
+            'q' => $queryConf->q
         ]);
     }
 }

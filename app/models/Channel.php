@@ -47,8 +47,13 @@ class Channel extends Model {
     public function save() {
         $host = Trender::apiHost();
         $data = [                
+            "rank" => $this->rank,
             "name" => $this->name,
-            "audience" => $this->audience 
+            "audience" => $this->audience,
+            "queryConf" => $this->queryConf,
+            "picture" => $this->picture,
+            "intel" => $this->intel,
+            "curation" => $this->curation
         ];
 
         if ($this->id > 0) {
@@ -60,12 +65,21 @@ class Channel extends Model {
 
         $json = HttpReq::post($url, json_encode($data));
         if (!$this->id) $this->id = $json->id;
-        return true;
+        return $json;
     }
 
     public static function byId($id) {
         $host = Trender::apiHost();
         $query = "http://{$host}/api/channel/$id";
+        $json = HttpReq::get($query);
+        return self::convert_to($json);
+    }
+
+    // encode $name ???
+    public static function byName($name, $q='*') {
+        $host = Trender::apiHost();
+        $q = urlencode($q);
+        $query = "http://{$host}/api/channel/find_by?name=$name&q=$q";
         $json = HttpReq::get($query);
         return self::convert_to($json);
     }

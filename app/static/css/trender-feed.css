@@ -23,6 +23,8 @@ body {
     height: 28px;
     border-radius: 40px;
     margin-top: 4px;
+    color: gray;
+    /*font-weight: bold;*/
 }
 
 .tr-navbar ul.nav li { }

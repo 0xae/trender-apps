@@ -13,6 +13,10 @@ else
 	<div class="col-md-2" style="background-color: #fff;">
 		<div class="row">
 			<div class="col-md-12 rs-pad">
+				<img style="max-width: 100%;" 
+					src="<?= $picture ?>" 
+					 alt="..." />
+
 				<h3 style="margin-top:5px;margin-left:5px;">
 				<?= $channel_name ?>
 				</h3>
@@ -50,9 +54,11 @@ else
 			        </ul>
 			    </div>
 
+
+
 			    <div class="tr-section">
 			        <h4 class="tr-section-title">
-			            Sugested Feeds
+			            More Feeds
 			            <!--
 			                <span class="glyphicon glyphicon-flash">
 			                </span>
@@ -76,6 +82,31 @@ else
 			    </div>
 			</div>
 		</div>
+	</div>
+
+	<div class="col-md-10 tr-chan-menu">
+		<ul class="nav nav-pills">
+			<li role="presentation" class="active">
+				<a href="#">Activity</a>
+			</li>
+			<li role="presentation">
+				<a href="#">News</a>
+			</li>
+			<li role="presentation">
+				<a href="#">Media</a>
+			</li>
+			<li role="presentation">
+				<a href="#">Events</a>
+			</li>
+			<li role="presentation">
+				<a href="#">Places</a>
+			</li>
+			<li role="presentation" class="pull-right">
+				<a href="#">
+					<span class="badge badge-default">add</span>
+				</a>
+			</li>
+		</ul>
 	</div>
 
 	<div class="col-md-6" id="posts_container">

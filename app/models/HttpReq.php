@@ -14,9 +14,11 @@ class HttpReq extends \yii\base\Object {
               switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
                 case 200:  # OK
                   break;
+                case 404: # OK
+                    throw new NotFoundHttpException($body);
                 default:
                     // XXX
-                    throw new HttpException($http_code, 'Error accessing: ' . $url . '  Details: ' . $body. '<br/>-------<br/>' . curl_error($ch));
+                    throw new HttpException($http_code, $body);
               }
             }
 
