@@ -2,9 +2,7 @@
 use yii\widgets\ActiveForm;
 use yii\helpers\BaseHtml;
 use yii\helpers\Html;
-
 ?>
-
 
 <?php $form = ActiveForm::begin(['options' => [
 								 'id' => 'collection-save',
@@ -12,8 +10,15 @@ use yii\helpers\Html;
                                  'v-on:submit.prevent'=>""
                                  ]]); ?>
 
+<div class="alert alert-success tr-alert" v-if="alerts">
+    <strong>
+        <span class="fa fa-lock"></span> 
+        {{alerts}}
+    </strong>
+</div>
+
 <div class="alert alert-danger tr-alert" v-if="errors.length > 0">
-    Oops, could save collection.<br/>
+    <span class="pull-right label label-danger">ERROR</span>
     <ul>
         <li v-for="e in errors">
             {{e}}
@@ -28,7 +33,7 @@ use yii\helpers\Html;
 ?>
 
 <?= $form->field($model, 'name')
-    ->textInput(['v-model'=>'obj.name', "required"=>"true"])
+    ->textInput(['v-model'=>'obj.name', "id"=>"colName"])
     ->label("Name <span class='tips'>used to get access to this collection</span>")
 ?>
 
@@ -50,43 +55,11 @@ use yii\helpers\Html;
 </div>
 
 <div class="form-bottom">
-<?= Html::submitButton('<strong>SAVE</strong>', [
-    'class' => 'btn-sm btn btn-success',
+<?= Html::submitButton('<strong>save</strong>', [
+    'class' => 'btn-sm btn btn-success tr-btn',
     '@click' => 'save(obj)'
 ]) ?>
 </div>
 
 <?php ActiveForm::end(); ?>
 
-
-<?php
-$scrip = <<<JS
-requirejs(['trender/app', 'jquery', '_', 'vue', 't/zcollection'], 
-function (app, jQuery, _, Vue, zcollection){
-    var onSave = $onSave;
-    new Vue({
-        el: '#collection-save',
-        data: {
-            obj:{
-                name: '{$model->name}',
-                channelId: '{$model->channelId}'
-            },
-            errors: []
-        },
-        methods: {
-            save: function(obj){
-                var self=this;
-                if (!obj.name || !obj.label || !obj.audience)
-                    return;
-                zcollection.save(obj)
-                .then(function (obj){
-                    onSave(obj);
-                }, function (error) {
-                    self.errors = error.errors;
-                });
-            }
-        }
-    });
-});
-JS;
-$this->registerJs($scrip);

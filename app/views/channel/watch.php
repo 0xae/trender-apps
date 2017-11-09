@@ -11,6 +11,8 @@ if (!empty($posts))
 else
 	$picture = '';
 $collection = new Collection;
+
+$this->title = 'Channel ' . $channel->name;
 ?>
 
 <div class="row rs-row">
