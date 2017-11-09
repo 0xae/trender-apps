@@ -68,6 +68,7 @@ class ChannelController extends \yii\web\Controller {
         foreach ($fq as $f) {
             $queryConf->fq[] = $f;
         }
+
         $feed = Feed::create($queryConf);
         $channels = Channel::find();
 

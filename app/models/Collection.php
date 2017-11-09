@@ -1,6 +1,5 @@
 <?php
 namespace app\models;
-
 use Yii;
 use app\models\Channel;
 use app\models\HttpReq;
@@ -8,35 +7,41 @@ use app\models\Utils;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\base\Model;
+use yii\db\ActiveRecord;
 
 class Collection extends Model {
     public $id, $name, $label, $description;
     public $audience, $createdAt, $lastUpdate;
     public $channelId;
 
+    public function Collection() {
+    }
+
     public function rules() {
         return [
-            [['label'], 'required'],
+            [['label', 'label', 'audience', 'name'], 'required'],
             [['id', 'channelId'], 'integer']
         ];
     }
 
     public function save() {
-        $host = Trender::apiHost();
-        $random=Yii::$app->security->generateRandomString();
-        if ($this->channelId > 0) {
-            $this->name = "{$this->channelId}/$random";
-        } else {
-            $this->name = $random;
+        $host=Trender::api();
+        if ($this->name !="") {
+            $random=Yii::$app->security->generateRandomString();
+            $this->name = "$random";
+            if ($this->channelId > 0)
+                $this->name = "{$this->channelId}/{$this->name}";
         }
 
         $data = json_encode($this);
         if ($this->id > 0) {
-            $url = "http://{$host}/api/collection/{$this->id}";
+            $url = "{$host}collection/{$this->id}";
         } else {
-            $url = "http://{$host}/api/collection/new";
+            $url = "{$host}collection/new";
         }
+
         $json = HttpReq::post($url, $data);
-        if (!$this->id) $this->id = $json->id;
+        if (!$this->id) 
+            $this->id = $json->id;
     }
 }

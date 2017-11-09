@@ -33,6 +33,7 @@ class FeedController extends \yii\web\Controller {
             $score = $data[$i+1];
             if ($score == 0)
                 continue;
+
             $trending[] = [
                 "label" => $data[$i],
                 "score" => $score

@@ -14,7 +14,7 @@ class Utils {
     }
 
     public static function cached($post) {
-        $mediaHost = Trender::mediaHost();
+        $mediaHost = Trender::media();
         if (!isset($post->cached))
             return $post->picture;
 

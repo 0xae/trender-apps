@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\assets\AppAsset;
+use app\models\Trender;
 
 AppAsset::register($this);
 $controllerId = Yii::$app->controller->id;
@@ -22,10 +23,29 @@ $this->beginPage();
     <?php $this->head() ?>
     <link rel="stylesheet" href="static/css/trender-app.css" />
     <link rel="stylesheet" href="static/css/trender-feed.css" />
-
 </head>
 
 <body>
+<?php
+$apiHost = Trender::api();
+$mediaHost = Trender::media();
+$script = <<<JS
+define("trender/app", function() {
+    var service={
+        api: function() {
+            return '$apiHost';
+        },
+
+        media: function() {
+            return '$mediaHost';
+        }
+    };
+
+    return service;
+});
+JS;
+$this->registerJs($script);
+?>
 
 <div class="">
     <div class="row rs-row" id="page_container">        
@@ -42,6 +62,7 @@ $this->beginPage();
             $this->beginBody(); 
             echo $content;
             $this->endBody();
+            ?>
         ?>
     </div>
 </div>
@@ -49,3 +70,4 @@ $this->beginPage();
 
 </html>
 <?php $this->endPage(); ?>
+

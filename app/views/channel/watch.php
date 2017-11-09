@@ -2,11 +2,15 @@
 use yii\widgets\ActiveForm;
 use app\models\Post;
 use app\models\Utils;
+use app\models\Collection;
+
+// TODO: work here
 // Yii::$app->security->generateRandomString();
 if (!empty($posts))
 	$picture = Utils::cached($posts[0]);
 else
 	$picture = '';
+$collection = new Collection;
 ?>
 
 <div class="row rs-row">
@@ -39,10 +43,18 @@ else
 
 			            <li>
 			                <a href="#">
-			                    <span style="margin-right:7px;" class="glyphicon glyphicon-unchecked"></span>
+			                    <span style="margin-right:7px;" class="glyphicon glyphicon-unchecked">
+			                    </span>
 			                    Collections
 			                    <strong>(0)</strong>
 			                </a>
+
+			                <a href="javascript:void(0)">
+		                    <span class="text-success pull-right glyphicon glyphicon-plus-sign"
+		                    		style="padding-top:3px;padding-right:10px;"
+		                    	  data-toggle="modal" data-target="#collectionModal">
+		                    </span>
+		                	</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -140,3 +152,13 @@ else
 	    </div>
 	</div>
 </div>
+
+
+<?php
+    echo \Yii::$app->view->renderFile(
+        "@app/views/channel/new_collection_modal.php",
+        ["collection" => $collection,
+         "channel" => $channel]
+    );
+?>
+
