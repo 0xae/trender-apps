@@ -9,22 +9,25 @@ class HttpReq extends \yii\base\Object {
 			$ch = curl_init($url);            
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $body = curl_exec($ch);
-
-            if (!curl_errno($ch)) {
+            $error = curl_errno($ch);
+            if (!$error) {
               switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
-                case 200:  # OK
+                case 200:  // OK
                   break;
-                case 404: # OK
+                case 404: // OK
                     throw new NotFoundHttpException($body);
                 default:
                     // XXX
-                    throw new HttpException($http_code, $body);
+                    throw new HttpException($http_code, $url);
               }
+            } else {
+                throw new HttpException(503, "GET $url<br/>Could not complete request. {$body}");
             }
-
             $json=json_decode($body);
     	} finally {
-    		if ($ch) curl_close($ch);
+    		if ($ch) {
+                curl_close($ch);
+            }
     	}
 
         return $json;
@@ -55,10 +58,10 @@ class HttpReq extends \yii\base\Object {
                   break;
                 default:
                     // XXX
-                    throw new HttpException($http_code, '('.$data.')Error accessing: ' . $url . '  Details: ' . $body. '<br/>-------<br/>' . curl_error($ch));
+                    throw new HttpException($http_code||503, '('.$data.')Error accessing: ' . $url . '  Details: ' . $body. '<br/>-------<br/>' . curl_error($ch));
               }
             } else {
-                throw new HttpException("Could not complete request.");
+                throw new HttpException(503, "Could not complete request. {$error}");
             }
             $json=json_decode($body);
         } finally {

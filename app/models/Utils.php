@@ -17,13 +17,12 @@ class Utils {
         $mediaHost = Trender::media();
         if (!isset($post->cached))
             return $post->picture;
-
         $cached = json_decode($post->cached);
         if ($post->cached == "none" || $post->cached == "" ||
                 !$post->cached) {
             $url = $post->picture;
-        } else (!$cached) {
-            $url = "$mediaHost/{$post->cached}";
+        } else {
+            $url = "$mediaHost/media/{$post->cached}";
         }
         return $url;
     }

@@ -1,8 +1,8 @@
 define(['trender/app', 'jquery'], 
 function (app, $){
-    const api = app.api();
     return {
         save: function (data) {
+            var api = app.api();
             return new Promise(function (resolve, reject){
                 var str = JSON.stringify(data);
                 if (data.id) {

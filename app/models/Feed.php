@@ -12,16 +12,16 @@ class Feed {
     public static function create($queryConf) {
         $q = $queryConf->q;
         $fq = $queryConf->fq;
-        $fq[] = "!cached:none";
-        $fq[] = "type:youtube-post";
+        //$fq[] = "!cached:none";
+        //$fq[] = "type:youtube-post";
     	$start = 0;
-        $vidReq = Solr::query($q, $start, 20, $fq);
+        $vidReq = Solr::query($q, $start, 100, $fq);
 
         $fq = $queryConf->fq;
-        $fq[] = '!type:youtube-post';
-        $fq[] = '!cached:none';
+        //$fq[] = '!type:youtube-post';
+        //$fq[] = '!cached:none';
 
-        $postReq = Solr::query($q, $start, 70, $fq);
+        $postReq = Solr::query($q, $start, 170, $fq);
 
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;

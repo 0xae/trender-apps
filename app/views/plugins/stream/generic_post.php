@@ -13,8 +13,11 @@ $category = Utils::category($post);
                style="width:50px; height: 50px;"
                title="Profile picture of <?= $post->authorName ?>">
 
-                <img data-xsrc="<?= Utils::cached($post) ?>" 
+                <img data-picture="<?= $post->picture ?>"
+                     data-postid="<?= $post->id ?>"
+                     src="<?= Utils::cached($post) ?>"
                      id="img-<?= $post->id ?>"
+                     class="tr-cache-it"
                      width="50"
                      height="45"
                      alt="loading..."
@@ -82,10 +85,3 @@ $category = Utils::category($post);
         </div>
     </div>
 </div>
-
-<?php
-$script = <<JS
-requirejs(["trender/app", "jquery", "_"], function (app, $, _){
-
-});
-JS;

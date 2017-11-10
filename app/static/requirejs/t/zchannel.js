@@ -23,7 +23,6 @@ function (app, $){
 
     function getCollections(id) {
         var url = api + "channel/"+id+"/collections";
-
     }
 
     function create(data) {
