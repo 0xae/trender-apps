@@ -15,13 +15,14 @@ class Feed {
         $fq[] = "!cached:none";
         $fq[] = "type:youtube-post";
     	$start = 0;
-        $vidReq = Solr::query($q, $start, 100, $fq);
+        $limit = 40;
+        $vidReq = Solr::query($q, $start, $limit, $fq);
 
         $fq = $queryConf->fq;
         $fq[] = '!type:youtube-post';
         $fq[] = '!cached:none';
 
-        $postReq = Solr::query($q, $start, 170, $fq);
+        $postReq = Solr::query($q, $start, $limit, $fq);
 
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;

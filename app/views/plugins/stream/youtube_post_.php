@@ -60,7 +60,6 @@ $json = json_decode($post->data);
                      src="https://img.youtube.com/vi/
                       <?= $json->video_id ?>/0.jpg" />
                     -->
-
                     <div class="" 
                          style="color:red;font-size: 25px;padding-top:40px;margin-bottom: 43px;">
                         <span class="fa fa-play" title="Play"></span>
