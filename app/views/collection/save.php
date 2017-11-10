@@ -33,12 +33,14 @@ use yii\helpers\Html;
 ?>
 
 <?= $form->field($model, 'name')
-    ->textInput(['v-model'=>'obj.name', "id"=>"colName"])
-    ->label("Name <span class='tips'>used to get access to this collection</span>")
+    ->textInput(['v-model'=>'obj.name', 
+                "id"=>"colName"])
+    ->label("Name <span class='tips'>use it to get access to this collection</span>")
 ?>
 
 <?= $form->field($model, 'label')
-    ->textInput(['v-model'=>'obj.label']) 
+    ->textInput(['v-model'=>'obj.label',
+                'placeholder' => "My collection"]) 
     ->label("Label <span class='tips'>the title of your collection</span>")
 ?>
 
@@ -47,8 +49,7 @@ use yii\helpers\Html;
 	        'public' => 'Publicy accessible', 
 	        'private' => 'Private (developers only)'
 	    ],
-	    ['prompt'=>'Select',
-         'v-model'=>'obj.audience']
+	    ['v-model'=>'obj.audience']
 	)
 	->label("Audience <span class='tips'>who can acess this?</span>");
 ?>

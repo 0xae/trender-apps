@@ -7,6 +7,8 @@ if (!$collection->id) {
         $collection->channelId = $channel->id;
     }
 }
+
+$collection->audience = 'private';
 ?>
 
 <!-- Modal -->
@@ -50,7 +52,8 @@ function (app, $, Vue, zcollection){
         data: {
             obj:{
                 name: '{$collection->name}',
-                channelId: '{$collection->channelId}'
+                channelId: '{$collection->channelId}',
+                audience: '{$collection->audience}'
             },
             errors: [],
             alerts: false

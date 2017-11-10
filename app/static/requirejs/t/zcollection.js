@@ -20,10 +20,8 @@ function (app, $){
                         "Content-type": "application/json"
                     },
                     data: str,
-                    success: function (data) {
-                        resolve(data);
-                    },
-                    error: function (error) {
+                    success: function (data) { resolve(data); },
+                    error: function (error) { 
                         reject(JSON.parse(error.responseText));
                     }
                 });

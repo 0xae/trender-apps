@@ -10,8 +10,8 @@ if (!empty($posts))
 	$picture = Utils::cached($posts[0]);
 else
 	$picture = '';
-$collection = new Collection;
 
+$collection = new Collection;
 $this->title = 'Channel ' . $channel->name;
 ?>
 
@@ -71,18 +71,17 @@ $this->title = 'Channel ' . $channel->name;
 			        </h4>
 
 			        <div class="tr-section-content">
-			        <ul class="list-unstyled">
-			            <?php foreach ($channels as $chan): ?>
-			                <li>
-			                    <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
-			                       class="tr-more-item">
-			                        <?= $chan->name ?>
-			                    </a>
-			                </li>
-			            <?php endforeach; ?>
-			        </ul>
-			        </div>
-			    
+				        <ul class="list-unstyled">
+				            <?php foreach ($channels as $chan): ?>
+				                <li>
+				                    <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
+				                       class="tr-more-item">
+				                        <?= $chan->name ?>
+				                    </a>
+				                </li>
+				            <?php endforeach; ?>
+				        </ul>
+			        </div>			    
 			    </div>
 			</div>
 		</div>
