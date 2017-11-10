@@ -46,7 +46,7 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     adapt to fluctuating network speeds
 
 ## Links
-    
+* [firenewsfeed](https://firenewsfeed.com)   
 * [require.js](http://requirejs.org/docs/whyamd.html)
 * [Weibo TV](http://www.weibo.com/tv)
 * [CNBC live tv](http://www.cnbc.com/live-tv/prime)
