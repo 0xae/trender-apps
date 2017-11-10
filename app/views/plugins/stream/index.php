@@ -32,7 +32,7 @@ function (app, $, _, zpost){
 		}
 
 		function refetchImg() {
-			zpost.downloadPic(postId)
+			return zpost.downloadPic(postId)
 			.then(function (data) {
 				var url = app.media() + data;
 				$(self).attr("src", data);

@@ -112,7 +112,7 @@ $this->title = 'Channel ' . $channel->name;
 		</ul>
 	</div>
 
-	<div class="col-md-4" id="posts_container">
+	<div class="col-md-4" id="">
 	   <div id="posts_container_stream_start">
 	    </div>
 
@@ -121,6 +121,17 @@ $this->title = 'Channel ' . $channel->name;
 	            echo \Yii::$app->view->renderFile(
 	                "@app/views/plugins/stream/index.php",
 	                ["posts" => $posts]
+	            );
+	        ?>
+	    </div>
+	</div>
+
+	<div class="col-md-4" id="videos_container">
+	    <div class="rs-row row" id="videos_container_stream">
+	        <?php
+	            echo \Yii::$app->view->renderFile(
+	                "@app/views/plugins/stream/index.php",
+	                ["posts" => $videos]
 	            );
 	        ?>
 	    </div>
