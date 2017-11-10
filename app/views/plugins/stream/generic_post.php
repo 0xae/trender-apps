@@ -15,7 +15,8 @@ $category = Utils::category($post);
 
                 <img data-picture="<?= $post->picture ?>"
                      data-postid="<?= $post->id ?>"
-                     src="<?= Utils::cached($post) ?>"
+                     data-cached="<?= @$post->cached ?>"
+                     src="<?= Utils::cached($post); ?>"
                      id="img-<?= $post->id ?>"
                      class="tr-cache-it"
                      width="50"

@@ -6,6 +6,7 @@ class Post extends \yii\base\Object {
     public $authorName;
     public $description;
     public $timestampFmt;
+    public $collections;
 
     public static function search($q, $lim) {
         $results = Solr::query($q, $lim, false);
