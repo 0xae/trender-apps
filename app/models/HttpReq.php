@@ -65,6 +65,7 @@ class HttpReq extends \yii\base\Object {
         } finally {
             if ($ch) curl_close($ch);
         }
+
         return $json;
     }
 }

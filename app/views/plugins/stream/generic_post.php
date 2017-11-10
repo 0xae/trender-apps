@@ -1,6 +1,7 @@
 <?php
 use app\models\DateUtils;
 use app\models\Utils;
+use app\models\Trender;
 $category = Utils::category($post);
 ?>
 
@@ -12,7 +13,7 @@ $category = Utils::category($post);
                style="width:50px; height: 50px;"
                title="Profile picture of <?= $post->authorName ?>">
 
-                <img src="<?= Utils::cached($post) ?>" 
+                <img data-xsrc="<?= Utils::cached($post) ?>" 
                      id="img-<?= $post->id ?>"
                      width="50"
                      height="45"
@@ -43,18 +44,18 @@ $category = Utils::category($post);
 
     <div class="row tr-post-details">
         <div class="col-md-12">
-                <p>
-                    <span style="color: gray;font-size:12px;" 
-                         title="<?= $post->timestampFmt ?>">
-                            <?=  $post->timestampFmt ?>
-                    <span aria-hidden="true">· </span>
-                    <?= $post->location ?>
-                    <span aria-hidden="true">· </span>
-                    <?= $post->source ?>
-                    </span>
-                </p>
+            <p>
+                <span style="color: gray;font-size:12px;" 
+                     title="<?= $post->timestampFmt ?>">
+                        <?=  $post->timestampFmt ?>
+                <span aria-hidden="true">· </span>
+                <?= $post->location ?>
+                <span aria-hidden="true">· </span>
+                <?= $post->source ?>
+                </span>
+            </p>
 
-                <p>
+            <p>
                 <a href="javascript:void(0)" 
                    title="Like this post" class="">
                     <img 
@@ -77,7 +78,14 @@ $category = Utils::category($post);
                     <?= $category ?>
                     </strong>
                 </a>
-                </p>
+            </p>
         </div>
     </div>
 </div>
+
+<?php
+$script = <<JS
+requirejs(["trender/app", "jquery", "_"], function (app, $, _){
+
+});
+JS;
