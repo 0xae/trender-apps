@@ -5,7 +5,7 @@ use app\models\Trender;
 $category = Utils::category($post);
 ?>
 
-<div class="tr-post col-md-8" id="tr-post-<?= $post->id ?>">
+<div class="tr-post col-md-12" id="tr-post-<?= $post->id ?>">
     <div class="row">
          <div class="tr-post-image col-md-1">
             <a class="cb" 

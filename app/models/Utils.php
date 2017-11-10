@@ -14,10 +14,15 @@ class Utils {
     }
 
     public static function cached($post) {
-        $mediaHost = Trender::mediaHost();
-        if (!isset($post->cached) || $post->cached==""){
-            $url=$post->picture;
-        } else {
+        $mediaHost = Trender::media();
+        if (!isset($post->cached))
+            return $post->picture;
+
+        $cached = json_decode($post->cached);
+        if ($post->cached == "none" || $post->cached == "" ||
+                !$post->cached) {
+            $url = $post->picture;
+        } else (!$cached) {
             $url = "$mediaHost/{$post->cached}";
         }
         return $url;

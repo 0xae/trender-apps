@@ -2,11 +2,17 @@
 use yii\widgets\ActiveForm;
 use app\models\Post;
 use app\models\Utils;
+use app\models\Collection;
 
+// TODO: work here
+// Yii::$app->security->generateRandomString();
 if (!empty($posts))
 	$picture = Utils::cached($posts[0]);
 else
 	$picture = '';
+
+$collection = new Collection;
+$this->title = 'Channel ' . $channel->name;
 ?>
 
 <div class="row rs-row">
@@ -39,10 +45,18 @@ else
 
 			            <li>
 			                <a href="#">
-			                    <span style="margin-right:7px;" class="glyphicon glyphicon-unchecked"></span>
+			                    <span style="margin-right:7px;" class="glyphicon glyphicon-unchecked">
+			                    </span>
 			                    Collections
 			                    <strong>(0)</strong>
 			                </a>
+
+			                <a href="javascript:void(0)">
+		                    <span class="text-success pull-right glyphicon glyphicon-plus-sign"
+		                    		style="padding-top:3px;padding-right:10px;"
+		                    	  data-toggle="modal" data-target="#collectionModal">
+		                    </span>
+		                	</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -57,18 +71,17 @@ else
 			        </h4>
 
 			        <div class="tr-section-content">
-			        <ul class="list-unstyled">
-			            <?php foreach ($channels as $chan): ?>
-			                <li>
-			                    <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
-			                       class="tr-more-item">
-			                        <?= $chan->name ?>
-			                    </a>
-			                </li>
-			            <?php endforeach; ?>
-			        </ul>
-			        </div>
-			    
+				        <ul class="list-unstyled">
+				            <?php foreach ($channels as $chan): ?>
+				                <li>
+				                    <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
+				                       class="tr-more-item">
+				                        <?= $chan->name ?>
+				                    </a>
+				                </li>
+				            <?php endforeach; ?>
+				        </ul>
+			        </div>			    
 			    </div>
 			</div>
 		</div>
@@ -99,7 +112,7 @@ else
 		</ul>
 	</div>
 
-	<div class="col-md-6" id="posts_container">
+	<div class="col-md-4" id="posts_container">
 	   <div id="posts_container_stream_start">
 	    </div>
 
@@ -113,10 +126,10 @@ else
 	    </div>
 	</div>
 
-	<div class="col-md-2 pull-right rs-pad" style="background-color: lightgray;">
+	<div class="col-md-2 pull-right rs-pad">
 	    <div class="tr-section">
 	        <h4 class="tr-section-title">
-	            Collections
+	            Conversations
 	            <!--
 	                <span class="glyphicon glyphicon-flash">
 	                </span>
@@ -140,3 +153,13 @@ else
 	    </div>
 	</div>
 </div>
+
+
+<?php
+    echo \Yii::$app->view->renderFile(
+        "@app/views/channel/new_collection_modal.php",
+        ["collection" => $collection,
+         "channel" => $channel]
+    );
+?>
+

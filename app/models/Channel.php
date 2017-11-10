@@ -45,7 +45,7 @@ class Channel extends Model {
     }
 
     public function save() {
-        $host = Trender::apiHost();
+        $host = Trender::api();
         $data = [                
             "rank" => $this->rank,
             "name" => $this->name,
@@ -57,10 +57,10 @@ class Channel extends Model {
         ];
 
         if ($this->id > 0) {
-            $url = "http://{$host}/api/channel/{$this->id}";
+            $url = "{$host}channel/{$this->id}";
             $data['id']=$this->id;
         } else {
-            $url = "http://{$host}/api/channel/new";
+            $url = "{$host}channel/new";
         }
 
         $json = HttpReq::post($url, json_encode($data));
@@ -69,32 +69,31 @@ class Channel extends Model {
     }
 
     public static function byId($id) {
-        $host = Trender::apiHost();
-        $query = "http://{$host}/api/channel/$id";
+        $host = Trender::api();
+        $query = "{$host}channel/$id";
         $json = HttpReq::get($query);
         return self::convert_to($json);
     }
 
     // encode $name ???
     public static function byName($name, $q='*') {
-        $host = Trender::apiHost();
+        $host = Trender::api();
         $q = urlencode($q);
-        $query = "http://{$host}/api/channel/find_by?name=$name&q=$q";
+        $query = "{$host}channel/find_by?name=$name&q=$q";
         $json = HttpReq::get($query);
         return self::convert_to($json);
     }
 
     public static function all() {
-        $host = Trender::apiHost();
-        $query = "http://{$host}/api/channel";
+        $host = Trender::api();
+        $query = "{$host}channel";
         return HttpReq::get($query);
     }
 
     public static function find($audience='public') {
-        $host = Trender::apiHost();
-        $query = "http://{$host}/api/channel/find?audience=$audience";
+        $host = Trender::api();
+        $query = "{$host}channel/find?audience=$audience";
         $ret= HttpReq::get($query);
         return $ret;
     }
-    //TODO: create & update
 }

@@ -32,5 +32,6 @@ tests/_output/*
 tests/_support/_generated
 
 trender.conf
+media/
 
 *.log

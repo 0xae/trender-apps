@@ -21,6 +21,11 @@ function (app, $){
         return default_fetch(url);
     }
 
+    function getCollections(id) {
+        var url = api + "channel/"+id+"/collections";
+
+    }
+
     function create(data) {
         var url = api + "channel/new";
         return $.ajax({
@@ -59,6 +64,7 @@ function (app, $){
         getAll: getAll,
         create: create,
         update: update,
+        collections: getCollections,
         delete: deleteChannel,
     };
 });

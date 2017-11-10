@@ -45,21 +45,20 @@ class HttpReq extends \yii\base\Object {
             // curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, $method, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-type: application/json']);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);            
             $body = curl_exec($ch);
+            $error = curl_errno($ch);
 
-            if (!curl_errno($ch)) {
-                switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
-                    case 200:  # OK
-                    break;
-                    default:
+            if (!$error) {
+              switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
+                case 200:  # OK
+                  break;
+                default:
                     // XXX
-                        throw new HttpException(
-                            $http_code, 
-                            '('.$data.')Error accessing: ' . $url 
-                            . '  Details: ' . $body
-                            . '<br/>-------<br/>' . curl_error($ch));
-                }
+                    throw new HttpException($http_code, '('.$data.')Error accessing: ' . $url . '  Details: ' . $body. '<br/>-------<br/>' . curl_error($ch));
+              }
+            } else {
+                throw new HttpException("Could not complete request.");
             }
             $json=json_decode($body);
         } finally {
