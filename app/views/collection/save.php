@@ -2,6 +2,14 @@
 use yii\widgets\ActiveForm;
 use yii\helpers\BaseHtml;
 use yii\helpers\Html;
+
+if (!$model->id) {
+    $model->name = Yii::$app->security->generateRandomString(10);
+    if ($model->channelId) {
+        $model->name = "{$model->channelId}-{$model->name}";
+    }
+}
+
 ?>
 
 <?php $form = ActiveForm::begin(['options' => [

@@ -165,7 +165,6 @@ $this->title = 'Channel ' . $channel->name;
 	</div>
 </div>
 
-
 <?php
     echo \Yii::$app->view->renderFile(
         "@app/views/channel/new_collection_modal.php",

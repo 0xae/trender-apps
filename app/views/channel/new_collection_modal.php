@@ -1,13 +1,6 @@
 <?php
 use app\models\Collection;
-if (!$collection->id) {
-    $collection->name = Yii::$app->security->generateRandomString(10);
-    if ($channel->id) {
-        $collection->name = "{$channel->id}/{$collection->name}";
-        $collection->channelId = $channel->id;
-    }
-}
-
+$collection->channelId = $channel->id;
 $collection->audience = 'private';
 ?>
 
@@ -26,7 +19,12 @@ $collection->audience = 'private';
 
                 <h4 class="modal-title" id="myModalLabel">
                     <span class="glyphicon glyphicon-unchecked"></span>
-                    Create a collection
+                    <span v-if="!obj.id">
+                        <?= ($collection->id) ? "Collection {$collection->name}" : "Create a collection" ?>
+                    </span>
+                    <span v-if="obj.id">
+                        {{obj.name}}
+                    </span>
                 </h4>
             </div>
 
@@ -47,14 +45,17 @@ $collection->audience = 'private';
 $scrip = <<<JS
 requirejs(['trender/app', 'jquery', 'vue', 't/zcollection'], 
 function (app, $, Vue, zcollection){
-    new Vue({
-        el: '#collection-save',
+    var colObj = {
+        id: '{$collection->id}',
+        name: '{$collection->name}',
+        channelId: '{$collection->channelId}',
+        audience: '{$collection->audience}'
+    };
+
+    var collection = new Vue({
+        el: '#collectionModal',
         data: {
-            obj:{
-                name: '{$collection->name}',
-                channelId: '{$collection->channelId}',
-                audience: '{$collection->audience}'
-            },
+            obj: colObj,
             errors: [],
             alerts: false
         },
