@@ -6,15 +6,11 @@ use app\models\HttpReq;
 use app\models\Utils;
 use app\models\Solr;
 use app\models\Feed;
+use app\models\TabRender;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 class ChannelController extends \yii\web\Controller {
-    public function actionTest() {
-        $name = 'bitcoin, ethereum, ripple';
-        var_dump(explode(',', $name));
-    }
-
     public function actionNew(){
         return $this->render('save_channel', [
             'model' => new Channel
@@ -71,14 +67,31 @@ class ChannelController extends \yii\web\Controller {
 
         $feed = Feed::create($queryConf);
         $channels = Channel::find();
+        $collections = Channel::collectionsOf($chan->id);
 
-        return $this->render('watch',[
+        return $this->render('watch', [
             'channel' => $chan,
-        	'videos' => $feed['videos'],
+            'videos' => $feed['videos'],
             'posts' => $feed['posts'],
-            'collections' => $feed['collections'],
+            'groups' => $feed['groups'],
             'channels' => $channels,
+            'collections' => $collections,
             'q' => $queryConf->q
+        ]);
+    }
+
+    public function actionTest() {
+        return $this->renderPartial("test");
+    }
+
+    public function actionIndex($id) {
+        return "hello there $id";
+    }
+
+    public function actionCollections($id) {
+        $cols = Channel::collectionsOf($id);
+        echo $this->renderPartial('collections', [
+            'cols' => $cols
         ]);
     }
 }

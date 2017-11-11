@@ -27,7 +27,7 @@ class Feed {
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;
         $data = $postReq->facet_counts->facet_fields->category;
-        $collections = [];
+        $groups = [];
         for ($i=0; $i<count($data) / 2;$i+=2) {
             $label = $data[$i];
             $score = $data[$i+1];
@@ -36,7 +36,7 @@ class Feed {
             if ($score == 0 || $label==$q)
                 continue;
 
-            $collections[] = [
+            $groups[] = [
                 "label" => $label,
                 "score" => $score
             ];
@@ -55,7 +55,7 @@ class Feed {
         return [
         	'videos' => $videos,
             'posts' => $posts,
-            'collections' => $collections
+            'groups' => $groups
         ];
     }
 }

@@ -23,10 +23,8 @@ function (app, $, _, zpost){
 			var url=app.media() + "/media/" + cached;
 			$.get(url)
 			.then(function () {
-				console.info("!!!found file: ", url);
 				$(self).attr("src", url);
 			}, function(){
-				console.warn("cant find: ", url);
 				refetchImg();
 			});
 		}
@@ -44,5 +42,5 @@ function (app, $, _, zpost){
 });
 JS;
 
-$this->registerJs($script);
+// $this->registerJs($script);
 ?>

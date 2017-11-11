@@ -22,7 +22,7 @@ function (app, $){
                     data: str,
                     success: function (data) { resolve(data); },
                     error: function (error) { 
-                        reject(JSON.parse(error.responseText));
+                        reject(error);
                     }
                 });
             });

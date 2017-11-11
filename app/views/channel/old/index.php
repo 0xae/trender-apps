@@ -54,8 +54,6 @@ else
 			        </ul>
 			    </div>
 
-
-
 			    <div class="tr-section">
 			        <h4 class="tr-section-title">
 			            More Feeds

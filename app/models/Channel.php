@@ -96,4 +96,10 @@ class Channel extends Model {
         $ret= HttpReq::get($query);
         return $ret;
     }
+
+    public static function collectionsOf($id) {
+        $host = Trender::api();
+        $query = "{$host}channel/$id/collections";
+        return HttpReq::get($query);
+    }
 }

@@ -71,9 +71,14 @@ function (app, $, Vue, zcollection){
                     self.wasCreated=true;
                     self.obj.id = resp.id;
                     self.obj.name = resp.name;
-                }, function (error) {
+                }, function (data) {
                     self.alerts = false;
-                    self.errors = error.errors;
+                    if (data.errors)
+                        self.errors = data.errors;
+                    else if (data.statusText)
+                        self.errors = [data.statusText];
+                    else
+                        self.errors = [data];
                 });
             }
         }

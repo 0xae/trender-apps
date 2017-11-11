@@ -17,15 +17,11 @@ $this->beginPage();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link rel="stylesheet" href="static/lib/bootstrap/css/bootstrap.min.css" />
-    <script src="static/requirejs/jquery.js"></script>
-    <script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
     <?php $this->head() ?>
-    <link rel="stylesheet" href="static/css/trender-app.css" />
-    <link rel="stylesheet" href="static/css/trender-feed.css" />
 </head>
 
 <body>
+
 <?php
 $apiHost = Trender::api();
 $mediaHost = Trender::media();
@@ -40,8 +36,50 @@ define("trender/app", function() {
             return '$mediaHost';
         }
     };
-
     return service;
+});
+
+requirejs(["jquery", "bts"], function ($, bts){
+    $("a.tx-tab").on("click", function (e){
+        e.preventDefault();
+    });
+
+    $("a.tx-new-tab").on("click", function (e){
+        var self=this;
+        e.preventDefault();
+
+        var tabid=$(this).attr("data-tab-id");
+        var tabname=$(this).attr("data-tab-name");
+        var tabhref=$(this).attr("data-tab-href");
+        var cacheid = $(this).attr("data-cache-id");
+
+        console.info("going to ", tabname);
+
+        if (!tabid || !tabhref) {
+            throw new Error("Invalid tab request. `tabid` and `tabhref` are required.");
+            return;
+        }
+
+        // there is no tabname, well, open it on the default tab pane!
+        if (!tabname) {
+            tabname=tabid+"_default";
+        }
+
+        var shouldLoad = (cacheid != tabhref);
+
+        if (shouldLoad) {
+            $.get(tabhref)
+            .then(function (data){
+                $(tabname+" .content").remove();
+                $(tabname).html("<div class='content'>"+ data +"</div>");
+                $(self).tab('show');
+            }, function (error) {
+                console.error("couldnt render %s %s ", tabname, error.responseText);
+            });
+        } else {
+            $(self).tab('show');
+        }
+    });    
 });
 JS;
 $this->registerJs($script);
@@ -62,10 +100,10 @@ $this->registerJs($script);
             $this->beginBody(); 
             echo $content;
             $this->endBody();
-            ?>
         ?>
     </div>
 </div>
+<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

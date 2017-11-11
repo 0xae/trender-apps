@@ -12,7 +12,10 @@ class AppAsset extends AssetBundle {
 
     public $css = [
         'static/css/site.css',
+        'static/lib/bootstrap/css/bootstrap.min.css',
         'static/css/font-awesome.min.css',
+        'static/css/trender-app.css',
+        'static/css/trender-feed.css',
     ];
 
     public $js = [
