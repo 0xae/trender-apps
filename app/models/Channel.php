@@ -69,7 +69,9 @@ class Channel extends Model {
 
         $json = HttpReq::post($url, json_encode($data));
         if (!$this->id) $this->id = $json->id;
-        return $json;
+            $this->lastUpdate = $json->lastUpdate ;
+            $this->lastUpdateFmt = $json->lastUpdateFmt;
+        return $this;
     }
 
     public static function byId($id) {
