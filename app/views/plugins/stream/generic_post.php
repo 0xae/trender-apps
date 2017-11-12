@@ -42,6 +42,20 @@ else
                         </strong>
                     </span>
                 </h4>
+
+                <p style="margin:0px;color: gray;font-size:12px;display:inline;">
+                    <span aria-hidden="true">·</span>
+                    <?= $post->source ?>
+                </p>
+                
+
+                <p style="margin:0px;color: gray;font-size:12px;">
+                    <span style="" title="<?= $post->timestampFmt ?>">
+                        <?= $post->timestampFmt ?>
+                        <span aria-hidden="true">· </span>
+                        <?= $post->location ?>
+                    </span>
+                </p>
             </div>
 
             <div class="tr-post-description">
@@ -52,17 +66,6 @@ else
 
     <div class="row tr-post-details">
         <div class="col-md-12">
-            <p>
-                <span style="color: gray;font-size:12px;" 
-                     title="<?= $post->timestampFmt ?>">
-                        <?=  $post->timestampFmt ?>
-                <span aria-hidden="true">· </span>
-                <?= $post->location ?>
-                <span aria-hidden="true">· </span>
-                <?= $post->source ?>
-                </span>
-            </p>
-
             <div>
                 <a href="javascript:void(0)" 
                    data-tx-op="<?= $liked?'remove':'add'?>"

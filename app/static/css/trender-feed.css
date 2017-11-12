@@ -45,6 +45,7 @@ body {
     
 .tr-post {
 	background-color: #fff;
+    margin-bottom: 10px;
 }
 
 .tr-author {
@@ -57,7 +58,7 @@ body {
 
 .tr-post {
     padding: 5px;
-    padding-top: 3px;
+    padding-top: 2px;
     border: 1px solid gainsboro;
     border: 1px solid lightgray;
 }
@@ -217,5 +218,5 @@ body {
 }
 
 .tr-dropdown-inline ul.dropdown-menu {
-    
+
 }

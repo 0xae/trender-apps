@@ -42,5 +42,5 @@ function (app, $, _, zpost){
 });
 JS;
 
-// $this->registerJs($script);
+$this->registerJs($script);
 ?>
