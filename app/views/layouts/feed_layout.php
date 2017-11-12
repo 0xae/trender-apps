@@ -60,7 +60,7 @@ requirejs(["jquery", "bts", 't/zpost'], function ($, bts, zpost){
             } else {
                 var img = '<img style="display:inline-block;padding:0px;width:13px"'+
                           '     src="static/img/like.png"  />';
-                $(self).html(img + "<span> Like this</span>");
+                $(self).html(img + "<span> Like</span>");
                 $(self).attr("data-tx-op", "add");           
             }
         }, function (error) {
@@ -80,7 +80,7 @@ requirejs(["jquery", "bts", 't/zpost'], function ($, bts, zpost){
         var prom;
         if (op == 'add')
             prom = zpost.addTo(postid, collection);
-        else 
+        else
             prom = zpost.removeFrom(postid, collection);
         
         prom.then(function (){
@@ -158,4 +158,3 @@ $this->registerJs($script);
 
 </html>
 <?php $this->endPage(); ?>
-
