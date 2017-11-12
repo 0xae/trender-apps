@@ -21,25 +21,25 @@ body {
 
 .tr-search-input {
     font-size: 13px;
-    height: 28px;
+    height: 27px;
     border-radius: 40px;
-    margin-top: 4px;
+    margin-top: 2px;
     color: gray;
     /*font-weight: bold;*/
 }
 
-.tr-navbar ul.nav li { }
+.tr-navbar ul.tr-navbar-menu li { }
 
-.tr-navbar ul.nav li a {
+.tr-navbar ul.tr-navbar-menu li a {
     color: #fff;
 }
 
-.tr-navbar ul.nav li.active a,
-.tr-navbar ul.nav li.active a:hover,
-.tr-navbar ul.nav li.active a:active {
+.tr-navbar ul.tr-navbar-menu li.active a,
+.tr-navbar ul.tr-navbar-menu li.active a:hover,
+.tr-navbar ul.tr-navbar-menu li.active a:active {
     color: #fff;
     font-weight: bold;
-    margin-bottom: 3px;
+    /*margin-bottom: 3px;*/
     /*background-color: inherit;*/
 }
     
@@ -210,4 +210,12 @@ body {
 .tx-wait {
     color: gray !important;
     font-weight: bold;
+}
+
+.tr-dropdown-inline {
+    display: inline;
+}
+
+.tr-dropdown-inline ul.dropdown-menu {
+    
 }

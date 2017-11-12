@@ -36,6 +36,7 @@ $activityLink = $tab->fileLink("Activity", "activity", true, [
 	<div class="col-md-2" style="background-color: #fff;">
 		<div class="row">
 			<div class="col-md-12 rs-pad">
+
 				<img style="max-width: 100%;" 
 					src="<?= $picture ?>" 
 					 alt="..."

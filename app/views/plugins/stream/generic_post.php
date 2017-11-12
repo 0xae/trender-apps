@@ -63,7 +63,7 @@ else
                 </span>
             </p>
 
-            <p>
+            <div>
                 <a href="javascript:void(0)" 
                    data-tx-op="<?= $liked?'remove':'add'?>"
                    data-tx-postid="<?= $post->id ?>"
@@ -77,12 +77,31 @@ else
                             <span class="tx-liked">Liked</span>
                         <?php endif; ?>
                 </a>
-                <span aria-hidden="true">· </span>
-                <a href="javascript:void(0)">0 reactions</a>
-                <span aria-hidden="true">· </span>
-                <a href="./index.php?r=feed/more">more</a>
-                <span aria-hidden="true">· </span>
-                <a href="<?= $post->link; ?>">full story</a>
+
+                <span aria-hidden="true">· 
+                    <div class="tr-dropdown-inline dropdown">
+                        <a href="#" data-toggle="dropdown" 
+                           aria-expanded="true">
+                            add to
+                        </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="#">collection 1</a>
+                            <a role="menuitem" tabindex="-1" href="#">collection 2</a>
+                            <a role="menuitem" tabindex="-1" href="#">collection 3</a>
+                        </li>
+                      </ul>
+                    </div>
+                </span>
+
+                <span aria-hidden="true">
+                    ·
+                    <a href="javascript:void(0)">0 reactions</a>
+                </span>
+
+                <span aria-hidden="true">· 
+                    <a href="<?= $post->link; ?>">full story</a>
+                </span>
 
                 <a href="#" class="pull-right tr-cat-link"
                    title="<?= implode(',', $post->category) ?>">
@@ -90,7 +109,7 @@ else
                     <?= $category ?>
                     </strong>
                 </a>
-            </p>
+            </div>
         </div>
     </div>
 </div>
