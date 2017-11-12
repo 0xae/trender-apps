@@ -7,7 +7,7 @@
         </span>
         
         <strong>
-            <?= $tab->ajaxLink($col->label, ["channel/index", "id"=>12]); ?>
+            <?= $tab->ajaxLink($col->label, ["channel/view_collection", "id"=>$col->id]); ?>
         </strong>
     </div>
   

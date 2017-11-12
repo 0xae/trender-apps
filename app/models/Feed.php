@@ -9,7 +9,13 @@ use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 class Feed {
-    public static function create($queryConf) {
+    public static function create($chan) {
+        $queryConf = $chan->json('queryConf');
+        $fq = explode(',', Utils::queryParam('fq', ''));
+        foreach ($fq as $f) {
+            $queryConf->fq[] = $f;
+        }
+
         $q = $queryConf->q;
         $fq = $queryConf->fq;
         $fq[] = "!cached:none";
@@ -28,6 +34,7 @@ class Feed {
         $posts = $postReq->response->docs;
         $data = $postReq->facet_counts->facet_fields->category;
         $groups = [];
+
         for ($i=0; $i<count($data) / 2;$i+=2) {
             $label = $data[$i];
             $score = $data[$i+1];
@@ -44,12 +51,10 @@ class Feed {
 
         foreach ($posts as $p) {
             $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
-            # $p->picture = $p->cached;
         }
 
         foreach ($videos as $p) {
             $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
-            # $p->picture = $p->cached;
         }
 
         return [

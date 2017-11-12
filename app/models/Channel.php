@@ -28,6 +28,10 @@ class Channel extends Model {
         ];
     }
 
+    public function json($prop) {
+        return json_decode($this->$prop);
+    }
+
     private static function convert_to($i) {
         $c = new Channel;
         $c->id = $i->id;

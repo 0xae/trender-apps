@@ -7,7 +7,7 @@ if (!$tab->active) {
 ?>
 
 <!-- COMPONENT -->
-<div class="tab-content" id="<?= $tab->id ?>">
+<div class="tab-content tr-tab-content" id="<?= $tab->id ?>">
 	<div role="tabpanel" class="tab-pane <?=($tab->active==$default)?'active':'' ?>" id="<?=$default?>">
 	</div>
 

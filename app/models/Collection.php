@@ -11,8 +11,9 @@ use yii\db\ActiveRecord;
 
 class Collection extends Model {
     public $id, $name, $label, $description;
-    public $audience, $createdAt, $lastUpdate;
-    public $channelId;
+    public $audience, $channelId;
+    public $createdAt, $createdAtFmt,
+        $lastUpdate, $lastUpdateFmt;
 
     public function Collection() {
     }
@@ -22,6 +23,45 @@ class Collection extends Model {
             [['label', 'label', 'audience', 'name'], 'required'],
             [['id', 'channelId'], 'integer']
         ];
+    }
+
+    private static function convert($json) {
+        $coll = new Collection;
+        $coll->id = $json->id;
+        $coll->name = $json->name;
+        $coll->label = $json->label;
+        $coll->description = $json->description;
+        $coll->audience = $json->audience;
+        $coll->channelId = $json->channelId;
+
+        $coll->createdAt = $json->createdAt;
+        $coll->createdAtFmt = $json->createdAtFmt;
+
+        $coll->lastUpdate = $json->lastUpdate;
+        $coll->lastUpdateFmt = $json->lastUpdateFmt;
+        return $coll;
+    }
+
+    public static function byId($id) {
+        $host = Trender::api();
+        $query = "{$host}collection/$id";
+        $json = HttpReq::get($query);
+        return self::convert($json);
+    }
+
+    public function posts($chan, $start=0, $lim=20) {
+        $queryConf = $chan->json('queryConf');
+        $q = $queryConf->q;
+        $fq = $queryConf->fq;
+        $fq[] = 'collections:'.$this->name;
+        $req = Solr::query($q, $start, $lim, $fq);
+
+        $posts = $req->response->docs;
+        foreach ($posts as $p) {
+            $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
+        }
+
+        return $posts;
     }
 
     public function save() {

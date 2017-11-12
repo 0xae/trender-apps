@@ -3,6 +3,10 @@ use app\models\DateUtils;
 use app\models\Utils;
 use app\models\Trender;
 $category = Utils::category($post);
+if (isset($post->collections) && !empty($post->collections))
+    $liked = array_search('likes', $post->collections) !== false;
+else
+    $liked = false;
 ?>
 
 <div class="tr-post col-md-12" id="tr-post-<?= $post->id ?>">
@@ -61,23 +65,27 @@ $category = Utils::category($post);
 
             <p>
                 <a href="javascript:void(0)" 
-                   title="Like this post" class="">
-                    <img 
-                        style="display:inline-block;padding:0px;" 
-                        src="static/img/like.png" 
-                        width="13" 
-                        height="13" 
-                        class="o" />
-                    Like this
+                   data-tx-op="<?= $liked?'remove':'add'?>"
+                   data-tx-postid="<?= $post->id ?>"
+                   data-tx-collection="likes"
+                   class="tx-like">
+                        <?php if (!$liked): ?>
+                            <img style="display:inline-block;padding:0px;width:13px" 
+                            src="static/img/like.png"  />
+                            Like this
+                        <?php else: ?>
+                            <span class="tx-liked">Liked</span>
+                        <?php endif; ?>
                 </a>
                 <span aria-hidden="true">· </span>
-                <a href="javascript:void(0)">0 likes</a>
+                <a href="javascript:void(0)">0 reactions</a>
                 <span aria-hidden="true">· </span>
                 <a href="./index.php?r=feed/more">more</a>
                 <span aria-hidden="true">· </span>
                 <a href="<?= $post->link; ?>">full story</a>
 
-                <a href="<?= $post->link; ?>" class="pull-right tr-cat-link">
+                <a href="#" class="pull-right tr-cat-link"
+                   title="<?= implode(',', $post->category) ?>">
                     <strong>
                     <?= $category ?>
                     </strong>

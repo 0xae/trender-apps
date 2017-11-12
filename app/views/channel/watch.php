@@ -20,6 +20,11 @@ $collectionsLink = $tab->fileLink("Collections",  "collections", false, [
 	'cols' => $collections
 ]);
 
+$likesLink = $tab->fileLink("Likes", "likes", false, [
+	'coll' => $like,
+	'channel' => $channel
+]);
+
 $activityLink = $tab->fileLink("Activity", "activity", true, [
 	"posts" => $posts,
 	"groups" => $groups,
@@ -33,7 +38,7 @@ $activityLink = $tab->fileLink("Activity", "activity", true, [
 			<div class="col-md-12 rs-pad">
 				<img style="max-width: 100%;" 
 					src="<?= $picture ?>" 
-					 alt="..." 
+					 alt="..."
 				/>
 
 				<h3 style="margin-top:5px;margin-left:5px;">
@@ -48,15 +53,16 @@ $activityLink = $tab->fileLink("Activity", "activity", true, [
 							</a>
 					    	<?= $activityLink ?>
 						</li>
-						<!--
 			            <li>
 			            	<span>
 				                <a href="#">
-				                    <span class="fa fa-thumbs-up"></span>Likes 
+				                    <span class="fa fa-thumbs-up"></span>
 				                </a>
+            					<?= $likesLink ?>
 			            	</span>
 			            </li>
 
+						<!--
 			            <li>
 			            	<span>
 				                <a href="#">
@@ -109,8 +115,8 @@ $activityLink = $tab->fileLink("Activity", "activity", true, [
 		</div>
 	</div>
 
-	<div class="col-md-10" id="">
-	    <div class="rs-row row">
+	<div class="col-md-10" id="" style="padding:0px;">
+	    <div class="rs-row row" style="padding:0px;">
     		<?= $tab->render(); ?>
 	    </div>
 	</div>

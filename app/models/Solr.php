@@ -7,15 +7,15 @@ class Solr {
         $solrHost = Trender::solr();
         $limit = (int)$lim;
 
-        $query = "{$solrHost}/solr/trender/query?";
-        $query .= "q={$qFmt}";
-        $query .= "&facet=true";
-        $query .= "&facet.field=category";
-        $query .= "&facet.field=type";
-        $query .= "&rows={$limit}";
-        $query .= "&start={$start}";
-        $query .= "&sort=timestamp+desc";
-        $query .= "&wt=json";
+        $url = "{$solrHost}/solr/trender/query?";
+        $url .= "q={$qFmt}";
+        $url .= "&facet=true";
+        $url .= "&facet.field=category";
+        $url .= "&facet.field=type";
+        $url .= "&rows={$limit}";
+        $url .= "&start={$start}";
+        $url .= "&sort=timestamp+desc";
+        $url .= "&wt=json";
 
         if ($facetq && is_array($facetq)) {
             $buf = '';
@@ -24,12 +24,10 @@ class Solr {
                     $buf .= "&fq=" . urlencode($fq);
                 }
             }
-            $query .= $buf;
+            $url .= $buf;
         }
 
-        // XXX: replace this thing
-        $result = file_get_contents($query);
-        return json_decode($result);
+        return HttpReq::get($url);
     }
 }
 

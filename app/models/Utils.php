@@ -30,8 +30,9 @@ class Utils {
     public static function category($post) {
         $cat = false;
         $maxCategoryLen = 20;
-        if (isset($post->category) && count($post->category)) {
-            $category = $post->category[0];
+        if (isset($post->category) && !empty($post->category)) {
+            $category = implode(',', $post->category);
+
             $category = str_replace('%2b', ' ', $category);
             $category = str_replace('%2522', '', $category);
             $category = str_replace('%2526', '&', $category);

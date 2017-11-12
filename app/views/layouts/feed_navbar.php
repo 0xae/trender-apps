@@ -43,15 +43,6 @@ $controllerHref = "index.php?r=feed/index";
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <li class="<?= ($controllerAction->id == 'test') ? 'active' : '' ?>">
-                <a href="./index.php?r=<?=$controllerId?>/test">
-                    <span class="label label-warning"> 
-                        <span class="glyphicon glyphicon-tower"></span>
-                        developer
-                    </span>
-                </a>
-            </li>
-
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" 
                    data-toggle="dropdown" role="button" 
