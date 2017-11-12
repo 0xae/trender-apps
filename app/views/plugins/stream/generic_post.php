@@ -70,35 +70,46 @@ else
                         <?php if (!$liked): ?>
                             <img style="display:inline-block;padding:0px;width:13px" 
                             src="static/img/like.png"  />
-                            Like this
+                            Like
                         <?php else: ?>
                             <span class="tx-liked">Liked</span>
                         <?php endif; ?>
                 </a>
 
-                <span aria-hidden="true">· 
+                <?php if (!empty($cols)):  ?>
+                <span aria-hidden="true">
                     <div class="tr-dropdown-inline dropdown">
                         <a href="#" data-toggle="dropdown" 
                            aria-expanded="true">
+                            <strong>· </strong>
                             add to
                         </a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation">
-                            <a role="menuitem" tabindex="-1" href="#">collection 1</a>
-                            <a role="menuitem" tabindex="-1" href="#">collection 2</a>
-                            <a role="menuitem" tabindex="-1" href="#">collection 3</a>
+                        <?php foreach ($cols as $c): ?>
+                        <?php $belongs = array_search($c->name, $post->collections) !== false; ?> 
+                        <li role="presentation">                            
+                            <a role="menuitem" tabindex="-1" href="#">
+                                <?= $belongs ? "<strong>{$c->label}</strong>" : $c->label; ?>
+                            </a>
                         </li>
+                        <?php endforeach; ?>
                       </ul>
                     </div>
                 </span>
+                <?php endif; ?>
 
                 <span aria-hidden="true">
-                    ·
-                    <a href="javascript:void(0)">0 reactions</a>
+                    <a href="javascript:void(0)">
+                        <strong>· </strong>
+                        0 reactions
+                    </a>
                 </span>
 
-                <span aria-hidden="true">· 
-                    <a href="<?= $post->link; ?>">full story</a>
+                <span aria-hidden="true">
+                    <a href="<?= $post->link; ?>">
+                        <strong>· </strong>
+                        full story
+                    </a>
                 </span>
 
                 <a href="#" class="pull-right tr-cat-link"

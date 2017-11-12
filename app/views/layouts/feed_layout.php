@@ -70,6 +70,31 @@ requirejs(["jquery", "bts", 't/zpost'], function ($, bts, zpost){
         });
     });
 
+    $("a.tx-update-collection").on("click", function (e) {
+        e.preventDefault();
+        var postid = $(this).attr("data-tx-postid");
+        var collection = $(this).attr("data-tx-collection");
+        var op = $(this).attr("data-tx-op");        
+        var self=this;
+
+        var prom;
+        if (op == 'add')
+            prom = zpost.addTo(postid, collection);
+        else 
+            prom = zpost.removeFrom(postid, collection);
+        
+        prom.then(function (){
+            if (op == 'add') {
+                $(self).attr("data-tx-op", "remove");
+            } else {
+                $(self).attr("data-tx-op", "add");           
+            }
+        }, function (error) {
+            var msg = "An error ocurred (try again)"; 
+            $(self).html('<span class="tx-error">'+ msg +"</span>");
+        });
+    });
+
     $("a.tx-new-tab").on("click", function (e){
         var self=this;
         e.preventDefault();
@@ -108,6 +133,7 @@ requirejs(["jquery", "bts", 't/zpost'], function ($, bts, zpost){
 JS;
 $this->registerJs($script);
 ?>
+
 
 <div class="">
     <div class="row rs-row" id="page_container">        

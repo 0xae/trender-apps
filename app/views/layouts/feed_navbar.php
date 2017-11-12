@@ -44,11 +44,10 @@ $controllerHref = "index.php?r=feed/index";
 
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" 
+                <a href="#" class="dropdown-toggle" style="color: #fff;" 
                    data-toggle="dropdown" role="button" 
                     aria-expanded="false">
                     <strong><span class="fa fa-cog"></span> settings</strong> 
-                    <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="#">Action</a></li>

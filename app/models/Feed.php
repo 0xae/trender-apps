@@ -51,10 +51,16 @@ class Feed {
 
         foreach ($posts as $p) {
             $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
+            if (!isset($p->collections)) {
+                $p->collections = [];
+            }
         }
 
         foreach ($videos as $p) {
             $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
+            if (!isset($p->collections)) {
+                $p->collections = [];
+            }
         }
 
         return [

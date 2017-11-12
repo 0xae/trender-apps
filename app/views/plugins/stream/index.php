@@ -1,8 +1,12 @@
 <?php
+if (!isset($cols)) {
+	$cols = [];
+}
+
 foreach ($posts as $post) {
     $tpl = "@app/views/plugins/stream/generic_post.php";
     echo \Yii::$app->view->renderFile(
-        $tpl, ["post" => $post]
+        $tpl, ["post" => $post, "cols" => $cols]
     );   
 }
 
@@ -41,6 +45,4 @@ function (app, $, _, zpost){
 	});
 });
 JS;
-
 $this->registerJs($script);
-?>

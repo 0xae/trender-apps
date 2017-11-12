@@ -1,8 +1,10 @@
-<div class="col-md-6">
+<div class="col-md-5">
 <?php
     echo \Yii::$app->view->renderFile(
         "@app/views/plugins/stream/index.php",
-        ["posts" => $posts]
+        ["posts" => $posts,
+         "cols" => $collections
+        ]
     );
 ?>
 </div>

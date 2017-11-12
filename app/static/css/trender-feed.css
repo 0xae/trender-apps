@@ -178,6 +178,7 @@ body {
 
 .tr-panel {
     margin-bottom: 0px;
+    border-radius: 0px;
 }
 
 .tr-gray-label {

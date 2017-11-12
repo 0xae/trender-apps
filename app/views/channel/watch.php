@@ -28,19 +28,38 @@ $likesLink = $tab->fileLink("Likes", "likes", false, [
 $activityLink = $tab->fileLink("Activity", "activity", true, [
 	"posts" => $posts,
 	"groups" => $groups,
-	"channel" => $channel
+	"channel" => $channel,
+	'collections' => $collections
 ]);
+
+$randomPost = false;
+if (count($posts)) {
+	$idx = rand(0, count($posts)-1);
+	$randomPost = $posts[$idx];
+	$picture = Utils::cached($randomPost);
+}
 ?>
 
 <div class="row rs-row">
 	<div class="col-md-2" style="background-color: #fff;">
 		<div class="row">
 			<div class="col-md-12 rs-pad">
-
-				<img style="max-width: 100%;" 
-					src="<?= $picture ?>" 
-					 alt="..."
-				/>
+				<div class="">
+					<span style="background-color: rgba(0,0,0,.6);padding:2px;position: absolute;min-height:40px;color:#fff;font-size:12px;width:100%;">
+						<?= $randomPost->description; ?> <br/>
+						<span>
+							<a href="<?+ $randomPost->link ?>" 
+							   class="txt-underline" 
+							   style="color: #fff;">
+							   <strong>full story</strong>
+							</a>
+						</span>
+					</span>
+					<img style="max-width: 100%;min-height:200px;" 
+						 src="<?= $picture ?>" 
+						 alt="..."
+					/>
+				</div>
 
 				<h3 style="margin-top:5px;margin-left:5px;">
 				<?= $channel->name ?>
