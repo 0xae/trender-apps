@@ -1,5 +1,6 @@
 <?php
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 use app\models\Post;
 use app\models\Utils;
 use app\models\Collection;
@@ -48,7 +49,7 @@ if (count($posts)) {
 					<span style="background-color: rgba(0,0,0,.6);padding:2px;position: absolute;min-height:40px;color:#fff;font-size:12px;width:100%;">
 						<?= $randomPost->description; ?> <br/>
 						<span>
-							<a href="<?+ $randomPost->link ?>" 
+							<a href="<?= $randomPost->link ?>" 
 							   class="txt-underline" 
 							   style="color: #fff;">
 							   <strong>full story</strong>
@@ -61,9 +62,11 @@ if (count($posts)) {
 					/>
 				</div>
 
-				<h3 style="margin-top:5px;margin-left:5px;">
-				<?= $channel->name ?>
-				</h3>
+				<a href="<?= Url::to(["channel/watch", "id"=>$channel->id]); ?>">
+					<h3 style="margin-top:5px;margin-left:5px;color: #666">
+						<?= $channel->name ?>
+					</h3>
+				</a>
 
 			    <div class="tr-section">
 			        <ul class="list-unstyled tr-settings" style="margin-bottom: 25px;">
@@ -81,16 +84,6 @@ if (count($posts)) {
             					<?= $likesLink ?>
 			            	</span>
 			            </li>
-
-						<!--
-			            <li>
-			            	<span>
-				                <a href="#">
-				                    <span class="fa fa-star"></span>Favorites
-				                </a>
-			            	</span>
-			            </li>
-			        	-->
 
 			            <li role="presentation">
 			                <a href="#">
@@ -110,8 +103,8 @@ if (count($posts)) {
 		                	</a>
 			            </li>
 			        </ul>
-
 			    </div>
+			    <!-- tr-section -->
 
 			    <div class="tr-section">
 			        <h4 class="tr-section-title">
@@ -131,6 +124,7 @@ if (count($posts)) {
 				        </ul>
 			        </div>			    
 			    </div>
+			    <!-- tr-section -->
 			</div>
 		</div>
 	</div>
