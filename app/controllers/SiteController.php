@@ -39,7 +39,7 @@ class SiteController extends Controller {
      * @return string
      */
     public function actionIndex() {
-        return $this->redirect(['timeline/index', 'id'=>1]);
+        return $this->redirect(['feed/index']);
     }
 
     /**

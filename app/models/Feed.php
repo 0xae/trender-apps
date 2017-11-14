@@ -21,14 +21,14 @@ class Feed {
         $fq[] = "!cached:none";
         $fq[] = "type:youtube-post";
     	$start = 0;
-        $limit = 40;
+        $limit = 100;
         $vidReq = Solr::query($q, $start, $limit, $fq);
 
-        $fq = $queryConf->fq;
-        $fq[] = '!type:youtube-post';
-        $fq[] = '!cached:none';
+        $fqv = $queryConf->fq;
+        $fqv[] = '!type:youtube-post';
+        $fqv[] = '!cached:none';
 
-        $postReq = Solr::query($q, $start, $limit, $fq);
+        $postReq = Solr::query($q, $start, $limit, $fqv);
 
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;
@@ -40,8 +40,9 @@ class Feed {
             $score = $data[$i+1];
 
             // XXX: whats going on here?
-            if ($score == 0 || $label==$q)
+            if ($score == 0 || $label==$q) {
                 continue;
+            }
 
             $groups[] = [
                 "label" => $label,

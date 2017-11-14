@@ -28,6 +28,7 @@ $likesLink = $tab->fileLink("Likes", "likes", false, [
 
 $activityLink = $tab->fileLink("Activity", "activity", true, [
 	"posts" => $posts,
+	"videos" => $videos,
 	"groups" => $groups,
 	"channel" => $channel,
 	'collections' => $collections

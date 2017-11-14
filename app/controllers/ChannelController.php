@@ -88,7 +88,10 @@ class ChannelController extends \yii\web\Controller {
         } else {
             throw new HttpException(400, 'query param id or name are mandatory');
         }
-
         return $chan;        
+    }
+
+    public function actionTest() {
+        $cache = new \Memcached;
     }
 }

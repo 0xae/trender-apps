@@ -1,9 +1,19 @@
 <div class="col-md-5">
 <?php
     echo \Yii::$app->view->renderFile(
-        "@app/views/plugins/stream/index.php",
-        ["posts" => $posts,
-         "cols" => $collections
+        "@app/views/plugins/stream/index.php", [
+            "posts" => $posts,
+            "cols" => $collections
+        ]
+    );
+?>
+</div>
+
+<div class="col-md-5">
+<?php
+    echo \Yii::$app->view->renderFile(
+        "@app/views/plugins/stream/index.php", [
+            "posts" => $videos
         ]
     );
 ?>
