@@ -68,9 +68,9 @@ class Channel extends Model {
         }
 
         $json = HttpReq::post($url, json_encode($data));
-        if (!$this->id){
+        if (!$this->id) {
             $this->id = $json->id;
-        } 
+        }
 
         $this->lastUpdate = $json->lastUpdate ;
         $this->lastUpdateFmt = $json->lastUpdateFmt;
