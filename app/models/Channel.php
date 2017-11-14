@@ -50,7 +50,7 @@ class Channel extends Model {
 
     public function save() {
         $host = Trender::api();
-        $data = [                
+        $data = [
             "rank" => $this->rank,
             "name" => $this->name,
             "audience" => $this->audience,
@@ -68,9 +68,12 @@ class Channel extends Model {
         }
 
         $json = HttpReq::post($url, json_encode($data));
-        if (!$this->id) $this->id = $json->id;
-            $this->lastUpdate = $json->lastUpdate ;
-            $this->lastUpdateFmt = $json->lastUpdateFmt;
+        if (!$this->id){
+            $this->id = $json->id;
+        } 
+
+        $this->lastUpdate = $json->lastUpdate ;
+        $this->lastUpdateFmt = $json->lastUpdateFmt;
         return $this;
     }
 

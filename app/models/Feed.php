@@ -34,8 +34,9 @@ class Feed {
         $posts = $postReq->response->docs;
         $data = $postReq->facet_counts->facet_fields->category;
         $groups = [];
+        $len = count($data)/2;
 
-        for ($i=0; $i<count($data) / 2;$i+=2) {
+        for ($i=0; $i<$len;$i+=2) {
             $label = $data[$i];
             $score = $data[$i+1];
 
