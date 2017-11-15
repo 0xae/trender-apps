@@ -5,9 +5,10 @@ if (!isset($cols)) {
 
 foreach ($posts as $post) {
     $tpl = "@app/views/plugins/stream/generic_post.php";
-    echo \Yii::$app->view->renderFile(
-        $tpl, ["post" => $post, "cols" => $cols]
-    );   
+    echo \Yii::$app->view->renderFile($tpl, [
+    	"post" => $post, 
+    	"cols" => $cols        
+     ]);
 }
 
 $script = <<<JS

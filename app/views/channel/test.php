@@ -21,7 +21,5 @@ $media = $tab->fileLink("Media Pane", "media");
 </div>
 
 <div class="col-md-6">
-  <?= $media ?>
-
   <?= $tab->render(); ?>
 </div>
