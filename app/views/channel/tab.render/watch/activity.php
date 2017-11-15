@@ -11,11 +11,12 @@
 
 <div class="col-md-5">
 <?php
+    /*
     echo \Yii::$app->view->renderFile(
         "@app/views/plugins/stream/index.php", [
             "posts" => $videos
         ]
-    );
+    )*/
 ?>
 </div>
 

@@ -36,7 +36,7 @@ else
                 <h4 class="tr-author">
                     <span>
                         <strong> 
-                            <a href="index.php?r=profile/index&username=<?=$post->authorName?>">
+                            <a href="javascript:void(0)">
                                 <?= $post->authorName ?>
                             </a>
                         </strong>

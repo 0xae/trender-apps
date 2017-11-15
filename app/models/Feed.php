@@ -20,8 +20,8 @@ class Feed {
         $fq = $queryConf->fq;
         $fq[] = "!cached:none";
         $fq[] = "type:youtube-post";
-    	$start = 0;
-        $limit = 100;
+        $start = 0;
+        $limit = 30;
         $vidReq = Solr::query($q, $start, $limit, $fq);
 
         $fqv = $queryConf->fq;
@@ -65,7 +65,7 @@ class Feed {
         }
 
         return [
-        	'videos' => $videos,
+            'videos' => $videos,
             'posts' => $posts,
             'groups' => $groups
         ];
