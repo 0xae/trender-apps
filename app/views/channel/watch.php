@@ -157,6 +157,12 @@ if (count($posts)) {
                     Videos
                 </a>
             </li>
+            <li role="presentation">
+                <a href="#profile" aria-controls="profile" 
+                    role="tab" data-toggle="tab">
+                    Favorites
+                </a>
+            </li>
           </ul>
         </div>
     </div>
