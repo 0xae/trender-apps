@@ -19,26 +19,26 @@ class Feed {
         }
 
         $q = $queryConf->q;
-        $fq = $queryConf->fq;
-        $fq[] = "!cached:none";
-        $fq[] = "type:youtube-post";
         $start = 0;
-        $limit = 30;
-        $vidReq = Solr::query($q, $start, $limit, $fq);
+        $limit = 100;
 
-        $fqv = $queryConf->fq;
-        $fqv[] = '!type:youtube-post';
-        $fqv[] = '!cached:none';
+        $fq1 = $queryConf->fq;
+        $fq1[] = "type:youtube-post";
+        $vidReq = Solr::query($q, $start, $limit, $fq1);
 
-        $postReq = Solr::query($q, $start, $limit, $fqv);
+        $fq2 = $queryConf->fq;
+        $fq2[] = '!type:youtube-post';
+        $postReq = Solr::query($q, $start, $limit, $fq2);
 
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;
-        $data = $postReq->facet_counts->facet_fields->category;
+        $data = $postReq->facet_counts
+                        ->facet_fields
+                        ->category;
         $groups = [];
         $len = count($data)/2;
 
-        for ($i=0; $i<$len;$i+=2) {
+        for ($i=0;$i<$len;$i+=2) {
             $label = $data[$i];
             $score = $data[$i+1];
 
