@@ -1,12 +1,14 @@
 <?php
 namespace app\models;
+
 use Yii;
+use yii\web\HttpException;
+use yii\web\NotFoundHttpException;
+
 use app\models\Channel;
 use app\models\HttpReq;
 use app\models\Utils;
 use app\models\Solr;
-use yii\web\HttpException;
-use yii\web\NotFoundHttpException;
 
 class Feed {
     public static function create($chan) {

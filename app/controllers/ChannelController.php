@@ -1,5 +1,6 @@
 <?php
 namespace app\controllers;
+
 use Yii;
 use app\models\Channel;
 use app\models\Collection;
@@ -88,6 +89,9 @@ class ChannelController extends \yii\web\Controller {
             throw new HttpException(400, 'query param id or name are mandatory');
         }
         return $chan;        
+    }
+
+    public function actionActivity() {
     }
 
     public function actionTest() {
