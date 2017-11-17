@@ -5,10 +5,14 @@ if (!isset($cols)) {
 
 foreach ($posts as $post) {
     $tpl = "@app/views/plugins/stream/generic_post.php";
+    if ($post->type == "youtube-post") {
+        $tpl = "@app/views/plugins/stream/youtube.php";
+    }
+
     echo \Yii::$app->view->renderFile($tpl, [
-    	"post" => $post, 
-    	"cols" => $cols        
-     ]);
+        "post" => $post, 
+        "cols" => $cols
+    ]);
 }
 
 $script = <<<JS

@@ -1,12 +1,14 @@
 <?php
 namespace app\models;
+
 use Yii;
+use yii\web\HttpException;
+use yii\web\NotFoundHttpException;
+
 use app\models\Channel;
 use app\models\HttpReq;
 use app\models\Utils;
 use app\models\Solr;
-use yii\web\HttpException;
-use yii\web\NotFoundHttpException;
 
 class Feed {
     public static function create($chan) {
@@ -17,32 +19,33 @@ class Feed {
         }
 
         $q = $queryConf->q;
-        $fq = $queryConf->fq;
-        $fq[] = "!cached:none";
-        $fq[] = "type:youtube-post";
-    	$start = 0;
-        $limit = 40;
-        $vidReq = Solr::query($q, $start, $limit, $fq);
+        $start = 0;
+        $limit = 100;
 
-        $fq = $queryConf->fq;
-        $fq[] = '!type:youtube-post';
-        $fq[] = '!cached:none';
+        $fq1 = $queryConf->fq;
+        $fq1[] = "type:youtube-post";
+        $vidReq = Solr::query($q, $start, $limit, $fq1);
 
-        $postReq = Solr::query($q, $start, $limit, $fq);
+        $fq2 = $queryConf->fq;
+        $fq2[] = '!type:youtube-post';
+        $postReq = Solr::query($q, $start, $limit, $fq2);
 
         $videos = $vidReq->response->docs;
         $posts = $postReq->response->docs;
-        $data = $postReq->facet_counts->facet_fields->category;
+        $data = $postReq->facet_counts
+                        ->facet_fields
+                        ->category;
         $groups = [];
         $len = count($data)/2;
 
-        for ($i=0; $i<$len;$i+=2) {
+        for ($i=0;$i<$len;$i+=2) {
             $label = $data[$i];
             $score = $data[$i+1];
 
             // XXX: whats going on here?
-            if ($score == 0 || $label==$q)
+            if ($score == 0 || $label==$q) {
                 continue;
+            }
 
             $groups[] = [
                 "label" => $label,
@@ -65,7 +68,7 @@ class Feed {
         }
 
         return [
-        	'videos' => $videos,
+            'videos' => $videos,
             'posts' => $posts,
             'groups' => $groups
         ];

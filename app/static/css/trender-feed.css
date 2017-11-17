@@ -218,6 +218,12 @@ body {
     display: inline;
 }
 
-.tr-dropdown-inline ul.dropdown-menu {
+.tr-video-time {
+    right: 20%;
+    top: 75%;
+}
 
+.youtube-img {
+    height: 220px;
+    width: 300px;
 }

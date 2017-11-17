@@ -12,9 +12,9 @@ function (app, $){
                 error: function (error) { 
                     reject(error.responseText);
                 }
-            });             
+            });
         });
-    };
+    }
 
     return {
         addTo: function (postId, collectionName) {
@@ -38,5 +38,5 @@ function (app, $){
 	            });				
 			});
     	}
-    };
+    }
 });

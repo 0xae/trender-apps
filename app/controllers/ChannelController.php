@@ -1,5 +1,6 @@
 <?php
 namespace app\controllers;
+
 use Yii;
 use app\models\Channel;
 use app\models\Collection;
@@ -55,7 +56,6 @@ class ChannelController extends \yii\web\Controller {
         ]);
     }
 
-
     public function actionView_collection($id) {
         $coll = Collection::byId($id);
         $channel = Channel::byId($coll->channelId);
@@ -88,7 +88,6 @@ class ChannelController extends \yii\web\Controller {
         } else {
             throw new HttpException(400, 'query param id or name are mandatory');
         }
-
         return $chan;        
     }
 

@@ -18,7 +18,7 @@ class HttpReq extends \yii\base\Object {
                     throw new NotFoundHttpException($body);
                 default:
                     // XXX
-                    throw new HttpException($http_code, $url);
+                    throw new HttpException($http_code, $body);
               }
             } else {
                 throw new HttpException(503, "GET $url<br/>Could not complete request. {$body}");
@@ -58,7 +58,7 @@ class HttpReq extends \yii\base\Object {
                   break;
                 default:
                     // XXX
-                    throw new HttpException($http_code||503, '('.$data.')Error accessing: ' . $url . '  Details: ' . $body. '<br/>-------<br/>' . curl_error($ch));
+                    throw new HttpException($http_code, '('.$data.')Error accessing: ' . $url . '  Details: ' . $body. '<br/>-------<br/>' . curl_error($ch));
               }
             } else {
                 throw new HttpException(503, "Could not complete request. {$error}");

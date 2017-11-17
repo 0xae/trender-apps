@@ -7,32 +7,30 @@ if (isset($post->collections) && !empty($post->collections))
     $liked = array_search('likes', $post->collections) !== false;
 else
     $liked = false;
+
+$data = json_decode($post->data);
+// XXX: work on this
+$minutes = rand(10,60);
+$seconds = rand(10,60);
+$time = "$minutes:$seconds";
 ?>
 
-<div class="tr-post col-md-12" id="tr-post-<?= $post->id ?>">
+<div class="tr-post col-md-11" id="tr-post-<?= $post->id ?>">
     <div class="row">
+        <!--
          <div class="tr-post-image col-md-1">
             <a class="cb" 
                href="<?= $post->link; ?>" 
                style="width:50px; height: 50px;"
                title="Profile picture of <?= $post->authorName ?>">
 
-                <img data-picture="<?= $post->picture ?>"
-                     data-postid="<?= $post->id ?>"
-                     data-cached="<?= @$post->cached ?>"
-                     src="<?= Utils::cached($post); ?>"
-                     id="img-<?= $post->id ?>"
-                     class="tr-cache-it"
-                     width="50"
-                     height="45"
-                     alt="loading..."
-                     style="font-size: 8px"
-                />
             </a>
         </div>
-
-        <div class="col-md-10">
+        -->
+        <div class="col-md-11">
             <div class="tr-post-info">
+                <img src="static/img/youtube-small.ico"  />
+
                 <h4 class="tr-author">
                     <span>
                         <strong> 
@@ -48,6 +46,20 @@ else
                 <p> <?= $post->description ?> </p>
             </div>
         </div>
+
+        <div class="col-md-push-1 col-md-10" style="margin-top: 5px;margin-bottom: 5px;">
+            <span class="fa fa-play tr-video-miniplayer"></span>
+            <img data-picture="<?= $post->picture ?>"
+                 data-postid="<?= $post->id ?>"
+                 data-cached="<?= @$post->cached ?>"
+                 id="img-<?= $post->id ?>"
+                 src="<?= Utils::cached($post); ?>"
+                 class="tr-cache-it youtube-img"
+                 alt="loading..."
+                 style="font-size: 8px"
+            />
+            <span class="tr-video-time"><?= $time ?></span>
+        </div>
     </div>
 
     <div class="row tr-post-details">
@@ -57,9 +69,9 @@ else
                     <span class="fa fa-clock-o"></span>
                     <?= $post->timestampFmt ?>
                     <span aria-hidden="true">· </span>
-                    <?= $post->source ?>
-                    <span aria-hidden="true">· </span>
-                    <?= $post->location ?>
+                    <a href="<?= $post->link ?>" target="__blank">
+                      watch on youtube
+                    </a>
                 </p>
 
                 <a href="javascript:void(0)" 
@@ -101,14 +113,7 @@ else
                 <span aria-hidden="true">
                     <a href="javascript:void(0)">
                         <strong>· </strong>
-                        0 reactions
-                    </a>
-                </span>
-
-                <span aria-hidden="true">
-                    <a href="<?= $post->link; ?>">
-                        <strong>· </strong>
-                        full story
+                        <?= $data->likes ?> likes
                     </a>
                 </span>
 
