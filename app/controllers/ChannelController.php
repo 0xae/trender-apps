@@ -91,4 +91,7 @@ class ChannelController extends \yii\web\Controller {
 
         return $chan;        
     }
+
+    public function actionTest() {
+    }
 }
