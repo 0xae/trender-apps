@@ -2,6 +2,7 @@
 use app\models\DateUtils;
 use app\models\Utils;
 use app\models\Trender;
+
 $category = Utils::category($post);
 if (isset($post->collections) && !empty($post->collections))
     $liked = array_search('likes', $post->collections) !== false;
@@ -13,6 +14,7 @@ $data = json_decode($post->data);
 $minutes = rand(10,60);
 $seconds = rand(10,60);
 $time = "$minutes:$seconds";
+
 ?>
 
 <div class="tr-post col-md-11" id="tr-post-<?= $post->id ?>">

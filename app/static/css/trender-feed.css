@@ -230,7 +230,7 @@ body {
 
 .tr-channel-content {
     background-color: #f7f6f6;
-    padding-top: 13px;
+    padding: 0px;
 }
 
 .tr-channel-menu {
@@ -239,4 +239,35 @@ body {
 
 .tr-channel-info {
     border-right: 1px solid lightgray;
+}
+
+.tr-channel-nav {
+    padding: 0px;
+    padding-top: 7px;
+    background-color: #ccc;
+    margin-bottom: 17px;
+}
+
+.tr-channel-nav ul.nav-tabs {
+    padding-left: 7px;
+}
+
+.tr-channel-nav ul.nav-tabs a {
+    border-bottom: 1px solid #ddd;
+}
+
+.tr-channel-nav ul.nav-tabs li.active {
+    font-weight: bold;
+    color: orangered;
+    border-color: transparent;
+}
+
+.tr-channel-nav ul.nav-tabs li.active a {
+    color: orangered;
+}
+
+.tr-channel-nav ul.nav-tabs li a {
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }

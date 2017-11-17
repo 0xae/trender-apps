@@ -128,46 +128,7 @@ if (count($posts)) {
         </div>
     </div>
 
-    <div class="col-md-10">
-        <div role="tabpanel">
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs" role="tablist">
-
-            <li role="presentation">
-                <a href="#profile" aria-controls="profile" 
-                    role="tab" data-toggle="tab">
-                    News
-                </a>
-            </li>
-            <li role="presentation">
-                <a href="#profile" aria-controls="profile" 
-                    role="tab" data-toggle="tab">
-                    Places
-                </a>
-            </li>
-            <li role="presentation">
-                <a href="#profile" aria-controls="profile" 
-                    role="tab" data-toggle="tab">
-                    Events
-                </a>
-            </li>
-            <li role="presentation">
-                <a href="#profile" aria-controls="profile" 
-                    role="tab" data-toggle="tab">
-                    Videos
-                </a>
-            </li>
-            <li role="presentation">
-                <a href="#profile" aria-controls="profile" 
-                    role="tab" data-toggle="tab">
-                    Favorites
-                </a>
-            </li>
-          </ul>
-        </div>
-    </div>
-
-    <div class="col-md-10 tr-channel-content" id="">
+    <div class="col-md-10 tr-channel-content">
         <div class="rs-row row" style="padding:0px;">
             <?= $tab->render(); ?>
         </div>
