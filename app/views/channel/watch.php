@@ -43,7 +43,7 @@ if (count($posts)) {
 <div class="row rs-row">
     <div class="col-md-2" style="background-color: #fff;">
         <div class="row">
-            <div class="col-md-12 rs-pad">
+            <div class="col-md-12 rs-pad tr-channel-info">
                 <div class="">
                     <span style="background-color: rgba(0,0,0,.6);padding:2px;position: absolute;min-height:40px;color:#fff;font-size:12px;width:100%;">
                         <?= $randomPost->description; ?> <br/>
@@ -167,7 +167,7 @@ if (count($posts)) {
         </div>
     </div>
 
-    <div class="col-md-10" id="" style="padding:0px;">
+    <div class="col-md-10 tr-channel-content" id="">
         <div class="rs-row row" style="padding:0px;">
             <?= $tab->render(); ?>
         </div>

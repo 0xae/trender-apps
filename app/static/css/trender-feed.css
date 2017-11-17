@@ -225,5 +225,18 @@ body {
 
 .youtube-img {
     height: 220px;
-    width: 300px;
+    width: 350px;
+}
+
+.tr-channel-content {
+    background-color: #f7f6f6;
+    padding-top: 13px;
+}
+
+.tr-channel-menu {
+    margin-bottom: 10px;
+}
+
+.tr-channel-info {
+    border-right: 1px solid lightgray;
 }
