@@ -1,6 +1,7 @@
 <?php
 use yii\widgets\ActiveForm;
 use yii\helpers\BaseHtml;
+use yii\helpers\Url;
 
 $controllerId = Yii::$app->controller->id;
 $controllerAction = Yii::$app->controller->action;
@@ -43,11 +44,24 @@ $controllerHref = "index.php?r=feed/index";
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" style="color: #fff;" 
+            <?php if (Yii::$app->user->isGuest): ?>
+            <li class="tr-signup dropdown">
+                <a href="<?= Url::to(["user/signup"]) ?>"                    
+                   style="color: #fff;padding-bottom:0px;" 
+                   title="be a part of this."                   
+                   aria-expanded="false">
+                    <strong>
+                        <span class="fa fa-user"></span> 
+                        SIGN UP
+                    </strong>
+                </a>
+
+                <a class="dropdown-toggle" 
                    data-toggle="dropdown" role="button" 
-                    aria-expanded="false">
-                    <strong><span class="fa fa-cog"></span> settings</strong> 
+                   style="padding-top:0px;">
+                    <strong>
+                    <span style="font-size:11px;text-align:center;line-height:8px;display:block;">OR LOGIN</span>
+                    </strong>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="#">Action</a></li>
@@ -57,6 +71,28 @@ $controllerHref = "index.php?r=feed/index";
                     <li><a href="#">Separated link</a></li>
                 </ul>
             </li>
+            <?php else: ?>
+            <li class="dropdown">
+                <a href="javascript:void(0)" 
+                   class="dropdown-toggle" 
+                   style="color: #fff;padding-top:0px;" 
+                   data-toggle="dropdown" role="button" 
+                    aria-expanded="false">
+                    <strong>
+                        <span class="fa fa-user"></span> 
+                        <?= \Yii::$app->user->identity->name; ?>                    
+                    </strong>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+            <?php endif; ?>
+
         </ul>
 
         <?php $form = ActiveForm::begin(['action' => $controllerHref, 

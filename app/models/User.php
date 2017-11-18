@@ -1,30 +1,51 @@
 <?php
 namespace app\models;
+use yii\base\Model;
+use yii\web\IdentityInterface;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface {
+class User extends Model implements IdentityInterface {
     public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
+    public $name='';
+    public $email='';
+    public $password='';
+    public $lang='';
+    public $picture='';
+    public $location='';
+    public $createdAt;
 
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+    public function rules() {
+        return [
+            [['name', 'email', 'password'], 'required'],
+            ['name', 'filter', 'filter' => 'trim'],
+            ['name', 'string', 'min' => 3],
+            ['email', 'email'],
+            ['id', 'integer'],
+        ];
+    }
 
+    public function save() {        
+        $host = Trender::api();
+        $data = [
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password,
+            'picture' => $this->picture,
+        ];
+
+        if ($this->id > 0) {
+            $url = "{$host}user/{$this->id}";
+            $data['id']=$this->id;
+        } else {
+            $url = "{$host}user/signup";
+        }
+
+        $json = HttpReq::post($url, json_encode($data));
+        if (!$this->id) {
+            $this->id = $json->id;
+        }
+
+        return $this;
+    }
 
     /**
      * @inheritdoc
