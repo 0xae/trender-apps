@@ -55,21 +55,6 @@ $controllerHref = "index.php?r=feed/index";
                         SIGN UP
                     </strong>
                 </a>
-
-                <a class="dropdown-toggle" 
-                   data-toggle="dropdown" role="button" 
-                   style="padding-top:0px;">
-                    <strong>
-                    <span style="font-size:11px;text-align:center;line-height:8px;display:block;">OR LOGIN</span>
-                    </strong>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
             </li>
             <?php else: ?>
             <li class="dropdown">
