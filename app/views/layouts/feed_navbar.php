@@ -11,7 +11,7 @@ $controllerAction = Yii::$app->controller->action;
 $controllerHref = "index.php?r=feed/index";
 ?>
 
-<nav class="navbar navbar-inverse tr-navbar">
+<nav class="navbar navbar-inverse navbar-fixed-top tr-navbar">
 <div class="container-fluid">
 
     <!-- Brand and toggle get grouped for better mobile display -->

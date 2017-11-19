@@ -38,20 +38,14 @@ class ChannelController extends \yii\web\Controller {
     }
 
     public function actionWatch($id=false) {
-        $chan = $this->getChannel($id);
-        $feed = Feed::create($chan);
-        $channels = Channel::find();
-        $like = Collection::byId(1);
-        $collections = Channel::collectionsOf($chan->id);
+        $feed = Feed::ofChannel($id);
+        $chan = $feed['channel'];
+        $sugests = Channel::find();
 
         return $this->render('watch', [
             'channel' => $chan,
-            'videos' => $feed['videos'],
-            'posts' => $feed['posts'],
-            'groups' => $feed['groups'],
-            'channels' => $channels,
-            'like' => $like,
-            'collections' => $collections,
+            'sugests' => $sugests,
+            'featuredPost' => $feed['featuredPost'],
             'q' => $chan->json('queryConf')->q
         ]);
     }
@@ -65,31 +59,6 @@ class ChannelController extends \yii\web\Controller {
         ]);
     }
 
-    private function getChannel($id) {
-        $name = Utils::queryParam('name', false);
-        if ($id) {
-            $chan = Channel::byId($id);
-        } else if ($name) {
-            try {
-                $chan = Channel::byName($name);
-            } catch (NotFoundHttpException $e) {
-                $fq=Utils::queryParam('fq', '');
-                $o = new Channel;
-                $o->name = $name;
-                $o->audience = 'public';
-                $o->queryConf = json_encode([
-                    #q is mandatory
-                    #no, i wont assuming its the same as $name
-                    'q' => Utils::param('q'),
-                    'fq' => explode(',', $fq)
-                ]);
-                $chan = $o->save();
-            }
-        } else {
-            throw new HttpException(400, 'query param id or name are mandatory');
-        }
-        return $chan;        
-    }
 
     public function actionTest() {
     }

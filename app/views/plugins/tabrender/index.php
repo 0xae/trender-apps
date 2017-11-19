@@ -1,5 +1,4 @@
 <?php
-$controllerId = Yii::$app->controller->id;
 $default = $tab->default;
 if (!$tab->active) {
 	$tab->active = $default;
@@ -15,7 +14,7 @@ if (!$tab->active) {
 		<div role="tabpanel" class="tab-pane <?=($tab->active==$obj['id'])?'active':'' ?>" id="<?= $obj['id'] ?>">
 		<?php 
 			echo \Yii::$app->view->renderFile(
-	            "@app/views/$controllerId/tab.render/{$tab->id}/{$obj['paneFile']}.php",
+	            "@app/views/{$tab->viewPath()}/tab.render/{$tab->id}/{$obj['paneFile']}.php",
 	            $obj["params"]
 	        );
         ?>

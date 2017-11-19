@@ -231,6 +231,7 @@ body {
 .tr-channel-content {
     background-color: #ddd;
     padding: 0px;
+    padding-top: 50px;
 }
 
 .tr-channel-menu {
@@ -343,4 +344,50 @@ body {
 
 .tr-login input {
     border-radius: 2px;    
+}
+
+.tr-random .descr {
+    max-height: 78px;
+    background-color: #000;
+    padding:2px;
+    min-height:40px;
+    color:#fff;
+    font-size:12px;
+    width:100%;
+    opacity: .8;
+    box-shadow: 0px 0px 2px #000;
+}
+
+.tr-random img {
+    max-width: 100%;
+    min-height:210px;
+    max-height:210px;
+    margin-top: 50px;
+}
+
+.tr-rtime {
+    padding-right: 5px;
+    font-size: 11px;
+}
+
+.tr-rcontent {
+    padding: 5px;
+    overflow: hidden;
+}
+
+.tr-group-title {
+    font-weight: bold;
+    color: gray;
+}
+
+.tr-group-descr {
+    font-size: 11px;
+    color: gray;
+    display: block;
+    margin-top: -4px;
+}
+
+.tr-group-header {
+    text-align: center;
+    margin-bottom: 5px;
 }

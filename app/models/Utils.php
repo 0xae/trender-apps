@@ -32,7 +32,7 @@ class Utils {
         $maxCategoryLen = 20;
         if (isset($post->category) && !empty($post->category)) {
             $category = implode(',', $post->category);
-
+            // i decided its okay to inline this here
             $category = str_replace('%2b', ' ', $category);
             $category = str_replace('%2522', '', $category);
             $category = str_replace('%2526', '&', $category);
@@ -43,5 +43,14 @@ class Utils {
             $cat = $category;
         }
         return $cat;
+    }
+
+    public static function scape($str) { 
+        $str = str_replace('%2b', ' ', $str);
+        $str = str_replace('%2522', '', $str);
+        $str = str_replace('%2526', '&', $str);
+        $str = str_replace('+', ' ', $str);
+        $str = trim($str);
+        return $str;  
     }
 }

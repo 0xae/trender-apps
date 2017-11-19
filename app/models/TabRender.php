@@ -12,6 +12,7 @@ class TabRender {
     public $comp;
     public $active=false;
     private $lid = 1; // link id
+    private $viewPath='';
 
     public function __construct($id) {
         if (!trim($id)) {
@@ -20,6 +21,15 @@ class TabRender {
         $this->id = $id;
         $this->default = "{$id}_default";
         $this->comp = [];
+        $this->viewPath = Yii::$app->controller->id;
+    }
+
+    public function _setViewPath($v) {
+        $this->viewPath = $v;
+    }
+
+    public function viewPath() {
+        return $this->viewPath;
     }
 
     public function ajaxLink($label, $link, $active=false) {
@@ -54,15 +64,13 @@ class TabRender {
             $this->active = $obj["id"];
         }
 
-        $aTag="
-            <a href=\"#{$obj['id']}\" 
+        $aTag="<a href=\"#{$obj['id']}\" 
                aria-controls=\"{$obj['id']}\" 
                role=\"tab\" 
                data-target=\"#{$obj['id']}\"
                data-toggle=\"tab\">
                $label
-            </a>
-        ";
+            </a>";
 
         $this->comp[] = $obj;
         return $aTag;

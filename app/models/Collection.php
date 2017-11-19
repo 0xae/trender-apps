@@ -11,11 +11,17 @@ use yii\db\ActiveRecord;
 
 class Collection extends Model {
     public $id, $name, $label, $description;
-    public $audience, $channelId;
+    public $audience, $channelId, $display, $update, $curation;
     public $createdAt, $createdAtFmt,
         $lastUpdate, $lastUpdateFmt;
+    public $posts=[];
+    public $groups=[];
 
     public function Collection() {
+    }
+
+    public function __clone() {
+        return self::convert($this);
     }
 
     public function rules() {
@@ -32,7 +38,9 @@ class Collection extends Model {
         $coll->label = $json->label;
         $coll->description = $json->description;
         $coll->audience = $json->audience;
-        $coll->channelId = $json->channelId;
+        $coll->display = $json->display;
+        $coll->update = $json->update;
+        $coll->curation = $json->curation;
 
         $coll->createdAt = $json->createdAt;
         $coll->createdAtFmt = $json->createdAtFmt;
@@ -47,6 +55,18 @@ class Collection extends Model {
         $query = "{$host}collection/$id";
         $json = HttpReq::get($query);
         return self::convert($json);
+    }
+
+    public static function all($audience='public') {
+        $host = Trender::api();
+        $query = "{$host}collection?audience=$audience";
+        $ary = [];
+        $all=HttpReq::get($query);
+        foreach ($all as $col) {
+            $ary[] = self::convert($col);
+        }
+
+        return $ary;
     }
 
     public function posts($chan, $start=0, $lim=20) {

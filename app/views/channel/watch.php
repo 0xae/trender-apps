@@ -1,6 +1,8 @@
 <?php
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
+use yii\helpers\Html;
+
 use app\models\Post;
 use app\models\Utils;
 use app\models\Collection;
@@ -15,60 +17,59 @@ else
 $collection = new Collection;
 $this->title = 'Channel ' . $channel->name;
 
-$collectionsLink = $tab->fileLink("Collections",  "collections", false, [
-    'cols' => $collections
-]);
-
-$likesLink = $tab->fileLink("Likes", "likes", false, [
-    'coll' => $like,
-    'channel' => $channel
-]);
-
 $activityLink = $tab->fileLink("Activity", "activity", true, [
+    /*
     "posts" => $posts,
     "videos" => $videos,
     "groups" => $groups,
-    "channel" => $channel,
-    'collections' => $collections
+    "collections" => $collections
+    */
+    "channel" => $channel
 ]);
 
-$randomPost = false;
-if (count($posts)) {
-    $idx = rand(0, count($posts)-1);
-    $randomPost = $posts[$idx];
-    $picture = Utils::cached($randomPost);
-}
+//$idx = rand(0, count($posts)-1);
+$picture = Utils::cached($featuredPost);
 ?>
 
 <div class="row rs-row">
     <div class="col-md-2" style="background-color: #fff;">
         <div class="row">
             <div class="col-md-12 rs-pad tr-channel-info">
-                <div class="">
-                    <span style="background-color: rgba(0,0,0,.6);padding:2px;position: absolute;min-height:40px;color:#fff;font-size:12px;width:100%;">
-                        <?= $randomPost->description; ?> <br/>
-                        <span>
-                            <a href="<?= $randomPost->link ?>" 
-                               class="txt-underline" 
-                               style="color: #fff;">
-                               <strong>full story</strong>
-                            </a>
-                        </span>
-                    </span>
-                    <img style="max-width: 100%;min-height:200px;" 
+                <div class="tr-random">
+                    <img style="" 
                          src="<?= $picture ?>" 
                          alt="..."
                     />
-                </div>
 
-                <a href="<?= Url::to(["channel/watch", "id"=>$channel->id]); ?>">
-                    <h3 style="margin-top:5px;margin-left:5px;color: #666">
-                        <?= $channel->name ?>
-                    </h3>
-                </a>
+                    <a href="<?= $featuredPost->link ?>" target="_blank">
+                    <span class="descr col-md-12">
+                        <strong>
+                        @<?= $featuredPost->authorName ?>
+                        </strong>
+
+                        <span class="pull-right tr-rtime">
+                        <strong>
+                            <?= $featuredPost->timestampFmt ?>
+                        </strong>
+                        </span>
+    
+                        <p class="tr-rcontent">
+                            <?= $featuredPost->description ?>
+                        </p>
+                    </span>
+                    </a>
+                </div>
 
                 <div class="tr-section">
                     <ul class="list-unstyled tr-settings" style="margin-bottom: 25px;">
+                        <li role="presentation">
+                        <a href="<?= Url::to(["channel/watch", "id"=>$channel->id]); ?>">
+                            <h3 style="margin-top:5px;margin-left:5px;color: #666">
+                                <?= $channel->name ?>
+                            </h3>
+                        </a>
+                        </li>
+
                         <li role="presentation">
                             <a href="#">
                                 <span class="fa fa-home"></span>
@@ -80,7 +81,7 @@ if (count($posts)) {
                                 <a href="#">
                                     <span class="fa fa-thumbs-up"></span>
                                 </a>
-                                <?= $likesLink ?>
+                                <a href="#">Likes</a>
                             </span>
                         </li>
 
@@ -91,7 +92,7 @@ if (count($posts)) {
                             </a>
 
                             <span>
-                                <?= $collectionsLink ?>
+                                <a href="#">Collections</a>
                             </span>
     
                             <a href="javascript:void(0)" class="pull-right">
@@ -107,12 +108,12 @@ if (count($posts)) {
 
                 <div class="tr-section">
                     <h4 class="tr-section-title">
-                        Other Channels
+                        Suggested Channels
                     </h4>
 
                     <div class="tr-section-content">
                         <ul class="list-unstyled">
-                            <?php foreach ($channels as $chan): ?>
+                            <?php foreach ($sugests as $chan): ?>
                                 <li>
                                     <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
                                        class="tr-more-item">

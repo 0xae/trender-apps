@@ -18,6 +18,7 @@ class Channel extends Model {
     public $createdAt;
     public $lastUpdate;
     public $lastUpdateFmt;
+    public $collections=[];
 
     public function rules() {
         return [
