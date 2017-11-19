@@ -2,6 +2,9 @@
 use yii\widgets\ActiveForm;
 use yii\helpers\BaseHtml;
 use yii\helpers\Url;
+use yii\helpers\Html;
+use app\models\Login;
+$model = new Login;
 
 $controllerId = Yii::$app->controller->id;
 $controllerAction = Yii::$app->controller->action;
@@ -46,34 +49,72 @@ $controllerHref = "index.php?r=feed/index";
         <ul class="nav navbar-nav navbar-right">
             <?php if (Yii::$app->user->isGuest): ?>
             <li class="tr-signup dropdown">
-                <a href="<?= Url::to(["user/signup"]) ?>"                    
+                <a class="login-dropdown-toggle"       
                    style="color: #fff;padding-bottom:0px;" 
-                   title="be a part of this."                   
-                   aria-expanded="false">
+                   title="log into trender"                
+                   data-toggle="dropdown" role="button"
+                   aria-expanded="true">
                     <strong>
                         <span class="fa fa-user"></span> 
-                        SIGN UP
+                        SIGN IN
                     </strong>
                 </a>
+
+                <ul class="dropdown-menu tr-login" role="menu">
+                    <li style="color: gray;">
+                        <div class="">
+                            <h3>
+                                <span class="text-primary glyphicon glyphicon-facetime-video"
+                                      style="font-size:19px;padding-top:0px;"></span>
+                                Sign in to trender
+                            </h3>
+                            <p style="font-size:12px;">The awesome newsfeed, register 
+                                <a style="text-decoration:underline;font-weight:bold;padding:1px !important;" 
+                                   href="<?= Url::to(['user/signup']) ?>">
+                                   here
+                               </a>
+                            </p>
+                            <?php $form = ActiveForm::begin(['action' => Url::to(['user/signin']), 'options' => ['id' => 'login-user']]); ?>
+                                <?= $form->field($model, 'email')
+                                          ->textInput(['placeholder' => 'Email', 
+                                                       'no-autocomplete'=>'no-autocomplete']); 
+                                ?>
+
+
+                                <?= $form->field($model, 'password')
+                                          ->passwordInput(['placeholder' => 'password']); 
+                                ?>
+
+                            <?= Html::submitButton('<strong>sign in</strong>', [
+                                'class' => 'btn-sm btn btn-block btn-warning tr-btn',
+                                'style' => "margin-top:14px;"
+                            ]) ?>
+                            <p style="font-size:11px;margin-top:4px;">
+                                By using Trender you agree to these
+                                <strong>
+                                    <a href="#" style="padding:1px !important;color:gray;text-decoration:underline">
+                                        terms</a>.
+                                </strong>                                
+                            </p>
+                            <?php ActiveForm::end(); ?>
+                        </div>
+                    </li>
+                </ul>
             </li>
             <?php else: ?>
-            <li class="dropdown">
-                <a href="javascript:void(0)" 
-                   class="dropdown-toggle" 
-                   style="color: #fff;padding-top:0px;" 
+            <li class="dropdown active">
+                <a class="dropdown-toggle" 
+                   style="color: #fff;opacity:.7;" 
                    data-toggle="dropdown" role="button" 
-                    aria-expanded="false">
+                   aria-expanded="true">
                     <strong>
                         <span class="fa fa-user"></span> 
                         <?= \Yii::$app->user->identity->name; ?>                    
                     </strong>
                 </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                <ul class="dropdown-menu tr-dropdown-menu" role="menu">
                     <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="<?= Url::to(['user/signout']); ?>">Sign out</a></li>
                 </ul>
             </li>
             <?php endif; ?>

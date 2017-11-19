@@ -1,5 +1,6 @@
 <?php
 namespace app\models;
+use Yii;
 use yii\base\Model;
 use yii\web\IdentityInterface;
 
@@ -12,6 +13,7 @@ class User extends Model implements IdentityInterface {
     public $picture='';
     public $location='';
     public $createdAt;
+    public $token;
 
     public function rules() {
         return [
@@ -47,40 +49,48 @@ class User extends Model implements IdentityInterface {
         return $this;
     }
 
+    public static function sigin($login) {
+        $host = Trender::api();
+        $data = json_encode($login);
+        $url = "{$host}user/signin";
+        $resp = HttpReq::post($url, $data);
+
+        $json = $resp->user;
+        $token = "{$resp->prefix} {$resp->token}";
+        return self::convert_to($json, $token);
+    }
+
+    private static function convert_to($json, $token=false) {
+        $u = new User;
+        $u->id=$json->id;
+        $u->name=$json->name;
+        $u->email=$json->email;
+        $u->lang=$json->lang;
+        $u->picture=$json->picture;
+        $u->location=$json->location;
+        $u->createdAt=$json->createdAt;
+        if ($token) $u->token=$token;
+        return $u;
+    }
+
     /**
      * @inheritdoc
      */
     public static function findIdentity($id) {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        $host = Trender::api();
+        $url = "{$host}user/{$id}";
+        $resp = HttpReq::get($url);
+        return self::convert_to($resp);
     }
 
     /**
      * @inheritdoc
      */
     public static function findIdentityByAccessToken($token, $type = null) {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username) {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        $host = Trender::api();
+        $url = "{$host}user/me";
+        $resp = HttpReq::get($url, ["Authorizarion: $token"]);
+        return $resp->user;
     }
 
     /**
@@ -94,23 +104,13 @@ class User extends Model implements IdentityInterface {
      * @inheritdoc
      */
     public function getAuthKey() {
-        return $this->authKey;
+        return $this->token;
     }
 
     /**
      * @inheritdoc
      */
     public function validateAuthKey($authKey) {
-        return $this->authKey === $authKey;
-    }
-
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
-     */
-    public function validatePassword($password) {
-        return $this->password === $password;
+        return true;
     }
 }

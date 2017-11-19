@@ -47,6 +47,8 @@ requirejs(["jquery", "bts", 't/zpost'], function ($, bts, zpost){
 
         $(self).html('<span class="tx-wait">Wait...</span>');
 
+        $('.login-dropdown-toggle').dropdown('toggle')
+
         var prom;
         if (op == 'add')
             prom = zpost.addTo(postid, collection);

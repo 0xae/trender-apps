@@ -4,10 +4,12 @@ use yii\web\NotFoundHttpException;
 use yii\web\HttpException;
 
 class HttpReq extends \yii\base\Object {
-    public static function get($url) {
+    public static function get($url, $headers=[]) {
     	try {
+            $headers[] = 'Content-type: application/json';
 			$ch = curl_init($url);            
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             $body = curl_exec($ch);
             $error = curl_errno($ch);
             if (!$error) {
@@ -33,21 +35,22 @@ class HttpReq extends \yii\base\Object {
         return $json;
     }
 
-    public static function post($url, $data)  {
-        return self::postData(CURLOPT_POST, $url, $data);
+    public static function post($url, $data, $headers=[])  {
+        return self::postData(CURLOPT_POST, $url, $data, $headers);
     }
 
-    public static function put($url, $data)  {
-        return self::postData(CURLOPT_PUT, $url, $data);
+    public static function put($url, $data, $headers=[])  {
+        return self::postData(CURLOPT_PUT, $url, $data, $headers);
     }
 
-    private static function postData($method, $url, $data) {
+    private static function postData($method, $url, $data, $headers) {
         try {
+            $headers[] = 'Content-type: application/json';
             $ch = curl_init($url);            
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             // curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, $method, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-type: application/json']);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);            
             $body = curl_exec($ch);
             $error = curl_errno($ch);
