@@ -1,31 +1,33 @@
-<div class="col-md-6">
-    <!-- group -->
-    <?php foreach ($group as $g): ?>
-        <div class="tr-post-group" id="<?= $g['name'] ?>">
-            <div class="tr-group-header">
-                <span class="tr-group-title">
-                    <?= $g['label'] ?>
-                </span>
-                <span class="tr-group-descr">
-                     2017-10-12 · 
-                     <?= $g['score'] ?> posts
-                </span>
+<div class="col-md-10" style="background-color: #ddd;">
+    <div class="col-md-7">
+        <!-- group -->
+        <?php foreach ($group as $g): ?>
+            <div class="tr-post-group" id="<?= $g['posts'][0]->id ?>">
+                <div class="tr-group-header">
+                    <span class="tr-group-title">
+                        <?= $g['label'] ?>
+                    </span>
+                    <span class="tr-group-descr">
+                         2017-10-12 · 
+                         <?= $g['score'] ?> posts
+                    </span>
+                </div>
+
+                <?php
+                    foreach ($g['posts'] as $post) 
+                        render_post($post, $cols);
+                ?>
             </div>
+        <?php endforeach; ?>
 
-            <?php
-                foreach ($g['posts'] as $post) 
-                    render_post($post, $cols);
-            ?>
-        </div>
-    <?php endforeach; ?>
+        <!-- post -->
+        <?php foreach ($posts as $post) 
+                render_post($post, $cols); 
+        ?>
+    </div>
 
-    <!-- post -->
-    <?php foreach ($posts as $post) 
-            render_post($post, $cols); 
-    ?>
-</div>
-
-<div class="col-md-3 rs-pad">
+    <div class="col-md-3 rs-pad">
+    </div>
 </div>
 
 <div class="col-md-2 rs-pad tr-coll-right-bar pull-right">
@@ -38,7 +40,7 @@
             <ul class="list-unstyled">
                 <?php foreach ($group as $g): ?>
                     <li class="tr-group-link">
-                        <a href="#<?= $g["label"] ?>" class="tr-more-item">
+                        <a href="#<?= $g['posts'][0]->id ?>" class="tr-more-item">
                             #<?= $g["label"] ?>
                         </a>
 <!--                         <p>
