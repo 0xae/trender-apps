@@ -48,6 +48,6 @@ function render_post($post, $cols){
     </div>
 </div>
 
-<div class="col-md-12">
+<div class="col-md-12 rs-pad">
 <?= $tab->render(); ?>
 </div>

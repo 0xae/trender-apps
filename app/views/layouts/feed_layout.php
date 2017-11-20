@@ -72,6 +72,8 @@ requirejs(["jquery", "bts", 't/zpost'], function ($, bts, zpost){
         });
     });
 
+    $("#topicsAffix").affix();
+
     $("a.tx-update-collection").on("click", function (e) {
         e.preventDefault();
         var postid = $(this).attr("data-tx-postid");

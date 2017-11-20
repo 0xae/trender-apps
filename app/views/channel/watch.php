@@ -129,7 +129,7 @@ $picture = Utils::cached($featuredPost);
         </div>
     </div>
 
-    <div class="col-md-10 tr-channel-content">
+    <div class="col-md-10 tr-channel-content rs-pad">
         <div class="rs-row row" style="padding:0px;">
             <?= $tab->render(); ?>
         </div>

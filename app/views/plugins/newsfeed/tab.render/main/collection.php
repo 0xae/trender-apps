@@ -28,22 +28,25 @@
 <div class="col-md-3 rs-pad">
 </div>
 
-<div class="col-md-2 pull-right">
-    <div id="topicsAffix" class="tr-section" data-spy="affix">
+<div class="col-md-2 rs-pad tr-coll-right-bar pull-right">
+    <div id="topicsAffix" class="affix" data-spy="affix">
         <h4 class="tr-section-title">
             Topics
         </h4>
 
         <div class="tr-section-content">
-        <ul class="list-unstyled">
-            <?php foreach ($group as $g): ?>
-                <li>
-                    <a href="#<?= $g["label"] ?>" class="tr-more-item">
-                        <?= $g["label"] ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+            <ul class="list-unstyled">
+                <?php foreach ($group as $g): ?>
+                    <li class="tr-group-link">
+                        <a href="#<?= $g["label"] ?>" class="tr-more-item">
+                            #<?= $g["label"] ?>
+                        </a>
+<!--                         <p>
+                            <?= $g["score"] ?> posts
+                        </p>
+ -->                    </li>
+                <?php endforeach; ?>
+            </ul>
         </div>
     </div>
 </div>

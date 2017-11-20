@@ -4,6 +4,7 @@ use Yii;
 use app\models\Channel;
 use app\models\HttpReq;
 use app\models\Utils;
+use app\models\DateUtils;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\base\Model;
@@ -12,16 +13,11 @@ use yii\db\ActiveRecord;
 class Collection extends Model {
     public $id, $name, $label, $description;
     public $audience, $channelId, $display, $update, $curation;
-    public $createdAt, $createdAtFmt,
-        $lastUpdate, $lastUpdateFmt;
+    public $createdAt, $createdAtFmt, $lastUpdate, $lastUpdateFmt;
     public $posts=[];
     public $groups=[];
 
     public function Collection() {
-    }
-
-    public function __clone() {
-        return self::convert($this);
     }
 
     public function rules() {
@@ -78,7 +74,7 @@ class Collection extends Model {
 
         $posts = $req->response->docs;
         foreach ($posts as $p) {
-            $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
+            $p->timestampFmt = DateUtils::dateFmt($p->timestamp);
         }
 
         return $posts;
