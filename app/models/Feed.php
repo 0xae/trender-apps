@@ -13,7 +13,7 @@ use app\models\Solr;
 use app\models\Utils;
 
 class Feed {
-    const STEEMIT='steemit-post';
+    const STEEMIT = 'steemit-post';
     const types = [
         self::STEEMIT,
         'youtube-post',
@@ -21,53 +21,50 @@ class Feed {
         'bbc-post'
     ];
 
+    //$groups = [];
+    //$len = count($data)/2;
 
+    //for ($i=0;$i<$len;$i+=2) {
+    //    $label = $data[$i];
+    //    $score = $data[$i+1];
 
-    //     $groups = [];
-    // $len = count($data)/2;
+    //    // XXX: whats going on here?
+    //    if ($score == 0 || $label==$q) {
+    //        continue;
+    //    }
 
-    // for ($i=0;$i<$len;$i+=2) {
-    //     $label = $data[$i];
-    //     $score = $data[$i+1];
-
-    //     // XXX: whats going on here?
-    //     if ($score == 0 || $label==$q) {
-    //         continue;
-    //     }
-
-    //     $groups[] = [
-    //         "label" => $label,
-    //         "score" => $score
-    //     ];
-    // }
+    //    $groups[] = [
+    //        "label" => $label,
+    //        "score" => $score
+    //    ];
+    //}
 
     public static function ofChannel($id) {
         # News, Places, Events, Videos
         $chan = self::channel($id);
+        $fq=explode(',', Utils::queryParam('fq', ''));
+        $queryConf=$chan->json('queryConf');
+        $q=$queryConf->q;
+        $start=0;
+        $limitPerType=80;
+        $postPerGroup=4;
+        $featuredP=false;
+        $fq=$queryConf->fq;
+        $types=[];
+        $found=0;
 
-        $queryConf = $chan->json('queryConf');
-        $fq = explode(',', Utils::queryParam('fq', ''));
         foreach ($fq as $f) {
             $queryConf->fq[] = $f;
         }
 
-        $q = $queryConf->q;
-        $start = 0;
-        $limitPerType = 50;
-        $postPerGroup = 4;
-
-        $fq = $queryConf->fq;
-        $types = [];
-        $found=0;
-        $all = [];
-
         foreach (self::types as $type) {
             $req = Solr::query($q, $start, $limitPerType, 
-                                self::ary($fq, 
-                                    '!cached:none', 
-                                    "type:$type"
-                                )
+                self::ary($fq, 
+                    '!cached:none', 
+                    "type:$type"
+                )
             );
+
             $types[$type] = $req;
             $found += count($req->response->docs);
             foreach ($req->response->docs as &$p) {
@@ -76,67 +73,27 @@ class Feed {
             }
         }
 
-        $syscol = Collection::byId(1);
+        $syscol=Collection::byId(1);
         $syscol->display=true;
         // $news = clone $syscol;$news->label='News';
         // $places= clone $syscol;$places->label='Places';
-        $more= clone $syscol;$more->label='More';
-        $videos= clone $syscol;$videos->label='Videos';
-        $newsfeed = clone $syscol;$newsfeed->label='Newsfeed';
-        $cols = [
+        $more=clone $syscol;$more->label='More';
+        $videos=clone $syscol;$videos->label='Videos';
+        $newsfeed=clone $syscol;$newsfeed->label='Newsfeed';
+        $chan->collections=[
             $newsfeed,
             $videos,
             $more
         ];
 
-        $chan->collections = $cols;        
-        $newsfeed->posts = []; # implicit
-
-        $cache = [];
-        $idx = 0;
-        foreach ($all as $post) {
-            $category = implode(',', $post->category);
-            foreach ($post->category as $cat) {
-                $cat = Utils::scape($cat);
-                if (!@$cache[$cat]) {
-                    $cache[$cat] = [
-                        'label' => $cat,
-                        'name' => $cat,
-                        'posts' => [$post],
-                        'more' => []
-                    ];
-                } else {
-                    if (count($cache[$cat]['posts']) > $postPerGroup) {
-                        $cache[$cat]['more'][] = $post;
-                    } else {
-                        $cache[$cat]['posts'][] = $post;
-                    }
-                }
-            }
-        }
-
-        foreach ($cache as &$group) {
-            $count=count($group['posts']);
-            $group['score'] = $count;
-            if (($count+1) < $postPerGroup) {  
-                foreach ($group['posts'] as $p) {
-                    $newsfeed->posts[] = $p; 
-                }
-                unset($cache[$group['name']]);
-            }
-        }
-
-        $newsfeed->groups = $cache;
-        $featuredP = false;
-
         do {
             $k=self::types[rand(0, count(self::types)-1)];
-            $t = $types[$k];
+            $t=$types[$k];
             $docs=$t->response->docs;
             if (!empty($docs)) {
-                $idx = rand(0, count($docs)-1);
-                $featuredP = $docs[$idx];
-                $featuredP->description = substr($featuredP->description, 0, 200);
+                $idx=rand(0, count($docs)-1);
+                $featuredP=$docs[$idx];
+                $featuredP->description=substr($featuredP->description, 0, 200);
             }
         } while ($found > 0 && empty($docs));
         
@@ -146,7 +103,7 @@ class Feed {
         ];
     }
 
-    private static function ary($ary, ...$elements) {        
+    private static function ary($ary, ...$elements) {
         foreach ($elements as $el) {
             $ary[] = $el;
         }

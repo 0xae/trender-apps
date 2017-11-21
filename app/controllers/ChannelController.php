@@ -59,7 +59,6 @@ class ChannelController extends \yii\web\Controller {
         ]);
     }
 
-
     public function actionTest() {
     }
 }

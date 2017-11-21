@@ -69,7 +69,7 @@ class Collection extends Model {
         $queryConf = $chan->json('queryConf');
         $q = $queryConf->q;
         $fq = $queryConf->fq;
-        $fq[] = 'collections:'.$this->name;
+        $fq[] = "collections: {$this->name}";
         $req = Solr::query($q, $start, $lim, $fq);
 
         $posts = $req->response->docs;

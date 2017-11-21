@@ -43,10 +43,10 @@
                         <a href="#<?= $g['posts'][0]->id ?>" class="tr-more-item">
                             #<?= $g["label"] ?>
                         </a>
-<!--                         <p>
+                        <p>
                             <?= $g["score"] ?> posts
                         </p>
- -->                    </li>
+                   </li>
                 <?php endforeach; ?>
             </ul>
         </div>
