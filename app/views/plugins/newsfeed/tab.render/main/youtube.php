@@ -49,18 +49,20 @@ $time = "$minutes:$seconds";
             </div>
         </div>
 
-        <div class="col-md-push-1 col-md-10" style="margin-top: 5px;margin-bottom: 5px;">
-            <span class="fa fa-play tr-video-miniplayer"></span>
-            <img data-picture="<?= $post->picture ?>"
-                 data-postid="<?= $post->id ?>"
-                 data-cached="<?= @$post->cached ?>"
-                 id="img-<?= $post->id ?>"
-                 src="<?= Utils::cached($post); ?>"
-                 class="tr-cache-it youtube-img"
-                 alt="loading..."
-                 style="font-size: 8px"
-            />
-            <span class="tr-video-time"><?= $time ?></span>
+        <div class="col-md-12" style="margin-top: 5px;margin-bottom: 5px;">
+            <div class="col-md-10" style="padding-top:6px;padding-bottom:7px;background-color: #000">
+                <span class="fa fa-play tr-video-miniplayer"></span>
+                <img data-picture="<?= $post->picture ?>"
+                     data-postid="<?= $post->id ?>"
+                     data-cached="<?= @$post->cached ?>"
+                     id="img-<?= $post->id ?>"
+                     src="<?= Utils::cached($post); ?>"
+                     class="tr-cache-it youtube-img"
+                     alt="loading..."
+                     style="font-size: 8px"
+                />
+                <span class="tr-video-time video-time"><?= $time ?></span>
+            </div>
         </div>
     </div>
 

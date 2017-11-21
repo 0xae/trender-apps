@@ -102,10 +102,15 @@ class Feed {
                     $cache[$cat] = [
                         'label' => $cat,
                         'name' => $cat,
-                        'posts' => [$post]
+                        'posts' => [$post],
+                        'more' => []
                     ];
                 } else {
-                    $cache[$cat]['posts'][] = $post;
+                    if (count($cache[$cat]['posts']) > $postPerGroup) {
+                        $cache[$cat]['more'][] = $post;
+                    } else {
+                        $cache[$cat]['posts'][] = $post;
+                    }
                 }
             }
         }
@@ -169,7 +174,7 @@ class Feed {
                 $fq=Utils::queryParam('fq', '');
                 $o = new Channel;
                 $o->name = $name;
-                $o->label = $label;
+                // $o->label = Html::enco;
                 $o->audience = 'public';
                 #XXX: Html::encode() ?
                 $o->queryConf = json_encode([
