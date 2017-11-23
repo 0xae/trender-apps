@@ -8,31 +8,41 @@ use app\models\DateUtils;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\base\Model;
+use yii\helpers\Html;
 use yii\db\ActiveRecord;
 
 class Collection extends Model {
-    public $id, $name, $label, $description;
-    public $audience, $channelId, $display, $update, $curation;
-    public $createdAt, $createdAtFmt, $lastUpdate, $lastUpdateFmt;
+    public $id;
+    public $name;
+    public $label;
+    public $description;
+    public $audience;
+    public $channelId;
+    public $display;
+    public $update;
+    public $curation;
+    public $createdAt;
+    public $createdAtFmt;
+    public $lastUpdate;
+    public $lastUpdateFmt;
     public $posts=[];
     public $groups=[];
 
-    public function Collection() {
-    }
-
     public function rules() {
         return [
-            [['label', 'label', 'audience', 'name'], 'required'],
+            [['label', 'audience', 'name'], 'required'],
+            ['description', 'filter', 'filter' => 'Html::encode'],
+            ['label', 'filter', 'filter' => 'Html::encode'],
             [['id', 'channelId'], 'integer']
         ];
     }
 
-    private static function convert($json) {
+    public static function convert($json) {
         $coll = new Collection;
         $coll->id = $json->id;
         $coll->name = $json->name;
-        $coll->label = $json->label;
-        $coll->description = $json->description;
+        $coll->label = ucfirst(Html::encode($json->label));
+        $coll->description = Html::encode($json->description);
         $coll->audience = $json->audience;
         $coll->display = $json->display;
         $coll->update = $json->update;

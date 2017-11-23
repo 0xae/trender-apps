@@ -30,6 +30,7 @@
     </div>
 </div>
 
+<!--
 <div class="col-md-2 rs-pad tr-coll-right-bar pull-right">
     <div id="topicsAffix" class="affix" data-spy="affix">
         <h4 class="tr-section-title">
@@ -52,6 +53,7 @@
         </div>
     </div>
 </div>
+-->
 
 <?php
 $script = <<<JS

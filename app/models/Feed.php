@@ -5,7 +5,6 @@ use Yii;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\helpers\Html;
-
 use app\models\Channel;
 use app\models\DateUtils;
 use app\models\HttpReq;
@@ -47,7 +46,6 @@ class Feed {
         $q=$queryConf->q;
         $start=0;
         $limitPerType=80;
-        $postPerGroup=4;
         $featuredP=false;
         $fq=$queryConf->fq;
         $types=[];
@@ -73,19 +71,6 @@ class Feed {
             }
         }
 
-        $syscol=Collection::byId(1);
-        $syscol->display=true;
-        // $news = clone $syscol;$news->label='News';
-        // $places= clone $syscol;$places->label='Places';
-        $more=clone $syscol;$more->label='More';
-        $videos=clone $syscol;$videos->label='Videos';
-        $newsfeed=clone $syscol;$newsfeed->label='Newsfeed';
-        $chan->collections=[
-            $newsfeed,
-            $videos,
-            $more
-        ];
-
         do {
             $k=self::types[rand(0, count(self::types)-1)];
             $t=$types[$k];
@@ -93,6 +78,7 @@ class Feed {
             if (!empty($docs)) {
                 $idx=rand(0, count($docs)-1);
                 $featuredP=$docs[$idx];
+                # cap description 
                 $featuredP->description=substr($featuredP->description, 0, 200);
             }
         } while ($found > 0 && empty($docs));
@@ -114,6 +100,7 @@ class Feed {
         $p->timestampFmt = DateUtils::dateFmt($p->timestamp);
         $p->description = Html::encode($p->description);
         $p->authorName = Html::encode($p->authorName);
+
         if (!isset($p->collections)) {
             $p->collections = [];
         }
@@ -121,7 +108,6 @@ class Feed {
 
     private static function channel($id) {
         $name = Utils::queryParam('name', false);
-
         if ($id) {
             $chan = Channel::byId($id);
         } else if ($name) {

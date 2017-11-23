@@ -8,9 +8,7 @@ $links = [];
 
 $i=0;
 foreach ($collections as $col) {
-    $col->label = Html::encode($col->label);
-    $label = ucfirst($col->label);
-    $ret = $tab->fileLink($label, "collection", !$i++, [
+    $ret = $tab->fileLink($col->label, "collection", !$i++, [
         'posts' => $col->posts,
         'cols' => $collections,
         'group' => $col->groups,

@@ -1,10 +1,11 @@
 <?php
 namespace app\models;
 use Yii;
-use yii\web\NotFoundHttpException;
-use yii\web\HttpException;
 use yii\base\Model;
 use yii\db\ActiveRecord;
+use yii\helpers\Html;
+use yii\web\NotFoundHttpException;
+use yii\web\HttpException;
 
 class Channel extends Model {
     public $id=0;
@@ -23,7 +24,7 @@ class Channel extends Model {
     public function rules() {
         return [
             [['name'], 'required'],
-            ['name', 'filter', 'filter' => 'trim'],
+            ['name', 'filter', 'filter' => 'Html::encode'],
             ['name', 'string', 'min' => 3],
             ['id', 'integer'],
         ];
@@ -46,6 +47,7 @@ class Channel extends Model {
         $c->createdAt = $i->createdAt ;
         $c->lastUpdate = $i->lastUpdate ;
         $c->lastUpdateFmt = $i->lastUpdateFmt;
+        $c->collections = array_map(function ($col){ return Collection::convert($col); }, $i->collections);
         return $c;
     }
 
@@ -97,7 +99,12 @@ class Channel extends Model {
     public static function all() {
         $host = Trender::api();
         $query = "{$host}channel";
-        return HttpReq::get($query);
+        $ary = [];
+        $all=HttpReq::get($query);
+        foreach ($all as $col) {
+            $ary[] = self::convert($col);
+        }
+        return $ary;
     }
 
     public static function find($audience='public') {
