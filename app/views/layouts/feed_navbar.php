@@ -22,7 +22,7 @@ $controllerHref = "index.php?r=feed/index";
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<?= Url::to(['feed/index']) ?>">
             <span class="glyphicon glyphicon-facetime-video"
                   style="color: red;padding-top:0px;"></span>
             Trender

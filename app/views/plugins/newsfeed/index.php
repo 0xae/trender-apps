@@ -27,7 +27,7 @@ function render_post($post, $cols){
     }
 
     echo \Yii::$app->view->renderFile($tpl, [
-        "post" => $post, 
+        "post" => $post,
         "cols" => $cols
     ]);
 }
