@@ -68,6 +68,7 @@ class Collection extends Model {
         $query = "{$host}collection?audience=$audience";
         $ary = [];
         $all=HttpReq::get($query);
+
         foreach ($all as $col) {
             $ary[] = self::convert($col);
         }
