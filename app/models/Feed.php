@@ -12,32 +12,6 @@ use app\models\Solr;
 use app\models\Utils;
 
 class Feed {
-    const STEEMIT = 'steemit-post';
-    const types = [
-        self::STEEMIT,
-        'youtube-post',
-        'twitter-post',
-        'bbc-post'
-    ];
-
-    //$groups = [];
-    //$len = count($data)/2;
-
-    //for ($i=0;$i<$len;$i+=2) {
-    //    $label = $data[$i];
-    //    $score = $data[$i+1];
-
-    //    // XXX: whats going on here?
-    //    if ($score == 0 || $label==$q) {
-    //        continue;
-    //    }
-
-    //    $groups[] = [
-    //        "label" => $label,
-    //        "score" => $score
-    //    ];
-    //}
-
     public static function ofChannel($id) {
         # News, Places, Events, Videos
         $chan = self::channel($id);
@@ -71,18 +45,8 @@ class Feed {
             }
         }
 
-        do {
-            $k=self::types[rand(0, count(self::types)-1)];
-            $t=$types[$k];
-            $docs=$t->response->docs;
-            if (!empty($docs)) {
-                $idx=rand(0, count($docs)-1);
-                $featuredP=$docs[$idx];
-                # cap description 
-                $featuredP->description=substr($featuredP->description, 0, 200);
-            }
-        } while ($found > 0 && empty($docs));
-        
+
+
         return [
             'channel' => $chan,
             'featuredPost' => $featuredP
@@ -104,34 +68,5 @@ class Feed {
         if (!isset($p->collections)) {
             $p->collections = [];
         }
-    }
-
-    private static function channel($id) {
-        $name = Utils::queryParam('name', false);
-        if ($id) {
-            $chan = Channel::byId($id);
-        } else if ($name) {
-            try {
-                $chan = Channel::byName($name);
-            } catch (NotFoundHttpException $e) {
-                $fq=Utils::queryParam('fq', '');
-                $o = new Channel;
-                $o->name = $name;
-                // $o->label = Html::enco;
-                $o->audience = 'public';
-                #XXX: Html::encode() ?
-                $o->queryConf = json_encode([
-                    #q is mandatory
-                    #no, i wont assuming its the same as $name
-                    'q' => Utils::param('q'),
-                    'fq' => explode(',', $fq)
-                ]);
-                $chan = $o->save();
-            }
-        } else {
-            throw new HttpException(400, 'query param id or name are mandatory');
-        }
-
-        return $chan;        
     }
 }

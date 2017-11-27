@@ -8,6 +8,7 @@ use app\models\Utils;
 use app\models\Collection;
 use app\models\TabRender;
 
+$featuredPost = $feed['featured_post'];
 $tab = new TabRender("watch");
 if (!empty($posts))
     $picture = Utils::cached($posts[0]);
@@ -18,13 +19,8 @@ $collection = new Collection;
 $this->title = 'Channel ' . $channel->name;
 
 $activityLink = $tab->fileLink("Activity", "activity", true, [
-    /*
-    "posts" => $posts,
-    "videos" => $videos,
-    "groups" => $groups,
-    "collections" => $collections
-    */
-    "channel" => $channel
+    "channel" => $channel,
+    "posts" => $feed['posts']
 ]);
 
 //$idx = rand(0, count($posts)-1);

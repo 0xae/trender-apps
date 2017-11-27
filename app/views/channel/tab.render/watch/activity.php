@@ -1,7 +1,8 @@
 <?php
     echo \Yii::$app->view->renderFile(
         "@app/views/plugins/newsfeed/index.php", [
-            "channel" => $channel
+            "channel" => $channel,
+            "posts" => $posts
         ]
     );
 ?>

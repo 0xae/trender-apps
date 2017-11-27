@@ -6,12 +6,20 @@ $tab = new TabRender("main");
 $tab->_setViewPath("plugins/newsfeed");
 $links = [];
 
+$mapps = [
+    "t/youtube" => "youtube-post",
+    "t/twitter" => "twitter-post",
+    "t/steemit" => "steemit-post",
+    "t/bbc" => "bbc-post",
+];
+
 $i=0;
 foreach ($collections as $col) {
+    $ary =  $posts->{$mapps[$col->name]};
     $ret = $tab->fileLink($col->label, "collection", !$i++, [
-        'posts' => $col->posts,
-        'cols' => $collections,
-        'group' => $col->groups,
+        'posts' => $ary,
+        'groups' => [],
+        'cols' => [],
         'channel' => $channel
     ]);
 

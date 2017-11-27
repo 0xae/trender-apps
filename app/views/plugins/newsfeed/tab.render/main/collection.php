@@ -1,7 +1,7 @@
 <div class="col-md-10" style="background-color: #ddd;">
     <div class="col-md-7">
         <!-- group -->
-        <?php foreach ($group as $g): ?>
+        <?php foreach ($groups as $g): ?>
             <div class="tr-post-group" id="<?= $g['posts'][0]->id ?>">
                 <div class="tr-group-header">
                     <span class="tr-group-title">
@@ -29,31 +29,6 @@
     <div class="col-md-3 rs-pad">
     </div>
 </div>
-
-<!--
-<div class="col-md-2 rs-pad tr-coll-right-bar pull-right">
-    <div id="topicsAffix" class="affix" data-spy="affix">
-        <h4 class="tr-section-title">
-            Topics
-        </h4>
-
-        <div class="tr-section-content">
-            <ul class="list-unstyled">
-                <?php foreach ($group as $g): ?>
-                    <li class="tr-group-link">
-                        <a href="#<?= $g['posts'][0]->id ?>" class="tr-more-item">
-                            #<?= $g["label"] ?>
-                        </a>
-                        <p>
-                            <?= $g["score"] ?> posts
-                        </p>
-                   </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    </div>
-</div>
--->
 
 <?php
 $script = <<<JS

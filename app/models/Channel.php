@@ -34,7 +34,7 @@ class Channel extends Model {
         return json_decode($this->$prop);
     }
 
-    private static function convert_to($i) {
+    private static function convert($i) {
         $c = new Channel;
         $c->id = $i->id;
         $c->rank = $i->rank;
@@ -80,11 +80,65 @@ class Channel extends Model {
         return $this;
     }
 
+    public static function retrieve($id, $name) {
+        if ($id) {
+            $chan = self::byId($id);
+        } else if ($name) {
+            try {
+                $chan = self::byName($name);
+            } catch (NotFoundHttpException $e) {
+                $fq=Utils::queryParam('fq', '');
+                $o = new Channel;
+                $o->name = $name;
+                // $o->label = Html::enco;
+                $o->audience = 'public';
+                #XXX: Html::encode() ?
+                $o->queryConf = json_encode([
+                    #q is mandatory
+                    #no, i wont assuming its the same as $name
+                    'q' => Utils::param('q'),
+                    'fq' => explode(',', $fq)
+                ]);
+                $chan = $o->save();
+            }
+        } else {
+            throw new HttpException(400, 'query param id or name are mandatory');
+        }
+
+        return $chan;        
+    }
+
+    public function feed($params=[]) {
+        $host=Trender::api();
+        $query="{$host}channel/{$this->id}/feed";
+        $posts=HttpReq::get($query);
+        $featuredP=false;
+        $ary=Post::TYPES;
+
+        do {
+            $type=$ary[rand(0, count($ary)-1)];
+            $docs=$posts->{$type};
+            if (!empty($docs)) {
+                $idx=rand(0, count($docs)-1);
+                $featuredP=$docs[$idx];
+                # cap description 
+                $featuredP->description=substr($featuredP->description, 0, 200);
+            }
+
+            array_shift($ary);
+        } while (count($ary));
+
+        return [
+            'posts' => $posts,
+            'featured_post' => $featuredP
+        ];
+    }
+
     public static function byId($id) {
         $host = Trender::api();
         $query = "{$host}channel/$id";
         $json = HttpReq::get($query);
-        return self::convert_to($json);
+        return self::convert($json);
     }
 
     // encode $name ???
@@ -93,7 +147,7 @@ class Channel extends Model {
         $q = urlencode($q);
         $query = "{$host}channel/find_by?name=$name&q=$q";
         $json = HttpReq::get($query);
-        return self::convert_to($json);
+        return self::convert($json);
     }
 
     public static function all() {

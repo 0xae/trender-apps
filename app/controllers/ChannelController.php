@@ -38,14 +38,19 @@ class ChannelController extends \yii\web\Controller {
     }
 
     public function actionWatch($id=false) {
-        $feed = Feed::ofChannel($id);
-        $chan = $feed['channel'];
-        $sugests = Channel::find();
+        $name = Utils::queryParam('name', false);
+        if ($id) {
+            $chan = Channel::byId($id);
+        } else {
+            $chan = Channel::retrieve($id, $name);
+        }
 
+        $feed = $chan->feed();
+        $featuredPost = false;
         return $this->render('watch', [
+            'sugests' => Channel::all(),
             'channel' => $chan,
-            'sugests' => $sugests,
-            'featuredPost' => $feed['featuredPost'],
+            'feed' => $feed,
             'q' => $chan->json('queryConf')->q
         ]);
     }

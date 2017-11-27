@@ -4,7 +4,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\HttpException;
 
 class HttpReq extends \yii\base\Object {
-    public static function get($url, $headers=[]) {
+    public static function get($url, $headers=[], $options=[]) {
     	try {
             $headers[] = 'Content-type: application/json';
 			$ch = curl_init($url);            
