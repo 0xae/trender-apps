@@ -27,7 +27,6 @@ class Collection extends Model {
     public $lastUpdate;
     public $lastUpdateFmt;
     public $posts=[];
-    public $groups=[];
 
     public function rules() {
         return [

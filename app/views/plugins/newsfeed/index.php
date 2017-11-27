@@ -1,23 +1,15 @@
 <?php
 use yii\helpers\Html;
 use app\models\TabRender;
-$collections = $channel->collections;
+
 $tab = new TabRender("main");
 $tab->_setViewPath("plugins/newsfeed");
 $links = [];
 
-$mapps = [
-    "t/video" => "youtube-post",
-    "t/twitter" => "twitter-post",
-    "t/steemit" => "steemit-post",
-    "t/bbc" => "bbc-post"
-];
-
 $i=0;
 foreach ($collections as $col) {
-    $ary =  $posts->{$mapps[$col->name]};
     $ret = $tab->fileLink($col->label, "collection", !$i++, [
-        'posts' => $ary,
+        'posts' => $col->posts,
         'groups' => [],
         'cols' => [],
         'channel' => $channel

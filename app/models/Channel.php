@@ -111,13 +111,13 @@ class Channel extends Model {
     public function feed($params=[]) {
         $host=Trender::api();
         $query="{$host}channel/{$this->id}/feed";
-        $posts=HttpReq::get($query);
+        $colls=HttpReq::get($query);
         $featuredP=false;
-        $ary=Post::TYPES;
+        $ary=array_keys(get_object_vars($colls));
 
         do {
-            $type=$ary[rand(0, count($ary)-1)];
-            $docs=$posts->{$type};
+            $name=$ary[rand(0, count($ary)-1)];
+            $docs=$colls->{$name}->posts;
             if (!empty($docs)) {
                 $idx=rand(0, count($docs)-1);
                 $featuredP=$docs[$idx];
@@ -129,7 +129,7 @@ class Channel extends Model {
         } while (count($ary));
 
         return [
-            'posts' => $posts,
+            'colls' => $colls,
             'featured_post' => $featuredP
         ];
     }

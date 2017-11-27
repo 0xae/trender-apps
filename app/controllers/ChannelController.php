@@ -50,7 +50,8 @@ class ChannelController extends \yii\web\Controller {
         return $this->render('watch', [
             'sugests' => Channel::all(),
             'channel' => $chan,
-            'feed' => $feed,
+            'collections' => $feed['colls'],
+            'featured_post' => $feed['featured_post'],
             'q' => $chan->json('queryConf')->q
         ]);
     }

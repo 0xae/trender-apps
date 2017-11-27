@@ -8,14 +8,13 @@ use app\models\Utils;
 use app\models\Collection;
 use app\models\TabRender;
 
-$featured_post = $feed['featured_post'];
 $tab = new TabRender("watch");
 $collection = new Collection;
 
 $this->title = 'Channel ' . $channel->name;
 $newsfeed = $tab->fileLink("Newsfeed", "newsfeed", true, [
     "channel" => $channel,
-    "posts" => $feed['posts']
+    "collections" => $collections
 ]);
 ?>
 
