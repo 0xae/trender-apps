@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: lightgrey;
+    background-color: #ddd;
 }
 
 .tr-navbar {
@@ -445,4 +445,25 @@ body {
     padding-bottom: 2px;
     padding-left: 4px;
     padding-right: 4px;
+}
+
+.tr-newsfeed{
+    background-color: #ddd;
+    padding-top: 7px;
+}
+
+.tr-newsfeed-col .content {
+    background-color: #fff;
+    min-height: 500px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.tr-newsfeed-col .content h1,
+.tr-newsfeed-col .content h2,
+.tr-newsfeed-col .content h3,
+.tr-newsfeed-col .content h4,
+.tr-newsfeed-col .content h5,
+.tr-newsfeed-col .content h6 {
+    margin: 0px;
 }

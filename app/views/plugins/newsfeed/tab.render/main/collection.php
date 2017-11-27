@@ -1,5 +1,5 @@
-<div class="col-md-10" style="background-color: #ddd;">
-    <div class="col-md-7">
+<div class="col-md-12 tr-newsfeed" style="">
+    <div class="col-md-6">
         <!-- group -->
         <?php foreach ($groups as $g): ?>
             <div class="tr-post-group" id="<?= $g['posts'][0]->id ?>">
@@ -26,7 +26,16 @@
         ?>
     </div>
 
-    <div class="col-md-3 rs-pad">
+    <div class="col-md-3 rs-pad tr-newsfeed-col">
+        <div class="content">
+        <h4>Sugestions</h4>
+        </div>
+    </div>
+
+    <div class="col-md-3 rs-pad tr-newsfeed-col" style="border-left: 1px solid #ddd">
+        <div class="content">
+        <h4>Trending</h4>
+        </div>
     </div>
 </div>
 
