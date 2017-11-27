@@ -5,11 +5,12 @@ use app\models\Channel;
 use app\models\HttpReq;
 use app\models\Utils;
 use app\models\DateUtils;
+
+use yii\base\Model;
+use yii\db\ActiveRecord;
+use yii\helpers\Html;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
-use yii\base\Model;
-use yii\helpers\Html;
-use yii\db\ActiveRecord;
 
 class Collection extends Model {
     public $id;

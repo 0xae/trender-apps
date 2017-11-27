@@ -50,15 +50,6 @@ class ChannelController extends \yii\web\Controller {
         ]);
     }
 
-    public function actionView_collection($id) {
-        $coll = Collection::byId($id);
-        $channel = Channel::byId($coll->channelId);
-        echo $this->renderPartial('tab.render/watch/view_collection', [
-            'model' => $coll,
-            'channel' => $channel
-        ]);
-    }
-
     public function actionTest() {
     }
 }
