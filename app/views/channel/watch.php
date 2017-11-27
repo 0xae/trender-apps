@@ -8,53 +8,47 @@ use app\models\Utils;
 use app\models\Collection;
 use app\models\TabRender;
 
-$featuredPost = $feed['featured_post'];
+$featured_post = $feed['featured_post'];
 $tab = new TabRender("watch");
-if (!empty($posts))
-    $picture = Utils::cached($posts[0]);
-else
-    $picture = '';
-
 $collection = new Collection;
-$this->title = 'Channel ' . $channel->name;
 
-$activityLink = $tab->fileLink("Activity", "activity", true, [
+$this->title = 'Channel ' . $channel->name;
+$newsfeed = $tab->fileLink("Newsfeed", "newsfeed", true, [
     "channel" => $channel,
     "posts" => $feed['posts']
 ]);
-
-//$idx = rand(0, count($posts)-1);
-$picture = Utils::cached($featuredPost);
 ?>
 
 <div class="row rs-row">
     <div class="col-md-2" style="background-color: #fff;">
         <div class="row">
             <div class="col-md-12 rs-pad tr-channel-info">
+                <?php if ($featured_post): ?>
                 <div class="tr-random">
                     <img style="" 
-                         src="<?= $picture ?>" 
+                         src="<?= Utils::cached($featured_post) ?>" 
                          alt="..."
                     />
 
-                    <a href="<?= $featuredPost->link ?>" target="_blank">
+                    <a href="<?= $featured_post->link ?>" target="_blank">
                     <span class="descr col-md-12">
                         <strong>
-                        @<?= $featuredPost->authorName ?>
+                        @<?= $featured_post->authorName ?>
                         </strong>
 
                         <span class="pull-right tr-rtime">
                         <strong>
-                            <?= $featuredPost->timestampFmt ?>
+                            <?= $featured_post->timestampFmt ?>
                         </strong>
                         </span>
     
                         <p class="tr-rcontent">
-                            <?= $featuredPost->description ?>
+                            <?= $featured_post->description ?>
                         </p>
                     </span>
                     </a>
                 </div>
+                <?php endif; ?>
 
                 <div class="tr-section">
                     <ul class="list-unstyled tr-settings" style="margin-bottom: 25px;">
@@ -70,7 +64,7 @@ $picture = Utils::cached($featuredPost);
                             <a href="#">
                                 <span class="fa fa-home"></span>
                             </a>
-                            <?= $activityLink ?>
+                            <?= $newsfeed ?>
                         </li>
                         <li>
                             <span>

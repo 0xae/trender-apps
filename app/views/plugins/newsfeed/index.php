@@ -7,10 +7,10 @@ $tab->_setViewPath("plugins/newsfeed");
 $links = [];
 
 $mapps = [
-    "t/youtube" => "youtube-post",
+    "t/video" => "youtube-post",
     "t/twitter" => "twitter-post",
     "t/steemit" => "steemit-post",
-    "t/bbc" => "bbc-post",
+    "t/bbc" => "bbc-post"
 ];
 
 $i=0;
