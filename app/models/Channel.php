@@ -124,7 +124,6 @@ class Channel extends Model {
                 # cap description 
                 $featuredP->description=substr($featuredP->description, 0, 200);
             }
-
             array_shift($ary);
         } while (count($ary));
 

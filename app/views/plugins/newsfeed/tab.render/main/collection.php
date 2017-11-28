@@ -26,17 +26,19 @@
         ?>
     </div>
 
-    <div class="col-md-3 rs-pad tr-newsfeed-col">
+    <div class="col-md-4 rs-pad tr-newsfeed-col pull-right">
         <div class="content">
-        <h4>Sugestions</h4>
+        <h4>Content here</h4>
         </div>
     </div>
 
-    <div class="col-md-3 rs-pad tr-newsfeed-col" style="border-left: 1px solid #ddd">
+<!--     <div class="col-md-3 rs-pad tr-newsfeed-col" style="border-left: 1px solid #ddd">
         <div class="content">
         <h4>Trending</h4>
         </div>
     </div>
+ -->
+
 </div>
 
 <?php

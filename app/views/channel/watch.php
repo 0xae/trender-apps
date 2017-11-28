@@ -8,14 +8,8 @@ use app\models\Utils;
 use app\models\Collection;
 use app\models\TabRender;
 
-$tab = new TabRender("watch");
 $collection = new Collection;
-
 $this->title = 'Channel ' . $channel->name;
-$newsfeed = $tab->fileLink("Newsfeed", "newsfeed", true, [
-    "channel" => $channel,
-    "collections" => $collections
-]);
 ?>
 
 <div class="row rs-row">
@@ -59,12 +53,6 @@ $newsfeed = $tab->fileLink("Newsfeed", "newsfeed", true, [
                         </a>
                         </li>
 
-                        <li role="presentation">
-                            <a href="#">
-                                <span class="fa fa-home"></span>
-                            </a>
-                            <?= $newsfeed ?>
-                        </li>
                         <li>
                             <span>
                                 <a href="#">
@@ -120,7 +108,14 @@ $newsfeed = $tab->fileLink("Newsfeed", "newsfeed", true, [
 
     <div class="col-md-10 tr-channel-content rs-pad">
         <div class="rs-row row" style="padding:0px;">
-            <?= $tab->render(); ?>
+            <?php 
+                echo \Yii::$app->view->renderFile(
+                    "@app/views/plugins/newsfeed/index.php", [
+                        "channel" => $channel,
+                        "collections" => $collections
+                    ]
+                );
+            ?>
         </div>
     </div>
 </div>
