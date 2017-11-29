@@ -29,13 +29,10 @@ $data = json_decode($post->data);
 $category = Utils::category($post);
 ?>
 
-<div style="margin-bottom:5px;margin-top:10px;">
-    <h4 class="" style="display: inline;">
-        <span style="color: crimson;" 
-             class="glyphicon glyphicon-facetime-video"></span>&nbsp;
-        Featured video
+<div class="tr-section tr-featured-video">
+    <h4 class="tr-section-title">
+        Featured Video
     </h4>
-
     <?php if ($category) : ?>
     <div class="dropdown pull-right">
         <span class="tr-link tr-badge-k dropdown-toggle badge"
@@ -77,15 +74,19 @@ $category = Utils::category($post);
             </li>
         </ul>
     </div>
-
     <?php endif; ?>
-</div>
 
-<div id="tr-outdoor-img">
-    <div class="tr-main-badge">
-        <span class="fa fa-play"></span> Play video
+    <div class="tr-section-content">
+        <div style="" class="tr-featured-video">
+            
+            <div id="tr-outdoor-img">
+                <div class="tr-main-badge">
+                    <span class="fa fa-play"></span> Play video
+                </div>
+                <img src="<?=Utils::cached($post); ?>" />
+            </div>
+        </div>
     </div>
-    <img src="../<?=$post->cached?>" />
 </div>
 
 <!--
@@ -95,7 +96,6 @@ $category = Utils::category($post);
       v-bind:src="playUrl"
       frameborder="0">        
 </iframe>
--->    
 
 <div id="tr-featured-content">
     <div>
@@ -123,4 +123,7 @@ $category = Utils::category($post);
         </div>
     </div>
 </div>
+
+-->    
+
 

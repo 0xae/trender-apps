@@ -11,6 +11,7 @@ class Channel extends Model {
     public $id=0;
     public $name;
     public $picture=null;
+    public $description="";
     public $queryConf='{}';
     public $curation=0;
     public $rank=-1;
@@ -42,6 +43,7 @@ class Channel extends Model {
         $c->picture = $i->picture ;
         $c->name = $i->name ;
         $c->audience = $i->audience ;
+        $c->description = $i->description ;
         $c->intel = $i->intel ;
         $c->curation = $i->curation ;
         $c->createdAt = $i->createdAt ;
@@ -60,6 +62,7 @@ class Channel extends Model {
             "queryConf" => $this->queryConf,
             "picture" => $this->picture,
             "intel" => $this->intel,
+            "description" => $this->description,
             "curation" => $this->curation
         ];
 
@@ -89,7 +92,8 @@ class Channel extends Model {
             } catch (NotFoundHttpException $e) {
                 $fq=Utils::queryParam('fq', '');
                 $o = new Channel;
-                $o->name = $name;
+                $o->name = Html::encode($name);
+                $o->description = "talks about {$o->name}";
                 // $o->label = Html::enco;
                 $o->audience = 'public';
                 #XXX: Html::encode() ?
@@ -112,24 +116,33 @@ class Channel extends Model {
         $host=Trender::api();
         $query="{$host}channel/{$this->id}/feed";
         $colls=HttpReq::get($query);
-        $featuredP=false;
+        $post=false;
+        $video=false;
         $ary=array_keys(get_object_vars($colls));
+        $keys=$ary;
 
         do {
             $name=$ary[rand(0, count($ary)-1)];
             $docs=$colls->{$name}->posts;
             if (!empty($docs)) {
                 $idx=rand(0, count($docs)-1);
-                $featuredP=$docs[$idx];
+                $post=$docs[$idx];
                 # cap description 
-                $featuredP->description=substr($featuredP->description, 0, 200);
+                $post->description=substr($post->description, 0, 200);
             }
             array_shift($ary);
         } while (count($ary));
 
+        $videos = $colls->{'t/videos'}->posts;
+        if (!empty($videos)) {
+            $idx = rand(0, count($videos)-1);
+            $video = $videos[$idx];
+        }
+
         return [
-            'colls' => $colls,
-            'featured_post' => $featuredP
+            'featured_post' => $post,
+            'featured_video' => $video,
+            'colls' => $colls
         ];
     }
 

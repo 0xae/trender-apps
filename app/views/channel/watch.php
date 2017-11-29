@@ -10,6 +10,9 @@ use app\models\TabRender;
 
 $collection = new Collection;
 $this->title = 'Channel ' . $channel->name;
+
+$featured_post = $feed['featured_post'];
+$featured_video = $feed['featured_video'];
 ?>
 
 <div class="row rs-row">
@@ -43,16 +46,8 @@ $this->title = 'Channel ' . $channel->name;
                 </div>
                 <?php endif; ?>
 
-                <div class="tr-section">
+                <div class="tr-section" style="margin-top:30px !important;">
                     <ul class="list-unstyled tr-settings" style="margin-bottom: 25px;">
-                        <li role="presentation">
-                        <a href="<?= Url::to(["channel/watch", "id"=>$channel->id]); ?>">
-                            <h3 style="margin-top:5px;margin-left:5px;color: #666">
-                                <?= $channel->name ?>
-                            </h3>
-                        </a>
-                        </li>
-
                         <li>
                             <span>
                                 <a href="#">
@@ -62,14 +57,23 @@ $this->title = 'Channel ' . $channel->name;
                             </span>
                         </li>
 
+                        <li>
+                            <span>
+                                <a href="#">
+                                    <span class="fa fa-star"></span>
+                                </a>
+                                <a href="#">My Favorites</a>
+                            </span>
+                        </li>
+
                         <li role="presentation">
                             <a href="#">
-                                <span style="margin-right:7px;" class="glyphicon glyphicon-unchecked">
+                                <span style="margin-right:8px;" class="glyphicon glyphicon-unchecked">
                                 </span>
                             </a>
 
                             <span>
-                                <a href="#">Collections</a>
+                                <a href="#">My Collections</a>
                             </span>
     
                             <a href="javascript:void(0)" class="pull-right">
@@ -90,7 +94,7 @@ $this->title = 'Channel ' . $channel->name;
 
                     <div class="tr-section-content">
                         <ul class="list-unstyled">
-                            <?php foreach ($sugests as $chan): ?>
+                            <?php foreach ($sugestions as $chan): ?>
                                 <li>
                                     <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
                                        class="tr-more-item">
@@ -112,7 +116,7 @@ $this->title = 'Channel ' . $channel->name;
                 echo \Yii::$app->view->renderFile(
                     "@app/views/plugins/newsfeed/index.php", [
                         "channel" => $channel,
-                        "collections" => $collections
+                        "feed" => $feed
                     ]
                 );
             ?>
@@ -123,7 +127,7 @@ $this->title = 'Channel ' . $channel->name;
 <?php
     echo \Yii::$app->view->renderFile(
         "@app/views/channel/new_collection_modal.php", [
-            "collection" => $collection,
+            "collection" => new Collection,
             "channel" => $channel
         ]
     );

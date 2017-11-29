@@ -1,3 +1,8 @@
+<?php
+$groups = [];
+$posts = $col->posts;
+?>
+
 <div class="col-md-12 tr-newsfeed" style="">
     <div class="col-md-6">
         <!-- group -->
@@ -15,29 +20,24 @@
 
                 <?php
                     foreach ($g['posts'] as $post) 
-                        render_post($post, $cols);
+                        render_post($post, []);
                 ?>
             </div>
         <?php endforeach; ?>
 
         <!-- post -->
         <?php foreach ($posts as $post) 
-                render_post($post, $cols); 
+                render_post($post, []); 
         ?>
     </div>
 
-    <div class="col-md-4 rs-pad tr-newsfeed-col pull-right">
-        <div class="content">
-        <h4>Content here</h4>
-        </div>
-    </div>
-
-<!--     <div class="col-md-3 rs-pad tr-newsfeed-col" style="border-left: 1px solid #ddd">
-        <div class="content">
-        <h4>Trending</h4>
-        </div>
-    </div>
- -->
+    <?php
+        $tpl="@app/views/plugins/newsfeed/tab.render/main/board.php";
+        echo \Yii::$app->view->renderFile($tpl, [
+            'channel' => $channel,
+            'feed' => $feed
+        ]);
+    ?>
 
 </div>
 

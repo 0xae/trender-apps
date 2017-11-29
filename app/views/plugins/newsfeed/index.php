@@ -5,13 +5,13 @@ use app\models\TabRender;
 $tab = new TabRender("main");
 $tab->_setViewPath("plugins/newsfeed");
 $links = [];
+$collections = $feed['colls'];
 
 $i=0;
 foreach ($collections as $col) {
     $ret = $tab->fileLink($col->label, "collection", !$i++, [
-        'posts' => $col->posts,
-        'groups' => [],
-        'cols' => [],
+        'col' => $col,
+        'feed' => $feed,
         'channel' => $channel
     ]);
 
