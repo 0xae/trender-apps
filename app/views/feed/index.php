@@ -9,7 +9,7 @@ else
 	$picture = '';
 ?>
 
-<div class="row rs-row">
+<div class="row rs-row" style="padding-top:60px;">
 	<div class="col-md-2" style="background-color: #fff;">
 		<div class="row">
 			<div class="col-md-12 rs-pad">
@@ -52,7 +52,7 @@ else
 
 			    <div class="tr-section">
 			        <h4 class="tr-section-title">
-			            Sugested Feeds
+			            Channels
 			            <!--
 			                <span class="glyphicon glyphicon-flash">
 			                </span>

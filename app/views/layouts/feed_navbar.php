@@ -32,7 +32,7 @@ $controllerHref = "index.php?r=feed/index";
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav tr-navbar-menu">
-            <li class="<?= ($controllerId == 'feed') ? 'active' : '' ?>">
+            <li class="<?= ($controllerId == 'feed' || $controllerId == 'channel' ) ? 'active' : '' ?>">
                 <a href="./index.php?r=feed/index">Home</a>
             </li>
             <li class="<?= ($controllerId == 'live') ? 'active' : '' ?>">
