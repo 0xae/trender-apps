@@ -5,11 +5,22 @@ use app\models\TabRender;
 $tab = new TabRender("main");
 $tab->_setViewPath("plugins/newsfeed");
 $links = [];
-$collections = $feed['colls'];
+$collections = $feed->colls;
 
-$i=0;
+
+if (@$collections->{'t/newsfeed'}) {
+    $collections->{'t/newsfeed'}->active = true;
+} else {
+    # just set the first
+    foreach ($collections as &$col) {
+        $col->active=true;
+        break;
+    }
+}
+
+
 foreach ($collections as $col) {
-    $ret = $tab->fileLink($col->label, "collection", !$i++, [
+    $ret = $tab->fileLink($col->label, "collection", @$col->active, [
         'col' => $col,
         'feed' => $feed,
         'channel' => $channel

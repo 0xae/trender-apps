@@ -11,8 +11,8 @@ use app\models\TabRender;
 $collection = new Collection;
 $this->title = 'Channel ' . $channel->name;
 
-$featured_post = $feed['featured_post'];
-$featured_video = $feed['featured_video'];
+$featured_post = $feed->featured_post;
+$featured_video = $feed->featured_video;
 ?>
 
 <div class="row rs-row">

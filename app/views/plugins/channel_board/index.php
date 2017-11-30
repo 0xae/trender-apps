@@ -1,6 +1,6 @@
 <?php
-$featured_video = $feed['featured_video'];
-$sugestions = array_slice($feed['sugestions'], 0, 11);
+$featured_video = $feed->featured_video;
+$sugestions = array_slice($feed->sugestions, 0, 11);
 ?>
 
 <div class="col-md-5 rs-pad tr-newsfeed-board pull-right">
@@ -129,7 +129,7 @@ $sugestions = array_slice($feed['sugestions'], 0, 11);
         </div>
     </div>
 
-    <div class="row rs-row" style="margin-top:5px;">
+    <div class="row rs-row" style="margin-top:5px;margin-bottom:5px;">
         <!-- most popular -->
         <div class="col-md-4">
           <div class="tr-section">
@@ -187,7 +187,7 @@ $sugestions = array_slice($feed['sugestions'], 0, 11);
         </div>
 
         <!-- suggestions -->
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="tr-section">                
                 <h4 class="tr-section-title">
                     <span class="glyphicon glyphicon-flag"></span>

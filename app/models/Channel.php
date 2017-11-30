@@ -142,13 +142,15 @@ class Channel extends Model {
         }
 
         $sugs = self::all();
-
-        return [
+        $feed = new Feed;
+        $feed->loadJson([
             'featured_post' => $post,
             'featured_video' => $video,
             'sugestions' => $sugs,
             'colls' => $colls
-        ];
+        ]);
+        return $feed;
+
     }
 
     public static function byId($id) {
