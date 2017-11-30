@@ -32,7 +32,7 @@ $posts = $col->posts;
     </div>
 
     <?php
-        $tpl="@app/views/plugins/newsfeed/tab.render/main/board.php";
+        $tpl="@app/views/plugins/channel_board/index.php";
         echo \Yii::$app->view->renderFile($tpl, [
             'channel' => $channel,
             'feed' => $feed

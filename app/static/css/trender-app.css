@@ -7,6 +7,10 @@ body {
     background-color: #efefef;
 }
 
+.tr-main-badge {
+    z-index: 1000;
+}
+
 #page_container {
     /*
     border-left: 1px solid #ccc;

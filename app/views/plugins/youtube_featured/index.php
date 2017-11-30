@@ -30,9 +30,14 @@ $category = Utils::category($post);
 ?>
 
 <div class="tr-section tr-featured-video">
+    <span class="glyphicon glyphicon-facetime-video"
+          style="color: red;padding-top:0px;"></span>
+
     <h4 class="tr-section-title">
         Featured Video
     </h4>
+
+    <!--
     <?php if ($category) : ?>
     <div class="dropdown pull-right">
         <span class="tr-link tr-badge-k dropdown-toggle badge"
@@ -45,18 +50,9 @@ $category = Utils::category($post);
                  class="glyphicon glyphicon-cog"></span>
         </span>
 
-        <ul class="dropdown-menu" style="font-size: 12px;" role="menu" 
-             aria-labelledby="dropdownMenu1">
+        <ul class="dropdown-menu" style="font-size: 12px;" role="menu"  aria-labelledby="dropdownMenu1">
             <li role="presentation">
                 <a role="menuitem" tabindex="-1" href="#">option 1</a>
-            </li>
-
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">option 2</a>
-            </li>
-
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">option 3</a>
             </li>
             
             <li role="presentation" class="divider"
@@ -75,6 +71,7 @@ $category = Utils::category($post);
         </ul>
     </div>
     <?php endif; ?>
+    -->
 
     <div class="tr-section-content">
         <div style="" class="tr-featured-video">

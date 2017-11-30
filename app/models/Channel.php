@@ -133,15 +133,20 @@ class Channel extends Model {
             array_shift($ary);
         } while (count($ary));
 
-        $videos = $colls->{'t/videos'}->posts;
-        if (!empty($videos)) {
-            $idx = rand(0, count($videos)-1);
-            $video = $videos[$idx];
+        if (@$colls->{'t/videos'}) {        
+            $videos = $colls->{'t/videos'}->posts;
+            if (!empty($videos)) {
+                $idx = rand(0, count($videos)-1);
+                $video = $videos[$idx];
+            }
         }
+
+        $sugs = self::all();
 
         return [
             'featured_post' => $post,
             'featured_video' => $video,
+            'sugestions' => $sugs,
             'colls' => $colls
         ];
     }

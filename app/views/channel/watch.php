@@ -46,7 +46,7 @@ $featured_video = $feed['featured_video'];
                 </div>
                 <?php endif; ?>
 
-                <div class="tr-section" style="margin-top:30px !important;">
+                <div class="tr-section" style="margin-top: 90px;">
                     <ul class="list-unstyled tr-settings" style="margin-bottom: 25px;">
                         <li>
                             <span>
@@ -89,19 +89,17 @@ $featured_video = $feed['featured_video'];
 
                 <div class="tr-section">
                     <h4 class="tr-section-title">
-                        Suggested Channels
+                        History
                     </h4>
 
                     <div class="tr-section-content">
                         <ul class="list-unstyled">
-                            <?php foreach ($sugestions as $chan): ?>
-                                <li>
-                                    <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
-                                       class="tr-more-item">
-                                        <?= $chan->name ?>
-                                    </a>
-                                </li>
-                            <?php endforeach; ?>
+                            <li>
+                                <a href="<?= Url::to(['feed/index']) ?>"
+                                   class="tr-more-item">
+                                   Back
+                                </a>
+                            </li>
                         </ul>
                     </div>                
                 </div>
