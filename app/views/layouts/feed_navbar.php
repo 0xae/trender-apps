@@ -118,7 +118,6 @@ $controllerHref = "index.php?r=feed/index";
                 </ul>
             </li>
             <?php endif; ?>
-
         </ul>
 
         <?php $form = ActiveForm::begin(['action' => $controllerHref, 
