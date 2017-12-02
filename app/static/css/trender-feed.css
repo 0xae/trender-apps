@@ -364,8 +364,6 @@ body {
 .tr-random img {
     max-width: 100%;
     min-height:210px;
-    max-height:210px;
-    margin-top: 50px;
 }
 
 .tr-rtime {
