@@ -31,28 +31,6 @@ class Channel extends Model {
         ];
     }
 
-    public function json($prop) {
-        return json_decode($this->$prop);
-    }
-
-    private static function convert($i) {
-        $c = new Channel;
-        $c->id = $i->id;
-        $c->rank = $i->rank;
-        $c->queryConf = $i->queryConf ;
-        $c->picture = $i->picture ;
-        $c->name = $i->name ;
-        $c->audience = $i->audience ;
-        $c->description = $i->description ;
-        $c->intel = $i->intel ;
-        $c->curation = $i->curation ;
-        $c->createdAt = $i->createdAt ;
-        $c->lastUpdate = $i->lastUpdate ;
-        $c->lastUpdateFmt = $i->lastUpdateFmt;
-        $c->collections = array_map(function ($col){ return Collection::convert($col); }, $i->collections);
-        return $c;
-    }
-
     public function save() {
         $host = Trender::api();
         $data = [
@@ -83,33 +61,26 @@ class Channel extends Model {
         return $this;
     }
 
-    public static function retrieve($id, $name) {
-        if ($id) {
-            $chan = self::byId($id);
-        } else if ($name) {
-            try {
-                $chan = self::byName($name);
-            } catch (NotFoundHttpException $e) {
-                $fq=Utils::queryParam('fq', '');
-                $o = new Channel;
-                $o->name = Html::encode($name);
-                $o->description = "talks about {$o->name}";
-                // $o->label = Html::enco;
-                $o->audience = 'public';
-                #XXX: Html::encode() ?
-                $o->queryConf = json_encode([
-                    #q is mandatory
-                    #no, i wont assuming its the same as $name
-                    'q' => Utils::param('q'),
-                    'fq' => explode(',', $fq)
-                ]);
-                $chan = $o->save();
-            }
-        } else {
-            throw new HttpException(400, 'query param id or name are mandatory');
-        }
+    public function json($prop) {
+        return json_decode($this->$prop);
+    }
 
-        return $chan;        
+    private static function convert($i) {
+        $c = new Channel;
+        $c->id = $i->id;
+        $c->rank = $i->rank;
+        $c->queryConf = $i->queryConf ;
+        $c->picture = $i->picture ;
+        $c->name = $i->name ;
+        $c->audience = $i->audience ;
+        $c->description = $i->description ;
+        $c->intel = $i->intel ;
+        $c->curation = $i->curation ;
+        $c->createdAt = $i->createdAt ;
+        $c->lastUpdate = $i->lastUpdate ;
+        $c->lastUpdateFmt = $i->lastUpdateFmt;
+        $c->collections = array_map(function ($col){ return Collection::convert($col); }, $i->collections);
+        return $c;
     }
 
     public function feed($params=[]) {
@@ -150,7 +121,31 @@ class Channel extends Model {
             'colls' => $colls
         ]);
         return $feed;
+    }
 
+    public static function retrieve($id, $name) {
+        if ($id) {
+            $chan = self::byId($id);
+        } else if ($name) {
+            try {
+                $chan = self::byName($name);
+            } catch (NotFoundHttpException $e) {
+                $fq=Utils::queryParam('fq', '');
+                $o = new Channel;
+                $o->name = Html::encode($name);
+                $o->description = "talks about {$o->name}";
+                $o->audience = 'public';
+                $o->queryConf = json_encode([
+                    'q' => Utils::param('q'),
+                    'fq' => explode(',', $fq)
+                ]);
+                $chan = $o->save();
+            }
+        } else {
+            throw new HttpException(400, 'query param id or name are mandatory');
+        }
+
+        return $chan;        
     }
 
     public static function byId($id) {
@@ -160,7 +155,9 @@ class Channel extends Model {
         return self::convert($json);
     }
 
-    // encode $name ???
+    /*
+     ** TODO: encode $name ???
+    */
     public static function byName($name, $q='*') {
         $host = Trender::api();
         $q = urlencode($q);

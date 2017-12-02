@@ -46,7 +46,6 @@ class ChannelController extends \yii\web\Controller {
         }
 
         $feed = $chan->feed();
-
         return $this->render('watch', [
             'channel' => $chan,
             'feed' => $feed

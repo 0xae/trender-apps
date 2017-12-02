@@ -2,6 +2,7 @@
     padding: 0px;
     background-color: transparent;
     background-color: #fff;
+    padding-bottom: 50px;
 }
 
 body {
@@ -232,7 +233,7 @@ body {
 .tr-channel-content {
     background-color: #fff;
     padding: 0px;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 
 .tr-channel-menu {
