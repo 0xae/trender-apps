@@ -22,7 +22,7 @@ else
 			            <li>
 			                <a href="#">
 			                    <span class="fa fa-random"></span>Channels
-			                    <strong>(+200)</strong>
+			                    <strong>(0)</strong>
 			                </a>
 			            </li>
 
@@ -44,7 +44,7 @@ else
 			                <a href="#">
 			                    <span style="margin-right:7px;" class="glyphicon glyphicon-unchecked"></span>
 			                    Collections
-			                    <strong>(10)</strong>
+			                    <strong>(0)</strong>
 			                </a>
 			            </li>
 			        </ul>
