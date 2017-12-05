@@ -14,7 +14,7 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     smart/exquisite youtube video browsing (bring old cinema to my laptop)
     youtube live watching
     youtube live events video agg (like #UBIE3)
-    youtube home cinema ?
+    youtube home cinema, youtube gamming ?
     twitch streamming and chat
     steemit video, dtube video
     yahoo tv, cnbc.com/video
