@@ -3,7 +3,7 @@ namespace app\models;
 use yii\web\NotFoundHttpException;
 use yii\web\HttpException;
 
-class HttpReq extends \yii\base\Object {
+class HttpReq {
     public static function get($url, $headers=[], $options=[]) {
     	try {
             $headers[] = 'Content-type: application/json';
@@ -16,10 +16,9 @@ class HttpReq extends \yii\base\Object {
               switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
                 case 200:  // OK
                   break;
-                case 404: // OK
+                case 404: // NOT_FOUND
                     throw new NotFoundHttpException($body);
                 default:
-                    // XXX
                     throw new HttpException($http_code, $body);
               }
             } else {
@@ -48,7 +47,6 @@ class HttpReq extends \yii\base\Object {
             $headers[] = 'Content-type: application/json';
             $ch = curl_init($url);            
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            // curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, $method, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);            
@@ -57,10 +55,9 @@ class HttpReq extends \yii\base\Object {
 
             if (!$error) {
               switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
-                case 200:  # OK
+                case 200: // OK
                   break;
                 default:
-                    // XXX
                     throw new HttpException($http_code, '('.$data.')Error accessing: ' . $url . '  Details: ' . $body. '<br/>-------<br/>' . curl_error($ch));
               }
             } else {
