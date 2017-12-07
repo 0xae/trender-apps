@@ -25,15 +25,7 @@ Fast, beautifull and interactive apps built for the [Trender Platform](https://g
     finance, stock market, crypto market, news, breaking news
 
 ### platform
-- [ ] Top Menu
-- [ ] Timeline
-- [ ] Markets tracking (stock, crypto, finance)
-- [ ] Trending topics
-- [ ] Trending channels
-- [ ] filters (sort by, order by, post type, load-more)
-- [ ] channel browser/crud
-- [ ] Mail reader
-- [ ] My Wallet
+- [ ] Make task list
 
 ### Crawlers
 - [X] batch posts
