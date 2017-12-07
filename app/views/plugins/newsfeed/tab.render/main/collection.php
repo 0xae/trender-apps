@@ -7,7 +7,7 @@ $posts = $col->posts;
     <div class="col-md-6">
         <!-- group -->
         <?php foreach ($groups as $g): ?>
-            <div class="tr-post-group" id="<?= $g['posts'][0]->id ?>">
+            <div class="tr-post-group" id="<?= $g['posts'][0]->id ?>-group">
                 <div class="tr-group-header">
                     <span class="tr-group-title">
                         <?= $g['label'] ?>
