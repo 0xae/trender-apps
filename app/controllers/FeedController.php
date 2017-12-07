@@ -13,7 +13,13 @@ class FeedController extends \yii\web\Controller {
     public $layout = 'feed_layout';
 
     public function actionIndex() {
-    	$q = (@$_GET['q']) ? $_GET['q'] : '*';
+        if (@$_GET['q']) {
+            $v = $_GET['q'];
+            $q = "\"{$v}\"";
+        } else {
+            $q = "*";
+        }
+
     	$start = 0;
         $vidReq = Solr::query($q, $start, 20, [
             "!cached:none",
