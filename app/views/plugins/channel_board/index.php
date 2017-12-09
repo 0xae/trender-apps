@@ -6,6 +6,7 @@ $sugestions1 = array_slice($feed->sugestions, 11, 11);
 
 <div class="col-md-5 rs-pad tr-newsfeed-board pull-right">
     <div class="row rs-row">
+        <!-- channel header -->
         <div class="col-md-12 tr-nb-header">
             <div class="col-md-5" style="">
                 <h3 style="display:inline">
@@ -73,7 +74,6 @@ $sugestions1 = array_slice($feed->sugestions, 11, 11);
                 ?>
             <?php endif; ?>
             </div>
-
         </div>
 
         <!-- places -->

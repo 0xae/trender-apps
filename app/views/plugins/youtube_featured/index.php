@@ -44,10 +44,9 @@ $category = Utils::category($post);
                 <img src="<?=Utils::cached($post); ?>" />
             </div>
 
-        <div class="tr-post-description" style="margin-left: 0px;">
-            <p style="font-size: 11px;margin-top:-13px;"> <?= $post->description ?> </p>
-        </div>
-
+            <div class="tr-post-description" style="margin-left: 0px;">
+                <p style="font-size: 11px;margin-top:-13px;"> <?= $post->description ?> </p>
+            </div>
         </div>
     </div>
 </div>
