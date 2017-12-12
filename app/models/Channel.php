@@ -31,6 +31,8 @@ class Channel extends Model {
         ];
     }
 
+    // TODO: fix this
+    //       we should avoid writing code like that
     public function save() {
         $host = Trender::api();
         $data = [
