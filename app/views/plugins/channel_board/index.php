@@ -153,14 +153,89 @@ $sugestions1 = array_slice($feed->sugestions, 11, 11);
             </div>
         </div>
 
-        <!-- top websites -->
+        <!-- more topics -->
         <div class="col-md-4">
-            <!-- top websites -->
             <div class="tr-section">
                 <h4 class="tr-section-title">
-                    Top websites
+                    More topics
                 </h4>
 
+                <div class="tr-section-content">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="./index.php?r=channel/watch&id="
+                               class="tr-more-item">
+                               Topic 1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./index.php?r=channel/watch&id="
+                               class="tr-more-item">
+                               Topic 2
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./index.php?r=channel/watch&id="
+                               class="tr-more-item">
+                               Topic 3
+                            </a>
+                        </li>
+                    </ul>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <!-- suggestions -->
+    <div class="row rs-row">
+        <div class="col-md-8">
+            <h4 class="tr-section-title">
+                <span class="glyphicon glyphicon-flag"></span>
+                Suggested Channels
+            </h4>
+            <!-- sugestion_col_1 -->
+            <div class="col-md-6 rs-pad">
+              <div class="tr-section">                
+                  <div class="tr-section-content">
+                      <ul class="list-unstyled">
+                        <?php foreach ($sugestions0 as $chan): ?>
+                            <li>
+                                <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
+                                   class="tr-more-item">
+                                    <?= $chan->name ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                      </ul>
+                  </div>                
+              </div>
+            </div>
+
+            <!-- sugestion_col_2 -->
+            <div class="col-md-6 rs-pad">
+              <div class="tr-section">
+                  <div class="tr-section-content">
+                      <ul class="list-unstyled">
+                        <?php foreach ($sugestions1 as $chan): ?>
+                            <li>
+                                <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
+                                   class="tr-more-item">
+                                    <?= $chan->name ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                      </ul>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- top websites -->
+        <div class="col-md-4 rs-pad">
+            <h4 class="tr-section-title">
+                Top websites
+            </h4>
+            <div class="tr-section">
                 <div class="tr-section-content">
                     <ul class="list-unstyled">
                         <li>
@@ -190,50 +265,6 @@ $sugestions1 = array_slice($feed->sugestions, 11, 11);
                     </ul>
                 </div>                
             </div>
-        </div>
-    </div>
-
-    <!-- suggestions -->
-    <div class="row rs-row">
-        <div class="col-md-12">
-            <h4 class="tr-section-title">
-                <span class="glyphicon glyphicon-flag"></span>
-                Suggested Channels
-            </h4>
-        </div>
-
-        <div class="col-md-5">
-            <div class="tr-section">                
-                <div class="tr-section-content">
-                    <ul class="list-unstyled">
-                      <?php foreach ($sugestions0 as $chan): ?>
-                          <li>
-                              <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
-                                 class="tr-more-item">
-                                  <?= $chan->name ?>
-                              </a>
-                          </li>
-                      <?php endforeach; ?>
-                    </ul>
-                </div>                
-            </div>            
-        </div>
-
-        <div class="col-md-4">
-            <div class="tr-section">                
-                <div class="tr-section-content">
-                    <ul class="list-unstyled">
-                      <?php foreach ($sugestions1 as $chan): ?>
-                          <li>
-                              <a href="./index.php?r=channel/watch&id=<?=$chan->id?>"
-                                 class="tr-more-item">
-                                  <?= $chan->name ?>
-                              </a>
-                          </li>
-                      <?php endforeach; ?>
-                    </ul>
-                </div>                
-            </div>            
         </div>
     </div>
 </div>
