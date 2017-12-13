@@ -7,15 +7,8 @@ $tab->_setViewPath("plugins/newsfeed");
 $links = [];
 $collections = $feed->colls;
 
-
-if (@$collections->{'t/newsfeed'}) {
-    $collections->{'t/newsfeed'}->active = true;
-} else {
-    # just set the first
-    foreach ($collections as &$col) {
-        $col->active=true;
-        break;
-    }
+if (!empty($collections)) {
+    $collections[0]->active=true;
 }
 
 

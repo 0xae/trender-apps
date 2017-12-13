@@ -64,6 +64,13 @@ class Collection extends Model {
         return self::convert($json);
     }
 
+    public static function byName($name) {
+        $host = Trender::api();
+        $query = "{$host}collection/by_name/$name";
+        $json = HttpReq::get($query);
+        return self::convert($json);
+    }
+
     public static function all($audience='public') {
         $host = Trender::api();
         $query = "{$host}collection?audience=$audience";

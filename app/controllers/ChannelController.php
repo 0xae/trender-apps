@@ -45,9 +45,13 @@ class ChannelController extends \yii\web\Controller {
             $chan = Channel::retrieve($id, $name);
         }
 
-        $feed = $chan->feed();
+        $feed = $chan->feed([
+            "collection" => "t-newsfeed"
+        ]);
+
         return $this->render('watch', [
             'channel' => $chan,
+            'colls' => null,
             'feed' => $feed
         ]);
     }
