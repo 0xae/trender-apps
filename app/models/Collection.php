@@ -43,7 +43,7 @@ class Collection extends Model {
         $coll->id = $json->id;
         $coll->name = $json->name;
         $coll->label = ucfirst(Html::encode($json->label));
-        $coll->description = Html::encode($json->description);
+        // $coll->description = Html::encode($json->description);
         $coll->audience = $json->audience;
         $coll->display = $json->display;
         $coll->update = $json->update;

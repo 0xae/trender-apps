@@ -152,32 +152,30 @@ class Channel extends Model {
         return HttpReq::get($query);
     }
 
-    public function feed($params) {
+    public static function feed($params) {
         $collName = $params['collection'];
-        $host=Trender::api();
-        $query="{$host}channel/{$this->id}/feed/$collName";
-        $colls=HttpReq::get($query);
-        $ary=array_keys(get_object_vars($colls));
+        $channelId = $params['channelId'];
+        $chan = Channel::byId($channelId);
 
+        $host=Trender::api();
+        $query="{$host}channel/{$chan->id}/feed/$collName";
+        $mainCollection=HttpReq::get($query);
+
+        $posts = $mainCollection->posts;
         $post=false;
         $video=false;
-        $keys=$ary;
 
-        do {
-            $name=$ary[rand(0, count($ary)-1)];
-            $docs=$colls->{$name};
-            if (!empty($docs)) {
-                $idx=rand(0, count($docs)-1);
-                $post=$docs[$idx];
-                # cap description 
-                $post->description=substr($post->description, 0, 200);
+        if (!empty($posts)) {
+            $idx=rand(0, count($posts)-1);
+            $post=$posts[$idx];
+            # cap description 
+            $post->description=substr($post->description, 0, 200);
+
+            foreach ($posts as $p) {
+                if ($p->type == "youtube-post") 
+                    $videos[] = $p;
             }
-            array_shift($ary);
-        } while (count($ary));
 
-        $VIDEO = "youtube-post";
-        if (@$colls->{$VIDEO}) {        
-            $videos = $colls->{$VIDEO};
             if (!empty($videos)) {
                 $idx = rand(0, count($videos)-1);
                 $video = $videos[$idx];
@@ -185,13 +183,18 @@ class Channel extends Model {
         }
 
         $sugs = self::all();
+
         $feed = new Feed;
         $feed->loadJson([
+            'channel' => $chan,
+            'colls' => $chan->collections,
+            'posts' => $posts,
             'featured_post' => $post,
             'featured_video' => $video,
-            'sugestions' => $sugs,
-            'colls' => $colls
+            'active_collection' => $mainCollection,
+            'sugestions' => $sugs
         ]);
+
         return $feed;
     }
 }

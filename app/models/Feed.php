@@ -15,6 +15,7 @@ class Feed {
     public $featured_post = false;
     public $featured_video = false;
     public $colls = [];
+    public $posts = [];
 
     public function loadJson($json) {
         foreach ($json as $key => $value) {

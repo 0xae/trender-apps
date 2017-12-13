@@ -9,8 +9,8 @@ use app\models\Collection;
 use app\models\TabRender;
 
 $collection = new Collection;
+$channel = $feed->channel;
 $this->title = 'Channel ' . $channel->name;
-
 $featured_post = $feed->featured_post;
 $featured_video = $feed->featured_video;
 ?>

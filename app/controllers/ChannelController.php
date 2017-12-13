@@ -37,21 +37,13 @@ class ChannelController extends \yii\web\Controller {
         }
     }
 
-    public function actionWatch($id=false) {
-        $name = Utils::queryParam('name', false);
-        if ($id) {
-            $chan = Channel::byId($id);
-        } else {
-            $chan = Channel::retrieve($id, $name);
-        }
-
-        $feed = $chan->feed([
-            "collection" => "t-newsfeed"
+    public function actionWatch($id) {
+        $feed = Channel::feed([
+            "collection" => "t-newsfeed",
+            "channelId" => $id
         ]);
 
         return $this->render('watch', [
-            'channel' => $chan,
-            'colls' => null,
             'feed' => $feed
         ]);
     }

@@ -6,17 +6,17 @@ $tab = new TabRender("main");
 $tab->_setViewPath("plugins/newsfeed");
 $links = [];
 $collections = $feed->colls;
-
-if (!empty($collections)) {
-    $collections[0]->active=true;
-}
-
+$active_collection = $feed->active_collection;
 
 foreach ($collections as $col) {
-    $ret = $tab->fileLink($col->label, "collection", @$col->active, [
+    $active = $col->id==$active_collection->id;
+    if ($active) {
+        $col->posts = $active_collection->posts;
+    }
+    $ret = $tab->fileLink($col->label, "collection", $active, [
         'col' => $col,
-        'feed' => $feed,
-        'channel' => $channel
+        'channel' => $channel,
+        'feed' => $feed
     ]);
 
     if ($col->display) {

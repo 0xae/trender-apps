@@ -1,5 +1,5 @@
 <?php
-$groups = [];
+$groups = $col->groups;
 $posts = $col->posts;
 ?>
 
