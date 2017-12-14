@@ -38,7 +38,6 @@ $posts = $col->posts;
             'feed' => $feed
         ]);
     ?>
-
 </div>
 
 <?php
