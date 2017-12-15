@@ -1,17 +1,41 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 
-function tick() {
-    let template = (
-        <div>
-            <p>{new Date().toLocaleTimeString()}</p>
-        </div>
-    );
-
-    ReactDOM.render(
-        template,
-        document.getElementById('clock')
-    );
+interface State {
+    date: Date;
 }
 
-export default tick;
+class Clock extends React.Component<{}, State> {
+    timerId: number;
+
+    constructor(props: {}) {
+        super(props);
+        this.state = {date: new Date()};
+    }
+
+    componentDidMount() {
+        this.timerId = setInterval(
+            () => this.tick(),
+            1000
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    }
+
+    tick() {
+        this.setState({
+           date: new Date() 
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <p>{this.state.date.toLocaleTimeString()}</p>
+            </div>
+        );
+    }
+}
+
+export default Clock;

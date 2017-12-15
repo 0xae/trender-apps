@@ -1,18 +1,31 @@
 import * as React from 'react';
 
-export function Welcome(props: any) {
-    return (
-        <p>
-        Hello {props.name}
-        </p>
-    );
+interface State {
+    name: string
 }
 
-export class MyComp extends React.Component {
+class Welcome extends React.Component<State, State> {
+    constructor(props: State) {
+        super(props);
+        this.state = {name: props.name};
+    }
+
     render() {
         return (
-            <h1>hello there</h1>
+            <div>
+                <h2>hello there {this.state.name}</h2>
+                <button onClick={this.requestName}>
+                    Request your name
+                </button>
+            </div>
         );
+    }
+
+    requestName = () => {
+        let n:any = prompt("Your name");
+        this.setState({
+            name: n
+        });
     }
 }
 

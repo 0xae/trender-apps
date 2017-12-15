@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '../App.css';
-import {Welcome, MyComp} from './Welcome';
+import Welcome from './Welcome';
+import Clock from './Clock';
 
 const logo = require('../logo.svg');
 
@@ -12,16 +13,14 @@ class App extends React.Component {
                 <img src={logo} className="App-logo" alt="logo" />
                 <div id="clock" />
                 <h2>Welcome to React</h2>
+                <Clock />
             </div>
 
-            <p className="App-intro">
+            <div className="App-intro">
                 Welcome to trender app
-            </p>
+            </div>
 
-            <MyComp />
-            <Welcome name="ayrton" />
-            <Welcome name="jonh" />
-            <Welcome name="kelly" />
+            <Welcome name="Stranger" />
         </div>
     );
   }
