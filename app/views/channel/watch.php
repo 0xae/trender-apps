@@ -8,11 +8,8 @@ use app\models\Utils;
 use app\models\Collection;
 use app\models\TabRender;
 
-$collection = new Collection;
-$channel = $feed->channel;
-$this->title = 'Channel ' . $channel->name;
+$this->title = 'Trender - channel ' . $feed->channel->name;
 $featured_post = $feed->featured_post;
-$featured_video = $feed->featured_video;
 ?>
 
 <div class="row rs-row">
@@ -65,24 +62,6 @@ $featured_video = $feed->featured_video;
                                 <a href="#">My Favorites</a>
                             </span>
                         </li>
-
-                        <li role="presentation">
-                            <a href="#">
-                                <span style="margin-right:8px;" class="glyphicon glyphicon-unchecked">
-                                </span>
-                            </a>
-
-                            <span>
-                                <a href="#">My Collections</a>
-                            </span>
-    
-                            <a href="javascript:void(0)" class="pull-right">
-                                <span class="label label-success"
-                                      data-toggle="modal" data-target="#collectionModal">
-                                      add
-                                </span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <!-- tr-section -->
@@ -110,10 +89,10 @@ $featured_video = $feed->featured_video;
 
     <div class="col-md-10 tr-channel-content rs-pad">
         <div class="rs-row row" style="padding:0px;">
-            <?php 
+            <?php
                 echo \Yii::$app->view->renderFile(
                     "@app/views/plugins/newsfeed/index.php", [
-                        "channel" => $channel,
+                        "channel" => $feed->channel,
                         "feed" => $feed
                     ]
                 );
@@ -121,12 +100,3 @@ $featured_video = $feed->featured_video;
         </div>
     </div>
 </div>
-
-<?php
-    echo \Yii::$app->view->renderFile(
-        "@app/views/channel/new_collection_modal.php", [
-            "collection" => new Collection,
-            "channel" => $channel
-        ]
-    );
-?>

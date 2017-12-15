@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Html;
 $groups = $col->groups;
 $posts = $col->posts;
 ?>
@@ -10,7 +11,7 @@ $posts = $col->posts;
             <div class="tr-post-group" id="<?= $g['posts'][0]->id ?>-group">
                 <div class="tr-group-header">
                     <span class="tr-group-title">
-                        <?= $g['label'] ?>
+                        <?= Html::encode($g['label']) ?>
                     </span>
                     <span class="tr-group-descr">
                          2017-10-12 · 
@@ -43,7 +44,7 @@ $posts = $col->posts;
 <?php
 $script = <<<JS
 requirejs(["trender/app", "jquery", "_", "t/zpost"], 
-function (app, $, _, zpost){
+function (app, $, _, zpost) {
     $(".tr-cache-it").each(function (){
         var self = this;
         var postId = $(this).attr("data-postid");

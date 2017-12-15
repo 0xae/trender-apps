@@ -13,6 +13,7 @@ foreach ($collections as $col) {
     if ($active) {
         $col->posts = $active_collection->posts;
     }
+
     $ret = $tab->fileLink($col->label, "collection", $active, [
         'col' => $col,
         'channel' => $channel,
@@ -23,6 +24,17 @@ foreach ($collections as $col) {
         $links[] = $ret;
     }
 }
+
+$TMPL = <<<HTML
+    <strong>My Collections</strong>
+    <sup>
+    <span class="glyphicon glyphicon-cog"></span>
+    </sup>
+HTML;
+
+$links[] = $tab->fileLink($TMPL, "my_collections", true, [
+    'collections' => $collections
+]);
 
 function render_post($post, $cols){
     $tpl = "@app/views/plugins/newsfeed/tab.render/main/generic_post.php";
@@ -39,10 +51,10 @@ function render_post($post, $cols){
 
 <div class="col-md-12 tr-channel-nav">
     <div role="tabpanel">
-      <!-- Nav tabs -->
+    <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <?php foreach ($links as $link): ?>
-            <li role="presentation">
+            <li role="presentation" class="<?= strrpos($link, 'My Collections') > 0 ? 'pull-right tx-my-collections' : '' ?>">
                 <?= $link ?>
             </li>
         <?php endforeach; ?>

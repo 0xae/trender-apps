@@ -9,7 +9,6 @@ if (!$model->id) {
         $model->name = "{$model->channelId}-{$model->name}";
     }
 }
-
 ?>
 
 <?php $form = ActiveForm::begin(['options' => [
@@ -41,9 +40,9 @@ if (!$model->id) {
 ?>
 
 <?= $form->field($model, 'name')
-    ->textInput(['v-model'=>'obj.name', 
+    ->hiddenInput(['v-model'=>'obj.name', 
                 "id"=>"colName"])
-    ->label("Name <span class='tips'>use it to get access to this collection</span>")
+    ->label(false)
 ?>
 
 <?= $form->field($model, 'label')

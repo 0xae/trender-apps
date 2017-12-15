@@ -257,23 +257,26 @@ body {
 }
 
 .tr-channel-nav ul.nav-tabs a {
-    border-bottom: 1px solid #ddd;
 }
 
 .tr-channel-nav ul.nav-tabs li.active {
     font-weight: bold;
-    color: orangered;
+    color: #880c88;
     border-color: transparent;
 }
 
 .tr-channel-nav ul.nav-tabs li.active a {
-    color: orangered;
+    color: #880c88;
 }
 
 .tr-channel-nav ul.nav-tabs li a {
     font-size: 12px;
     padding-top: 4px;
     padding-bottom: 4px;
+    border-bottom: 1px solid #ddd;
+    font-size: 13px;
+    color: gray;
+    background-color: #eee;
 }
 
 .tr-signup {
@@ -541,4 +544,13 @@ body {
 
 #page_container {
     background-color: #fff;
+}
+
+.tx-my-collections {
+    margin-right: 20px;
+}
+
+.tx-my-collections  span.glyphicon {
+    font-size: 8px;
+    color: #801a80;
 }

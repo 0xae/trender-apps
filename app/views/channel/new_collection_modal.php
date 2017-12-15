@@ -29,60 +29,9 @@ $collection->audience = 'private';
             </div>
 
             <div class="modal-body">
-                <?php
-                    echo \Yii::$app->view->renderFile(
-                        "@app/views/collection/save.php",
-                        ["model" => $collection]
-                    );
-                ?>
             </div>
         </div>
     </div>
 
 </div>
 
-<?php
-$scrip = <<<JS
-requirejs(['trender/app', 'jquery', 'vue', 't/zcollection'], 
-function (app, $, Vue, zcollection){
-    var colObj = {
-        id: '{$collection->id}',
-        name: '{$collection->name}',
-        channelId: '{$collection->channelId}',
-        audience: '{$collection->audience}'
-    };
-
-    var collection = new Vue({
-        el: '#collectionModal',
-        data: {
-            obj: colObj,
-            errors: [],
-            alerts: false
-        },
-        methods: {
-            save: function(obj){
-                var self=this;
-                if (!obj.name || !obj.label || !obj.audience)
-                    return;
-                zcollection.save(obj)
-                .then(function (resp){
-                    self.errors = [];
-                    self.alerts = (obj.id)?'collection updated.' : 'collection created.';
-                    self.wasCreated=true;
-                    self.obj.id = resp.id;
-                    self.obj.name = resp.name;
-                }, function (data) {
-                    self.alerts = false;
-                    if (data.errors)
-                        self.errors = data.errors;
-                    else if (data.statusText)
-                        self.errors = [data.statusText];
-                    else
-                        self.errors = [data];
-                });
-            }
-        }
-    });
-});
-JS;
-$this->registerJs($scrip);

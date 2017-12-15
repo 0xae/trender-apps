@@ -32,7 +32,7 @@ class TabRender {
         return $this->viewPath;
     }
 
-    public function ajaxLink($label, $link, $active=false) {
+    public function ajaxLink($label, $link, $active=false, $params=[]) {
         $default = "{$this->id}_default";
         if ($active) {
             $this->active = $default;
@@ -51,7 +51,7 @@ class TabRender {
         ";
     }
 
-    public function fileLink($label, $paneFile, $active=false, $params=[]) {    
+    public function fileLink($label, $paneFile, $active=false, $params=[]) { 
         $obj = [
             "id" => $this->id.'_'.($this->lid++).'_tab',
             "label" => $label,
@@ -65,10 +65,10 @@ class TabRender {
         }
 
         $aTag="<a href=\"#{$obj['id']}\" 
-               aria-controls=\"{$obj['id']}\" 
-               role=\"tab\" 
-               data-target=\"#{$obj['id']}\"
-               data-toggle=\"tab\">
+                  aria-controls=\"{$obj['id']}\" 
+                  role=\"tab\" 
+                  data-target=\"#{$obj['id']}\"
+                  data-toggle=\"tab\">
                $label
             </a>";
 
