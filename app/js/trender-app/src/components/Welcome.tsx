@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface State {
-    name: string
+    name: string;
 }
 
 class Welcome extends React.Component<State, State> {
@@ -22,7 +22,7 @@ class Welcome extends React.Component<State, State> {
     }
 
     requestName = () => {
-        let n:any = prompt("Your name");
+        let n: any = prompt('Your name');
         this.setState({
             name: n
         });

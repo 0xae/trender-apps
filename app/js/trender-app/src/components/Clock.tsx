@@ -5,7 +5,7 @@ interface State {
 }
 
 class Clock extends React.Component<{}, State> {
-    timerId: number;
+    timerId: any;
 
     constructor(props: {}) {
         super(props);
