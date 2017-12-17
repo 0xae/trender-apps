@@ -547,10 +547,38 @@ body {
 }
 
 .tx-my-collections {
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 .tx-my-collections  span.glyphicon {
     font-size: 8px;
     color: #801a80;
+}
+
+.tx-collection-list,
+.tx-collection-form {
+    padding: 10px;
+    padding-left:15px;
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.tx-collection-list h2, 
+.tx-collection-form h2 {
+    margin-top: 0px;
+}
+
+.tx-collection-list {
+}
+
+.tx-collection-form {
+    margin-right: 14px;
+}
+
+.tx-btn-descr {
+    color: gray;
+    font-size: 11px;
+    padding: 0px;
+    margin:0px;
+    margin-bottom: 2px;
 }

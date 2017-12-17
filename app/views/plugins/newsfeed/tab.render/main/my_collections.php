@@ -4,9 +4,10 @@ use app\models\collection;
 $collection=new Collection;
 ?>
 
-<div class="col-md-6">
+<!-- collections list  -->
+<div class="col-md-5 tx-collection-list">
     <h2>Your collections</h2>
-    <div class="list-group">
+    <div class="list-group" style="min-height:500px">
         <?php foreach($collections as $coll): ?>
             <a href="#" class="list-group-item active">
                 <h4 class="list-group-item-heading">
@@ -18,9 +19,23 @@ $collection=new Collection;
             </a>
         <?php endforeach; ?>
     </div>
+
+    <p class="tx-btn-descr">
+        There are <a href="#">3 more</a> collections
+        <span class="pull-right">10 collections</span>
+    </p>
+
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-warning">
+                <strong>Load more</strong>
+            </button>
+        </div>
+    </div>
 </div>
 
-<div class="col-md-6">
+<!-- collection form -->
+<div class="col-md-5 pull-right tx-collection-form">
     <h2>Create a collection</h2>
     <div id="collectionForm">
         <?php

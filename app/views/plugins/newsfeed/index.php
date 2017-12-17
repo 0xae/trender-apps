@@ -25,14 +25,14 @@ foreach ($collections as $col) {
     }
 }
 
-$TMPL = <<<HTML
+$HTML = <<<HTML
     <strong>My Collections</strong>
     <sup>
-    <span class="glyphicon glyphicon-cog"></span>
+        <span class="glyphicon glyphicon-cog"></span>
     </sup>
 HTML;
 
-$links[] = $tab->fileLink($TMPL, "my_collections", true, [
+$links[] = $tab->fileLink($HTML, "my_collections", true, [
     'collections' => $collections
 ]);
 
@@ -62,6 +62,6 @@ function render_post($post, $cols){
     </div>
 </div>
 
-<div class="col-md-12 rs-pad">
+<div class="col-md-12 " style="background-color: #ddd;">
 <?= $tab->render(); ?>
 </div>
