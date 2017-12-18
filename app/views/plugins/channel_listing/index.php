@@ -4,10 +4,7 @@ use app\models\Utils;
 // XXX: do some stuff here 
 ?>
 
-<?php 
-foreach($channels as $c): 
-?>
-
+<?php foreach($channels as $c):  ?>
 <div class="col-md-3">
     <div class="thumbnail">
         <img src="<?= Utils::cached($c->collections[0]->posts[0]) ?>" alt="...">
@@ -28,5 +25,4 @@ foreach($channels as $c):
         </div>
     </div>
 </div>
-
 <?php endforeach; ?>
