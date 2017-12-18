@@ -582,3 +582,14 @@ body {
     margin:0px;
     margin-bottom: 2px;
 }
+
+.tx-keyword a {
+    font-size: 15px;
+}
+
+.tr-section-date {
+    font-size: 11px;
+    color: gray;
+    margin:0px;
+    padding: 0px;
+}

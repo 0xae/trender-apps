@@ -8,32 +8,24 @@ use yii\filters\VerbFilter;
 use yii\helpers\BaseHtml;
 use app\models\Post;
 use app\models\Solr;
+use app\models\Channel;
 
 class FeedController extends \yii\web\Controller {
     public $layout = 'feed_layout';
 
     public function actionIndex() {
-        if (@$_GET['q']) {
-            $v = $_GET['q'];
-            $q = "\"{$v}\"";
-        } else {
-            $q = "*";
-        }
+        $top_channels = Channel::sugestions('top');
+        $recent_channels = Channel::sugestions('recent');
+        $sg = [
+            "top_channels" => $top_channels,
+            "recent_channels" => $recent_channels
+        ];
 
-    	$start = 0;
-        $vidReq = Solr::query($q, $start, 20, [
-            "!cached:none",
-            "type:youtube-post"
-        ]);
-
-        $postReq = Solr::query($q, $start, 70, [
-            '!type:youtube-post',
+        // TODO: get rid of this dependency
+        $req = Solr::query("*", 0, 70, [
             '!cached:none'
         ]);
-
-        $videos = $vidReq->response->docs;
-        $posts = $postReq->response->docs;
-        $data = $postReq->facet_counts->facet_fields->category;
+        $data = $req->facet_counts->facet_fields->category;
         $trending = [];
         for ($i=0; $i<count($data) / 2;$i+=2) {
             $score = $data[$i+1];
@@ -46,22 +38,11 @@ class FeedController extends \yii\web\Controller {
             ];
         }
 
-        foreach ($posts as $p) {
-            $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
-            # $p->picture = $p->cached;
-        }
-
-        foreach ($videos as $p) {
-            $p->timestampFmt = \app\models\DateUtils::dateFmt($p->timestamp);
-            # $p->picture = $p->cached;
-        }
-
         return $this->render('index', [
-        	'videos' => $videos,
-            'posts' => $posts,
+        	'videos' => [],
+            'posts' => [],
             'trending' => $trending,
-            'channel_name' => ($q=='*') ? 'Newsfeed' : $q,
-            'q' => BaseHtml::encode($q)
+            'sugestions' => $sg
         ]);
     }
 }

@@ -110,6 +110,17 @@ class Channel extends Model {
         return $chan;        
     }
 
+    public static function sugestions($name) {
+        $host = Trender::api();
+        $query = "{$host}channel/sugestions/$name";
+        $all = HttpReq::get($query);
+        $ary = [];
+        foreach ($all as $c) {
+            $ary[] = self::convert($c);
+        }
+        return $ary; 
+    }
+
     public static function byId($id) {
         $host = Trender::api();
         $query = "{$host}channel/$id";

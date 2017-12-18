@@ -22,7 +22,7 @@ class ChannelController extends \yii\web\Controller {
     public function actionCreate() {
         $model = new Channel;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['channel/index']);
+            return $this->redirect(['channel/watch', 'id'=>$model->id]);
         }
     }
 
