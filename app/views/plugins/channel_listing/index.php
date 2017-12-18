@@ -2,9 +2,11 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use app\models\Utils;
-?>
+use app\models\PrettyDate;
 
-<?php foreach($channels as $c): ?>
+foreach($channels as $c):
+$last_update = new DateTime($c->lastUpdateFmt);
+?>
 
 <div class="col-md-3">
     <div class="thumbnail tx-channel-thumb">
@@ -14,9 +16,9 @@ use app\models\Utils;
         />
         <div class="tx-thumb-img-descr">
             <h3><?= $c->name ?></h3>
-            <span title="last update <something here> "> 
+            <span title="<?= $c->lastUpdateFmt ?>">
                 <i class="fa fa-clock-o"></i>
-                <?= $c->lastUpdateFmt ?> 
+                <?= PrettyDate::parse($last_update) ?> 
             </span>
         </div>
         <div class="caption">

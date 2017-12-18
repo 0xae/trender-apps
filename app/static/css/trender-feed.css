@@ -628,7 +628,7 @@ body {
 
 .tx-thumb-img-descr {
     margin: 0px;
-    margin-top: -50px;
+    margin-top: -46px;
     padding-left: 10px;
     padding-right: 10px;
     color: #fff;
@@ -637,6 +637,7 @@ body {
 
 .tx-thumb-img-descr h3 {
     margin:0px;
+    margin-bottom: -2px;
 }
 
 .tx-thumb-img-descr span {
