@@ -14,28 +14,31 @@ $last_update = new DateTime($c->lastUpdateFmt);
              src="<?= Utils::cached($c->collections[0]->posts[0]) ?>" 
              alt="<?= Html::encode($c->collections[0]->posts[0]->description) ?>"
         />
+
         <div class="tx-thumb-img-descr">
             <h3><?= $c->name ?></h3>
             <span title="<?= $c->lastUpdateFmt ?>">
                 <i class="fa fa-clock-o"></i>
                 <?= PrettyDate::parse($last_update) ?> 
             </span>
+            <a href="<?= Url::to(["channel/subscribe", 'id'=>$c->id]) ?>" 
+                class="btn btn-sm tx-btn btn-danger" role="button">
+                subscribe
+            </a>
         </div>
+
         <div class="caption">
             <p>
                 Cum sociis natoque penatibus et magnis dis parturient montes, 
-                nascetur ridiculus mus. Donec ullamcorper nulla non metus 
+                nascetur ridiculus mus. Donec ullamcorper nulla non metus.
             </p>
             <p style="margin:0px;padding:0px;">
                 <a href="<?= Url::to(["channel/watch", 'id'=>$c->id]) ?>" 
-                   class="btn btn-sm btn-warning" role="button">
+                   class="btn btn-sm tx-btn btn-warning" role="button">
                     open
                 </a>
 
-                <a href="<?= Url::to(["channel/subscribe", 'id'=>$c->id]) ?>" 
-                   class="btn btn-sm btn-danger" role="button">
-                    subscribe
-                </a>
+
             </p>
         </div>
     </div>

@@ -637,7 +637,7 @@ body {
 
 .tx-thumb-img-descr h3 {
     margin:0px;
-    margin-bottom: -2px;
+    margin-bottom: -3px;
 }
 
 .tx-thumb-img-descr span {
@@ -647,3 +647,11 @@ body {
 }
 
 /* working on stuff */
+.tx-btn {
+    padding: 1px;
+    font-weight: bold;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 11px;
+    z-index: 1000 !important;
+}
