@@ -91,8 +91,8 @@ class Collection extends Model {
         $fq = $queryConf->fq;
         $fq[] = "collections: {$this->name}";
         $req = Solr::query($q, $start, $lim, $fq);
-
         $posts = $req->response->docs;
+
         foreach ($posts as $p) {
             $p->timestampFmt = DateUtils::dateFmt($p->timestamp);
         }
