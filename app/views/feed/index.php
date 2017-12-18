@@ -17,7 +17,7 @@ $recent = $sugestions['recent_channels'];
 
 <!-- channels inteligence preview -->
 <div class="row rs-row">
-	<div class="col-md-12">
+	<div class="col-md-12 rs-pad tx-update">
 		<div class="tr-section">
 			<h4 class="tr-section-title" style="margin:0px;">
 				Top channels
@@ -27,7 +27,7 @@ $recent = $sugestions['recent_channels'];
 				<?= $the_date ?>
 			</span>
 
-			<div class="row">
+			<div class="row" style="margin-top:5px">
             <?php
                 echo \Yii::$app->view->renderFile(
                     "@app/views/plugins/channel_listing/index.php", [
@@ -42,13 +42,13 @@ $recent = $sugestions['recent_channels'];
 	<div class="col-md-12">
 		<div class="tr-section">
 			<h4 class="tr-section-title" style="margin:0px;">
-				Recent channels
+				More channels
 			</h4>
 			<span class="tr-section-date">
 				<span class="glyphicon glyphicon-calendar"></span>
 				<?= $the_date ?>
 			</span>
-			<div class="row">
+			<div class="row" style="margin-top:5px">
 				<?php
 					echo \Yii::$app->view->renderFile(
 						"@app/views/plugins/channel_listing/index.php", [

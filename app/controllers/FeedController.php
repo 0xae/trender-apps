@@ -18,7 +18,7 @@ class FeedController extends \yii\web\Controller {
         $recent_channels = Channel::sugestions('recent');
         $sg = [
             "top_channels" => $top_channels,
-            "recent_channels" => $recent_channels
+            "recent_channels" => []
         ];
 
         // TODO: get rid of this dependency

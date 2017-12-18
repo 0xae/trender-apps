@@ -54,6 +54,7 @@ class Collection extends Model {
 
         $coll->lastUpdate = $json->lastUpdate;
         $coll->lastUpdateFmt = $json->lastUpdateFmt;
+        $coll->posts = $json->posts;
         return $coll;
     }
 

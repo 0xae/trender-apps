@@ -593,3 +593,20 @@ body {
     margin:0px;
     padding: 0px;
 }
+
+.tx-update {
+    background-color: #000;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 13px;
+}
+
+.tx-update .tr-section-title,
+.tx-update .tr-section-date {
+    color: rgb(216, 212, 212);
+    margin-bottom:4px;
+}
+
+.tx-update .tr-section-date {
+    font-weight: bold;
+}    
