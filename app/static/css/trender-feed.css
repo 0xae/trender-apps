@@ -610,3 +610,13 @@ body {
 .tx-update .tr-section-date {
     font-weight: bold;
 }    
+
+.tx-channel-thumb {
+    padding: 0px;
+}
+
+.tx-channel-thumb .tx-thumb-logo {
+    width: 100%;
+    height: 150px;
+}
+

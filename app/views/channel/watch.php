@@ -24,21 +24,21 @@ $featured_post = $feed->featured_post;
                     />
 
                     <a href="<?= $featured_post->link ?>" target="_blank">
-                    <span class="descr col-md-12">
-                        <strong>
-                        @<?= $featured_post->authorName ?>
-                        </strong>
+                        <span class="descr col-md-12">
+                            <strong>
+                            @<?= $featured_post->authorName ?>
+                            </strong>
 
-                        <span class="pull-right tr-rtime">
-                        <strong>
-                            <?= $featured_post->timestampFmt ?>
-                        </strong>
-                        </span>
+                            <span class="pull-right tr-rtime">
+                            <strong>
+                                <?= $featured_post->timestampFmt ?>
+                            </strong>
+                            </span>
     
-                        <p class="tr-rcontent">
-                            <?= $featured_post->description ?>
-                        </p>
-                    </span>
+                            <p class="tr-rcontent">
+                                <?= $featured_post->description ?>
+                            </p>
+                        </span>
                     </a>
                 </div>
                 <?php endif; ?>
