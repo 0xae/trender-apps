@@ -17,7 +17,7 @@ $recent = $sugestions['recent_channels'];
 
 <!-- channels inteligence preview -->
 <div class="row rs-row">
-	<div class="col-md-12 rs-pad tx-update">
+	<div class="col-md-12 tx-update">
 		<div class="tr-section">
 			<h4 class="tr-section-title" style="margin:0px;">
 				Top channels

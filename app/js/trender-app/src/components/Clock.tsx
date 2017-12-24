@@ -25,7 +25,7 @@ class Clock extends React.Component<{}, State> {
 
     tick() {
         this.setState({
-           date: new Date() 
+           sdate: new Date() 
         });
     }
 
