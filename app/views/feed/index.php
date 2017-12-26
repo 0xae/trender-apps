@@ -31,7 +31,7 @@ $recent = $sugestions['recent_channels'];
             <?php
                 echo \Yii::$app->view->renderFile(
                     "@app/views/plugins/channel_listing/index.php", [
-                        "channels" => $top,
+                        "channels" => $top
                     ]
                 );
             ?>
@@ -88,4 +88,3 @@ $recent = $sugestions['recent_channels'];
 		</div>
 	</div>
 </div>
-

@@ -3,11 +3,10 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use app\models\Utils;
 use app\models\PrettyDate;
-?>
 
-<?php
 foreach($channels as $c):
-$last_update = new DateTime($c->lastUpdateFmt);
+$fmt = str_replace('T', ' ', $c->lastUpdateFmt);
+$last_update = new DateTime($fmt);
 ?>
 
 <div class="col-md-3">
