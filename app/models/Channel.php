@@ -118,6 +118,7 @@ class Channel extends Model {
         foreach ($all as $c) {
             $ary[] = self::convert($c);
         }
+
         return $ary; 
     }
 
@@ -125,6 +126,7 @@ class Channel extends Model {
         $host = Trender::api();
         $query = "{$host}channel/$id";
         $json = HttpReq::get($query);
+
         return self::convert($json);
     }
 
@@ -136,6 +138,7 @@ class Channel extends Model {
         $q = urlencode($q);
         $query = "{$host}channel/find_by?name=$name&q=$q";
         $json = HttpReq::get($query);
+
         return self::convert($json);
     }
 
