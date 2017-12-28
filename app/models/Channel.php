@@ -118,7 +118,6 @@ class Channel extends Model {
         foreach ($all as $c) {
             $ary[] = self::convert($c);
         }
-
         return $ary; 
     }
 
@@ -126,7 +125,6 @@ class Channel extends Model {
         $host = Trender::api();
         $query = "{$host}channel/$id";
         $json = HttpReq::get($query);
-
         return self::convert($json);
     }
 
@@ -138,7 +136,6 @@ class Channel extends Model {
         $q = urlencode($q);
         $query = "{$host}channel/find_by?name=$name&q=$q";
         $json = HttpReq::get($query);
-
         return self::convert($json);
     }
 
@@ -196,9 +193,9 @@ class Channel extends Model {
             }
         }
 
-        $sugs = self::all();
-
+        $sg = self::all();
         $feed = new Feed;
+
         $feed->loadJson([
             'channel' => $chan,
             'colls' => $chan->collections,
@@ -206,7 +203,7 @@ class Channel extends Model {
             'featured_post' => $post,
             'featured_video' => $video,
             'active_collection' => $mainCollection,
-            'sugestions' => $sugs
+            'sugestions' => $sg
         ]);
 
         return $feed;
