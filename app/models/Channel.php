@@ -164,11 +164,11 @@ class Channel extends Model {
     }
 
     public static function feed($params) {
+        $host=Trender::api();
+
         $collName = $params['collection'];
         $channelId = $params['channelId'];
         $chan = Channel::byId($channelId);
-
-        $host=Trender::api();
         $query="{$host}channel/{$chan->id}/feed/$collName";
         $mainCollection=HttpReq::get($query);
 
