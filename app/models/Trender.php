@@ -2,27 +2,25 @@
 namespace app\models;
 
 class Trender {
-    public static function server() {
-        $json = file_get_contents('trender.conf');
+    private static function getConf($file="trender.conf") {
+        $json = file_get_contents($file);
         $conf = json_decode($json);
-        return $conf->trender_host;
+        return $conf;
+    }
+
+    public static function server() {
+        return self::getConf()->trender_host;
     }
 
     public static function solr() {
-        $json = file_get_contents('trender.conf');
-        $conf = json_decode($json);
-        return $conf->solr_host;
+        return self::getConf()->solr_host;
     }
 
     public static function api() {
-        $json = file_get_contents('trender.conf');
-        $conf = json_decode($json);
-        return $conf->trender_api;
+        return self::getConf()->trender_api;
     }
 
     public static function media() {
-        $json = file_get_contents('trender.conf');
-        $conf = json_decode($json);
-        return $conf->trender_media_host;
+        return self::getConf()->trender_media_host;
     }
 }
