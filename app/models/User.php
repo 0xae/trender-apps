@@ -49,7 +49,7 @@ class User extends Model implements IdentityInterface {
         return $this;
     }
 
-    public static function sigin($login) {
+    public static function sign_in($login) {
         $host = Trender::api();
         $data = json_encode($login);
         $url = "{$host}user/signin";

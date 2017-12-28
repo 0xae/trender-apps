@@ -13,11 +13,11 @@ class Login extends Model {
             [['email', 'password'], 'required'],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'email'],
-            ['password', 'string', 'min' => 7],
+            ['password', 'string', 'min' => 7]
         ];
     }
 
     public function authenticate() {
-        return User::sigin($this);
+        return User::sign_in($this);
     }
 }
