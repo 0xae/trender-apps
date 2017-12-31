@@ -3,7 +3,6 @@ namespace app\models;
 use yii\base\Model;
 use yii\web\IdentityInterface;
 
-
 class Login extends Model {
     public $email;
     public $password;

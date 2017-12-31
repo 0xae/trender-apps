@@ -73,9 +73,6 @@ class User extends Model implements IdentityInterface {
         return $u;
     }
 
-    /**
-     * @inheritdoc
-     */
     public static function findIdentity($id) {
         $host = Trender::api();
         $url = "{$host}user/{$id}";
@@ -83,9 +80,6 @@ class User extends Model implements IdentityInterface {
         return self::convert_to($resp);
     }
 
-    /**
-     * @inheritdoc
-     */
     public static function findIdentityByAccessToken($token, $type = null) {
         $host = Trender::api();
         $url = "{$host}user/me";
@@ -93,23 +87,14 @@ class User extends Model implements IdentityInterface {
         return $resp->user;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getId() {
         return $this->id;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getAuthKey() {
         return $this->token;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function validateAuthKey($authKey) {
         return true;
     }
