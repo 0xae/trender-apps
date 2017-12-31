@@ -9,7 +9,7 @@ class Trender {
     }
 
     public static function server() {
-        return self::getConf()->trender_host;
+        return self::getConf()->host;
     }
 
     public static function solr() {
@@ -17,10 +17,10 @@ class Trender {
     }
 
     public static function api() {
-        return self::getConf()->trender_api;
+        return self::getConf()->api;
     }
 
     public static function media() {
-        return self::getConf()->trender_media_host;
+        return self::getConf()->media_host;
     }
 }

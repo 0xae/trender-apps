@@ -32,7 +32,7 @@ $HTML = <<<HTML
     </sup>
 HTML;
 
-$links[] = $tab->fileLink($HTML, "my_collections", true, [
+$links[] = $tab->fileLink($HTML, "my_collections", false, [
     'collections' => $collections
 ]);
 
