@@ -203,7 +203,7 @@ class Channel extends Model {
             'featured_post' => $post,
             'featured_video' => $video,
             'active_collection' => $mainCollection,
-            'sugestions' => $sg
+            'sugestions' => []
         ]);
 
         return $feed;

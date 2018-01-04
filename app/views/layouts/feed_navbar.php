@@ -120,7 +120,7 @@ $controllerHref = "index.php?r=feed/index";
             <?php endif; ?>
         </ul>
 
-        <?php $form = ActiveForm::begin(['action' => $controllerHref, 
+        <!-- <?php $form = ActiveForm::begin(['action' => $controllerHref, 
                                          'method' => 'get',
                                          'options' => [
                                          'role' => 'search',
@@ -132,7 +132,7 @@ $controllerHref = "index.php?r=feed/index";
                        value="<?= BaseHtml::encode(@$_GET['q']) ?>"
                        placeholder="Search for anything"
                  />
-        <?php ActiveForm::end(); ?>
+        <?php ActiveForm::end(); ?> -->
     </div><!-- /.navbar-collapse -->
 
 </div><!-- /.container-fluid -->

@@ -13,6 +13,8 @@ use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 class Collection extends Model {
+    const NEWSFEED='t-newsfeed';
+
     public $id;
     public $name;
     public $label;

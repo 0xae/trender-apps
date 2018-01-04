@@ -4,7 +4,7 @@ use app\models\Utils;
 $imgs = [];
 $k = 0;
 $MAX=22;
-$videosCount = count($videos);
+$videosCount = count($posts);
 
 if (!isset($blockCount)){
     $blockCount = 6;
@@ -23,7 +23,7 @@ for ($i=0; $i<$blockCount; $i++){
     for ($j=0; $j<$perBlock; $j++) {
         // XXX: remove this later
         do {
-            $vid = @$videos[$k++];
+            $vid = @$posts[$k++];
             if (!$vid) break;
         } while (!@$vid->cached);
         if ($vid)
@@ -41,13 +41,6 @@ for ($i=0; $i<$blockCount; $i++){
         <div class="" title="<?= $vid->description ?>">
             <span class="tr-img-descr">
                 <small>
-                <!--
-                <img src="static/img/youtube-small.ico" 
-                     width="15px" 
-                 />
-                 
-                 -->
-
                 <?php 
                     echo (strlen($vid->description) >= $MAX) ? 
                         substr($vid->description, 0, $MAX) . '...' : 
